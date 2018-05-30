@@ -22,3 +22,4 @@
 
 # ignore argon mappings
 config/mappings/argon_mappings*
+config/local_env.yml
