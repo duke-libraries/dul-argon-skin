@@ -4,7 +4,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include TrlnArgon::ArgonSearchBuilder
 
-  self.default_processor_chain += [:add_advanced_parse_q_to_solr, :add_advanced_search_to_solr]
+  # self.default_processor_chain += [:add_advanced_parse_q_to_solr, :add_advanced_search_to_solr]
 
 
   ##
