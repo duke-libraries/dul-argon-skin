@@ -1,12 +1,13 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: db3b0d4ae99feae18bbacc5eca399208f560928d
+  revision: 9a9b24ad7087ce24dcb9b7a5745d7e3173b1e5c0
   specs:
-    trln_argon (0.4.0)
+    trln_argon (0.4.5)
       blacklight (~> 6.7)
       blacklight-hierarchy (~> 1.1.0)
       blacklight_advanced_search (~> 6.2)
       bootstrap-select-rails (~> 1.12)
+      chosen-rails (~> 1.8)
       font-awesome-rails (~> 4.7)
       git (~> 1.3.0)
       library_stdnums (~> 1.6)
@@ -57,7 +58,6 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (8.5.0)
       execjs
-    bcrypt (3.1.12)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -93,6 +93,10 @@ GEM
     bootstrap-select-rails (1.12.4)
     builder (3.2.3)
     byebug (10.0.2)
+    chosen-rails (1.8.3)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -105,14 +109,6 @@ GEM
     crass (1.0.4)
     deprecation (1.0.0)
       activesupport
-    devise (4.4.3)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
-      responders
-      warden (~> 1.2.3)
-    devise-guests (0.6.0)
-      devise
     dot-properties (0.1.3)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -173,7 +169,6 @@ GEM
     openurl (1.0.0)
       marc
       scrub_rb (~> 1.0)
-    orm_adapter (0.5.0)
     parslet (1.8.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -208,9 +203,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    responders (2.4.0)
-      actionpack (>= 4.2.0, < 5.3)
-      railties (>= 4.2.0, < 5.3)
     retriable (3.1.1)
     rsolr (2.2.1)
       builder (>= 2.1.2)
@@ -271,8 +263,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    warden (1.2.7)
-      rack (>= 1.0)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -292,8 +282,6 @@ DEPENDENCIES
   blacklight-marc (~> 6.1)
   byebug
   coffee-rails (~> 4.2)
-  devise
-  devise-guests (~> 0.6)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

@@ -10,6 +10,7 @@ class CatalogController < ApplicationController
 
 
   configure_blacklight do |config|
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -122,7 +123,7 @@ class CatalogController < ApplicationController
     config.spell_max = 5
 
     # Configuration for autocomplete suggestor
-    config.autocomplete_enabled = false
-    config.autocomplete_path = 'suggest'
+    # config.autocomplete_enabled = false
+    # config.autocomplete_path = 'suggest'
   end
 end
