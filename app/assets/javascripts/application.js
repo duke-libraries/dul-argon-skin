@@ -16,5 +16,6 @@
 //
 // Required by Blacklight
 //= require blacklight/blacklight
+//= require trln_argon/trln_argon
 
 //= require_tree .
