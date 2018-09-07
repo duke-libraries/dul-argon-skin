@@ -1,4 +1,1 @@
-VERSION = '0.0.10'
-# Fix for an autoloading issue with blacklight-marc
-# TODO: Maybe we don't need blacklight-marc
-require 'traject'
+VERSION = '0.0.11'

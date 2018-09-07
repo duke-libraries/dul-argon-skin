@@ -2,7 +2,7 @@
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
-  include Blacklight::Marc::Catalog
+
 
   # CatalogController behavior and configuration for TrlnArgon
   include TrlnArgon::ControllerOverride

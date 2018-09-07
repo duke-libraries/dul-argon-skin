@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
-  Blacklight::Marc.add_routes(self)
+
 
   root to: "catalog#index"
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
-  get "trln/:id", to: "trln#show", as: "trln_solr_document"
+
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   # devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
+
+  resources :trln_solr_documents, only: [:show], path: '/trln', controller: 'trln' do
+    concerns :exportable
+  end
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
