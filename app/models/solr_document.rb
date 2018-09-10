@@ -17,20 +17,6 @@ class SolrDocument
   include TrlnArgon::SolrDocument
 
   include TrlnArgon::ItemDeserializer
-    
-      # The following shows how to setup this blacklight document to display marc documents
-  extension_parameters[:marc_source_field] = :marc_display
-  extension_parameters[:marc_format_type] = :marcxml
-  use_extension( Blacklight::Solr::Document::Marc) do |document|
-    document.key?( :marc_display  )
-  end
-  
-  field_semantics.merge!(    
-                         :title => "title_display",
-                         :author => "author_display",
-                         :language => "language_facet",
-                         :format => "format"
-                         )
 
 
 
@@ -40,7 +26,7 @@ class SolrDocument
   SolrDocument.use_extension(TrlnArgon::DocumentExtensions::Email)
 
   # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension(Blacklight::Document::Sms)
+  SolrDocument.use_extension(TrlnArgon::DocumentExtensions::Sms)
 
   # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
   # Semantic mappings of solr stored fields. Fields may be multi or
