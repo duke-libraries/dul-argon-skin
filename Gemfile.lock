@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: 578617a2b3d9bbef587532b5fb5bd807d0082162
+  revision: a2ec651119902a868d4f396c979528c76eeed410
+  branch: TD-590-facets-and-masthead
   specs:
     trln_argon (0.5.16)
       blacklight (~> 6.7)
