@@ -1,0 +1,26 @@
+/* ======================================= */
+/* Styles specific to DUL Catalog homepage */
+/* ======================================= */
+
+h1.main-title {
+  font-size: 40px;
+}
+
+.tagline {
+  font-size: 22px;
+  color: $gray-light;
+}
+
+.other-resources {
+  &.list-inline > li {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px dotted #ccc;
+    &:first-child {
+      padding-left: 5px;
+    }
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
