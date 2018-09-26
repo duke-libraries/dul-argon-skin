@@ -3,4 +3,29 @@
 
 @import 'trln_argon/trln_argon';
 
-/* Results Display */
+/* map_location display */
+
+.map-info .btn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modal-title {
+  font-size: 1.2em;
+  color: #707070;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: .25em;
+}
+
+.modal-body {
+  overflow: hidden;
+}
+
+.modal-location {
+  padding: 0 0 1em 0;
+
+  .label {
+    margin-right: .25em;
+  }
+}

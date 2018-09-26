@@ -1,0 +1,21 @@
+<% loc_n = params[:loc_n] %>
+<% loc_b = params[:loc_b] %>
+<% title = params[:title] %>
+<% call_no = params[:call_no] %>
+
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h3 class="modal-title"><%= title %> &mdash; <%= call_no %></h3>
+  </div>
+
+  <div class="modal-body">
+
+    <%= render partial: 'location_modal', locals: {loc_n: loc_n, loc_b: loc_b, title: title, call_no: call_no} %>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
