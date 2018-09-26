@@ -1,0 +1,16 @@
+.items.well {
+  clear: both;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 1em !important;
+  border: none;
+}
+
+.location-header {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #555;
+  & .loc-broad, .loc-narrow, h4 {
+    font-weight: bold;
+  }
+}

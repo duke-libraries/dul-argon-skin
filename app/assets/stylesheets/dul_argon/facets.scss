@@ -1,0 +1,89 @@
+#facets {
+  & .top-panel-heading {
+    padding: 0;
+    @media (max-width: $screen-sm) {
+      padding: 15px;
+    }
+  }
+  & .panel.facet_limit {
+    margin-top: 0;
+    margin-bottom: 5px;
+    border-radius: 0;
+  }
+
+  // Facets from Blacklight Hierarchy gem
+  // NOTE: Reconciling w/shared TRLN Argon styles gets tricky
+  // See trln_argon/app/assets/stylesheets/trln_argon/trln_argon_shared.scss
+  // =======================================================================
+
+  ul.facet-hierarchy {
+
+    // Adjust for local font-size change
+    .twiddle > .facet_select {
+      height: 20px;
+    }
+
+    .h-node.twiddle-open > .facet_select {
+      &:hover {
+        height: 25px;
+      }
+    }
+
+    // Adjust for local facet panel width, i.e., shave 8px width off all
+    // fixed widths in facet-hierarchy. Needed b/c extra padding introduced
+    // for gray body w/white content background slightly reduces the
+    // available width of the sidebar.
+
+    li.h-leaf {
+      a:not(.remove) {
+        max-width: 232px; // 240px trln_argon
+      }
+    }
+
+    @media screen and (min-width: $screen-sm) and (max-width: $screen-lg) {
+      .twiddle > .facet_select, .twiddle-open > .facet_select {
+        width: 102px; // 110px trln_argon
+      }
+      ul .twiddle > .facet_select {
+        width: 97px; // 105px trln_argon
+      }
+    }
+    @media screen and (min-width: $screen-lg) {
+      .twiddle > .facet_select, .twiddle-open > .facet_select {
+        width: 142px; // 150px trln_argon
+      }
+      ul .twiddle > .facet_select {
+        width: 127px; // 135px trln_argon
+      }
+    }
+
+    @media screen and (min-width: $screen-xs) and (max-width: $screen-sm) {
+      li.h-leaf a {
+        max-width: 292px; // 300px trln_argon
+      }
+    }
+
+    @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+      li.h-leaf {
+        width: 155px; // 163px trln_argon
+        a { width: 109px; } // 117px trln_argon
+      }
+    }
+
+    @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+      li.h-leaf {
+        width: 147px; // 155px trln_argon
+        a { width: 82px; } // 90px trln_argon
+      }
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      li.h-leaf {
+        width: 197px; // 205px trln_argon
+        a { width: 127px; } // 135px trln_argon
+      }
+    }
+
+  }
+
+}

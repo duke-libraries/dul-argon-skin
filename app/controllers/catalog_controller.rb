@@ -7,9 +7,14 @@ class CatalogController < ApplicationController
   # CatalogController behavior and configuration for TrlnArgon
   include TrlnArgon::ControllerOverride
 
-
-
   configure_blacklight do |config|
+
+    # DUL Local overrides to TRLN Blacklight controller overrides
+    # TBD: Is this where this belongs?
+
+    # Switch index partial order so text can wrap around the thumbnail
+    config.index.partials = %i[thumbnail index_header index index_items]
+
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
