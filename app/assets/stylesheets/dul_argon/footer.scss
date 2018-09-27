@@ -1,0 +1,46 @@
+#footer {
+
+  width: auto;
+  border: none;
+  margin-top: 0;
+  padding-top: 30px;
+  padding-bottom: 40px;
+
+  h4 {
+    border-bottom: 1px dotted #aaa;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .social-media-icons {
+
+    a.fa {
+      margin-right: 3px;
+      color: #777;
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+        &.fa-twitter-square {
+          color: #1da1f2;
+        }
+        &.fa-facebook-square {
+         color: #4267b2;
+        }
+        &.fa-youtube-square {
+         color: #ff0000;
+        }
+        &.fa-flickr {
+          color: #ec0f80;
+        }
+        &.fa-instagram {
+          color: #7324c2;
+        }
+        &.fa-rss-square {
+          color: #e27800;
+        }
+      }
+    }
+  }
+}

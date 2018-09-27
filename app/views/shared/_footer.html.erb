@@ -1,0 +1,84 @@
+<% if TrlnArgon::Engine.configuration.feedback_url.present? %>
+  <%= render partial: "shared/feedback" %>
+<% end %>
+
+<%# TODO: Replace this with a reusable shared DUL footer in the future to %>
+<%# reduce duplication of effort when changes are needed. %>
+
+<footer id="footer" role="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+        <a href="https://library.duke.edu">
+          <%= image_tag("branding/dul_devil_gray.png", alt: "Duke University Libraries") %>
+      </div>
+      <div class="col-md-2">
+        <h4><a href="https://library.duke.edu/about/contact">Contact Us</a></h4>
+        <div>
+          <small>411 Chapel Drive<br>Durham, NC 27708<br>(919) 660-5870<br>Perkins Library Service Desk</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h4><a href="https://library.duke.edu/services">Services for...</a></h4>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><a href="https://library.duke.edu/services/faculty">Faculty &amp; Instructors</a></li>
+                <li><a href="https://library.duke.edu/services/graduate">Graduate Students</a></li>
+                <li><a href="https://library.duke.edu/services/undergraduate">Undergraduate Students</a></li>
+                <li><a href="https://library.duke.edu/services/international">International Students</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><a href="https://library.duke.edu/services/alumni">Alumni</a></li>
+                <li><a href="https://library.duke.edu/services/donors">Donors</a></li>
+                <li><a href="https://library.duke.edu/services/visitors">Visitors</a></li>
+                <li><a href="https://library.duke.edu/services/disabilities">Patrons with Disabilities</a></li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+
+        <h4 class="social-media-icons">
+
+          <a href="https://twitter.com/DukeLibraries" title="Twitter"
+            class="fa fa-twitter-square"></a>
+
+          <a href="https://www.facebook.com/dukelibraries" title="Facebook"
+            class="fa fa-facebook-square"></a>
+
+          <a href="https://www.youtube.com/user/DukeUnivLibraries" title="YouTube"
+            class="fa fa-youtube-square"></a>
+
+          <a href="https://www.flickr.com/photos/dukeunivlibraries/" title="Flickr"
+            class="fa fa-flickr"></a>
+
+          <a href="https://instagram.com/dukelibraries" title="Instagram"
+            class="fa fa-instagram"></a>
+
+          <a href="https://blogs.library.duke.edu/" title="Blogs"
+            class="fa fa-rss-square"></a>
+
+        </h4>
+
+        <div class="newsletter-signup">
+          <a href="https://library.duke.edu/about/sign-our-newsletter">Sign Up for Our Newsletter</a>
+        </div>
+
+        <ul class="list-unstyled">
+          <li><a href="https://library.duke.edu/about/reuse-attribution">Re-use &amp; Attribution</a> / <a href="https://library.duke.edu/about/privacy">Privacy</a></li>
+          <li><a href="https://library.duke.edu/support">Support the Libraries</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <div id="duke-logo">
+          <a href="https://www.duke.edu">
+            <%= image_tag("branding/duke_gray.png", alt: "Duke University") %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
