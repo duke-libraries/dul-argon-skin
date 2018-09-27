@@ -53,8 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'blacklight', "~> 6.7"
-# gem 'trln_argon', git: 'https://github.com/trln/trln_argon', branch: 'TD-590-facets-and-masthead'
-gem 'trln_argon', path: '../trln_argon'
+gem 'trln_argon', git: 'https://github.com/trln/trln_argon', branch: 'TD-590-facets-and-masthead'
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
