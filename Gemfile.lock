@@ -1,12 +1,11 @@
-GIT
-  remote: https://github.com/trln/trln_argon
-  revision: c64b98af0690a4ec92a328c91c7abbeb31ddd3f4
-  branch: TD-590-facets-and-masthead
+PATH
+  remote: ../trln_argon
   specs:
-    trln_argon (0.5.16)
+    trln_argon (0.5.19)
       blacklight (~> 6.7)
       blacklight-hierarchy (~> 1.1.0)
       blacklight_advanced_search (~> 6.2)
+      blacklight_range_limit (~> 6.3)
       bootstrap-select-rails (~> 1.12)
       chosen-rails (~> 1.8)
       font-awesome-rails (~> 4.7)
@@ -82,6 +81,10 @@ GEM
     blacklight_advanced_search (6.4.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
+    blacklight_range_limit (6.3.3)
+      blacklight (>= 6.0.2)
+      jquery-rails
+      rails (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
