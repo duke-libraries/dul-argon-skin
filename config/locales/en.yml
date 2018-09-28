@@ -24,3 +24,7 @@ en:
     home:
       welcome: "Duke University Libraries Catalog"
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
+
+  trln_argon:
+    local_filter:
+        searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
