@@ -1,3 +1,35 @@
+#search-navbar {
+  background: #053482;
+  padding-top: none;
+  border-top: none;
+  padding: 10px 0;
+  a.navbar-brand {
+    background: url('https://library.duke.edu/masthead/img/logo.png');
+    background-repeat: no-repeat;
+  }
+  .mast-search {
+    padding-top: 0;
+  }
+  .search-extra-controls {
+    margin-top: 5px;
+    .input-group-element {
+      display: none;
+    }
+  }
+  a.advanced_search {
+    color: #eee;
+    font-size: 15px;
+  }
+
+  #user-util-collapse {
+    .navbar-nav a {
+      color: #eee;
+      display: none; /* hide these links for now */
+    }
+  }
+
+}
+
 .twitter-typeahead .tt-menu {
   font-family: inherit;
 }
