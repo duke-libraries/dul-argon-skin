@@ -2,13 +2,54 @@
   background: #053482;
   padding-top: none;
   border-top: none;
-  padding: 10px 0;
-  a.navbar-brand {
-    background: url('https://library.duke.edu/masthead/img/logo.png');
-    background-repeat: no-repeat;
+  padding: 15px 0 10px 0;
+
+  /* BRANDING / LOGO */
+  .logo-wrapper {
+    padding-left: 0;
   }
+
+  .navbar-dul {
+    margin-right: 20px;
+    float: left;
+    .navbar-logo {
+      height: 44px;
+    }
+  }
+
+  .navbar-product-name {
+    float: left;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    a.product-name-secondary {
+      display: block;
+      color: #bbb;
+      font-size: 21.5px;
+      line-height: 15px;
+    }
+    a.product-name-primary {
+      display: block;
+      font-weight: bold;
+      font-size: 27px;
+      line-height: 22px;
+      margin-top: 9px;
+      color: white;
+    }
+  }
+
+
+  /* SEARCH FORM */
+
+  form.navbar-form {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
   .mast-search {
     padding-top: 0;
+
     .input-group {
       display: flex;
       flex-direction: row;
@@ -19,38 +60,42 @@
         display: table-cell;
         flex: 0 0 auto;
         width: auto;
-        height: 42px;
+        /* height: 42px; */
         button.search-select {
-          height: 42px;
+          /* height: 42px; */
         }
       }
       .twitter-typeahead {
         min-width: auto;
+        .tt-menu {
+          font-family: inherit;
+        }
       }
+
       input.search_q {
         min-width: auto;
         font-size: 18px;
-        height: 42px;
+        /* height: 42px; */
       }
       input#q {
         display: block;
         flex: 1 1 auto;
         font-size: 18px;
-        height: 42px;
+        /* height: 42px; */
       }
       .input-group-btn {
         display: block;
         flex: 0 0 auto;
         width: auto;
         button.search-btn {
-          height: 42px;
+          /* height: 42px; */
         }
         
       }
     }
   }
   .search-extra-controls {
-    margin-top: 5px;
+    margin-top: 0;
     .input-group-element {
       display: none;
     }
@@ -60,15 +105,42 @@
     font-size: 15px;
   }
 
+  /* MASTHEAD LINKS */
+
   #user-util-collapse {
-    .navbar-nav a {
+    .navbar-nav {
+      li {
+        float: none;
+      }
+      a {
       color: #eee;
-      display: none; /* hide these links for now */
+      text-transform: none;
+      margin-bottom: 0;
+      &:before {
+       margin-right: 0.3em;
+      }
+      &.my-accounts {
+        padding-top: 0;
+        &:before {
+        content: "\f007";
+        font-family: FontAwesome;
+        }
+      }
+      &.ask-a-librarian {
+        &:before {
+        content: "\f075";
+        font-family: FontAwesome;
+        }
+      }
+      &.full-menu {
+        &:before {
+        content: "\f0c9";
+        font-family: FontAwesome;
+        }
+      }
+      }
     }
   }
 
 }
 
-.twitter-typeahead .tt-menu {
-  font-family: inherit;
-}
