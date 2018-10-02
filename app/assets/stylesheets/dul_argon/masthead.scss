@@ -7,6 +7,10 @@
   /* BRANDING / LOGO */
   .logo-wrapper {
     padding-left: 0;
+    @media (max-width: $screen-sm) {
+      padding-left: 15px;
+      margin-bottom: 15px;
+    }
   }
 
   .navbar-dul {
