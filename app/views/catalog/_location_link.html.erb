@@ -1,0 +1,19 @@
+<%# NOTE: Overrides trln_argon partial %>
+
+<% title = document[TrlnArgon::Fields::TITLE_MAIN] %>
+<% call_no = call_number_display(item) %>
+
+<% if (loc_b != 'ONLINE' && document.record_association == "duke" ) %>
+
+    &nbsp;<span class="map-info">
+      <%= link_to t('trln_argon.map_location.button'),
+                  map_location_path(loc_n: loc_n,
+                                    loc_b: loc_b,
+                                    title: title,
+                                    call_no: call_no),
+                  class: 'btn btn-default btn-sm location-modal-toggle',
+                  :data => {:ajax_modal => "trigger"}
+      %>
+    </span>
+
+<% end %>
