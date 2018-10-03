@@ -1,3 +1,5 @@
+/* TODO: Refine mobile mast styles after mockup feedback before merge */
+
 #search-navbar {
   background: #053482;
   padding-top: none;
@@ -105,8 +107,11 @@
     }
   }
   a.advanced_search {
-    color: #eee;
+    color: #ddd;
     font-size: 15px;
+    &:hover {
+      color: white;
+    }
   }
 
   /* MASTHEAD LINKS */
@@ -114,17 +119,20 @@
   #user-util-collapse {
     .navbar-nav {
       li {
-        float: none;
+        /*float: none;*/
       }
       a {
-      color: #eee;
+      color: #ddd;
       text-transform: none;
       margin-bottom: 0;
       &:before {
        margin-right: 0.3em;
       }
+      &:hover {
+        color: white;
+      }
       &.my-accounts {
-        padding-top: 0;
+        /* padding-top: 0; */
         &:before {
         content: "\f007";
         font-family: FontAwesome;
@@ -141,6 +149,12 @@
         content: "\f0c9";
         font-family: FontAwesome;
         }
+        &.menu-active {
+          color: #a1b70d;
+          &:before {
+            content: "\f102";
+          }
+        }
       }
       }
     }
@@ -148,3 +162,27 @@
 
 }
 
+/* DUL Masthead Overrides -- */
+/* Just show the menu; hide the rest */
+/* TODO: Consider adding a menu-only option to dul-masthead app, e.g., via */
+/* a parameter, so the markup for these hidden elements doesn't render at all */
+
+.dul-masthead-bar {
+  #dul-masthead-dul-megamenu {
+    height: auto;
+    .dul-masthead-region-scoped-search,
+    .dul-masthead-region-myaccount,
+    #dul-masthead-logo {
+      display: none;
+    }
+    #dul-masthead-region-megamenu {
+      display: none;
+    }
+    .dul-masthead-megamenu_container ul {
+     padding: 0;
+     .dul-masthead-mega_toplevel a {
+       font-weight: 400;
+     }
+    }
+  }
+}

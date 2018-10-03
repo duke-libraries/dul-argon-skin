@@ -78,7 +78,7 @@
 
 
 
-  <div class="navbar-right col-xs-3 col-sm-2 col-md-3 col-lg-3" style="border: 1px solid red;">
+  <div class="navbar-right col-xs-3 col-sm-2 col-md-3 col-lg-3">
 
 
 
@@ -100,10 +100,10 @@
               <a href="https://library.duke.edu/my-accounts" class="my-accounts">My Accounts</a>
             </li>
             <li>
-              <a href="https://library.duke.edu/research/ask" class="ask-a-librarian">Ask a Librarian</a>
+              <a href="https://library.duke.edu/research/ask" class="ask-a-librarian">Ask</a>
             </li>
             <li>
-              <a href="https://library.duke.edu/my-accounts" class="full-menu">Full Menu</a>
+              <a href="#" id="full-menu-toggle" class="full-menu">Menu</a>
             </li>
           </ul>
         </div>
@@ -111,7 +111,20 @@
     </div>
   </div>
 
+</div>
+<%# TODO: refactor to the <head> %>
+<script src="//library.duke.edu/masthead/load-masthead.js.php?width=1200&amp;fixed=false"></script>
 
-
-
+<%# TODO: refactor to the a .js file %>
+<script>
+  $(document).ready(function() {
+    $('a#full-menu-toggle').on('click',function(e) {
+      $(this).toggleClass('menu-active');
+      $('#dul-masthead-region-megamenu').slideToggle();
+    });
+  });
+</script>
+<div class="row">
+  <div id="dul-masthead-filler">
+  </div>
 </div>
