@@ -1,0 +1,25 @@
+test:
+  stage: test
+  script:
+    - whoami
+    - pwd
+    - env
+    - $RAILS_DEPLOY_PATH/bin/test.sh
+  tags: development
+
+deploy_dev:
+  environment:
+    name: development
+    url: https://trln-discovery-dev.lib.duke.edu
+  stage: deploy
+  script:
+    - whoami
+    - pwd
+    - env
+    - $RAILS_DEPLOY_PATH/bin/deploy.sh $CI_PROJECT_DIR
+  after_script:
+    - $RAILS_DEPLOY_PATH/bin/after_deploy.sh
+  only:
+    - master
+  tags:
+    - development
