@@ -5,7 +5,8 @@ test:
     - pwd
     - env
     - $RAILS_DEPLOY_PATH/bin/test.sh
-  tags: development
+  tags:
+    - development
 
 deploy_dev:
   environment:
