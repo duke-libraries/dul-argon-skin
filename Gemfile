@@ -57,6 +57,9 @@ gem 'trln_argon', git: 'https://github.com/trln/trln_argon'
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'rubocop', '~> 0.59.2', require: false
+  gem 'rubocop-rspec'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 
