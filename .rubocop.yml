@@ -11,7 +11,7 @@ AllCops:
     - 'config/**/**'
     - 'db/**/**'
     - 'bin/**'
-    - 'vendor/*'
+    - 'vendor/**/**'
 
 
 Documentation:
