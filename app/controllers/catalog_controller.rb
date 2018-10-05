@@ -1,61 +1,61 @@
 # frozen_string_literal: true
+
 class CatalogController < ApplicationController
-
   include Blacklight::Catalog
-
 
   # CatalogController behavior and configuration for TrlnArgon
   include TrlnArgon::ControllerOverride
 
   configure_blacklight do |config|
-
     # DUL Local overrides to TRLN Blacklight controller overrides
     # TBD: Is this where this belongs?
 
     # Switch index partial order so text can wrap around the thumbnail
     config.index.partials = %i[thumbnail index_header index index_items]
 
-
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
-    ## Class for converting Blacklight's url parameters to into request parameters for the search index
-    # config.search_builder_class = ::SearchBuilder
+    ## Class for converting Blacklight's url parameters to into request params
+    #  for the search index config.search_builder_class = ::SearchBuilder
     #
     ## Model that maps search index responses to the blacklight response model
     # config.response_model = Blacklight::Solr::Response
 
-    ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
+    ## Default parameters to send to solr for all search-like requests.
+    #  See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
       tie: '1',
       uf: '-*'
     }
 
-    # solr path which will be added to solr base url before the other solr params.
-    #config.solr_path = 'select'
+    # solr path which will be added to solr base url before other solr params
+    # config.solr_path = 'select'
 
-    # items to show per page, each number in the array represent another option to choose from.
-    #config.per_page = [10,20,50,100]
+    # items to show per page, each number in the array represent another
+    # option to choose from.
+    # config.per_page = [10,20,50,100]
 
-    ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
+    ## Default parameters to send on single-document requests to Solr.
+    # These settings are the BL defaults (see SearchHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
-    #config.default_document_solr_params = {
+    # config.default_document_solr_params = {
     #  qt: 'document',
     #  ## These are hard-coded in the blacklight 'document' requestHandler
     #  # fl: '*',
     #  # rows: 1,
     #  # q: '{!term f=id v=$id}'
-    #}
+    # }
 
     # solr field configuration for search results/index views
-    #config.index.thumbnail_field = 'thumbnail_path_ss'
+    # config.index.thumbnail_field = 'thumbnail_path_ss'
 
     # solr field configuration for document/show views
-    #config.show.title_field = 'title_display'
-    #config.show.display_type_field = 'format'
-    #config.show.thumbnail_field = 'thumbnail_path_ss'
+    # config.show.title_field = 'title_display'
+    # config.show.display_type_field = 'format'
+    # config.show.thumbnail_field = 'thumbnail_path_ss'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -77,9 +77,12 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
     #
-    # set :index_range to true if you want the facet pagination view to have facet prefix-based navigation
-    #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
-    # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
+    # set :index_range to true if you want the facet pagination view to have
+    # facet prefix-based navigation
+    #  (useful when user clicks "more" on a large facet and wants to navigate
+    # alphabetically across a large set of results)
+    # :index_range can be an array or range of prefixes that will be used to
+    # create the navigation (note: It is case sensitive when searching values)
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -105,21 +108,16 @@ class CatalogController < ApplicationController
     # or can be specified manually to be different.
 
     # This one uses all the defaults set by the solr request handler. Which
-    # solr request handler? The one set in config[:default_solr_parameters][:qt],
+    # solr request handler? Set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-
-
-
-
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
-
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
