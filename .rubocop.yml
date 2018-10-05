@@ -3,9 +3,16 @@ require: rubocop-rspec
 AllCops:
   TargetRubyVersion: "2.4"
   Exclude:
-    - 'Gemfile'
-    - 'bin/**/*'
-    - 'db/**/*'
+    - '**/bin/spring'
+    - '**/bin/setup'
+    - '**/bin/rake'
+    - '**/bin/rails'
+    - '**/db/schema.rb'
+    - 'config/**/**'
+    - 'db/**/**'
+    - 'bin/**'
+    - 'vendor/*'
+
 
 Documentation:
   Enabled: false
