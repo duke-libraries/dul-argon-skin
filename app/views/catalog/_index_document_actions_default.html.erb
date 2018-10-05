@@ -1,0 +1,10 @@
+<%# Custom DUL partial derived from Blacklight's _index_header_default.html.erb    %>
+<%# This splits out the item actions on the index view (e.g., bookmark, request)   %>
+<%# from the search result title so they can be reordered / positioned separately. %>
+<%# See config.index.partials in catalog_controller.rb %>
+
+  <% document_actions = capture do %>
+    <%= render_index_doc_actions document, wrapping_class: "index-document-functions" %>
+  <% end %>
+
+  <%= document_actions %>

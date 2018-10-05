@@ -14,6 +14,7 @@ class SolrDocument
 
   include TrlnArgon::SolrDocument
   include TrlnArgon::ItemDeserializer
+  include DulArgonSkin::RequestItem
 
   SolrDocument.use_extension(TrlnArgon::DocumentExtensions::Email)
 
