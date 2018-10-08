@@ -13,14 +13,26 @@ deploy_dev:
     name: development
     url: https://trln-discovery-dev.lib.duke.edu
   stage: deploy
-  script:
+  script: &deployscript
     - whoami
     - pwd
     - env
     - $RAILS_DEPLOY_PATH/bin/deploy.sh $CI_PROJECT_DIR
-  after_script:
+  after_script: &afterdeployscript
     - $RAILS_DEPLOY_PATH/bin/after_deploy.sh
   only:
     - master
   tags:
     - development
+
+deploy_pre:
+  environment:
+    name: pre-production
+    url: https://trln-discovery-pre.lib.duke.edu
+  stage: deploy
+  script: *deployscript
+  after_script: *afterdeployscript
+  only:
+    - master
+  tags:
+    - staging
