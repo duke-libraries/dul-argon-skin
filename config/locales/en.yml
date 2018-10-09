@@ -27,4 +27,10 @@ en:
 
   trln_argon:
     local_filter:
-        searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
+      searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
+    map_location:
+      button: 'Map/Info'
+      label:
+        building: 'Building'
+        area: 'Area'
+      error: 'There was a problem finding the location of this item.'
