@@ -19,4 +19,4 @@ Documentation:
 
 Metrics/BlockLength:
   Exclude:
-    - 'lib/dul_argon_skin/configurable.rb'
+    - 'spec/**/*'
