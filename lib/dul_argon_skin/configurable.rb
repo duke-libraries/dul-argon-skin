@@ -6,7 +6,7 @@ module DulArgonSkin
     included do
       # Request System base URL
       mattr_accessor :request_base_url do
-        ENV['REQUEST_BASE_URL'] || 'https://requests.library.duke.edu'
+        ENV['REQUEST_BASE_URL'] ||= 'https://requests.library.duke.edu'
       end
     end
 

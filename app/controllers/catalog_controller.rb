@@ -7,11 +7,15 @@ class CatalogController < ApplicationController
   include TrlnArgon::ControllerOverride
 
   configure_blacklight do |config|
-    # DUL Local overrides to TRLN Blacklight controller overrides
-    # TBD: Is this where this belongs?
+    # Switched index partial order so text can wrap around the thumbnail
+    # NOTE index_document_actions_default is a custom DUL partial
+    config.index.partials =
+      %i[thumbnail index_document_actions index_header index index_items]
 
-    # Switch index partial order so text can wrap around the thumbnail
-    config.index.partials = %i[thumbnail index_header index index_items]
+    # Add Request button using Blacklight's extensible "tools" for
+    # index & show view
+    config.add_show_tools_partial(:request_button, partial: 'request_button')
+    config.add_results_document_tool(:request_button, partial: 'request_button')
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
