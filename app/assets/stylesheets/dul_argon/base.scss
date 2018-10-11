@@ -4,7 +4,10 @@ body {
   background-color: #eee;
 }
 
-#main-container > .row {
-  background: white;
-  padding: 0 15px;
+#main-container {
+  margin-top: 20px;
+  & > .row {
+    background: white;
+    padding: 0 15px;
+  }
 }

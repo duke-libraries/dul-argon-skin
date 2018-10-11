@@ -1,3 +1,289 @@
-.twitter-typeahead .tt-menu {
-  font-family: inherit;
+#search-navbar {
+  background: #053482;
+  padding-top: none;
+  border-top: none;
+  padding: 18px 0 10px 0;
+  margin-bottom: 0;
+
+  /* =============== */
+  /* BRANDING / LOGO */
+  /* =============== */
+  .logo-wrapper {
+    padding-left: 0;
+    @media (max-width: $screen-sm) {
+      padding-left: 15px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .navbar-dul {
+    margin-right: 20px;
+    float: left;
+    .navbar-logo {
+      height: 44px;
+    }
+  }
+
+  .navbar-product-name {
+    float: left;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    a.product-name-secondary {
+      display: block;
+      color: #bbb;
+      font-size: 21.5px;
+      line-height: 15px;
+    }
+    a.product-name-primary {
+      display: block;
+      font-weight: bold;
+      font-size: 27px;
+      line-height: 22px;
+      margin-top: 9px;
+      color: white;
+    }
+  }
+
+  /* =========== */
+  /* SEARCH FORM */
+  /* =========== */
+  form.navbar-form {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+  }
+
+  .mast-search {
+    padding-top: 0;
+
+    .input-group {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      align-content: flex-start;
+      .input-group-btn.search_field {
+        display: table-cell;
+        flex: 0 0 auto;
+        width: auto;
+      }
+      .twitter-typeahead {
+        min-width: auto;
+        .tt-menu {
+          font-family: inherit;
+        }
+      }
+
+      input.search_q {
+        min-width: auto;
+        font-size: 17px;
+      }
+      input#q {
+        display: block;
+        flex: 1 1 auto;
+        font-size: 17px;
+      }
+      .submit-search-text {
+        @media (max-width: $screen-lg) {
+          display: none;
+        }
+      }
+      .input-group-btn {
+        display: block;
+        flex: 0 0 auto;
+        width: auto;
+      }
+    }
+  }
+  .search-extra-controls {
+    margin-top: 0;
+    text-align: left;
+    .input-group-element {
+      display: none;
+    }
+  }
+  a.advanced_search {
+    color: #ddd;
+    font-size: 15px;
+    &:hover {
+      color: white;
+    }
+  }
+
+  /* ============== */
+  /* MASTHEAD LINKS */
+  /* ============== */
+
+  #primary-menu {
+    float: right;
+    /* Hide in mobile mode; use the #mobile-only-menu */
+    @media (max-width: $screen-sm) {
+      display: none;
+    }
+    .navbar-nav {
+      margin: 4px -15px;
+      @media (max-width: 813px) {
+        display: none;
+      }
+      a {
+        color: #ddd;
+        text-transform: none;
+        margin-bottom: 0;
+        font-size: 15px;
+        padding: 4px 7px 0 7px;
+        @media (min-width: $screen-lg) {
+          padding: 4px 9px 0 9px;
+        }
+
+        &:before {
+         margin-right: 0.3em;
+        }
+        &:hover {
+          color: white;
+        }
+        &.my-accounts {
+          &:before {
+            content: "\f007";
+            font-family: FontAwesome;
+          }
+        }
+        &.ask-a-librarian {
+          &:before {
+            content: "\f075";
+            font-family: FontAwesome;
+          }
+        }
+        &.full-menu {
+          &:before {
+            content: "\f0c9";
+            font-family: FontAwesome;
+          }
+          &.menu-active {
+            color: #a1b70d;
+          }
+        }
+        & .nav-label {
+          @media (max-width: $screen-md) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  /* ============= */
+  /* Mobile Toggle */
+  /* ============= */
+
+  .btn.navbar-toggle {
+    color: #ddd;
+    font-size: 24px;
+    background-color: inherit;
+    border: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    &:hover {
+      color: white;
+    }
+    &:not(.collapsed) {
+     color: #a1b70d;
+    }
+  }
+
+  /* Patch the void between 768px & 813px where the shared DUL mast expects */
+  /* to be fully in mobile mode but DUL catalog does not. This breakpoint   */
+  /* mismatch complicates things a bit. */
+  @media (max-width: 813px) {
+    .btn.navbar-toggle.mobile-menu-right-toggle {
+      display: block;
+    }
+  }
+
+}
+
+/* ====================== */
+/* Mobile-Only Menu */
+/* ====================== */
+
+#mobile-only-menu {
+  background: $secondary-color;
+  .navbar-nav {
+    margin-top: 0;
+    background: $secondary-color;
+    float: none;
+    margin: 0 -15px 10px -15px;
+    li {
+      width: 100%;
+    }
+    a {
+      color: white;
+      &:hover {
+        background: #a1b70d;
+      }
+    }
+  }
+
+  /* Breakpoint different from $screen-sm b/c shared DUL */
+  /* megadropdowns would not render between 768-813px */
+  @media (min-width: 813px) {
+    display: none;
+  }
+}
+
+/* ====================== */
+/* DUL Masthead Overrides */
+/* ====================== */
+/* Just show the primary nav menu from the shared mast; hide the rest */
+/* TODO: Consider adding a menu-only option to dul-masthead app, e.g., via */
+/* a parameter, so the markup for these hidden elements doesn't render at all */
+
+#dul-masthead-row, #dul-masthead-row .nav {
+  background: $secondary-color;
+}
+
+.dul-masthead-bar {
+  #dul-masthead-dul-megamenu {
+    height: auto;
+    /* Hide all the parts of the shared mast that we won't use */
+    .dul-masthead-region-scoped-search,
+    .dul-masthead-region-myaccount,
+    #dul-masthead-logo,
+    .dul-masthead-mobile-menu,
+    label[for="dul-masthead-nav-trigger"],
+    .hide-link-text,
+    li.dul-masthead-megamenu_button {
+      display: none !important;
+    }
+    #dul-masthead-region-megamenu {
+      display: none;
+      margin-top: 0;
+    }
+    .dul-masthead-megamenu_container ul {
+     padding: 0;
+     li {
+       padding: 12px;
+     }
+     .dul-masthead-mega_toplevel a {
+       font-weight: 400;
+     }
+     div.dul-masthead-dropdown_fullwidth {
+       box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+       border-top: none;
+       margin-top: 5px;
+       @media (min-width: $screen-md) {
+         border-left: 150px solid $secondary-color !important;
+       }
+       @media (min-width: $screen-lg) {
+         border-left: 200px solid $secondary-color !important;
+       }
+     }
+    }
+  }
+  /* Don't display it at all in mobile mode */
+  @media (max-width: $screen-sm) {
+    display: none;
+  }
 }
