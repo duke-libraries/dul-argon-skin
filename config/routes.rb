@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
-
+  mount TrlnArgon::Engine => '/'
 
   root to: "catalog#index"
 

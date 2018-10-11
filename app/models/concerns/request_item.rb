@@ -26,6 +26,6 @@ module RequestItem
   end
 
   def physical_item?
-    fetch('access_type_a', []).include?('At the Library')
+    fetch(TrlnArgon::Fields::ACCESS_TYPE, []).include?('At the Library')
   end
 end
