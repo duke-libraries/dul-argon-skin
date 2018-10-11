@@ -60,6 +60,7 @@ class CatalogController < ApplicationController
     # config.show.display_type_field = 'format'
     # config.show.thumbnail_field = 'thumbnail_path_ss'
 
+    config.home_facet_fields.delete(TrlnArgon::Fields::AVAILABLE_FACET)
     config.facet_fields.delete(TrlnArgon::Fields::AVAILABLE_FACET)
 
     # solr fields that will be treated as facets by the blacklight application
