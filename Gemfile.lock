@@ -312,6 +312,7 @@ DEPENDENCIES
   solr_wrapper (>= 0.3)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets (~> 3.7.2)
   sqlite3
   trln_argon!
   tzinfo-data
