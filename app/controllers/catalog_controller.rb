@@ -30,7 +30,6 @@ class CatalogController < ApplicationController
     #  See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      tie: '1',
       uf: '-*'
     }
 
@@ -60,6 +59,8 @@ class CatalogController < ApplicationController
     # config.show.title_field = 'title_display'
     # config.show.display_type_field = 'format'
     # config.show.thumbnail_field = 'thumbnail_path_ss'
+
+    config.facet_fields.delete(TrlnArgon::Fields::AVAILABLE_FACET)
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
