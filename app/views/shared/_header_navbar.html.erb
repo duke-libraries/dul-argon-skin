@@ -1,0 +1,22 @@
+<%# NOTE: Temporary? override of TRLN Argon partial, borrowing the   %>
+<%# consolidated masthead proposed in TD-590-facets-and-masthead.    %>
+<%# If that is approved/merged into TRLN Argon, we might revisit     %>
+<%# this local override. %>
+
+<div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="<%= container_classes %>">
+    <%= render_search_bar  %>
+  </div>
+</div>
+
+<div id="dul-masthead-row">
+  <div class="container">
+    <div class="row">
+      <div id="dul-masthead-filler"></div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag '//library.duke.edu/masthead/load-masthead.js.php?width=1200&amp;fixed=false' %>
+
+<%= render partial: 'mobile_menu' %>
