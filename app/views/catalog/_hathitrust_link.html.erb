@@ -1,0 +1,8 @@
+<!-- NOTE: Override of partial from TrlnArgon gem to turn off -->
+<!--       HathiTrust links for Rubenstein records. -->
+
+<% unless document.oclc_number.empty? || document.rubenstein_record? %>
+  <div class="hathi-trust-link oclc<%= document.oclc_number %>"
+       data-oclc-number="<%= document.oclc_number %>">
+  </div>
+<% end %>

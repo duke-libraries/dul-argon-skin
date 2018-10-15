@@ -26,6 +26,9 @@ en:
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
 
   trln_argon:
+    links:
+      online_access: "View Online"
+      hathitrust: "View Online"
     local_filter:
       searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
     map_location:
