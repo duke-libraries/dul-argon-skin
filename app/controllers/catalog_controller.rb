@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
-
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
 
