@@ -1,7 +1,7 @@
 <%# NOTE: Overrides trln_argon partial %>
 
 <% title = document[TrlnArgon::Fields::TITLE_MAIN] %>
-<% call_no = call_number_display(item) %>
+<% call_no = item.fetch('call_no', '') %>
 
 <% if (loc_b != 'ONLINE' && document.record_association == "duke" ) %>
 
