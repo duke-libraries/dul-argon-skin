@@ -23,7 +23,7 @@ class MapLocationController < ApplicationController
   end
 
   def map_uri
-    @map_uri ||= URI.parse('https://library.duke.edu/locguide/mapinfo')
+    @map_uri ||= URI.parse(DulArgonSkin.map_location_service_url)
   end
 
   def map_request(collection_code, sublibrary, callno)
