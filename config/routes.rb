@@ -40,5 +40,7 @@ Rails.application.routes.draw do
 
   resource :map_location, only: [:show], as: 'map_location', path: '/map_location', controller: 'map_location'
 
+  resource :styleguide, only: [:show], as: 'styleguide', path: '/styleguide', controller: 'styleguide'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,64 @@
+/* ======================================= */
+/* Styles specifically for the Style Guide */
+/* ======================================= */
+
+<%# Specify all color names in an array, for use as both a class %>
+<%# (.primary-color) and a Sass variable ($primary-color) %>
+
+<% colors = %w[primary-color secondary-color tertiary-color dul-masthead-blue\
+   dul-dulcet-lightblue dul-dulcet-green dul-dulcet-orange dul-dulcet-red\
+   gray-darker gray-dark gray gray-light gray-lighter facet-grey\
+   brand-primary brand-success brand-danger brand-warning brand-info\
+   primary-link-color secondary-link-color available-color\
+   not-available-color alt-available-color] %>
+
+.color-swatch {
+  text-align: center;
+  margin-bottom: 10px;
+  .color-block {
+    padding: 80px 0 10px 0;
+    width: auto;
+  }
+
+  <% colors.each do |c| %>
+    &.<%= c %> .color-block {
+      background: $<%= c %>;
+    }
+  <% end %>
+
+  <%# Renders this Sass for each color:     %>
+  <%# =================================     %>
+  <%#   &.dul-dulcet-green .color-block {   %>
+  <%#     background: $dul-dulcet-green;    %>
+  <%#   }                                   %>
+
+}
+
+.contrast-score {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #666;
+  font-size: 11px;
+  margin-top: 6px;
+  margin-right: 4px;
+  min-width: 2.5em;
+  &.contrast-score-black {
+    background: #555;
+    color: white;
+  }
+  &.contrast-score-fail {
+    border-bottom: 4px solid $dul-dulcet-red;
+  }
+  &.contrast-score-warn {
+    border-bottom: 4px solid $dul-dulcet-orange;
+  }
+  &.contrast-score-pass {
+    border-bottom: 4px solid $dul-dulcet-green;
+  }
+}
+
+code {
+  font-size: 12px;
+}
+

@@ -1,0 +1,173 @@
+<h1>DUL Catalog Style Guide</h1>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#colors">Colors</a></li>
+        <li><a href="#links">Links</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#labels">Labels</a></li>
+        <li><a href="#typography">Typography</a></li>
+      </ul>
+  </div>
+</nav>
+
+<h2 id="colors">Colors</h2>
+<p>
+  Colors must be used responsibly so that text is accessible, complying with
+  <a href="https://www.w3.org/TR/WCAG21/">WCAG2.1 Level AA</a> guidelines. Text
+  must have a contrast ratio of at least 4.5:1 compared to its background (3:1
+  for <a href="https://www.w3.org/TR/WCAG21/#dfn-large-scale">large-scale</a>
+  text).
+</p>
+
+<h3>Legend</h3>
+
+<div>
+  <strong>Black Contrast Ratio &mdash; </strong>
+  <span class="contrast-score contrast-score-black contrast-score-pass">
+    4.5:1 pass
+  </span>
+  <span class="contrast-score contrast-score-black contrast-score-warn">
+    3:1 large-only
+  </span>
+  <span class="contrast-score contrast-score-black contrast-score-fail">
+    &lt; 3:1 fail
+  </span>
+</div>
+
+<div>
+  <strong>White Contrast Ratio &mdash; </strong>
+  <span class="contrast-score contrast-score-white contrast-score-pass">4.5:1 pass</span>
+  <span class="contrast-score contrast-score-white contrast-score-warn">3:1 large-only</span>
+  <span class="contrast-score contrast-score-white contrast-score-fail">&lt; 3:1 fail</span>
+</div>
+
+<p class="text-muted">
+  <small>
+    Check contrasts with other colors using <a href="https://webaim.org/resources/contrastchecker/">WebAIM</a>.
+  </small>
+</p>
+
+<h3 id="colors-general">General Colors</h3>
+<div class="row">
+  <% %w[primary-color secondary-color tertiary-color available-color not-available-color\
+    alt-available-color].each do |color| %>
+      <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<h3 id="colors-general">Grays</h3>
+<div class="row">
+  <% %w[gray-darker gray-dark gray gray-light gray-lighter facet-grey].each do |color| %>
+    <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<h3 id="colors-dul">
+  DUL Website Colors <small>(many from the <a href="https://styleguide.duke.edu/color-palette/">
+    Duke Style Guide</a>)</small>
+</h3>
+
+<div class="row">
+  <% %w[dul-masthead-blue dul-dulcet-lightblue dul-dulcet-green\
+    dul-dulcet-orange dul-dulcet-red].each do |color| %>
+      <%= render "color-swatch", colorname: color %>
+  <% end %>
+</div>
+
+<h3 id="colors-bootstrap">Bootstrap Default Colors</h3>
+<div class="row">
+  <% %w[brand-primary brand-success brand-danger brand-warning\
+    brand-info].each do |color| %>
+      <%= render "color-swatch", colorname: color %>
+  <% end %>
+</div>
+
+<h2 id="links">Links</h3>
+
+<div class="row">
+  <% %w[primary-link-color secondary-link-color].each do |color| %>
+    <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<h4>Example Links</h4>
+<ul>
+  <li><a href="#">Link One</a></li>
+  <li><a href="#">Link Two</a></li>
+  <li><a href="#">Link Three</a></li>
+</ul>
+<p>Here is an <a href="#">inline link</a> among other text.</p>
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="fulltext-url">
+      <a class="link-type-fulltext" href="#">View Online</a>
+    </div>
+    <code>.link-type-fulltext</code>
+  </div>
+</div>
+
+<h2 id="buttons">Buttons</h2>
+
+<h3>Bootstrap Default Buttons</h3>
+<div class="row">
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-default">My Button</a><br/>
+    <code>.btn-default</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-primary">My Button</a><br/>
+    <code>.btn-primary</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-success">My Button</a><br/>
+    <code>.btn-success</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-info">My Button</a><br/>
+    <code>.btn-info</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-warning">My Button</a><br/>
+    <code>.btn-warning</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-danger">My Button</a><br/>
+    <code>$btn-danger</code>
+  </div>
+</div>
+
+<h2 id="labels">Labels</h2>
+
+<span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+<span class="label label-info">Info</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span>
+
+<h2 id="typography">Typography</h2>
+<p>
+  This is the default body copy text style in use throughout the Duke University Libraries
+  catalog UI. When a link is presented inline, it <a href="#">looks like this</a>. Here are
+  some characteristics of the text, presented in a list:</p>
+
+<%# These values get checked / reported via Javascript. %>
+<%# See /app/assets/javascripts/dul-styleguide.js. %>
+
+<ul>
+  <li><strong>Font Family:</strong> <span id="styleguide-body-font"></span></li>
+  <li><strong>Font Size:</strong> <span id="styleguide-body-size"></span></li>
+  <li><strong>Color:</strong> <span id="styleguide-body-color"></span></li>
+  <li><strong>Line Height:</strong> <span id="styleguide-body-lineheight"></span></li>
+</ul>
+
+<h3>Type Variations</h3>
+<strong>Strong text</strong> &mdash; <code>&lt;strong&gt;</code><br/>
+<em>Italic text</em> &mdash; <code>&lt;em&gt;</code><br/>
+<small>Smaller text</small> &mdash; <code>&lt;small&gt;</code><br/>
+<span class="text-muted">Muted text</span> &mdash; <code>.text-muted</code><br/>
+
+<hr/>
