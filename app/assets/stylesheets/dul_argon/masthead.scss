@@ -1,5 +1,5 @@
 #search-navbar {
-  background: #053482;
+  background: $dul-masthead-blue;
   padding-top: none;
   border-top: none;
   padding: 18px 0 10px 0;
@@ -162,7 +162,7 @@
             font-family: FontAwesome;
           }
           &.menu-active {
-            color: #a1b70d;
+            color: $dul-dulcet-green;
           }
         }
         & .nav-label {
@@ -189,7 +189,7 @@
       color: white;
     }
     &:not(.collapsed) {
-     color: #a1b70d;
+     color: $dul-dulcet-green;
     }
   }
 
