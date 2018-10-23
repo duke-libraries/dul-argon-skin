@@ -134,3 +134,15 @@
 #editSearchLink {
   display: none;
 }
+
+.fulltext-url ul li a {
+  display: inline-block !important;
+}
+
+.link-title-text {
+  padding-left: .5em;
+}
+
+div.fulltext-url {
+  width: 100% !important;
+}
