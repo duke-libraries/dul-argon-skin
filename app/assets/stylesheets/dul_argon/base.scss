@@ -11,3 +11,22 @@ body {
     padding: 0 15px;
   }
 }
+
+
+.btn-success {
+  background-color: $brand-success;
+  border: none;
+  font-weight: bold;
+}
+
+
+.fulltext-url .link-type-fulltext, .fulltext-url .link-type-findingaid {
+  color: $brand-success;
+  background: white;
+  line-height: 1.2;
+  text-align: left;
+  border: 2px solid $brand-success;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  padding: 0.4em 0.75em 0.4em 2em
+}

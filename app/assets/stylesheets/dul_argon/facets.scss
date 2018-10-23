@@ -1,4 +1,10 @@
 #facets {
+  a {
+    color: $gray;
+  }
+  .facet-field-heading a {
+    color: $gray-darker;
+  }
   & .top-panel-heading {
     padding: 0;
     @media (max-width: $screen-sm) {

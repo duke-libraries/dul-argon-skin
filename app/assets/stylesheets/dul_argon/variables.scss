@@ -1,5 +1,16 @@
+/* DUL website colors (dulcet theme) */
 $dul-masthead-blue: #053482;
 $dul-dulcet-lightblue: #235f9c;
 $dul-dulcet-green: #a1b70d;
 $dul-dulcet-orange: #f09905;
 $dul-dulcet-red: #cc3300;
+
+/* Override TRLN Argon */
+$primary-color: $dul-masthead-blue;
+
+
+/* Override Bootstrap Defaults */
+$brand-success: #008a0f;
+
+/* Unique to DUL Argon Skin */
+$gray-lightest: #fafafa;

@@ -11,13 +11,15 @@ $institution-icon-inverted: 'branding/dul_devil_inverted.png';
 // Note: it is important to make sure that $primary-color and $primary-link-color
 // maintain adequate contrast ratio (> 4.5:1 on white background) for AxS purposes !
 
-$primary-color: #043482; // this is 'Duke Blue'
+$primary-color: #043482;
 $secondary-color: darken( $primary-color, 10% ); // this should be a darker hue than primary
 $tertiary-color: lighten( $primary-color, 20% ); // this should be a lighter hue than primary
 
-// Temporary until further work on DUL typography / color
-// #3580C1 contrasts 4.2:1 on #fff background, 3:1 on #333 body copy
-$primary-link-color: #3580C1;
+
+// Because it's less than 3:1 on body copy, it is recommended to use underlines when presented inline with non-linked text.
+
+
+$primary-link-color: #004CCC;
 
 $secondary-link-color: darken( $primary-color, 15% );
 
