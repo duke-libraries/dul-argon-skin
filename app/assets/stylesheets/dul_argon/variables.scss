@@ -1,5 +1,34 @@
+/* ================================= */
+/* DUL website colors (dulcet theme) */
+/* ================================= */
 $dul-masthead-blue: #053482;
 $dul-dulcet-lightblue: #235f9c;
 $dul-dulcet-green: #a1b70d;
 $dul-dulcet-orange: #f09905;
 $dul-dulcet-red: #cc3300;
+
+/* ======================== */
+/* Unique to DUL Argon Skin */
+/* ======================== */
+$gray-light-more: #cccccc; /* We need better gray names */
+$gray-lightest: #fafafa;
+$dul-argon-green: #00830e;
+
+
+/* ============================= */
+/* TRLN Argon Variables Override */
+/* ============================= */
+@import 'trln_argon_variables';
+
+$link-hover-color: tint($primary-link-color, 20%);
+
+/* ======================================== */
+/* Bootstrap Variables Override             */
+/* Map to our local color palette as much   */
+/* as possible.                             */
+/* ======================================== */
+$brand-primary: $primary-color;
+$brand-success: $dul-argon-green;
+$brand-danger: $dul-dulcet-red;
+$brand-warning: $dul-dulcet-orange;
+$brand-info: $primary-link-color;
