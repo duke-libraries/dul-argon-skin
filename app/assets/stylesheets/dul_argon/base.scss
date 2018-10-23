@@ -12,11 +12,21 @@ body {
   }
 }
 
+.underlined-links a {
+  text-decoration: underline;
+  text-decoration-color: rgba( $primary-link-color, 0.5 );
+}
+
+
+/* TODO: Move the following styles to a better location if they stick. */
 
 .btn-success {
   background-color: $brand-success;
-  border: none;
+  border-color: $brand-success;
   font-weight: bold;
+  &:hover {
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
 }
 
 
@@ -27,6 +37,18 @@ body {
   text-align: left;
   border: 2px solid $brand-success;
   border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  padding: 0.4em 0.75em 0.4em 2em
+  padding: 0.4em 0.75em 0.4em 2em;
+  transition-duration: 0.1s;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  &:hover, &:focus {
+    background-color: #f0f7f0;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
 }
+
+/* Don't show metadata labels on search results pages... TODO: verify that this is OK */
+#documents .items dt { display: none; }
+#documents .items dd { margin-left: 0; }
+#documents .items .call-number-wrapper { padding-left: 0; }
+#documents .items .item-note-wrapper { padding-left: 0; }

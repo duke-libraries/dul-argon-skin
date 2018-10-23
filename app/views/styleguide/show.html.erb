@@ -103,7 +103,13 @@
 <div class="row">
   <div class="col-sm-3">
     <div class="fulltext-url">
-      <a class="link-type-fulltext" href="#">View Online</a>
+      <ul>
+        <li>
+          <a class="link-type-fulltext" href="#">
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+             View Online</a>
+        </li>
+      </ul>
     </div>
     <code>.link-type-fulltext</code>
   </div>
@@ -151,8 +157,12 @@
 <h2 id="typography">Typography</h2>
 <p>
   This is the default body copy text style in use throughout the Duke University Libraries
-  catalog UI. When a link is presented inline, it <a href="#">looks like this</a>. Here are
-  some characteristics of the text, presented in a list:</p>
+  catalog UI. When a link is present, it <a href="#">looks like this</a>, however if the link
+  appears within an element with class <code>underlined-links</code> it <a href="#">looks like
+  this</a>. This is recommended to distinguish inline links from surrounding text when the
+  contrast between them is lower than 3:1.
+</p>
+<p>Here are some characteristics of the text, presented in a list:</p>
 
 <%# These values get checked / reported via Javascript. %>
 <%# See /app/assets/javascripts/dul-styleguide.js. %>
