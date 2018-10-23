@@ -94,3 +94,9 @@
       }
     }
 }
+
+/* hide start over and edit buttons */
+#startOverLink,
+#editSearchLink {
+  display: none;
+}
