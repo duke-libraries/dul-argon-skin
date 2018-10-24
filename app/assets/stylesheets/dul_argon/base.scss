@@ -19,6 +19,12 @@ body {
 
 
 /* TODO: Move the following styles to a better location if they stick. */
+/* =================================================================== */
+
+#documents .document .document-title-heading a:hover {
+  text-decoration: underline;
+  color: tint($primary-link-color, 20%);
+}
 
 .btn-success {
   background-color: $brand-success;
@@ -42,8 +48,21 @@ body {
   transition-property: background-color;
   transition-timing-function: ease-in-out;
   &:hover, &:focus {
-    background-color: #f0f7f0;
+    background-color: tint($brand-success, 94%);
     box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+}
+
+#documents .items .btn-info, #document .holdings .items .btn-info {
+  background-color: white;
+  border: 2px solid $primary-link-color;
+  color: $primary-link-color;
+  transition-duration: 0.1s;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  &:hover, &:focus {
+   background-color: tint($primary-link-color, 94%);   
+   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
   }
 }
 
