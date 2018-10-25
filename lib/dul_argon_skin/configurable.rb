@@ -11,6 +11,9 @@ module DulArgonSkin
       mattr_accessor :map_location_service_url do
         ENV['MAP_LOCATION_SERVICE_URL'] ||= 'https://library.duke.edu/locguide/mapinfo'
       end
+      mattr_accessor :dul_home_url do
+        ENV['DUL_HOME_URL'] ||= 'https://library.duke.edu'
+      end
     end
     module ClassMethods
       def configure
