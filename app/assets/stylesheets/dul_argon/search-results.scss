@@ -120,6 +120,11 @@
   display: none;
 }
 
+/* hide barcode toggle on search results page */
+.blacklight-catalog-index .barcode-wrapper {
+  display: none;
+}
+
 /* hide start over and edit buttons */
 #startOverLink,
 #editSearchLink {

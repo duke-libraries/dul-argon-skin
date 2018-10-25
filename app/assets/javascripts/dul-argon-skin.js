@@ -20,4 +20,10 @@ $(document).ready(function() {
 
   });
 
+  $(document).bind('keypress', function(event) {
+    if( event.which === 66 && event.shiftKey ) {
+        $('.barcode-wrapper').toggle();
+    }
+  });
+
 });
