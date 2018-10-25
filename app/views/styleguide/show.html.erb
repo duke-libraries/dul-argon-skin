@@ -49,20 +49,33 @@
   </small>
 </p>
 
-<h3 id="colors-general">General Colors</h3>
+<h3 id="colors-general">TRLN: General Colors</h3>
 <div class="row">
-  <% %w[primary-color secondary-color tertiary-color available-color not-available-color\
-    alt-available-color].each do |color| %>
+  <% %w[primary-color secondary-color tertiary-color].each do |color| %>
+      <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<h3 id="colors-availability">TRLN: Item Availability</h3>
+<div class="row">
+  <% %w[available-color not-available-color alt-available-color\
+    misc-available-color].each do |color| %>
       <%= render 'color-swatch', colorname: color %>
   <% end %>
 </div>
 
 <h3 id="colors-general">Grays</h3>
 <div class="row">
-  <% %w[gray-darker gray-dark gray gray-light gray-lighter facet-grey].each do |color| %>
+  <% %w[gray-darker gray-dark gray gray-light gray-light-more gray-lighter].each do |color| %>
     <%= render 'color-swatch', colorname: color %>
   <% end %>
 </div>
+<div class="row">
+  <% %w[facet-grey gray-lightest].each do |color| %>
+    <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
 
 <h3 id="colors-dul">
   DUL Website Colors <small>(many from the <a href="https://styleguide.duke.edu/color-palette/">
@@ -77,6 +90,10 @@
 </div>
 
 <h3 id="colors-bootstrap">Bootstrap Default Colors</h3>
+<p>
+  As much as possible, these should be mapped to colors from the
+  DUL color palette.
+</p>
 <div class="row">
   <% %w[brand-primary brand-success brand-danger brand-warning\
     brand-info].each do |color| %>
@@ -87,7 +104,7 @@
 <h2 id="links">Links</h3>
 
 <div class="row">
-  <% %w[primary-link-color secondary-link-color].each do |color| %>
+  <% %w[primary-link-color link-hover-color secondary-link-color].each do |color| %>
     <%= render 'color-swatch', colorname: color %>
   <% end %>
 </div>
@@ -100,18 +117,15 @@
 </ul>
 <p>Here is an <a href="#">inline link</a> among other text.</p>
 
-<div class="row">
-  <div class="col-sm-3">
-    <div class="fulltext-url">
-      <a class="link-type-fulltext" href="#">View Online</a>
-    </div>
-    <code>.link-type-fulltext</code>
-  </div>
-</div>
-
 <h2 id="buttons">Buttons</h2>
 
 <h3>Bootstrap Default Buttons</h3>
+<p>
+  These button classes may be used by present &amp; future Blacklight
+  or TRLN Argon components so it's important that they are consistent
+  with DUL styles.
+</p>
+
 <div class="row">
   <div class="col-sm-2">
     <a href="#" class="btn btn-default">My Button</a><br/>
@@ -135,7 +149,66 @@
   </div>
   <div class="col-sm-2">
     <a href="#" class="btn btn-danger">My Button</a><br/>
-    <code>$btn-danger</code>
+    <code>.btn-danger</code>
+  </div>
+</div>
+
+<h3>DUL Catalog Buttons</h3>
+<p>
+  Add an <code>-action</code> suffix to make a button a
+  clearer call to action among other buttons. We probably
+  don't need all of these, e.g., if <code>.btn-primary</code>
+  is used can we assume it is a call to action?
+</p>
+<div class="row">
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-default-action">My Button</a><br/>
+    <code>.btn-default-action</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-primary-action">My Button</a><br/>
+    <code>.btn-primary-action</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-success-action">My Button</a><br/>
+    <code>.btn-success-action</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-info-action">My Button</a><br/>
+    <code>.btn-info-action</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-warning-action">My Button</a><br/>
+    <code>.btn-warning-action</code>
+  </div>
+  <div class="col-sm-2">
+    <a href="#" class="btn btn-danger-action">My Button</a><br/>
+    <code>.btn-danger-action</code>
+  </div>
+</div>
+
+<h3>Button Size Variants</h3>
+<p>Add one of the following classes to resize any button</p>
+<div class="row">
+  <div class="col-sm-3">
+    <a href="#" class="btn btn-default btn-lg">My Button</a>&nbsp;
+    <a href="#" class="btn btn-default-action btn-lg">My Button</a><br/>
+    <code>.btn-lg</code>
+  </div>
+  <div class="col-sm-3">
+    <a href="#" class="btn btn-default">My Button</a>&nbsp;
+    <a href="#" class="btn btn-default-action">My Button</a><br/>
+    <code>{default}</code>
+  </div>
+  <div class="col-sm-3">
+    <a href="#" class="btn btn-default btn-sm">My Button</a>&nbsp;
+    <a href="#" class="btn btn-default-action btn-sm">My Button</a><br/>
+    <code>.btn-sm</code>
+  </div>
+  <div class="col-sm-3">
+    <a href="#" class="btn btn-default btn-xs">My Button</a>&nbsp;
+    <a href="#" class="btn btn-default-action btn-xs">My Button</a><br/>
+    <code>.btn-xs</code>
   </div>
 </div>
 
@@ -151,8 +224,13 @@
 <h2 id="typography">Typography</h2>
 <p>
   This is the default body copy text style in use throughout the Duke University Libraries
-  catalog UI. When a link is presented inline, it <a href="#">looks like this</a>. Here are
-  some characteristics of the text, presented in a list:</p>
+  catalog UI. When a link is present, it <a href="#">looks like this</a>, however if the link
+  appears within an element with class <code>underlined-links</code> it
+  <span class="underlined-links"><a href="#">looks like this</a></span>. This is recommended
+  to distinguish inline links from surrounding text when the contrast between them is lower
+  than 3:1.
+</p>
+<p>Here are some characteristics of the text, presented in a list:</p>
 
 <%# These values get checked / reported via Javascript. %>
 <%# See /app/assets/javascripts/dul-styleguide.js. %>

@@ -1,4 +1,23 @@
 #facets {
+  a {
+    color: $gray;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+  .facet-field-heading a {
+    color: $gray-darker;
+  }
+
+  .facet_limit-active .facet-field-heading a {
+    color: white;
+  }
+
+  .panel-success > .panel-heading, .facet_limit-active > .panel-heading, .checkbox-facet-checked {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+
   & .top-panel-heading {
     padding: 0;
     @media (max-width: $screen-sm) {

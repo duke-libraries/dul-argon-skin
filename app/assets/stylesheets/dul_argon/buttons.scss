@@ -1,0 +1,197 @@
+.btn {
+  border-width: 2px;
+  transition-duration: 0.1s;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  &.btn-sm, &.btn-xs {
+    border-width: 1px;
+  }
+}
+
+.btn:hover, .btn:focus {
+  box-shadow: 1px 1px 0.2em rgba(0,0,0,0.1);
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-default {
+  background-color: white;
+  border-color: $gray-light-more;
+  color: $gray;
+  &:hover, &:focus {
+    background-color: tint($gray-light-more, 94%);
+    border-color: $gray-light-more;
+    color: $gray;
+  }
+}
+
+.btn-default-action {
+  font-weight: bold;
+  background-color: $gray-light;
+  border-color: $gray-light;
+  color: white;
+  &:hover, &:focus {
+    border-color: shade($gray-light, 25%);
+    background-color: shade($gray-light, 25%);
+    color: white;
+  }
+}
+
+.btn-primary {
+  background-color: white;
+  border-color: $brand-primary;
+  color: $brand-primary;
+  &:hover, &:focus {
+    background-color: tint($brand-primary, 94%);
+    border-color: $brand-primary;
+    color: $brand-primary;
+  }
+}
+
+.btn-primary-action {
+  font-weight: bold;
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+  color: white;
+  &:hover, &:focus {
+    border-color: shade($brand-primary, 10%);
+    background-color: shade($brand-primary, 10%);
+    color: white;
+  }
+}
+
+.btn-success {
+  background-color: white;
+  color: $brand-success;
+  border-color: $brand-success;
+  font-weight: normal;
+  &:hover, &:focus {
+    background-color: tint($brand-success, 94%);
+    border-color: $brand-success;
+    color: $brand-success;
+  }
+}
+
+.btn-success-action {
+  font-weight: bold;
+  background-color: $brand-success;
+  border-color: $brand-success;
+  color: white;
+  &:hover, &:focus {
+    border-color: shade($brand-success, 10%);
+    background-color: shade($brand-success, 10%);
+    color: white;
+  }
+}
+
+.btn-info {
+  background-color: white;
+  color: $brand-info;
+  border-color: $brand-info;
+  font-weight: normal;
+  &:hover, &:focus {
+    background-color: tint($brand-info, 94%);
+    border-color: $brand-info;
+    color: $brand-info;
+  }
+}
+
+.btn-info-action {
+  font-weight: bold;
+  background-color: $brand-info;
+  border-color: $brand-info;
+  color: white;
+  &:hover, &:focus {
+    border-color: shade($brand-info, 10%);
+    background-color: shade($brand-info, 10%);
+    color: white;
+  }
+}
+
+.btn-warning {
+  background-color: white;
+  color: $gray-dark;
+  border-color: $brand-warning;
+  font-weight: normal;
+  &:hover, &:focus {
+    background-color: tint($brand-warning, 94%);
+    border-color: $brand-warning;
+    color: $gray-dark;
+  }
+}
+
+.btn-warning-action {
+  font-weight: bold;
+  background-color: $brand-warning;
+  border-color: $brand-warning;
+  color: $gray-dark;
+  &:hover, &:focus {
+    border-color: shade($brand-warning, 10%);
+    background-color: shade($brand-warning, 10%);
+    color: $gray-dark;
+  }
+}
+
+.btn-danger {
+  background-color: white;
+  color: $brand-danger;
+  border-color: $brand-danger;
+  font-weight: normal;
+  &:hover, &:focus {
+    background-color: tint($brand-danger, 94%);
+    border-color: $brand-danger;
+    color: $brand-danger;
+  }
+}
+
+.btn-danger-action {
+  font-weight: bold;
+  background-color: $brand-danger;
+  border-color: $brand-danger;
+  color: white;
+  &:hover, &:focus {
+    border-color: shade($brand-danger, 10%);
+    background-color: shade($brand-danger, 10%);
+    color: white;
+  }
+}
+
+#search-navbar .btn {
+  border-width: 1px;
+}
+
+/* NOTE: designed to look like a DUL .btn-success. Consider adding that */
+/* button class to the View Online links in TRLN Argon. */
+
+.fulltext-url .link-type-fulltext, .fulltext-url .link-type-findingaid {
+  color: $brand-success;
+  background: white;
+  line-height: 1.2;
+  text-align: left;
+  border: 2px solid $brand-success;
+  border-radius: 4px;
+  padding: 0.4em 0.75em 0.4em 2em;
+  transition-duration: 0.1s;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  &:hover, &:focus {
+    background-color: tint($brand-success, 94%);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+}
+
+/* NOTE: designed to look like a DUL .btn-info. Consider using only that */
+/* button class on the 'show more' links. */
+
+#documents .items .btn-info, #document .holdings .items .btn-info {
+  background-color: white;
+  border: 2px solid $primary-link-color;
+  color: $primary-link-color;
+  &:hover, &:focus {
+   background-color: tint($primary-link-color, 94%);   
+  }
+}
+

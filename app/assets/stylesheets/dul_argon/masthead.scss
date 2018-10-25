@@ -76,6 +76,9 @@
           font-family: inherit;
         }
       }
+      label {
+        color: white;
+      }
 
       input.search_q {
         min-width: auto;
@@ -87,9 +90,7 @@
         font-size: 17px;
       }
       .submit-search-text {
-        @media (max-width: $screen-lg) {
-          display: none;
-        }
+        display: none;
       }
       .input-group-btn {
         display: block;

@@ -11,3 +11,16 @@ body {
     padding: 0 15px;
   }
 }
+
+a:hover {
+  color: $link-hover-color;
+}
+
+.underlined-links a {
+  text-decoration: underline;
+  text-decoration-color: $link-hover-color;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: $gray;
+}
