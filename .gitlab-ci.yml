@@ -1,9 +1,10 @@
-test:
+test_job:
   stage: test
-  script:
+  before_script:
     - whoami
     - pwd
     - env
+  script:
     - $RAILS_DEPLOY_PATH/bin/test.sh
   tags:
     - development
@@ -11,12 +12,13 @@ test:
 deploy_dev:
   environment:
     name: development
-    url: https://trln-discovery-dev.lib.duke.edu
+    url: https://find-dev.library.duke.edu
   stage: deploy
-  script: &deployscript
+  before_script: &beforedeployscript
     - whoami
     - pwd
     - env
+  script: &deployscript
     - $RAILS_DEPLOY_PATH/bin/deploy.sh $CI_PROJECT_DIR
   after_script: &afterdeployscript
     - $RAILS_DEPLOY_PATH/bin/after_deploy.sh
@@ -28,8 +30,9 @@ deploy_dev:
 deploy_pre:
   environment:
     name: pre-production
-    url: https://trln-discovery-pre.lib.duke.edu
+    url: https://find-test.library.duke.edu
   stage: deploy
+  before_script: *beforedeployscript
   script: *deployscript
   after_script: *afterdeployscript
   only:
