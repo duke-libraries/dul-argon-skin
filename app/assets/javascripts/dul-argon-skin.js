@@ -26,6 +26,35 @@ $(document).ready(function() {
   /* enable tooltips*/
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-  })
+  });
+
+});
+
+
+Blacklight.onLoad(function() {
+
+  	$(window).load(function(){
+
+      $('.document').each(function() {
+
+        var hasRequest = $(this).has("div.index-document-functions").length;
+        var hasWidth = $(this).children("div").find('img').get(0).naturalWidth;
+        console.log('width: ' + hasWidth);
+
+        if (hasRequest && hasWidth > 2) {
+          $(this).children(".documentHeader").addClass("has-request-and-thumbnail");
+        }
+
+        if (hasRequest && hasWidth < 2) {
+          $(this).children(".documentHeader").addClass("has-request");
+        }
+
+        if (!hasRequest && hasWidth > 2) {
+          $(this).children(".documentHeader").addClass("has-thumbnail");
+        };
+
+      });
+
+    });
 
 });
