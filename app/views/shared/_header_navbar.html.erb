@@ -3,6 +3,10 @@
 <%# If that is approved/merged into TRLN Argon, we might revisit     %>
 <%# this local override. %>
 
+<% if DulArgonSkin.environment_alert.present? %>
+  <%= render partial: 'shared/environment_alert' %>
+<% end %>
+
 <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="<%= container_classes %>">
     <%= render_search_bar  %>

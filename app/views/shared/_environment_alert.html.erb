@@ -1,0 +1,17 @@
+<div class="alert alert-info alert-dismissible preview-alert preview-alert-<%= Rails.env %>" role="alert">
+  <small>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <i class="fa fa-exclamation-triangle" data-toggle="tooltip" data-html="true" data-placement="right"
+       data-title="Rails Env: &lt;strong&gt;<%= Rails.env %>&lt;/strong&gt;"></i>
+      <span class="preview-alert-msg"><strong><%= DulArgonSkin.environment_alert %></strong></span>
+      <span class="preview-alert-msg"> | </span>
+      <span class="preview-alert-msg">DUL Argon Skin <strong>v<%= DulArgonSkin::VERSION %></strong></span>
+      <% if Rails.env == 'development' && git_branch_info.present? %>
+      <span class="preview-alert-msg">Branch <strong><%= git_branch_info %></strong></span>
+      <% end %>
+      <span class="preview-alert-msg"> | </span>
+      <span class="preview-alert-msg">TRLN Argon <strong>v<%= Gem.loaded_specs['trln_argon'].version %></strong></span>
+  </small>
+</div>
