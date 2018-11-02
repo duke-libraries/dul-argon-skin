@@ -1,0 +1,555 @@
+<%#
+Configure which elements and interactions generate GA Event data using
+the @selectors hash.  Each element selector is a top-level hash key, so
+must be unique. Selectors can be combined (comma-separated).
+
+OPTIONS FOR CUSTOMIZING THE DATA SENT FOR EACH ELEMENT MATCHED BY SELECTOR
+==========================================================================
+(Order doesn't matter)
+
+1. event
+2. link
+3. category
+4. action
+5. label
+6. document_listener
+7. intercept
+
+
+////////////////////
+
+1. event
+--------
+Which event on the element has to happen to send GA Event Track data? 
+default: 'click contextmenu'
+This catches both left ('click') & right ('contextmenu') clicks.
+Other possibilities: 'submit', 'focus', etc. Also can use custom events, e.g.,
+'foo' will catch $('#element').trigger('foo')... this technique
+is used for A/V player events in DDR.
+
+2. link
+-------
+Which DOM element provides context for the event? (especially for default values)
+default: $(this) -- whatever element was specified by the selector
+
+3. category
+-----------
+The Category value to submit to GA Event Tracking. Limited by Google to 150 bytes.
+default: result of defaultCategory(link)
+
+4. action
+----------
+The Action value to submit to GA Event Tracking. Limited by Google to 500 bytes.
+default: result of defaultAction(link)
+
+5. label
+--------
+The Label value to submit to GA Event Tracking. Limited by Google to 500 bytes.
+default: result of defaultLabel(link)
+
+
+6. document_listener
+--------------------
+By default, listeners will get attached to the element identified by the selector, e.g.:
+
+  $('div.something a').on('click', function(){ ... });
+
+But in some cases we have to attach the listener to the document node in the DOM, e.g.:
+
+  $(document).on('click', 'div.something a', function(){ ... });
+
+This syntax enables listening for events on elements that are dynamically added to the DOM
+after the initial pageload. Also, in some cases we have to explicitly match the syntax used
+by Blacklight's own event listeners.
+
+Possible values: true
+
+
+7. intercept
+------------
+Optional instructions inserted immediately after the click/event. In some cases we need to
+prevent the default browser behavior for the action; others we need to stop the click
+from propagating up to parent elements to prevent unwanted click events. E.g.:
+
+  e.preventDefault();
+  e.stopPropagation();
+
+======================================================================================
+%>
+
+<% 
+@selectors = {
+
+  #// ===================
+  #// MASTHEAD & FOOTER
+  #// ===================
+
+  #// Branding
+  "#search-navbar .navbar-dul a" => {
+    :category => "'masthead'",
+    :action => "'branding'",
+    :label => "'DUL logo'"
+    },
+  "#search-navbar .navbar-product-name a" => {
+    :category => "'masthead'",
+    :action => "'branding'",
+    :label => "'catalog home'"
+    },
+
+  #// Search Box
+  "#search-navbar form.search-query-form" => {
+    :event => "submit",
+    :category => "'search box'",
+    :action => "'submit search box'",
+    :label => "$('input#q').val()"
+    },
+
+  #// Typeahead Suggestions
+  "#search-navbar .tt-menu p.tt-suggestion" => {
+    :category => "'search box'",
+    :action => "'typeahead suggestion'",
+    :label => "'suggested ' + $(this).find('.tt-category').text() + ' click'",
+    :document_listener => true
+    },
+
+  "#search-navbar form.search-query-form button.search-select" => {
+    :category => "'search box'",
+    :action => "'search scope selector'",
+    :label => "'search scope dropdown click'",
+    :document_listener => true
+    },
+  "#search-navbar form.search-query-form ul.dropdown-menu a" => {
+    :category => "'search box'",
+    :action => "'search scope selector'",
+    :document_listener => true
+    },
+  "#search-navbar form.search-query-form input#q" => {
+    :category => "'search box'",
+    :action => "'basic search'",
+    :label => "'keyword search field click'"
+    },
+
+  "#search-navbar form.search-query-form .search-extra-controls a" => {
+    :category => "'search box'",
+    :action => "'extra controls'"
+    },
+
+  "#search-navbar #primary-menu a" => {
+    :category => "'masthead'",
+    :action => "'primary menu'"
+    },
+
+  "#dul-masthead-row a" => {
+    :category => "'masthead'",
+    :action => "'shared DUL menu'",
+    :document_listener => true
+    },
+
+
+  #// Footer
+  "footer a" => {
+    :category => "'footer'",
+    :action => "'footer links'"
+    },
+
+  #// =========================
+  #// SEARCH & BROWSE RESULTS
+  #// =========================
+  #// Keep actions consistent with item show page for any elements
+  #// that appear in both contexts, e.g., Request or Map/Info links.
+
+  #// You Searched For...
+  "#appliedParams a" => {
+    :category => "'search results'",
+    :action => "'search revision'"
+    },
+
+  #// TRLN vs. Duke Toggle
+  "#toggle-local-btn-top" => {
+    :category => "'search results'",
+    :action => "'toggle Duke or TRLN'",
+    :label => "'toggle to Duke (top)'"
+    },
+  "#toggle-trln-btn-top" => {
+    :category => "'search results'",
+    :action => "'toggle Duke or TRLN'",
+    :label => "'toggle to TRLN (top)'"
+    },
+
+  "#toggle-local-btn-bottom" => {
+    :category => "'search results'",
+    :action => "'toggle Duke or TRLN'",
+    :label => "'toggle to Duke (bottom)'"
+    },
+  "#toggle-trln-btn-bottom" => {
+    :category => "'search results'",
+    :action => "'toggle Duke or TRLN'",
+    :label => "'toggle to TRLN (bottom)'"
+    },
+
+  #// Results Section
+  "#documents.documents-list .document .index_title a" => {
+    :category => "'search results'",
+    :action => "'search result title'",
+    :label => "$(this).attr('href')"
+    },
+
+  "#documents.documents-list .document .fulltext-url a" => {
+    :category => "'search results'",
+    :action => "'view online'",
+    :label => "$(this).data('original-title') || $(this).text()"
+    },
+
+  "#documents.documents-list .document .map-info a" => {
+    :category => "'search results'",
+    :action => "'map/info link'",
+    :label => "$(this).parent().prev('.call-number').text()"
+    },
+
+  "#documents.documents-list .document .items-toggle a.expander" => {
+    :category => "'search results'",
+    :action => "'show/hide more items'",
+    },
+
+  #// TODO: make this better distinguish Duke vs. TRLN request
+  #// Keep action consistent with item page for this control
+  "#documents.documents-list .document .index-document-functions a" => {
+    :category => "'search results'",
+    :action => "'item tools'"
+    },
+
+  #// Results Display Options
+  "#sortAndPerPage #sort-dropdown a, #sortAndPerPage #sort-dropdown button" => {
+    :category => "'search results'",
+    :action => "'sort by'"
+    },
+  "#sortAndPerPage #per_page-dropdown a, #sortAndPerPage #per_page-dropdown button" => {
+    :category => "'search results'",
+    :action => "'per page'"
+    },
+
+  "#sortAndPerPage .page_links a" => {
+    :category => "'search results'",
+    :action => "'pagination top'"
+    },
+
+  "body.blacklight-catalog-index .pagination ul.pagination a, body.blacklight-trln-index .pagination ul.pagination a" => {
+    :category => "'search results'",
+    :action => "'pagination bottom'"
+    },
+
+  #// ===========================
+  #// ADVANCED SEARCH FORM
+  #// ===========================
+
+  "body.blacklight-advanced-index form.advanced" => {
+    :event => "submit",
+    :category => "'advanced search form'",
+    :action => "'submit advanced search'",
+    :label => "$('form.advanced :input').serialize()"
+    },
+
+  "body.blacklight-advanced-index form.advanced .advanced-search-start-over" => {
+    :category => "'advanced search form'",
+    :action => "'advanced search options'"
+    },
+
+  "body.blacklight-advanced-index form.advanced select#op" => {
+    :category => "'advanced search form'",
+    :action => "'advanced search options'",
+    :label => "'all/any toggle'"
+    },
+
+  "body.blacklight-advanced-index form.advanced select#sort" => {
+    :category => "'advanced search form'",
+    :action => "'advanced search options'",
+    :label => "'sort results by...'"
+    },
+
+  #// =====================
+  #// FACETS
+  #// =====================
+
+  "div.facet_limit div.panel-heading" => {
+    :link => "$(this).find('a').first()",
+    :category => "'facets'",
+    :action => "$(this).attr('data-target').substring(1)",
+    :label => "defaultLabel(link) + ($(this).hasClass('collapsed') ? ' [expand]' : ' [collapse]')"
+    },
+  "div.facet_limit ul.facet-values a" => {
+    :category => "'facets'"
+    },
+  "#ajax-modal.facet-browse a" => {
+    :category => "'facets'",
+    :document_listener => true
+    },
+
+  #// Hierarchical Facets (All)
+  "#facets .facet-hierarchy a.facet_select" => {
+    :category => "'facets'",
+    :document_listener => true
+    },
+
+  #// Checkbox Facets (Must Do for Each Used)
+  "#facet-access_type_f #checkbox_access_type_f" => {
+    :category => "'facets'",
+    :action => "'facet-access_type_f'",
+    :label => "'Available Online' + ($(this).is(':checked') ? ' [check]' : ' [uncheck]')",
+    :document_listener => true
+    },
+
+  #// Blacklight Range Limit Plugin Facet (Date Slider)
+  "#facet-publication_year_isort input#range_publication_year_isort_begin" => {
+    :category => "'facets'",
+    :action => "'facet-publication_year_isort'",
+    :label => "'year range begin'",
+    :document_listener => true
+    },
+  "#facet-publication_year_isort input#range_publication_year_isort_end" => {
+    :category => "'facets'",
+    :action => "'facet-publication_year_isort'",
+    :label => "'year range end'",
+    :document_listener => true
+    },
+  "#facet-publication_year_isort div.slider-track" => {
+    :category => "'facets'",
+    :action => "'facet-publication_year_isort'",
+    :label => "'year range slider'",
+    :document_listener => true
+    },
+  "#facet-publication_year_isort div.chart_js" => {
+    :category => "'facets'",
+    :action => "'facet-publication_year_isort'",
+    :label => "'year range histogram'",
+    :document_listener => true
+    },
+  "#facet-publication_year_isort form" => {
+    :event => "submit",
+    :category => "'facets'",
+    :action => "'facet-publication_year_isort'",
+    :label => "'year range submit limit'",
+    :document_listener => true
+    },
+
+  #// ===========================
+  #// ITEM SHOW PAGE
+  #// ===========================
+  #// Keep actions consistent with search results page for any elements
+  #// that appear in both contexts, e.g., Request or Map/Info links.
+
+  "#previousNextDocument a" => {
+    :category => "'item page'",
+    :action => "'item to results nav'"
+    },
+
+  "#document-tools a" => {
+    :category => "'item page'",
+    :action => "'item tools'"
+    },
+
+  "#document .map-info a" => {
+    :category => "'item page'",
+    :action => "'map/info link'",
+    :label => "$(this).parent().prev('.call-number').text()"
+    },
+
+  "#document .fulltext-url a" => {
+    :category => "'item page'",
+    :action => "'view online'",
+    :label => "$(this).data('original-title') || $(this).text()"
+    },
+
+  "#document .items-toggle a.expander" => {
+    :category => "'search results'",
+    :action => "'show/hide more items'",
+    },
+
+  #// Metadata
+  "#document .show-authors a" => {
+    :category => "'item page'",
+    :action => "'author link'",
+    },
+
+  "#document .enhanced-data a" => {
+    :category => "'item page'",
+    :action => "'enhanced data link'",
+    },
+
+  "#document .show-subjects a" => {
+    :category => "'item page'",
+    :action => "'subject link'",
+    },
+
+  "#document .other-details a" => {
+    :category => "'item page'",
+    :action => "'other details link'",
+    },
+
+  "#document .show-included-works a" => {
+    :category => "'item page'",
+    :action => "'included works link'",
+    },
+
+  #// ===========================
+  #// HOMEPAGE
+  #// ===========================
+
+  ".home-welcome-links a" => {
+    :category => "'homepage'",
+    :action => "'welcome link'",
+    },
+
+  ".home-other-resources a" => {
+    :category => "'homepage'",
+    :action => "'other resource link'",
+    },
+
+}
+
+%>
+
+var eventTracking = (function () {
+
+  var config = {
+    categoryDataAttribute: 'ga-category',
+    actionDataAttribute: 'ga-action',
+    labelDataAttribute: 'ga-label'
+  }
+
+  // PUBLIC METHODS
+  // ===============
+
+  function listenForClicks () {
+
+    <%# Create an event listener for each selector configured above %>
+
+    <% @selectors.each do |selector, props| %>
+      <% if (props[:document_listener] === true) %>
+        $(document).on('<%= props[:event] || "click contextmenu" %>', '<%= selector %>', function(e){
+      <% else %>
+        $('<%= selector %>').on('<%= props[:event] || "click contextmenu" %>', function(e){
+      <% end %> 
+           <%= props[:intercept] %>
+           var link = <%= props[:link] || "$(this)" %>;
+           var ga_event = {};
+           ga_event.category = <%= props[:category] || "defaultCategory(link)" %>;
+           ga_event.action = <%= props[:action] || "defaultAction(link)" %>;
+           ga_event.label = <%= props[:label] || "defaultLabel(link)" %>;
+           ga_event.custom_dimensions = {};
+           sendEventData(ga_event);
+         });
+    <% end %>
+
+  }
+
+  // PRIVATE METHODS
+  // ===============
+  
+  function defaultCategory (link) {
+    var category;
+
+    // Default Category Determination Progression: 
+    // 1. a@data-ga-category
+    // 2. id of 1st parent element with id
+
+    if (link.data(config.categoryDataAttribute)) { 
+      category = link.data(config.categoryDataAttribute);
+    } else if (link.parent().closest('[id]').attr('id')) {
+      category = link.parent().closest('[id]').attr('id'); // id from nearest ancestor with one
+    } else {
+      category = "top-level";
+    }
+    return category;
+  }
+
+  function defaultAction (link) {
+    var action;
+
+    // Default Action Determination Progression: 
+    // 1. a@data-ga-action
+    // 2. a@id self
+    // 3. id of 1st parent element w/id
+
+    if (link.data(config.actionDataAttribute)) {
+      action = link.data(config.actionDataAttribute);
+    } else if ( link.closest('[id]').attr('id') ) {
+      action = link.closest('[id]').attr('id'); // own id, else nearest ancestor with one
+    } else {
+      action = "top-level";
+    }
+    return action;
+  }
+
+  function defaultLabel (link) {
+    var label;
+
+    // Default Label Determination Progression: 
+    // 1. @data-ga-label
+    // 2. use the link text or a property, different for <a>, <button>, <input> elements
+
+    if (link.data(config.labelDataAttribute)) {
+      label = link.data(config.labelDataAttribute);
+    } else {
+
+      if(link.is("[data-toggle=dropdown]")) {
+        label = "dropdown" + (link.attr('aria-expanded') == 'true' ? ' [collapse]' : ' [expand]');
+      } else if (link.is('a')) {
+        label = ($.trim(link.text()) || link.children('img:first').attr('alt') || link.attr('title'));              
+      } else if (link.is('button')) {
+        label = (link.attr('aria-label') || link.attr('title') || $.trim(link.text()) );
+          if(link.is("[data-toggle=collapse]")) {
+            label += (link.attr('aria-expanded') == 'true' ? ' [collapse]' : ' [expand]');
+          }
+      } else if (link.is('input')) {
+        label = (link.attr('name') || link.attr('value') || link.attr('placeholder'));
+      } else {
+        label = "no label";
+      }
+    }
+
+    return label;
+  }
+
+  function sendEventData(ga_event) {
+
+    <% if DulArgonSkin.google_analytics_tracking_id.present? %>
+      sendDataToGoogleAnalytics(ga_event);
+    <% end %>
+    <% if DulArgonSkin.google_analytics_debug == 'true' %>
+      console.log('GA Event Track', [ga_event.category, ga_event.action, ga_event.label]);
+    <% end %>
+  }
+
+  function sendDataToGoogleAnalytics(ga_event) {
+
+    <%# See https://developers.google.com/analytics/devguides/collection/gtagjs/events %>
+
+    gtag('event', ga_event.action, {
+      'event_category': ga_event.category,
+      'event_label': ga_event.label
+    });
+
+  }
+
+  return {
+    // Expose Public Methods       
+    listenForClicks: listenForClicks
+  };
+
+})();
+
+$( document ).ready(function() {
+  eventTracking.listenForClicks();
+
+  // Facet values and modal "more" browse helper
+  // -------------------------------------------
+
+  $(document).on('click', 'ul.facet-values a, .facet_pagination a.more_facets_link', function(e){
+    var link = $(this);
+    // Carry the facet ID over to the modal "more" browse so clicks in there
+    // can be attributed to the respective facet in GA Event Tracking.
+    $('#ajax-modal').addClass('facet-browse');
+    $('#ajax-modal .modal-dialog').first().attr('id', link.closest('[id]').attr('id'));
+  });
+
+});

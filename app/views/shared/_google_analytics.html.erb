@@ -1,0 +1,44 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= ga_tracking_id %>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  <%# Set GA Custom Dimensions before config. Setting them here -%>
+  <%# ensures they are sent with every page view & event logged   -%>
+  <%# from the current page. See:   -%>
+  <%# https://developers.google.com/analytics/devguides/collection/gtagjs/setting-values -%>
+
+  gtag('set', {
+    'catalog_scope': '<%= ga_catalog_scope %>',
+    'page_type': '<%= ga_page_type %>'
+  });
+
+  gtag('config', '<%= ga_tracking_id %>', {
+    'anonymize_ip': true,
+    'transport_type': 'beacon',
+
+    <%# GA Custom Dimensions map to dimension<index>: -%>
+    <%# https://developers.google.com/analytics/devguides/collection/gtagjs/custom-dims-mets -%>
+
+    <%# Adding more dimensions requires adding via the Analytics website -%>
+    <%# for each GA property: %>
+    <%# Admin > {Property} > Custom Definitions > Custom Dimensions -%>
+
+    'custom_map': {
+      'dimension1': 'catalog_scope',
+      'dimension2': 'page_type'
+    }
+  });
+
+  <% if DulArgonSkin.google_analytics_debug == 'true' %>
+    console.log(
+      [
+        'GA Catalog Scope: <%= ga_catalog_scope %>',
+        'GA Page Type: <%= ga_page_type %>',
+        'GA Tracking ID: <%= ga_tracking_id %>'
+      ].join(' --- '));
+  <% end %>
+
+</script>
