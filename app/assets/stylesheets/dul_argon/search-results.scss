@@ -99,34 +99,42 @@
     }
 }
 
+.barcode-label {
+  background: #e5e5e5;
+  color: #444;
+  border: 1px solid #ddd;
+  border-color: #ddd !important;
+  padding-top: calc(.2em - 1px);
+  padding-bottom: calc(.3em - 1px);
+  margin-right: .5em;
+}
+
+.barcode-content {
+  display: inline;
+}
+
+@media (min-width: $screen-xs) {
+  .barcode-wrapper {
+    margin-left: -4.35em;
+    min-width: 10em;
+  }
+}
+
+.barcode-wrapper {
+  width: 100%;
+  margin-top: .5em;
+  display: none;
+}
+
+.barcode-toggle-wrapper {
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+}
+
 .barcode-toggle {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: 3px;
-  padding-left: 3px;
-  background: #e3e3e3;
-  position: absolute;
-  left: 0;
-  top: 3px;
-  line-height: 1.45em;
-  opacity: .25;
-}
-
-.barcode-display {
-  display: block;
-  padding: 5px 10px;
-  background: #333;
-  color: #fff;
-  position: absolute;
-  left: 25px;
-  top: 0;
-  font-size: .8em;
-  display: none;
-}
-
-/* hide barcode toggle on search results page */
-.blacklight-catalog-index .barcode-wrapper {
-  display: none;
+  color: $gray;
 }
 
 /* hide start over and edit buttons */
