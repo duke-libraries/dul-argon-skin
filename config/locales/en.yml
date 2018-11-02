@@ -37,3 +37,6 @@ en:
         building: 'Building'
         area: 'Area'
       error: 'There was a problem finding the location of this item.'
+    barcode:
+      label: 'Barcode'
+      button: 'Staff Interface'
