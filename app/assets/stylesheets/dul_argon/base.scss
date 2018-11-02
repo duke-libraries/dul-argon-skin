@@ -24,3 +24,14 @@ a:hover {
 .navbar-default .navbar-nav > li > a {
   color: $gray;
 }
+
+.preview-alert {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: $dul-dulcet-green;
+  color: $gray-darker;
+
+  & .preview-alert-msg {
+    margin-right: 1em;
+  }
+}

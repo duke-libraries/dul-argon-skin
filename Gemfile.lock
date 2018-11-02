@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: ff9c8592961d55aad1c002a00263270fe27cf0ba
+  revision: 7ef1dc1f6a51560e6ae93318ec8ca45b5fa614e9
   specs:
-    trln_argon (0.6.1)
+    trln_argon (0.6.9)
       blacklight (~> 6.16)
       blacklight-hierarchy (~> 1.1.0)
       blacklight_advanced_search (~> 6.2)
@@ -146,7 +146,7 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
