@@ -1,0 +1,8 @@
+@media print {
+  /* hide things */
+  .feedback-link-wrapper,
+  .map-info,
+  .index-document-functions {
+    display: none;
+  }
+}
