@@ -7,6 +7,10 @@ DulArgonSkin.configure do |config|
   config.environment_alert = ENV['ENVIRONMENT_ALERT']
   config.google_analytics_debug = ENV['GOOGLE_ANALYTICS_DEBUG']
   config.google_analytics_tracking_id = ENV['GOOGLE_ANALYTICS_TRACKING_ID']
+  config.illiad_dul_base_url = ENV['ILLIAD_DUL_BASE_URL']
+  config.illiad_law_base_url = ENV['ILLIAD_LAW_BASE_URL']
+  config.illiad_ford_base_url = ENV['ILLIAD_FORD_BASE_URL']
+  config.illiad_med_base_url = ENV['ILLIAD_MED_BASE_URL']
   config.map_location_service_url = ENV['MAP_LOCATION_SERVICE_URL']
   config.request_base_url = ENV['REQUEST_BASE_URL']
 end

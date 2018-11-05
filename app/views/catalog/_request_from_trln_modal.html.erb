@@ -1,0 +1,50 @@
+<div class="modal fade" id="trln-request-modal" tabindex="-1"
+  role="dialog" aria-labelledby="trln-request-modal-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="trln-request-modal-label">
+          <%= image_tag("trln_argon/trln_icon.png", alt: 'TRLN',
+            class: 'trln_request_icon') %> Request from UNC, NC State, or NC Central Libraries
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>Choose your home library at Duke:</p>
+        <ul id="choose-your-illiad">
+          <li>
+            <a href="#" target="_blank"
+              data-base-url="<%= DulArgonSkin.illiad_dul_base_url %>">
+              Duke University Libraries
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank"
+              data-base-url="<%= DulArgonSkin.illiad_ford_base_url %>">
+              Ford Library, Fuqua School of Business
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank"
+              data-base-url="<%= DulArgonSkin.illiad_law_base_url %>">
+              Goodson Law Library
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank"
+              data-base-url="<%= DulArgonSkin.illiad_med_base_url %>">
+              Medical Center Library
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default text-right" data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

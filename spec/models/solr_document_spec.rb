@@ -74,6 +74,42 @@ describe SolrDocument do
     end
   end
 
+  describe 'trln_requestable?' do
+    context 'when item is at partner institution and at the library' do
+      let(:solr_document) do
+        described_class.new(
+          id: 'UNC012345678',
+          access_type_a: '["At the Library","Online"]'
+        )
+      end
+
+      before do
+        allow(solr_document).to receive(:record_owner).and_return('unc')
+      end
+
+      it 'is requestable' do
+        expect(solr_document.trln_requestable?).to be true
+      end
+    end
+
+    context 'when item is at partner institution, but online-only' do
+      let(:solr_document) do
+        described_class.new(
+          id: 'UNC012345678',
+          access_type_a: '["Online"]'
+        )
+      end
+
+      before do
+        allow(solr_document).to receive(:record_owner).and_return('unc')
+      end
+
+      it 'is not requestable' do
+        expect(solr_document.trln_requestable?).to be false
+      end
+    end
+  end
+
   describe '#rubenstein_item?' do
     context 'when the record describes a rubenstein item' do
       let(:solr_document) do
@@ -108,6 +144,75 @@ describe SolrDocument do
       it 'is NOT a rubenstein item' do
         expect(solr_document.rubenstein_record?).to be false
       end
+    end
+
+    describe 'illiad_request_url_default' do
+      before do
+        allow(DulArgonSkin).to receive(:illiad_dul_base_url)
+          .and_return(
+            'https://duke-illiad-oclc-org.proxy.lib.duke.edu/illiad'\
+            '/NDD/illiad.dll'
+          )
+
+        allow(solr_document).to receive(:illiad_request_params)\
+          .and_return(
+            'LoanAuthor=Art+Chansky&LoanTitle=Blue+blood'\
+            '&Value=GenericRequestTRLNLoan&genre=TRLNbook'
+          )
+      end
+
+      let(:solr_document) do
+        described_class.new(
+          id: 'DUKE012345678'
+        )
+      end
+
+      it 'returns the full URL to request the item from TRLN at DUL' do
+        expect(solr_document.illiad_request_url_default).to eq(
+          'https://duke-illiad-oclc-org.proxy.lib.duke.edu/illiad/'\
+          'NDD/illiad.dll?LoanAuthor=Art+Chansky&LoanTitle=Blue+blood'\
+          '&Value=GenericRequestTRLNLoan&genre=TRLNbook'
+        )
+      end
+    end
+
+    describe 'illiad_request_params' do
+      let(:solr_document) do
+        described_class.new(
+          id: 'DUKE003485622'
+        )
+      end
+
+      before do
+        allow(solr_document).to receive(:illiad_request_params_fixed)\
+          .and_return(
+            'Value': 'GenericRequestTRLNLoan',
+            'genre': 'TRLNbook'
+          )
+        allow(solr_document).to receive(:illiad_request_params_variable)\
+          .and_return(
+            'Location': 'https://find.library.duke.edu/trln/DUKE003485622',
+            'LoanTitle': 'Blue blood',
+            'ESPNumber': '505249141',
+            'ISSN': '9780134276717 / 013427671X',
+            'LoanEdition': '1st ed.',
+            'LoanPublisher': 'Boston',
+            'LoanAuthor': 'Art Chansky'
+          )
+      end
+
+      # rubocop:disable RSpec/ExampleLength
+      it 'returns the combined parameters as URL query string' do
+        expect(solr_document.illiad_request_params).to eq(
+          'ESPNumber=505249141&ISSN=9780134276717+%2F+013427671X'\
+          '&LoanAuthor=Art+Chansky&LoanEdition=1st+ed.&LoanPublisher=Boston'\
+          '&LoanTitle=Blue+blood'\
+          '&Location=https%3A%2F%2Ffind.library.duke.edu%2F'\
+          'trln%2FDUKE003485622'\
+          '&Value=GenericRequestTRLNLoan&genre=TRLNbook'
+        )
+      end
+      # rubocop:enable RSpec/ExampleLength
     end
   end
 end

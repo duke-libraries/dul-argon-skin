@@ -1,4 +1,11 @@
 <% if document.duke_requestable? %>
   <%= link_to "Request", document.request_item_url,
-    class: "btn btn-success btn-success-action", target: "_blank" %>
+    class: "btn btn-success-action request-from-duke", target: "_blank" %>
+<% end %>
+
+<% if document.trln_requestable? %>
+  <%= link_to "Request", document.illiad_request_url_default,
+    class: "btn btn-success-action request-from-trln", target: "_blank",
+    data: { toggle: 'modal', target: '#trln-request-modal',
+      illiad_params: document.illiad_request_params, remote: false } %>
 <% end %>
