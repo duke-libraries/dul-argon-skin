@@ -106,7 +106,7 @@
   border-color: #ddd !important;
   padding-top: calc(.2em - 1px);
   padding-bottom: calc(.3em - 1px);
-  margin-right: .5em;
+  margin-right: .75em;
 }
 
 .barcode-content {
@@ -115,8 +115,14 @@
 
 @media (min-width: $screen-xs) {
   .barcode-wrapper {
-    margin-left: -4.35em;
+    margin-left: -4.5em;
     min-width: 10em;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .barcode-wrapper {
+    min-width: 15em;
   }
 }
 
