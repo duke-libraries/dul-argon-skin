@@ -39,7 +39,6 @@ Blacklight.onLoad(function() {
 
         var hasRequest = $(this).has("div.index-document-functions").length;
         var hasWidth = $(this).children("div").find('img').get(0).naturalWidth;
-        console.log('width: ' + hasWidth);
 
         if (hasRequest && hasWidth > 2) {
           $(this).children(".documentHeader").addClass("has-request-and-thumbnail");
