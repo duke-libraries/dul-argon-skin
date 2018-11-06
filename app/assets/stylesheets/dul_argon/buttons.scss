@@ -191,7 +191,10 @@
   border: 2px solid $primary-link-color;
   color: $primary-link-color;
   &:hover, &:focus {
-   background-color: tint($primary-link-color, 94%);   
+   background-color: tint($primary-link-color, 94%);
   }
 }
 
+.feedback-link {
+  border: 3px solid #fff;
+}
