@@ -211,11 +211,23 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'show/hide more items'",
     },
 
-  #// TODO: make this better distinguish Duke vs. TRLN request
   #// Keep action consistent with item page for this control
-  "#documents.documents-list .document .index-document-functions a" => {
+  "#documents.documents-list .document .index-document-functions a.request-from-duke" => {
     :category => "'search results'",
-    :action => "'item tools'"
+    :action => "'item tools'",
+    :label => "'Request (Duke)'"
+    },
+
+  "#documents.documents-list .document .index-document-functions a.request-from-trln" => {
+    :category => "'search results'",
+    :action => "'item tools'",
+    :label => "'Request (TRLN)'"
+    },
+
+  #// Modal can appear on search results or item view
+  "#trln-request-modal a" => {
+    :category => "'TRLN request'",
+    :action => "'choose home library'"
     },
 
   #// Results Display Options
