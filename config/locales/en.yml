@@ -24,7 +24,19 @@ en:
     home:
       welcome: "Duke University Libraries Catalog"
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
-
+    not_found:
+      title: "Sorry, Your Page Isn't Here"
+      options: "Try these options"
+    help:
+      catalog: "Search the Catalog"
+      homepage: "Visit our homepage"
+      search_tips: "search tips"
+      ask_a_librarian: "Ask a Librarian"
+      for_help: "for help"
+      for_help_extended: "for help in searching this catalog"
+      for_answers: "to get answers quickly"
+      worldcat_link_html: "Use <a href='http://proxy.lib.duke.edu/login?url=http://firstsearch.oclc.org/fsip?dbname=worldcat&amp;screen=advanced' target='_blank'>WorldCat</a> to search holdings from libraries worldwide"
+      search_tips_html: "Try our <a href='#' target='_blank'>search tips</a> for help in searching this catalog"
   trln_argon:
     links:
       online_access: "View Online"
