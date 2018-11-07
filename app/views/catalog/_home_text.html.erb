@@ -4,9 +4,9 @@
 </div>
 
 <ul class="underlined-links home-welcome-links">
-  <li>Try our <a href="#" target="_blank">search tips</a> for help in searching this catalog</li>
-  <li><a href="https://library.duke.edu/research/ask" target="_blank">Ask a Librarian</a> to get answers quickly</li>
-  <li>Use <a href="http://proxy.lib.duke.edu/login?url=http://firstsearch.oclc.org/fsip?dbname=worldcat&amp;screen=advanced" target="_blank">WorldCat</a> to search holdings from libraries worldwide</li>
+  <li><%= t("blacklight.help.search_tips_html") %></li>
+  <li><%= link_to t('blacklight.help.ask_a_librarian'), TrlnArgon::Engine.configuration.contact_url, target: "_blank" %> <%= t('blacklight.help.for_answers') %></li>
+  <li><%= t("blacklight.help.worldcat_link_html") %></li>
 </ul>
 
 <hr/>

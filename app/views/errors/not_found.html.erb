@@ -1,0 +1,16 @@
+<% content_for :page_title, "#{t('blacklight.not_found.title')} – #{application_name}" %>
+
+<div class="page-header">
+  <h1 class="main-title"><%= t('blacklight.not_found.title') %></h1>
+</div>
+
+<h3><%= t('blacklight.not_found.options') %></h3>
+
+<ul class="underlined-links home-welcome-links">
+  <li><%= link_to t('blacklight.help.homepage'), "https://library.duke.edu", target: "_blank" %></li>
+  <li><%= link_to t('blacklight.help.catalog'), root_path %></li>
+  <li><%= t("blacklight.help.search_tips_html") %></li>
+  <li><%= link_to t('blacklight.help.ask_a_librarian'), TrlnArgon::Engine.configuration.contact_url, target: "_blank" %> <%= t('blacklight.help.for_help') %></li>
+</ul>
+
+<div class="form-group">&nbsp;</div>
