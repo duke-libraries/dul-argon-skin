@@ -16,6 +16,7 @@ module GoogleAnalyticsHelper
   end
 
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def ga_page_type
     if search_results_page_zero_results?
       'No Results Page'
@@ -27,11 +28,14 @@ module GoogleAnalyticsHelper
       'Homepage'
     elsif item_show_page?
       'Item Page'
+    elsif error_404_page?
+      '404 Page'
     else
       'Other Page'
     end
   end
   # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   private
 
@@ -59,6 +63,11 @@ module GoogleAnalyticsHelper
   def search_results_page?
     catalog_or_trln_controller? && controller.action_name == 'index' \
       && respond_to?(:has_search_parameters?) && has_search_parameters?
+  end
+
+  def error_404_page?
+    controller.controller_name == 'errors' \
+      && controller.action_name == 'not_found'
   end
 
   def catalog_or_trln_controller?

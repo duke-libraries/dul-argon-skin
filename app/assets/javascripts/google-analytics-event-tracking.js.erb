@@ -372,8 +372,14 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     },
 
   "#document .items-toggle a.expander" => {
-    :category => "'search results'",
+    :category => "'item page'",
     :action => "'show/hide more items'",
+    },
+
+  "#document a.barcode-toggle" => {
+    :category => "'item page'",
+    :action => "'staff view link'",
+    :label => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')",
     },
 
   #// Metadata
@@ -408,13 +414,22 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
 
   ".home-welcome-links a" => {
     :category => "'homepage'",
-    :action => "'welcome link'",
+    :action => "'welcome help link'",
     },
 
   ".home-other-resources a" => {
     :category => "'homepage'",
     :action => "'other resource link'",
     },
+
+    #// ===========================
+    #// OTHER PAGES
+    #// ===========================
+
+    ".error-recovery-links a" => {
+      :category => "'error page'",
+      :action => "'welcome help link'",
+      },
 
 }
 

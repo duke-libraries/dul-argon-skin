@@ -19,6 +19,7 @@ $(document).ready(function() {
 
   $(".barcode-toggle").on("click",function(e) {
     e.preventDefault();
+    $(this).toggleClass('shown');
     $('.barcode-wrapper').toggle();
   });
 
