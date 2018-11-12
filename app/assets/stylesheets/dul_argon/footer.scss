@@ -20,6 +20,11 @@
       margin-right: 3px;
       color: #777;
       text-decoration: none;
+
+      span {
+        color: #333;
+      }
+
       &:hover {
         text-decoration: none;
         &.fa-twitter-square {
