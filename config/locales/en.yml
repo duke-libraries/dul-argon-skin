@@ -24,6 +24,10 @@ en:
     home:
       welcome: "Duke University Libraries Catalog"
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
+    search:
+      form:
+        search:
+          placeholder: "Search books & media"
     not_found:
       title: "Sorry, Your Page Isn't Here"
       options: "Try these options"
