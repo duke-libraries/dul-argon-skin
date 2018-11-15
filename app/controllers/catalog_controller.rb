@@ -31,7 +31,8 @@ class CatalogController < ApplicationController
     #  See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      uf: '-*'
+      uf: '-*',
+      sow: true
     }
 
     # solr path which will be added to solr base url before other solr params
