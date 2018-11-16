@@ -1,0 +1,42 @@
+<% if request.env['PATH_INFO'] == '/trln' %>
+  <h1><%= t('trln_argon.search.zero_results.trln_title_html', search_terms: truncate(params[:q], length: 60, escape: false)) %></h1>
+<% else %>
+  <h1><%= t('trln_argon.search.zero_results.title_html', local_institution_name: institution_long_name, search_terms: truncate(params[:q], length: 60, escape: false)) %></h1>
+<% end %>
+
+<p class="lead"><%= t('trln_argon.search.zero_results.suggestion') %></p>
+
+<div class="col-md-12 row">
+
+  <div class="flex-columns no-results">
+
+    <% if filtered_results_total > 0 %>
+      <div class="col-md-6 well">
+
+        <h4><%= t("trln_argon.search.zero_results.expand_search", count: filtered_results_total) %></h4>
+
+        <div class="view_trln_results"><%= link_to(t("trln_argon.search.zero_results.view_trln_results_html"), no_results_escape_href_url, class: 'btn btn-lg btn-primary') %></div>
+      </div>
+    <% end %>
+
+    <% if filtered_results_total > 0 %>
+      <div class="col-md-6 well">
+    <% else %>
+      <div class="col-md-12 well">
+    <% end %>
+
+      <h4><%= t('trln_argon.search.help.title') %></h4>
+
+      <ul>
+        <li><%= link_to(t('blacklight.help.ask_a_librarian'), TrlnArgon::Engine.configuration.contact_url) %></li>
+        <li><%= t("blacklight.help.worldcat_link_html") %></li>
+        <li><%= t('trln_argon.search.help.request_link_html') %></li>
+        <li><a href="https://library.duke.edu/find/articles" target="_blank"><%= t('trln_argon.search.help.search_for_articles') %></a></li>
+        <li><a href="https://library.duke.edu/apps/colldev/request/" target="_blank"><%= t('trln_argon.search.help.suggest_a_purchase') %></a></li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>
