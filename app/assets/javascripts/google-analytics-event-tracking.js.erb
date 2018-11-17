@@ -194,7 +194,7 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :label => "$(this).attr('href')"
     },
 
-  "#documents.documents-list .document .fulltext-url a" => {
+  "#documents.documents-list .document .primary-url a" => {
     :category => "'search results'",
     :action => "'view online'",
     :label => "$(this).data('original-title') || $(this).text()"
@@ -365,7 +365,7 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :label => "$(this).parent().prev('.call-number').text()"
     },
 
-  "#document .fulltext-url a" => {
+  "#document .primary-url a" => {
     :category => "'item page'",
     :action => "'view online'",
     :label => "$(this).data('original-title') || $(this).text()"

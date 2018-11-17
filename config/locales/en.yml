@@ -43,8 +43,11 @@ en:
       search_tips_html: "Try our <a href='#' target='_blank'>search tips</a> for help in searching this catalog"
   trln_argon:
     links:
-      online_access: "View Online"
+      finding_aid: "Collection Guide"
       hathitrust: "View Online"
+      online_access: "View Online"
+      online_access_restricted: "View Online (%{institution} Only)"
+      open_access: "View Online"
     local_filter:
       searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
     map_location:
