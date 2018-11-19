@@ -4,6 +4,8 @@ require 'rails_helper'
 
 describe TrlnArgonHelper do
   describe '#link_to_fulltext_url' do
+    before { TrlnArgon::Engine.configuration.local_institution_code = 'duke' }
+
     context 'when url data includes text' do
       let(:url_hash) do
         { href: 'http://www.law.duke.edu/journals/lcp/',
