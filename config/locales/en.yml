@@ -52,13 +52,14 @@ en:
       searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
     map_location:
       button: 'Map/Info'
+      icon_html: '<i class="fa fa-map-marker" aria-hidden="true" data-toggle="tooltip" data-container="body" data-placement="right" title="Where to find it"><span class="sr-only">map marker</span></i>'
       label:
         building: 'Building'
         area: 'Area'
       error: 'There was a problem finding the location of this item.'
     barcode:
       label: 'Barcode'
-      button: 'Staff View'
+      button: 'staff view'
     search:
       zero_results:
         trln_title_html: 'No results were found at Duke, UNC, NCSU, or NCCU Libraries for your search <em>%{search_terms}</em>'
