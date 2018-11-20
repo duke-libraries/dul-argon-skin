@@ -101,6 +101,11 @@
     }
 }
 
+.location-modal-toggle .fa {
+  padding: 0 3px 0 3px;
+  font-size: 1.25em;
+}
+
 .barcode-label {
   background: #e5e5e5;
   color: #444;
@@ -139,14 +144,17 @@
   position: absolute;
   bottom: 0;
   right: 15px;
+  font-size: .85em;
 }
 
-.barcode-toggle {
+.barcode-toggle,
+.barcode-toggle:hover,
+.barcode-toggle:focus {
   color: $gray;
 }
 
-/* hide start over and edit buttons */
-#startOverLink,
+
+/* hide edit button */
 #editSearchLink {
   display: none;
 }
