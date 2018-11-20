@@ -59,3 +59,17 @@ en:
     barcode:
       label: 'Barcode'
       button: 'Staff View'
+    search:
+      zero_results:
+        trln_title_html: 'No results were found at Duke, UNC, NCSU, or NCCU Libraries for your search <em>%{search_terms}</em>'
+        title_html: 'No results were found at %{local_institution_name} for your search <em>%{search_terms}</em>'
+        suggestion: 'Try checking your spelling, using different or more general terms, or removing filters.'
+        expand_search:
+            one: '1 result at UNC, NCSU, NCCU Libraries'
+            other: '%{count} results at UNC, NCSU, NCCU Libraries'
+        view_trln_results_html: 'View Results &raquo;'
+      help:
+        title: "Still can't find it?"
+        search_for_articles: 'Search for articles'
+        suggest_a_purchase: 'Suggest a Purchase'
+        request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles and items unavailable at Duke through Interlibrary Requests"
