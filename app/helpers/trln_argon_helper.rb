@@ -27,4 +27,31 @@ module TrlnArgonHelper
               link_icon.html_safe + t('trln_argon.links.online_access')
             end
   end
+
+  include TrlnArgon::ViewHelpers::ItemsSectionHelper
+
+  def call_number_wrapper_class(options = {})
+    if options.fetch(:action, false) == 'show'
+      'col-md-6 col-sm-7 call-number-wrapper'
+    else
+      'col-lg-5 col-md-6 col-sm-12 call-number-wrapper'
+    end
+  end
+
+  def status_wrapper_class(options = {})
+    if options.fetch(:action, false) == 'show'
+      'col-md-6 col-sm-5'
+    else
+      'col-lg-7 col-md-6 col-sm-12'
+    end
+  end
+
+  def item_note_wrapper_class(options = {})
+    if options.fetch(:action, false) == 'show' &&
+       options.fetch(:item_length, 0) < 120
+      'col-md-6 col-sm-12'
+    else
+      'col-md-12'
+    end
+  end
 end

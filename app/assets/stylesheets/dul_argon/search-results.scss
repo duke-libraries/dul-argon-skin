@@ -31,6 +31,7 @@
       font-size: 1.5em;
       padding: 0;
       margin-top: 0;
+      z-index: 0 !important;
       a:hover {
         text-decoration: underline;
         color: $link-hover-color;
@@ -142,8 +143,8 @@
 .barcode-toggle-wrapper {
   text-align: right;
   position: absolute;
-  bottom: 0;
-  right: 15px;
+  bottom: -10px;
+  right: 10px;
   font-size: .85em;
 }
 
@@ -265,4 +266,8 @@ div.primary-url {
 .view_trln_results .btn {
   padding: 1em 2em;
   width: 100%;
+}
+
+.items-wrapper .location-narrow-group {
+  overflow: hidden;
 }
