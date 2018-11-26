@@ -123,6 +123,12 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
+    config.add_search_field('shelfkey') do |field|
+      field.label = I18n.t('trln_argon.search_fields.shelfkey')
+      field.advanced_parse = false
+      field.include_in_advanced_search = false
+    end
+
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
