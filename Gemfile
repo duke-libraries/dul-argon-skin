@@ -59,6 +59,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'blacklight', '~> 6.7'
+gem 'lcsort', '~> 0.9'
 gem 'trln_argon', git: 'https://github.com/trln/trln_argon'
 
 group :development, :test do
