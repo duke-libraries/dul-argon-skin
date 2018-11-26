@@ -209,7 +209,7 @@
       color: white;
     }
     &:not(.collapsed) {
-     color: $dul-dulcet-green;
+     color: white;
     }
   }
 
@@ -241,7 +241,7 @@
     a {
       color: white;
       &:hover {
-        background: #a1b70d;
+        background: $brand-success;
       }
     }
   }
