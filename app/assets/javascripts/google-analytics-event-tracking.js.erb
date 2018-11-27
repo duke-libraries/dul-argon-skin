@@ -250,6 +250,17 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'pagination bottom'"
     },
 
+  #// No Results Found pages
+  ".no-results .view_trln_results a" => {
+    :category => "'no results'",
+    :action => "'trln results button'"
+    },
+
+  ".no-results a:not(.view_trln_results a)" => {
+    :category => "'no results'",
+    :action => "'other links'"
+    },
+
   #// ===========================
   #// ADVANCED SEARCH FORM
   #// ===========================
