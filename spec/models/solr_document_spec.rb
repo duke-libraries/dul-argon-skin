@@ -194,7 +194,7 @@ describe SolrDocument do
             'Location': 'https://find.library.duke.edu/trln/DUKE003485622',
             'LoanTitle': 'Blue blood',
             'ESPNumber': '505249141',
-            'ISSN': '9780134276717 / 013427671X',
+            'ISSN': '9780134276717',
             'LoanEdition': '1st ed.',
             'LoanPublisher': 'Boston',
             'LoanAuthor': 'Art Chansky'
@@ -204,7 +204,7 @@ describe SolrDocument do
       # rubocop:disable RSpec/ExampleLength
       it 'returns the combined parameters as URL query string' do
         expect(solr_document.illiad_request_params).to eq(
-          'ESPNumber=505249141&ISSN=9780134276717+%2F+013427671X'\
+          'ESPNumber=505249141&ISSN=9780134276717'\
           '&LoanAuthor=Art+Chansky&LoanEdition=1st+ed.&LoanPublisher=Boston'\
           '&LoanTitle=Blue+blood'\
           '&Location=https%3A%2F%2Ffind.library.duke.edu%2F'\

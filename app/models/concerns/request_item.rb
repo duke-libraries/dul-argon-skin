@@ -66,7 +66,7 @@ module RequestItem
       'Location': item_url_absolute,
       'LoanTitle': fetch(TrlnArgon::Fields::TITLE_MAIN, ''),
       'ESPNumber': oclc_number,
-      'ISSN': isbn_number.join(' / '),
+      'ISSN': isbn_number.first,
       'LoanEdition': edition,
       'LoanPublisher': imprint_main_for_header_display,
       'LoanAuthor': statement_of_responsibility
