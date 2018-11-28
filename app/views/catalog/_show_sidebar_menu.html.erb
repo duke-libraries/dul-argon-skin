@@ -1,0 +1,26 @@
+<%# Custom DUL Argon Skin partial. %>
+<ul class="sidebar-menu nav nav-pills nav-stacked" id="show-sidebar-menu">
+      <li><a href="#holdings"><%= t('trln_argon.show.heading.holdings') %></a></li>
+    <% if display_authors?(document: @document) %>
+      <li><a href="#authors"><%= t('trln_argon.show.heading.authors') %></a></li>
+    <% end %>
+    <% if display_summary?(document: @document) %>
+      <li><a href="#summary"><%= t('trln_argon.show.heading.summary') %></a></li>
+    <% end %>
+    <% if display_toc?(document: @document) %>
+      <li><a href="#contents"><%= t('trln_argon.show.heading.contents') %></a></li>
+    <% end %>
+    <% if display_sample_chapter?(document: @document) %>
+      <li><a href="#sample-chapter"><%= t('trln_argon.show.heading.sample_chapter') %></a></li>
+    <% end %>
+    <% if display_included_works?(document: @document) %>
+      <li><a href="#included-works"><%= t('trln_argon.show.heading.included_works') %>...</a></li>
+    <% end %>
+    <% if display_subjects?(document: @document) %>
+      <li><a href="#subjects"><%= t('trln_argon.show.heading.subjects') %>...</a></li>
+    <% end %>
+      <li><a href="#other-details">Other details</a></li>
+    <% if display_related_works?(document: @document) %>
+      <li><a href="#related-works"><%= t('trln_argon.show.heading.related_works') %></a></li>
+    <% end %>
+</ul>

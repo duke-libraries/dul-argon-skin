@@ -1,0 +1,117 @@
+#show-sidebar {
+  padding-top: 20px;
+  padding-left: 30px;
+  @media (max-width: $screen-sm) {
+    display: none;
+  }
+}
+
+#show-sidebar-inner {
+  .blacklight.thumbnail {
+    border-radius: none;
+    float: none;
+    display: block;
+    margin-left: 0;
+    img {
+      max-width: 100%;
+      border-radius: none;
+      -webkit-transition: -webkit-transform 0.4s;
+      transition: transform 0.4s;
+    }
+  }
+  .btn {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  a.sidebar-top-link {
+    display: none;
+  }
+  a.sidebar-thumb-link {
+    cursor: default;
+  }
+
+
+  ul.sidebar-menu {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+    li {
+      margin: 0;
+      background: none;
+      a {
+        color: $gray-light;
+        font-weight: bold;
+        padding: 2px 0;
+        background: none !important;
+        &:hover {
+          color: $link-hover-color;
+          background: none;
+          text-decoration: underline;
+        }
+        &:active, &:focus {
+          text-decoration: none;
+        }
+      }
+      &.active a {
+        background: none;
+        color: $brand-success;
+      }
+    }
+  }
+
+  /* Styles when "sticky" via Bootstrap affix plugin */
+  /* Widths need to be explicitly set b/c position:fixed */
+  /* element can't inherit its parent element width. */
+  &.affix {
+    top: 0;
+    z-index: 9999 !important;
+
+
+    @media (min-width: $screen-lg) {
+     width: 255px;
+    }
+
+    @media (max-width: $screen-lg) {
+     width: 205px;
+    }
+    @media (max-width: $screen-md) {
+     width: 150px;
+    }
+    /* Don't let the sidebar get sticky (position: fixed) */
+    /* at small viewports */
+    @media (max-width: $screen-sm) {
+      position: relative !important;
+    }
+
+    a.sidebar-top-link {
+      display: flex;
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+      }
+      &:before, &:after {
+        content:'';
+        flex: 1;
+        border-bottom: 2px solid $primary-link-color;
+        margin: auto;
+      }
+      &:hover:before, &:hover:after {
+        border-color: $link-hover-color;
+      }
+      div {
+        background: white; padding: 10px
+      }
+    }
+
+    a.sidebar-thumb-link {
+      cursor: pointer;
+    }
+
+    .blacklight.thumbnail {
+      max-width: 60px;
+      margin: 0 auto 10px auto;
+    }
+
+  }
+}
+

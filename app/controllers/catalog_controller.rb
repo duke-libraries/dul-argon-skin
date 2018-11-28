@@ -14,8 +14,7 @@ class CatalogController < ApplicationController
       %i[thumbnail index_document_actions index_header index index_items]
 
     # Add Request button using Blacklight's extensible "tools" for
-    # index & show view
-    config.add_show_tools_partial(:request_button, partial: 'request_button')
+    # index view
     config.add_results_document_tool(:request_button, partial: 'request_button')
 
     ## Class for sending and receiving requests from a search index

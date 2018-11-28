@@ -1,0 +1,14 @@
+<%# Overrides TRLN Argon partial in order to wrap dt+dd pairs in a parent div for styling to columns %>
+<div id="related-works" class="<%= show_related_works_class %>">
+  <% if display_related_works?(document: document) %>
+    <h2><%= t('trln_argon.show.heading.related_works') %></h2>
+      <dl class="dl-invert">
+        <% show_configured_fields_and_values(blacklight_config.show_related_works_fields, document).each do |value| %>
+          <div>
+            <dt><%= value[:label] %></dt>
+            <%= value[:value] %>
+          </div>
+        <% end %>
+      </dl>
+  <% end %>
+</div>
