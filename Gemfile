@@ -63,6 +63,7 @@ gem 'lcsort', '~> 0.9'
 gem 'trln_argon', git: 'https://github.com/trln/trln_argon'
 
 group :development, :test do
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop', '~> 0.58.2'
   gem 'rubocop-rspec'

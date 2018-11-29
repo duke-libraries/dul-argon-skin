@@ -17,18 +17,33 @@ describe SearchBuilder do
       builder_with_params.add_shelfkey_query_to_solr(solr_parameters)
     end
 
-    let(:builder_with_params) do
-      subject.with(q: 'PJ709 .G533', 'search_field' => 'shelfkey')
+    context 'with a basic call number' do
+      let(:builder_with_params) do
+        subject.with(q: 'PJ709 .G533', 'search_field' => 'shelfkey')
+      end
+
+      it 'assembles the shelfkey query' do
+        expect(solr_parameters[:q]).to(
+          eq('shelfkey:/lc:PJ.0709.G533(\\..*|-.*)*/')
+        )
+      end
+
+      it 'sets the defType to lucene' do
+        expect(solr_parameters[:defType]).to eq('lucene')
+      end
     end
 
-    it 'assembles the shelfkey query' do
-      expect(solr_parameters[:q]).to(
-        eq('{!edismax qf=shelfkey_t pf=shelfkey_t}lc\\:PJ.0709.G533')
-      )
-    end
+    context 'with a call number that includes volume or copy info' do
+      let(:builder_with_params) do
+        subject.with(q: 'DD207.5 .M26 1975 Bd.2 c.1',
+                     'search_field' => 'shelfkey')
+      end
 
-    it 'sets the defType to lucene' do
-      expect(solr_parameters[:defType]).to eq('lucene')
+      it 'assembles the shelfkey query without volume/copy info' do
+        expect(solr_parameters[:q]).to(
+          eq('shelfkey:/lc:DD.02075.M26.1975(\\..*|-.*)*/')
+        )
+      end
     end
   end
 
