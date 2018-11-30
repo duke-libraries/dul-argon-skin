@@ -27,7 +27,7 @@ en:
     search:
       form:
         search:
-          placeholder: "Search books & media"
+          placeholder: "Find books, music, movies & more"
     not_found:
       title: "Sorry, Your Page Isn't Here"
       options: "Try these options"
