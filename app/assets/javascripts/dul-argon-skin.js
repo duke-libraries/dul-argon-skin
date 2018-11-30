@@ -67,7 +67,7 @@ $(document).ready(function() {
   };
 
   function escape_id( the_id ) {
-    return the_id.replace( /(:|\.|\[|\]|,|=|@|\/|\&|\$|\%)/g, "\\$1" );
+    return the_id.replace( /(:|\.|\[|\]|,|=|@|\/|\&|\$|\%|\+)/g, "\\$1" );
   }
 
   /* API call function */
@@ -96,36 +96,42 @@ $(document).ready(function() {
           console.log(id);
           console.log(escape_id(id));
 
-          /* update status text */
-          //mySpan.text(status.label);
-          if ((mySpan.text()).trim() !== (status.label).trim()) {
-            mySpan.fadeOut(function() {
-              $(this).text(status.label).delay(delay).fadeIn();
-              delay += 100;
-              console.log('changed text!');
-            });
-          }
+          // error handling for non-matching items
+          if (mySpan.text() == "") {
+            return true;
+          } else {
 
-          /* update status class */
-          switch (status.available) {
-            case 'yes':
-              if ( (mySpan.attr('class')).trim() != 'item-available' ) {
-                mySpan.attr('class', 'item-available');
-                console.log('changed class!');
-              }
-              break;
-            case 'no':
-              if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
-                mySpan.attr('class', 'item-not-available');
-                console.log('changed class!');
-              }
-              break;
-            case 'other':
-              if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
-                mySpan.attr('class', 'item-availability-misc');
-                console.log('changed class!');
-              }
-              break;
+            /* update status text */
+            if ((mySpan.text()).trim() !== (status.label).trim()) {
+              mySpan.fadeOut(function() {
+                $(this).text(status.label).delay(delay).fadeIn();
+                delay += 100;
+                console.log('changed text!');
+              });
+            }
+
+            /* update status class */
+            switch (status.available) {
+              case 'yes':
+                if ( (mySpan.attr('class')).trim() != 'item-available' ) {
+                  mySpan.attr('class', 'item-available');
+                  console.log('changed class!');
+                }
+                break;
+              case 'no':
+                if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
+                  mySpan.attr('class', 'item-not-available');
+                  console.log('changed class!');
+                }
+                break;
+              case 'other':
+                if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
+                  mySpan.attr('class', 'item-availability-misc');
+                  console.log('changed class!');
+                }
+                break;
+            }
+
           }
 
         });
