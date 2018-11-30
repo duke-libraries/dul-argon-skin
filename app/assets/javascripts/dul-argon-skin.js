@@ -84,17 +84,11 @@ $(document).ready(function() {
       if (this.readyState == 4 && this.status == 200) {
         var availability_response = JSON.parse(this.responseText);
 
-        delay = 0;
-
         /* API returns itemID (as id) => [ label (as status.label), available (as status.available) ] */
         $.each(availability_response, function(id, status) {
 
           //var myDiv = $("div").find(`[data-item-barcode='${id}']`);
           var mySpan = $( "#item-" + escape_id(id) + " dl dd span" );
-
-          console.log('+++');
-          console.log(id);
-          console.log(escape_id(id));
 
           // error handling for non-matching items
           if (mySpan.text() == "") {
@@ -103,11 +97,16 @@ $(document).ready(function() {
 
             /* update status text */
             if ((mySpan.text()).trim() !== (status.label).trim()) {
-              mySpan.fadeOut(function() {
-                $(this).text(status.label).delay(delay).fadeIn();
-                delay += 100;
-                console.log('changed text!');
-              });
+
+              mySpan
+                // uses velocity.js for fade animation (much faster than jquery)
+                .velocity("fadeOut", {
+                  duration: 500,
+                  complete: function() {
+                    mySpan.text(status.label)
+                  }
+                })
+                .velocity("fadeIn", { delay: 250, duration: 500 });
             }
 
             /* update status class */
@@ -115,19 +114,16 @@ $(document).ready(function() {
               case 'yes':
                 if ( (mySpan.attr('class')).trim() != 'item-available' ) {
                   mySpan.attr('class', 'item-available');
-                  console.log('changed class!');
                 }
                 break;
               case 'no':
                 if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
                   mySpan.attr('class', 'item-not-available');
-                  console.log('changed class!');
                 }
                 break;
               case 'other':
                 if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
                   mySpan.attr('class', 'item-availability-misc');
-                  console.log('changed class!');
                 }
                 break;
             }
