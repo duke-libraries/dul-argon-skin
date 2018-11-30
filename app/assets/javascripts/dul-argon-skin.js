@@ -41,6 +41,104 @@ $(document).ready(function() {
     });
   });
 
+
+
+  /* UPDATE AVAILABILITY */
+  /* uses request app API */
+
+  /* if this is a show page */
+  if ( $('body').hasClass('blacklight-catalog-show') ) {
+    var document_id = $( "#document div:first-child" ).attr('id').replace(/\D/g,'');
+    /* only run call if there is a current status */
+    if ($('.status-label').length > 0) {
+      get_the_availability(document_id);
+    }
+  };
+
+  /* if this is a results page */
+  if ( $('body').hasClass('blacklight-catalog-index') ) {
+    $('.document').each(function() {
+      var document_id = $( this ).find( "h3.index_title a" ).attr('href').replace(/\D/g,'');
+      /* only run call if there is a current status */
+      if ($( this ).find('.status-label').length > 0) {
+        get_the_availability(document_id);
+      }
+    });
+  };
+
+  function escape_id( the_id ) {
+    return the_id.replace( /(:|\.|\[|\]|,|=|@|\/|\&|\$|\%)/g, "\\$1" );
+  }
+
+  /* API call function */
+  /* needs a document_id, makes api call, updates DOM */
+
+  function get_the_availability(document_id) {
+
+    var api_url = 'https://requests.library.duke.edu/circstatus/';
+
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+
+      if (this.readyState == 4 && this.status == 200) {
+        var availability_response = JSON.parse(this.responseText);
+
+        delay = 0;
+
+        /* API returns itemID (as id) => [ label (as status.label), available (as status.available) ] */
+        $.each(availability_response, function(id, status) {
+
+          //var myDiv = $("div").find(`[data-item-barcode='${id}']`);
+          var mySpan = $( "#item-" + escape_id(id) + " dl dd span" );
+
+          console.log('+++');
+          console.log(id);
+          console.log(escape_id(id));
+
+          /* update status text */
+          //mySpan.text(status.label);
+          if ((mySpan.text()).trim() !== (status.label).trim()) {
+            mySpan.fadeOut(function() {
+              $(this).text(status.label).delay(delay).fadeIn();
+              delay += 100;
+              console.log('changed text!');
+            });
+          }
+
+          /* update status class */
+          switch (status.available) {
+            case 'yes':
+              if ( (mySpan.attr('class')).trim() != 'item-available' ) {
+                mySpan.attr('class', 'item-available');
+                console.log('changed class!');
+              }
+              break;
+            case 'no':
+              if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
+                mySpan.attr('class', 'item-not-available');
+                console.log('changed class!');
+              }
+              break;
+            case 'other':
+              if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
+                mySpan.attr('class', 'item-availability-misc');
+                console.log('changed class!');
+              }
+              break;
+          }
+
+        });
+      };
+
+    };
+
+    xmlhttp.open("GET", api_url + document_id, true);
+    xmlhttp.withCredentials = true;
+    xmlhttp.send();
+
+  };
+
 });
 
 
