@@ -134,7 +134,6 @@ $(document).ready(function() {
     };
 
     xmlhttp.open("GET", api_url + document_id, true);
-    xmlhttp.withCredentials = true;
     xmlhttp.send();
 
   };
