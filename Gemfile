@@ -74,3 +74,6 @@ end
 # gem 'devise-guests', '~> 0.6'
 
 gem 'better_errors', '2.1.1'
+
+# JS animation library
+gem 'velocityjs-rails'
