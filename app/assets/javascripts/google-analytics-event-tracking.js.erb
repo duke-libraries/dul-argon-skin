@@ -394,30 +394,36 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     },
 
   #// Metadata
-  "#document .show-authors a" => {
+  "#document #authors a" => {
     :category => "'item page'",
     :action => "'author link'",
     },
 
-  "#document .enhanced-data a" => {
+  "#document #enhanced-data a" => {
     :category => "'item page'",
     :action => "'enhanced data link'",
     },
 
-  "#document .show-subjects a" => {
+  "#document #subjects a" => {
     :category => "'item page'",
     :action => "'subject link'",
     },
 
-  "#document .other-details a" => {
+  "#document #other-details a" => {
     :category => "'item page'",
     :action => "'other details link'",
     },
 
-  "#document .show-included-works a" => {
+  "#document #included-works a" => {
     :category => "'item page'",
     :action => "'included works link'",
     },
+
+  "#document #related-works a" => {
+    :category => "'item page'",
+    :action => "'related works link'",
+    },
+
 
   #// ===========================
   #// HOMEPAGE

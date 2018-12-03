@@ -186,7 +186,7 @@
 /* NOTE: designed to look like a DUL .btn-info. Consider using only that */
 /* button class on the 'show more' links. */
 
-#documents .items .btn-info, #document .holdings .items .btn-info {
+#documents .items .btn-info, #document #holdings .items .btn-info {
   background-color: white;
   border: 2px solid $primary-link-color;
   color: $primary-link-color;
