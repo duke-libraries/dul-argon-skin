@@ -31,6 +31,17 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128295598-2"></script>
     <script>
+
+      if (window.location.hostname == 'find.library.duke.edu') {
+        var gaID = 'UA-128295598-1';
+      } else if (window.location.hostname == 'find-dev.library.duke.edu') {
+        var gaID = 'UA-128295598-2';
+      } else if (window.location.hostname == 'find-test.library.duke.edu') {
+        var gaID = 'UA-128295598-3';
+      } else {
+        var gaID = 'UA-128295598-4';
+      }
+      
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -40,7 +51,7 @@
           'page_type': '404 Page'
         });
 
-        gtag('config', 'UA-128295598-2', {
+        gtag('config', gaID, {
           'anonymize_ip': true,
           'transport_type': 'beacon',
           'custom_map': {
