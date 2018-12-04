@@ -77,3 +77,6 @@ gem 'better_errors', '2.1.1'
 
 # JS animation library
 gem 'velocityjs-rails'
+
+# use static assets for error pages
+gem 'non-stupid-digest-assets'
