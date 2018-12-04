@@ -39,3 +39,17 @@ deploy_pre:
     - master
   tags:
     - staging
+
+deploy_prod:
+  environment:
+    name: production
+    url: https://find.library.duke.edu
+  stage: deploy
+  before_script: *beforedeployscript
+  script: *deployscript
+  after_script: *afterdeployscript
+  only:
+    - master
+  when: manual
+  tags:
+    - production
