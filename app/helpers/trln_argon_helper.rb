@@ -50,24 +50,32 @@ module TrlnArgonHelper
 
   def call_number_wrapper_class(options = {})
     if options.fetch(:action, false) == 'show'
-      'col-md-6 col-sm-7 call-number-wrapper'
+      'col-lg-6 col-sm-12 call-number-wrapper'
     else
-      'col-lg-5 col-md-6 col-sm-12 call-number-wrapper'
+      'col-lg-5 col-sm-12 call-number-wrapper'
+    end
+  end
+
+  def holdings_summary_wrapper_class(options = {})
+    if options.fetch(:action, false) == 'show'
+      'col-lg-8 col-sm-12 summary-wrapper'
+    else
+      'col-lg-7 col-sm-12 summary-wrapper'
     end
   end
 
   def status_wrapper_class(options = {})
     if options.fetch(:action, false) == 'show'
-      'col-md-6 col-sm-5'
+      'col-lg-6 col-sm-12'
     else
-      'col-lg-7 col-md-6 col-sm-12'
+      'col-lg-7 col-sm-12'
     end
   end
 
   def item_note_wrapper_class(options = {})
     if options.fetch(:action, false) == 'show' &&
        options.fetch(:item_length, 0) < 120
-      'col-md-6 col-sm-12'
+      'col-lg-6 col-sm-12'
     else
       'col-md-12'
     end
