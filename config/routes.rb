@@ -42,7 +42,5 @@ Rails.application.routes.draw do
 
   resource :styleguide, only: [:show], as: 'styleguide', path: '/styleguide', controller: 'styleguide'
 
-  get "/404", to: "errors#not_found"
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
