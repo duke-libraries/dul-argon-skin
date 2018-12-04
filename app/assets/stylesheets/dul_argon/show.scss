@@ -1,13 +1,137 @@
-/* Style the Request button like the rest of the "document tools" pills */
-/* styled in trln_argon. Temporary, to be revisted when more attention */
-/* can be paid toward show page. */
+#document h2 {
+  margin-bottom: 0.6em;
+}
 
-#document-tools .request-from-duke, #document-tools .request-from-trln {
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-  &:hover, &:active, &:focus {
-   background: #449d44;
+#title-and-thumbnail {
+  .blacklight.thumbnail {
+    margin-top: 1.5em;
+    margin-left: 0.5em;
+    /* Only show this thumb in smallest viewports, others use sidebar */
+    @media (min-width: $screen-sm) {
+      display: none;
+    }
+  }
+}
+
+.show-document {
+  padding-bottom: 30px;
+  padding-right: 30px;
+  box-shadow: inset -20px 0 20px -20px rgba(0,0,0,0.25);
+
+  @media (max-width: $screen-sm) {
+    border-right: none;
+    box-shadow: none;
+  }
+  .show-tools {
+    /* Hide at most widths in favor of sidebar display */
+    display: none;
+    @media (max-width: $screen-sm) {
+      /* At smallest widths, sidebar is gone; show tools in main content */
+      display: block;
+    }
+  }
+}
+
+#show-sub-header {
+  margin-top: 1.5em;
+  li.statement_of_responsibility_a {
+    font-weight: bold;
+    font-size: 19px;
+  }
+  /* Make secondary metadata fields display on one line, separated by slashes */
+  li.edition_a,
+  li.resource_type_a,
+  li.physical_media_a {
+    display: inline;
+    &::after {
+      content: " / ";
+      color: $gray-light;
+      margin: 0 0.4em;
+    }
+    &:last-of-type::after {
+      content: "";
+      margin: 0;
+    }
+  }
+}
+
+/* List styles, esp. for styling to columns */
+
+.show-document ul {
+  margin-left: 0;
+}
+
+.show-document {
+  /* Consider refining these styles in TRLN Argon */
+  /* rather than override them here. See trln_argon_shared.scss */
+  #authors, #included-works, #subjects {
+    ul {
+      list-style-type: square;
+      color: #999;
+      column-gap: 3em;
+      column-fill: balance;
+      column-width: auto;
+      padding-left: 0;
+      li {
+        margin-bottom: 6px;
+        display: inline-block;
+        margin-left: 1em;
+        width: 100%;
+        &:before {
+          content: '■';
+          margin-left: -1.5em;
+          display: block;
+          float: left;
+          margin-right: .5em;
+          font-size: 60%;
+          padding-top: .5em;
+        }
+      }
+    }
+  }
+
+  #authors ul, #included-works ul {
+    @media screen and (min-width: $screen-sm) {
+      column-count: 2;
+    }
+    @media screen and (min-width: $screen-lg) {
+      column-count: 3;
+    }
+  }
+
+  #subjects ul {
+    @media screen and (min-width: $screen-sm) {
+      column-count: 2;
+    }
+  }
+}
+
+#other-details, #related-works {
+  dl.dl-invert {
+    column-count: 2;
+    column-gap: 3em;
+    @media screen and (max-width: $screen-sm-max) {
+      column-count: auto;
+    }
+
+    & > div {
+      break-inside: avoid;
+      margin-bottom: 1.2em;
+    }
+    & dt {
+      padding: 0;
+      margin: 0;
+      font-weight: bold;
+      &:not(:first-child) {
+        margin-top: 15px;
+      }
+    }
+    & dd {
+      padding: 0;
+      margin: 0;
+      & ul {
+        padding-left: 0;
+      }
+    }
   }
 }

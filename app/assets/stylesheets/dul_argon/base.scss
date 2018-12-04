@@ -2,6 +2,7 @@ body {
   font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
   font-size: 16px;
   background-color: #eee;
+  position: relative; /* needed for Bootstrap scrollspy */
 }
 
 #main-container {
@@ -10,6 +11,11 @@ body {
     background: white;
     padding: 0 15px;
   }
+}
+
+
+.contracted { /* faded expandable text */
+  height: 5.8em !important;
 }
 
 a:hover {

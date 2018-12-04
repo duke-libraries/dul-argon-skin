@@ -355,17 +355,73 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     },
 
   #// ===========================
-  #// ITEM SHOW PAGE
+  #// ITEM SHOW PAGE & SIDEBAR
   #// ===========================
   #// Keep actions consistent with search results page for any elements
   #// that appear in both contexts, e.g., Request or Map/Info links.
+
+  "#show-sidebar a.sidebar-top-link" => {
+    :category => "'item sidebar'",
+    :action => "'back to top'",
+    :label => "'back to top (link)'"
+    },
+
+  "#show-sidebar a.sidebar-thumb-link" => {
+    :category => "'item sidebar'",
+    :action => "'back to top'",
+    :label => "'back to top (thumb)'"
+    },
+
+  "#show-sidebar a.request-from-duke" => {
+    :category => "'item sidebar'",
+    :action => "'item tools'",
+    :label => "'Request (Duke)'"
+    },
+
+  "#show-sidebar a.request-from-trln" => {
+    :category => "'item sidebar'",
+    :action => "'item tools'",
+    :label => "'Request (TRLN)'"
+    },
+
+  "#show-sidebar .doc-tools a" => {
+    :category => "'item sidebar'",
+    :action => "'item tools'"
+    },
+
+  "#show-sidebar .doc-tools button" => {
+    :category => "'item sidebar'",
+    :action => "'item tools'"
+    },
+
+  "#show-sidebar .sidebar-menu a" => {
+    :category => "'item sidebar'",
+    :action => "'sidebar nav menu'"
+    },
 
   "#previousNextDocument a" => {
     :category => "'item page'",
     :action => "'item to results nav'"
     },
 
-  "#document-tools a" => {
+  ".show-tools a.request-from-trln" => {
+    :category => "'item page'",
+    :action => "'item tools'",
+    :label => "'Request (TRLN)'"
+    },
+
+  ".show-tools a.request-from-duke" => {
+    :category => "'item page'",
+    :action => "'item tools'",
+    :label => "'Request (Duke)'"
+    },
+
+  ".show-tools .doc-tools a" => {
+    :category => "'item page'",
+    :action => "'item tools'"
+    },
+
+  ".show-tools .doc-tools button" => {
     :category => "'item page'",
     :action => "'item tools'"
     },

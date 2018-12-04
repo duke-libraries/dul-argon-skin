@@ -1,0 +1,14 @@
+<div id="show-sidebar-inner" data-spy="affix" data-offset-top="205">
+  <a href="#" class="sidebar-top-link back-to-top">
+    <div>
+      <span class="fa fa-angle-double-up"></span> Top
+    </div>
+  </a>
+  <a href="#" class="sidebar-thumb-link back-to-top">
+    <%= render :partial => 'show_thumbnail', locals: { document: @document } %>
+  </a>
+  <%= render :partial => 'show_tools', locals: { document: @document } %>
+  <hr/>
+  <%= render :partial => 'show_sidebar_menu' %>
+  <hr/>
+</div>

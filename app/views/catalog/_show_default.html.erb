@@ -1,0 +1,17 @@
+<%# Overrides TRLN Argon partial in order to wrap dt+dd pairs in a parent div for styling to columns %>
+<%# default partial to display solr document fields in catalog show view -%>
+<% if display_other_details?(document: document) %>
+  <div id="other-details" class="<%= show_other_details_class %>">
+    <h2><%= t('trln_argon.show.heading.metadata') %></h2>
+    <dl class="dl-invert">
+      <% document_show_fields(document).each do |field_name, field| -%>
+        <% if should_render_show_field? document, field %>
+          <div>
+            <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
+            <dd class="blacklight-<%= field_name.parameterize %>"><%= presenter(document).field_value(field) %></dd>
+          </div>
+        <% end -%>
+      <% end -%>
+    </dl>
+  </div>
+<% end %>

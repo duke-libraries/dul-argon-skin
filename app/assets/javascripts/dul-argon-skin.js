@@ -1,5 +1,59 @@
 $(document).ready(function() {
 
+  /* Ensure the sticky item show sidebar (using BS affix.js) doesn't */
+  /* bleed into the footer when at the bottom of the content section */
+
+  function sticky_relocate() {
+    var window_top = $(window).scrollTop();
+    var footer_top = $("#footer").offset().top;
+    var div_top = $('#show-sidebar-inner').offset().top;
+    var div_height = $("#show-sidebar-inner").height();
+    var padding = 20;
+
+    if (window_top + div_height > footer_top - padding) {
+      $('#show-sidebar-inner').css({top: (window_top + div_height - footer_top + padding) * -1});
+    }
+
+  }
+
+  $(function () {
+    /* Ensure the sidebar gets un/stuck correctly upon initial page load, */
+    /* scroll, and viewport resize events */
+    $( window ).scroll(sticky_relocate);
+    $( window ).resize(sticky_relocate);
+    sticky_relocate();
+  });
+
+  $('body').scrollspy({
+    target: '#show-sidebar-inner',
+    offset: 30
+  });
+
+  // Smooth scroll to all anchors, esp. useful for sidebar menu
+  $('a[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+          || location.hostname == this.hostname) {
+
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 500);
+                return false;
+          }
+      }
+  });
+
+  // Smooth scroll to top
+  $('a.back-to-top').click(function() {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 500);
+    return false;
+  });
+
+
   /* DUL masthead primary navigation menu toggle */
   $('a#full-menu-toggle').on('click',function(e) {
     $(this).toggleClass('menu-active');

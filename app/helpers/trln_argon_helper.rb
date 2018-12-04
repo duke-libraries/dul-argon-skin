@@ -28,6 +28,24 @@ module TrlnArgonHelper
             end
   end
 
+  include TrlnArgon::ViewHelpers::TrlnArgonHelper
+
+  def show_class
+    'col-lg-9 col-md-9 col-sm-9 show-document'
+  end
+
+  def show_main_content_partials_class
+    'col-md-12 show-main-content-partials'
+  end
+
+  def show_tools_class
+    'col-md-12 show-tools'
+  end
+
+  def show_sub_header_class
+    'show-sub-header'
+  end
+
   include TrlnArgon::ViewHelpers::ItemsSectionHelper
 
   def call_number_wrapper_class(options = {})
