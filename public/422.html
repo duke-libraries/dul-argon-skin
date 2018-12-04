@@ -1,67 +1,318 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-  <title>The change you wanted was rejected (422)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    <!-- Mobile viewport optimization h5bp.com/ad -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    <!-- Internet Explorer use the highest version available -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <!--[if IEMobile]>
+      <meta http-equiv="cleartype" content="on">
+    <![endif]-->
 
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+    <title>Sorry, the change you wanted was rejected – Duke University Libraries Catalog</title>
+    <link href="https://find.library.duke.edu/catalog/opensearch.xml" title="Duke University Libraries Catalog" type="application/opensearchdescription+xml" rel="search" />
 
-<body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <script type="text/javascript" src="compiled_scripts.js"></script>
+    <link type="text/css" rel="stylesheet" media="all" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- local css -->
+    <link rtype="text/css" rel="stylesheet" media="all" href="compiled_styles.css" />
+    <link rtype="text/css" rel="stylesheet" media="all" href="extra_styles.css" />
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128295598-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('set', {
+          'catalog_scope': 'Neutral',
+          'page_type': '404 Page'
+        });
+
+        gtag('config', 'UA-128295598-2', {
+          'anonymize_ip': true,
+          'transport_type': 'beacon',
+          'custom_map': {
+            'dimension1': 'catalog_scope',
+            'dimension2': 'page_type'
+          }
+        });
+    </script>
+
+  </head>
+
+  <body>
+
+
+    <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+
+    <div class="row">
+      <div class="navbar-left logo-wrapper col-xs-12 col-sm-5 col-md-4 col-lg-3">
+
+        <div class="navbar-dul">
+          <a href="https://dev.library.duke.edu">
+            <img class="navbar-logo" alt="Duke University Libraries" src="https://library.duke.edu/masthead/img/logo.png" />
+          </a>
+        </div>
+        <div class="navbar-product-name">
+          <a href="/">
+            <span class="product-name-primary">
+              Catalog
+            </span>
+            <span class="product-name-secondary">
+              Books &amp; Media
+            </span>
+          </a>
+        </div>
+
+        <!-- Mobile menu button for narrowest breakpoint -->
+        <button type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#mobile-only-menu" title="Menu">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="fa fa-bars"></span>
+        </button>
+
+      </div>
+
+
+      <div class="searchbar navbar-left col-xs-12 col-sm-5 col-md-5 col-lg-6">
+
+    <form class="search-query-form clearfix navbar-form" role="search" action="https://find-dev.library.duke.edu/catalog" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+
+
+        <div class="form-group mast-search">
+
+          <div class="input-group">
+
+                <label for="search_field" class="sr-only">Search in</label>
+                <select name="search_field" id="search_field" class="search_field selectpicker" data-width="fit" data-style="btn-default search-select"><option value="all_fields">All Fields</option>
+<option value="title">Title</option>
+<option value="author">Author</option>
+<option value="subject">Subject</option>
+<option value="isbn_issn">ISBN/ISSN/barcode</option>
+<option value="shelfkey">Call Number (LC)</option></select>
+
+            <label for="q" class="sr-only">search for</label>
+            <input type="text" name="q" id="q" placeholder="Find books, music, movies &amp; more" class="search_q q form-control" data-autocomplete-enabled="true" data-autocomplete-path="/suggest">
+
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-success-action search-btn" id="search">
+                <span class="submit-search-text">Search</span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="search-extra-controls">
+          <div class="input-group">
+            <div class="input-group-element">
+              <!-- <label for='search_within'>Search within results</label> -->
+            </div>
+            <div class="input-group">
+              <a class="advanced_search" href="https://find-dev.library.duke.edu/advanced">Advanced Search</a>
+            </div>
+          </div>
+        </div>
+
+</form>
   </div>
-</body>
+
+      <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3">
+
+          <div id="primary-menu" role="navigation">
+
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="https://library.duke.edu/my-accounts" class="my-accounts">
+                  <span class="nav-label">My Accounts</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://library.duke.edu/research/ask" class="ask-a-librarian">
+                  <span class="nav-label">Ask</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" id="full-menu-toggle" class="full-menu">
+                  <span class="nav-label">Menu</span>
+                </a>
+              </li>
+            </ul>
+
+            <button type="button" class="mobile-menu-right-toggle navbar-toggle btn collapsed" data-toggle="collapse" data-target="#mobile-only-menu" title="Menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="fa fa-bars"></span>
+            </button>
+
+          </div>
+
+      </div>
+
+    </div>
+
+      </div>
+    </div>
+
+    <div id="dul-masthead-row">
+      <div class="container">
+        <div class="row">
+          <div id="dul-masthead-filler"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="//library.duke.edu/masthead/load-masthead.js.php?width=1200&amp;amp;fixed=false"></script>
+
+    <div id="mobile-only-menu" class="collapse">
+      <div class="col-xs-12">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="https://library.duke.edu/my-accounts">My Accounts</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/research/ask">Ask a Librarian</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/find">Search &amp; Find</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/using">Using the Library</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/research">Research Support</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/course-support">Course Support</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/libraries">Libraries</a>
+          </li>
+          <li>
+            <a href="https://library.duke.edu/about">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div id="main-container" class="container">
+      <h1 class="sr-only application-heading">Sorry, the change you wanted was rejected – Duke University Libraries Catalog</h1>
+
+      <div class="row">
+
+        <div class="page-header">
+          <h1 class="main-title">Sorry, the change you wanted was rejected</h1>
+        </div>
+
+        <h3>Try these options</h3>
+
+        <ul class="underlined-links error-recovery-links">
+          <li><a target="_blank" href="https://library.duke.edu">Visit our homepage</a></li>
+          <li><a href="/">Search the Catalog</a></li>
+          <li>Try our <a href='#' target='_blank'>search tips</a> for help in searching this catalog</li>
+          <li><a target="_blank" href="https://library.duke.edu/research/ask">Ask a Librarian</a> for help</li>
+        </ul>
+
+        <div class="form-group">&nbsp;</div>
+
+      </div>
+    </div>
+
+
+
+    <footer id="footer" role="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">
+            <a href="https://dev.library.duke.edu">
+              <img alt="Duke University Libraries" src="//library.duke.edu/sites/all/themes/dulcet/assets/images/devillogo-60pct-60.png" />
+            </a>
+          </div>
+          <div class="col-md-2">
+            <h4><a href="https://library.duke.edu/about/contact">Contact Us</a></h4>
+            <div>
+              <small>411 Chapel Drive<br>Durham, NC 27708<br>(919) 660-5870<br>Perkins Library Service Desk</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4><a href="https://library.duke.edu/services">Services for...</a></h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li><a href="https://library.duke.edu/services/faculty">Faculty &amp; Instructors</a></li>
+                    <li><a href="https://library.duke.edu/services/graduate">Graduate Students</a></li>
+                    <li><a href="https://library.duke.edu/services/undergraduate">Undergraduate Students</a></li>
+                    <li><a href="https://library.duke.edu/services/international">International Students</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li><a href="https://library.duke.edu/services/alumni">Alumni</a></li>
+                    <li><a href="https://library.duke.edu/services/donors">Donors</a></li>
+                    <li><a href="https://library.duke.edu/services/visitors">Visitors</a></li>
+                    <li><a href="https://library.duke.edu/services/disabilities">Patrons with Disabilities</a></li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+
+            <h4 class="social-media-icons">
+
+              <a href="https://twitter.com/DukeLibraries" title="Twitter"
+                class="fa fa-twitter-square"><span class="sr-only">Twitter</span></a>
+
+              <a href="https://www.facebook.com/dukelibraries" title="Facebook"
+                class="fa fa-facebook-square"><span class="sr-only">Facebook</span></a>
+
+              <a href="https://www.youtube.com/user/DukeUnivLibraries" title="YouTube"
+                class="fa fa-youtube-square"><span class="sr-only">YouTube</span></a>
+
+              <a href="https://www.flickr.com/photos/dukeunivlibraries/" title="Flickr"
+                class="fa fa-flickr"><span class="sr-only">Flickr</span></a>
+
+              <a href="https://instagram.com/dukelibraries" title="Instagram"
+                class="fa fa-instagram"><span class="sr-only">Instagram</span></a>
+
+              <a href="https://blogs.library.duke.edu/" title="Blogs"
+                class="fa fa-rss-square"><span class="sr-only">Blogs</span></a>
+
+            </h4>
+
+            <div class="newsletter-signup">
+              <a href="https://library.duke.edu/about/sign-our-newsletter">Sign Up for Our Newsletter</a>
+            </div>
+
+            <ul class="list-unstyled">
+              <li><a href="https://library.duke.edu/about/reuse-attribution">Re-use &amp; Attribution</a> / <a href="https://library.duke.edu/about/privacy">Privacy</a></li>
+              <li><a href="https://library.duke.edu/support">Support the Libraries</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <div id="duke-logo">
+              <a href="https://www.duke.edu">
+                <img alt="Duke University" src="//library.duke.edu/sites/all/themes/dulcet/assets/images/dukelogo_vert_60pct_140.png" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>
