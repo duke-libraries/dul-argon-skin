@@ -1,8 +1,9 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: f4f298a415293113aa57fcc538c45ef697080c9f
+  revision: a0d41b44b35ea29574364c9cd3134c780e902e21
   specs:
-    trln_argon (0.8.1)
+    trln_argon (0.8.6)
+      addressable (~> 2.5)
       blacklight (~> 6.16)
       blacklight-hierarchy (~> 1.1.0)
       blacklight_advanced_search (~> 6.2)
@@ -57,6 +58,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     ast (2.4.0)
     autoprefixer-rails (9.4.0)
@@ -174,6 +177,7 @@ GEM
       ast (~> 2.4.0)
     parslet (1.8.2)
     powerpack (0.1.2)
+    public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
     rack-test (0.6.3)
