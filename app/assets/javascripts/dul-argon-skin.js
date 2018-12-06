@@ -11,23 +11,30 @@ $(document).ready(function() {
     var padding = 20;
 
     if (window_top + div_height > footer_top - padding) {
-      $('#show-sidebar-inner').css({top: (window_top + div_height - footer_top + padding) * -1});
+      $('#show-sidebar-inner').css({
+        top: (window_top + div_height - footer_top + padding) * -1
+      });
+    } else {
+      $('#show-sidebar-inner').css({
+        top: 0
+      });
     }
 
   }
 
-  $(function () {
+  /* If it's an item show page w/sidebar, activate stickiness and scrollspy */
+  if($('#show-sidebar').length) {
     /* Ensure the sidebar gets un/stuck correctly upon initial page load, */
     /* scroll, and viewport resize events */
     $( window ).scroll(sticky_relocate);
     $( window ).resize(sticky_relocate);
     sticky_relocate();
-  });
 
-  $('body').scrollspy({
-    target: '#show-sidebar-inner',
-    offset: 30
-  });
+    $('body').scrollspy({
+      target: '#show-sidebar-inner',
+      offset: 30
+    });
+  }
 
   // Smooth scroll to all anchors, esp. useful for sidebar menu
   $('a[href*="#"]:not([href="#"]):not([data-toggle]):not(".btn-hide")').click(function() {
