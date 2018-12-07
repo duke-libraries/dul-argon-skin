@@ -121,26 +121,13 @@
   display: inline;
 }
 
-@media (min-width: $screen-xs) {
-  .barcode-wrapper {
-    margin-left: -4.5em;
-    min-width: 10em;
-  }
-}
-
-@media (min-width: $screen-md) {
-  .barcode-wrapper {
-    min-width: 15em;
-  }
-}
-
 .barcode-wrapper {
   width: 100%;
   margin-top: .5em;
   display: none;
 }
 
-.barcode-toggle-wrapper {
+.staff-view-toggle-wrapper {
   text-align: right;
   position: absolute;
   bottom: -10px;
@@ -148,9 +135,9 @@
   font-size: .85em;
 }
 
-.barcode-toggle,
-.barcode-toggle:hover,
-.barcode-toggle:focus {
+.staff-view-toggle,
+.staff-view-toggle:hover,
+.staff-view-toggle:focus {
   color: $gray;
 }
 
@@ -232,6 +219,7 @@ div.primary-url {
   }
 
 }
+
 
 .flex-columns {
   display: flex;

@@ -28,8 +28,6 @@ module TrlnArgonHelper
             end
   end
 
-  include TrlnArgon::ViewHelpers::TrlnArgonHelper
-
   def show_class
     'col-lg-9 col-md-9 col-sm-9 show-document'
   end
@@ -50,25 +48,25 @@ module TrlnArgonHelper
 
   def call_number_wrapper_class(options = {})
     if options.fetch(:action, false) == 'show'
-      'col-lg-6 col-sm-12 call-number-wrapper'
+      'col-lg-7 col-sm-12 call-number-wrapper'
     else
-      'col-lg-5 col-sm-12 call-number-wrapper'
+      'col-lg-7 col-sm-12 call-number-wrapper'
     end
   end
 
   def holdings_summary_wrapper_class(options = {})
     if options.fetch(:action, false) == 'show'
-      'col-lg-8 col-sm-12 summary-wrapper'
+      'col-lg-12 col-sm-12 summary-wrapper'
     else
-      'col-lg-7 col-sm-12 summary-wrapper'
+      'col-lg-12 col-sm-12 summary-wrapper'
     end
   end
 
   def status_wrapper_class(options = {})
     if options.fetch(:action, false) == 'show'
-      'col-lg-6 col-sm-12'
+      'col-lg-5 col-sm-12'
     else
-      'col-lg-7 col-sm-12'
+      'col-lg-5 col-sm-12'
     end
   end
 

@@ -78,10 +78,11 @@ $(document).ready(function() {
     }
   });
 
-  $(".barcode-toggle").on("click",function(e) {
+  /* Toggle staff view: show barcodes, etc. */
+  $(".staff-view-toggle").on("click",function(e) {
     e.preventDefault();
     $(this).toggleClass('shown');
-    $('.barcode-wrapper').toggle();
+    $(this).closest('.items').find('.barcode-wrapper').fadeToggle();
   });
 
 

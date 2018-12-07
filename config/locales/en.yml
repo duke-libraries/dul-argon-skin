@@ -59,7 +59,7 @@ en:
       error: 'There was a problem finding the location of this item.'
     barcode:
       label: 'Barcode'
-      button: 'staff view'
+    staff_view: "Staff View"
     search:
       zero_results:
         trln_title_html: 'No results were found at Duke, UNC, NCSU, or NCCU Libraries for your search <em>%{search_terms}</em>'
