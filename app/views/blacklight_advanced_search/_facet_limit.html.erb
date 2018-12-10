@@ -1,0 +1,23 @@
+<!-- NOTE: Override of BL Advanced Search partial so that  we can-->
+<!--       render location codes as human readable strings. -->
+
+<div class="advanced_facet_limit">
+  <div class="inclusive_or well">
+    <h4>Any of:</h4>
+    <ul class="list-unstyled facet-values">
+    <% advanced_query.filters[solr_field].each do |value| %>
+      <li>
+        <% if solr_field == TrlnArgon::Fields::LOCATION_HIERARCHY_FACET.to_s %>
+          <span class="selected"><%= location_filter_display(h(value)) %></span>
+        <% else %>
+          <span class="selected"><%= h(value) %></span>
+        <% end %>
+        <%= link_to(remove_advanced_facet_param(solr_field, value, params), :class => "remove") do %>
+            <span class="glyphicon glyphicon-remove"></span><span class="sr-only">[remove]</span>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <%= render_facet_limit display_facet, :layout => nil, :partial => advanced_search_facet_partial_name(display_facet) %>
+</div>
