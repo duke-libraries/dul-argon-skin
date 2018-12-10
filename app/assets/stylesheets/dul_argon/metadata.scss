@@ -1,16 +1,96 @@
-.items.well {
-  clear: both;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  margin-bottom: 1em !important;
-  border: none;
-}
+#document, #documents {
 
-.location-header {
-  font-size: 13px;
-  text-transform: uppercase;
-  color: #555;
-  & .loc-broad, .loc-narrow, h4 {
-    font-weight: bold;
+  div.items h3,
+  div.availability h3 {
+    color: #444;
   }
+
+  /* Make item group display emulate .row to align child cols */
+  /* Ideally this would be overridable in trln_argon_helper.rb */
+  /* Or there'd be a <div class="row"> around this section in */
+  /* the catalog/_items_section.html.erb partial. */
+  .item-group-display {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  /* Holdings well style -- maybe this could eventually be color */
+  /* coded (green/red/neutral) to signify overall availability */
+  .items, #holdings .items {
+    overflow: visible;
+    border: none;
+    margin: 0;
+    border-left: 8px solid #ddd;
+
+    .institution-availability {
+      /* Emulate a .row wrapping the .col -- may be better to fix */
+      /* in TRLN Argon */
+      .primary-url {
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+    }
+
+    .location-narrow-group {
+      background-color: tint($primary-link-color, 90%);
+      border-top: 0;
+      border-bottom: 0;
+      border-right: 0;
+      border-left: 8px solid $primary-link-color;
+      width: 100%;
+      padding: 0;
+      margin: 5px 0 5px 3px;
+      padding: 10px 3px;
+      width: calc(100% - 14px);
+      .call-number-wrapper {
+        width: 100%;
+        font-weight: bold;
+      }
+      .summary-text-wrapper.contracted:after {
+        background: linear-gradient(to right, rgba(243, 243, 243, 0), tint($primary-link-color, 90%) 50%);
+      }
+      .holding-note {
+        font-style: italic;
+        font-size: 15px;
+      }
+    }
+
+    /* Staff view link only on hover */
+    .staff-view-toggle-wrapper {
+      display: none;
+      font-size: 12px;
+    }
+    &:hover .staff-view-toggle-wrapper {
+      display: block;
+    }
+  }
+
+  .location-header {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #444;
+    & .loc-broad, .loc-narrow, h4 {
+      font-weight: bold;
+    }
+  }
+
+  .call-number:empty:before {
+    content: 'No Call Number';
+  }
+
+  .expandable-content, .expandable-content-controls {
+    margin-right: 15px;
+  }
+
+  /* Hide the labels */
+  .items, .items .institution-availability {
+    dt {
+      display: none;
+      width: 0;
+    }
+    dd {
+      margin-left: 0;
+    }
+  }
+
 }
