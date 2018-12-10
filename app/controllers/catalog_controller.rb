@@ -32,6 +32,24 @@ class CatalogController < ApplicationController
       rows: 10
     }
 
+    config.advanced_search[:form_solr_parameters] = {
+      # NOTE: You will not get any facets back
+      #       on the advanced search page
+      #       unless defType is set to lucene.
+      'defType' => 'lucene',
+      'facet.field' => [TrlnArgon::Fields::AVAILABLE_FACET.to_s,
+                        TrlnArgon::Fields::ACCESS_TYPE_FACET.to_s,
+                        TrlnArgon::Fields::RESOURCE_TYPE_FACET.to_s,
+                        TrlnArgon::Fields::LANGUAGE_FACET.to_s,
+                        TrlnArgon::Fields::LOCATION_HIERARCHY_FACET.to_s],
+      'f.resource_type_f.facet.limit' => -1, # return all resource type values
+      'f.language_f.facet.limit' => -1, # return all language facet values
+      'f.location_hierarchy_f.facet.limit' => -1, # return all loc facet values
+      'facet.limit' => -1, # return all facet values
+      'facet.sort' => 'index', # sort by byte order of values
+      'facet.query' => ''
+    }
+
     # solr path which will be added to solr base url before other solr params
     # config.solr_path = 'select'
 

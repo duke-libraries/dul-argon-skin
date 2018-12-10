@@ -16,6 +16,27 @@ describe CatalogController do
     end
   end
 
+  # rubocop:disable RSpec/ExampleLength
+  describe 'advanced search configuration' do
+    it 'sets the form solr parameters' do
+      expect(config.advanced_search[:form_solr_parameters]).to(
+        eq('defType' => 'lucene',
+           'f.language_f.facet.limit' => -1,
+           'f.location_hierarchy_f.facet.limit' => -1,
+           'f.resource_type_f.facet.limit' => -1,
+           'facet.field' => %w[available_f
+                               access_type_f
+                               resource_type_f
+                               language_f
+                               location_hierarchy_f],
+           'facet.limit' => -1,
+           'facet.query' => '',
+           'facet.sort' => 'index')
+      )
+    end
+  end
+  # rubocop:enable RSpec/ExampleLength
+
   describe 'shelfkey queries' do
     before { skip('Skipping call number tests. Useful but brittle.') }
 
