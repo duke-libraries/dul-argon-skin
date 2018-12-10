@@ -46,15 +46,15 @@ module TrlnArgonHelper
 
   include TrlnArgon::ViewHelpers::ItemsSectionHelper
 
-  def call_number_wrapper_class
+  def call_number_wrapper_class(_options = {})
     'col-lg-7 col-sm-12 call-number-wrapper'
   end
 
-  def holdings_summary_wrapper_class
+  def holdings_summary_wrapper_class(_options = {})
     'col-lg-12 col-sm-12 summary-wrapper'
   end
 
-  def status_wrapper_class
+  def status_wrapper_class(_options = {})
     'col-lg-5 col-sm-12'
   end
 
