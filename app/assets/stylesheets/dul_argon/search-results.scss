@@ -10,6 +10,9 @@
     margin-right: 0;
     padding-right: 15px;
   }
+  @media (min-width: $screen-sm) {
+    padding-top: 0;
+  }
 }
 
 #documents {
@@ -59,7 +62,6 @@
     max-width: 78px;
   }
 }
-
 
 .index-document-metadata {
   float: none;
@@ -159,20 +161,27 @@ div.primary-url {
   width: 100% !important;
 }
 
-#documents .document h3.document-title-heading {
-  word-wrap: break-word;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  display: block;
-  display: -webkit-box;
-  max-height: 3.6em;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: $primary-link-color;
+#documents .document {
+  .has-request,
+  .has-thumbnail,
+  .has-request-and-thumbnail,
+  .no-request-nor-thumbnail {
+    h3.document-title-heading {
+      word-wrap: break-word;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      display: block;
+      display: -webkit-box;
+      max-height: 3.6em;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $primary-link-color;
+    }
+  }
 }
 
 @-moz-document url-prefix() {
