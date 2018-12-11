@@ -204,6 +204,8 @@ $(document).ready(function() {
 
 });
 
+/* Add classes to the search results titles depending on whether they have */
+/* thumbnails, request buttons, both, or neither */
 
 Blacklight.onLoad(function() {
 
@@ -224,7 +226,11 @@ Blacklight.onLoad(function() {
 
         if (!hasRequest && hasWidth > 2) {
           $(this).children(".documentHeader").addClass("has-thumbnail");
-        };
+        }
+
+        if (!hasRequest && hasWidth < 2) {
+          $(this).children(".documentHeader").addClass("no-request-nor-thumbnail");
+        }
 
       });
 
