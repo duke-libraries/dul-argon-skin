@@ -232,6 +232,22 @@ div.primary-url {
     }
   }
 
+  .primary-url ul.multiple-links-institution,
+  .primary-url ul.multiple-links {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      flex: 0 calc(50% - 10px);
+      text-align: center;
+    }
+    li:nth-child(odd) {
+      margin-right: 5px;
+    }
+    li:nth-child(even) {
+      margin-left: 5px;
+    }
+  }
+
 }
 
 
@@ -272,4 +288,13 @@ div.primary-url {
 
 .items-wrapper .location-narrow-group {
   overflow: hidden;
+}
+
+.modal-button-wrapper {
+  display: inline-block;
+}
+
+#documents .modal-body .primary-url {
+  width: 100% !important;
+  margin: 0 !important;
 }

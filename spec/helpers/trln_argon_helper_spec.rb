@@ -17,7 +17,7 @@ describe TrlnArgonHelper do
         '<a class="link-type-fulltext link-restricted-duke" '\
         'target="_blank" '\
          'title="Law and contemporary problems, v. 63, no. 1-2" '\
-         'data-toggle="tooltip" data-placement="right" '\
+         'data-toggle="tooltip" '\
          'href="http://www.law.duke.edu/journals/lcp/">'\
          '<i class="fa fa-external-link" aria-hidden="true">'\
          '</i>View Online</a>'
@@ -39,7 +39,6 @@ describe TrlnArgonHelper do
         '<a class="link-type-fulltext link-restricted-duke" '\
         'target="_blank" '\
         'title="View Online" data-toggle="tooltip" '\
-        'data-placement="right" '\
         'href="http://www.law.duke.edu/journals/lcp/">'\
         '<i class="fa fa-external-link" '\
         'aria-hidden="true"></i>View Online</a>'

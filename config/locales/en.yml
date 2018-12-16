@@ -47,7 +47,9 @@ en:
       hathitrust: "View Online"
       online_access: "View Online"
       online_access_restricted: "View Online (%{institution} Only)"
+      online_access_all: "View All Online Links"
       open_access: "View Online"
+      open_access_all: "View All Online Links"
     local_filter:
       searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
     map_location:
