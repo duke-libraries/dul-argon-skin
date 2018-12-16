@@ -23,9 +23,31 @@ module TrlnArgonHelper
     link_to(url_hash[:href],
             class: "link-type-#{url_hash[:type]} link-restricted-#{inst}",
             target: '_blank', title: fulltext_link_text(url_hash),
-            data: { toggle: 'tooltip', placement: 'right' }) do
+            data: { toggle: 'tooltip' }) do
               link_icon.html_safe + t('trln_argon.links.online_access')
             end
+  end
+
+  def link_to_expanded_fulltext_url(url_hash, inst)
+    return if url_hash[:href].blank?
+    link_to(url_hash[:href],
+            class: "link-type-#{url_hash[:type]} link-restricted-#{inst}",
+            target: '_blank', title: fulltext_link_text(url_hash),
+            data: { toggle: 'tooltip' }) do
+      '<i class="fa fa-external-link" aria-hidden="true"></i>'.html_safe +
+        expanded_fulltext_link_text(inst)
+    end
+  end
+
+  def fulltext_link_text(url_hash)
+    # this is only used in link's title attribute, so it's OK to have note first
+    if url_hash[:note].present?
+      url_hash[:note]
+    elsif url_hash[:text].present?
+      url_hash[:text]
+    else
+      I18n.t('trln_argon.links.online_access')
+    end
   end
 
   def show_class

@@ -232,6 +232,24 @@ div.primary-url {
     }
   }
 
+  .primary-url ul.multiple-links {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      flex: 0 33%;
+      text-align: center;
+    }
+  }
+
+  .primary-url ul.multiple-links-institution {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      flex: 0 50%;
+      text-align: center;
+    }
+  }
+
 }
 
 
@@ -272,4 +290,8 @@ div.primary-url {
 
 .items-wrapper .location-narrow-group {
   overflow: hidden;
+}
+
+.modal-button-wrapper {
+  display: inline-block;
 }

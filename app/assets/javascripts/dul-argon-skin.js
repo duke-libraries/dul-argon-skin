@@ -86,10 +86,38 @@ $(document).ready(function() {
   });
 
 
+  /* position tooltips */
+  $("#holdings ul.single-link a").tooltip({placement : 'right'});
+  $("#holdings button.link-type-fulltext").tooltip({placement : 'right'});
+  $("#documents ul.single-link a").tooltip({placement : 'right'});
+  $("#documents button.link-type-fulltext").tooltip({placement : 'right'});
+
+  var holdings_multi = $("#holdings ul.multiple-links");
+  var holdings_multi_institution = $("#holdings ul.multiple-links-institution");
+  var documents_multi = $("#documents ul.multiple-links");
+  var documents_multi_institution = $("#documents ul.multiple-links-institution");
+
+  if ( $("#footer").width() >= 768 ) {
+    holdings_multi_institution.find("li:nth-child(even) a").tooltip({placement : 'left'});
+    holdings_multi_institution.find("li:nth-child(odd) a").tooltip({placement : 'right'});
+    holdings_multi.find("li:not(:nth-child(3n)) a").tooltip({placement : 'right'});
+    holdings_multi.find("li:nth-child(3n) a").tooltip({placement : 'left'});
+    documents_multi_institution.find("li:nth-child(even) a").tooltip({placement : 'left'});
+    documents_multi_institution.find("li:nth-child(odd) a").tooltip({placement : 'right'});
+    documents_multi.find("li:not(:nth-child(3n)) a").tooltip({placement : 'right'});
+    documents_multi.find("li:nth-child(3n) a").tooltip({placement : 'left'});
+  } else {
+    holdings_multi_institution.find("li a").tooltip({placement : 'right'});
+    holdings_multi.find("li a").tooltip({placement : 'right'});
+    documents_multi_institution.find("li a").tooltip({placement : 'right'});
+    documents_multi.find("li a").tooltip({placement : 'right'});
+  }
+
   /* enable tooltips*/
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
+
 
   /* When the Request button is clicked for a TRLN result, show */
   /* a modal with links to choose your home library. Add the    */
@@ -203,6 +231,7 @@ $(document).ready(function() {
   };
 
 });
+
 
 /* Add classes to the search results titles depending on whether they have */
 /* thumbnails, request buttons, both, or neither */

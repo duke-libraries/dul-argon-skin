@@ -1,0 +1,55 @@
+<% if document.all_shared_and_local_fulltext_urls_by_inst.fetch(inst, []).to_a.any? %>
+
+  <% if document.all_shared_and_local_fulltext_urls_by_inst.fetch(inst, []).to_a.count > 1 %>
+
+    <div class="col-md-7 primary-url">
+      <div class="modal-button-wrapper" data-toggle="modal" data-target="#modal_<%= document.id %>_<%= inst %>">
+        <button type="button" class="link-type-fulltext" data-toggle="tooltip" data-original-title="<%= t('trln_argon.links.online_access_all') %>">
+          <i class="fa fa-external-link" aria-hidden="true"></i> <%= expanded_fulltext_link_text(inst) %>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_<%= document.id %>_<%= inst %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= document.id %>_<%= inst %>_label">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modal_<%= document.id %>_<%= inst %>_label"><%= t('trln_argon.links.online_access_all') %></h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="<%= primary_link_class %>">
+              <ul class="multiple-links-institution">
+
+                <% document.all_shared_and_local_fulltext_urls_by_inst.fetch(inst, []).to_a.each do |url| %>
+                  <% next unless url.present? %>
+                    <li>
+                      <%= link_to_expanded_fulltext_url(url, inst) %>
+                    </li>
+                <% end %>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+
+    <div class="<%= primary_link_class %>">
+      <ul class="single-link">
+        <% document.all_shared_and_local_fulltext_urls_by_inst.fetch(inst, []).to_a.each do |url| %>
+          <% next unless url.present? %>
+            <li>
+              <%= link_to_expanded_fulltext_url(url, inst) %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+<% end %>
