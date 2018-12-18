@@ -44,6 +44,11 @@
       float: right;
       padding-left: .5em;
       margin-bottom: 10px;
+      margin-right: 1em;
+      /* Opacity gets changed to 1 via JS once thumb validity has been checked  */
+      /* and thus the position is known.*/
+      opacity: 0;
+      transition: opacity 1s linear;
       position: relative;
       z-index: 10; /* must exceed .document-title-heading's z-index */
       clear: right;
@@ -60,6 +65,13 @@
     border: none !important;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     max-width: 78px;
+  }
+  &.hidden + .index-document-functions {
+    /* Flush the request button right if the thumb is bad/missing */
+    margin-right: 0 !important;
+  }
+  & ~ .has-request-and-thumbnail {
+    margin-left: 1em;
   }
 }
 

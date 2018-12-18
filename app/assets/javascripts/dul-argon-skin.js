@@ -213,7 +213,9 @@ $(document).ready(function() {
 
 
 /* Add classes to the search results titles depending on whether they have */
-/* thumbnails, request buttons, both, or neither */
+/* thumbnails, request buttons, both, or neither. Fade the request button */
+/* in once its final position is known, to prevent it from hopping after it */
+/* is initially rendered. */
 
 Blacklight.onLoad(function() {
 
@@ -226,10 +228,12 @@ Blacklight.onLoad(function() {
 
         if (hasRequest && hasWidth > 2) {
           $(this).children(".documentHeader").addClass("has-request-and-thumbnail");
+          $(this).children(".index-document-functions").css('opacity','1');
         }
 
         if (hasRequest && hasWidth < 2) {
           $(this).children(".documentHeader").addClass("has-request");
+          $(this).children(".index-document-functions").css('opacity','1');
         }
 
         if (!hasRequest && hasWidth > 2) {
