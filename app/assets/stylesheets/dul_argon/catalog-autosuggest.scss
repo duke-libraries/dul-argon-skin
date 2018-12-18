@@ -1,0 +1,34 @@
+/* ===============================  */
+/* Autosuggest Styles for External  */
+/* Search Forms                     */
+/* ===============================  */
+
+.twitter-typeahaed {
+  .tt-menu {
+    background: white;
+    min-height: 100px;
+    max-height: 250px;
+    overflow-y: auto;
+    font-family: inherit;
+    padding: 0.2em;
+    font-size: 85%;
+    border: 1px solid #aaa;
+  }
+  .tt-suggestion {
+    padding: 0.5em;
+    margin: 0;
+    text-align: left;
+    clear: both;
+    &:hover, &:focus, &:tt-cursor {
+      background: #eee;
+      cursor: pointer;
+    }
+    .tt-category {
+      float: right;
+      font-weight: bold;
+      padding-left: 1em;
+      padding-right: 10px;
+      color: #053482;
+    }
+  }
+}
