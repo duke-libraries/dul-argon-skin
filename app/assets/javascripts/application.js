@@ -23,8 +23,8 @@
 //= require velocity
 
 // Exclude individual files (see https://github.com/rails/sprockets#stub)
-//= stub catalog-autosuggest.js
-//= stub catalog-typeahead.js
+//= stub autosuggest/catalog-autosuggest.js
+//= stub autosuggest/catalog-typeahead.js
 
 //= require_tree .
 

@@ -7,7 +7,6 @@
 NonStupidDigestAssets.whitelist += [
   "application.css",
   "application.js",
-  "catalog-typeahead.js",
-  "catalog-autosuggest.js",
+  "autosuggest/index.js",
   "dul_argon/catalog-autosuggest.css"
   ]
