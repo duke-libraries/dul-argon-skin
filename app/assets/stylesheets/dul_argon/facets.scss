@@ -4,6 +4,9 @@
     &:hover {
       color: $link-hover-color;
     }
+    &.remove:hover {
+      color: $brand-danger;
+    }
   }
   .facet-field-heading a {
     color: $gray-darker;
@@ -28,6 +31,12 @@
     margin-top: 0;
     margin-bottom: 5px;
     border-radius: 0;
+  }
+
+  .facet-values li {
+    .selected, &.selected:hover {
+      color: $brand-success;
+    }
   }
 
   // Facets from Blacklight Hierarchy gem
@@ -56,6 +65,9 @@
     li.h-leaf {
       a:not(.remove) {
         max-width: 232px; // 240px trln_argon
+      }
+      .selected {
+        color: $brand-success;
       }
     }
 
