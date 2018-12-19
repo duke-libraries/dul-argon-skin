@@ -42,6 +42,8 @@ en:
       worldcat_link_html: "Use <a href='http://proxy.lib.duke.edu/login?url=http://firstsearch.oclc.org/fsip?dbname=worldcat&amp;screen=advanced' target='_blank'>WorldCat</a> to search holdings from libraries worldwide"
       search_tips_html: "Try our <a href='https://library.duke.edu/using/catalog-search-tips' target='_blank'>search tips</a> for help in searching this catalog"
   trln_argon:
+    sort_options:
+      date_cataloged_desc: "Date Cataloged (new to old)"
     links:
       finding_aid: "Collection Guide"
       hathitrust: "View Online"
