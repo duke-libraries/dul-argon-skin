@@ -303,3 +303,21 @@ div.primary-url {
   width: 100% !important;
   margin: 0 !important;
 }
+
+/* updates trln values for show/hide */
+
+#enhanced-data .content p {
+  font-size: 16px;
+  margin-bottom: 22px;
+  line-height: 22px;
+}
+
+.contracted,
+.contracted-ul {
+  margin-bottom: 22px;
+  max-height: 88px;
+}
+
+.contracted-ul {
+  max-height: 96px;
+}
