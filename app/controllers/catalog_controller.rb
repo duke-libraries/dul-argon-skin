@@ -152,6 +152,19 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
+
+    config.add_sort_field 'date_cataloged desc, '\
+                          "#{TrlnArgon::Fields::DATE_CATALOGED} desc, "\
+                          "#{TrlnArgon::Fields::PUBLICATION_YEAR_SORT} desc",
+                          label: \
+                          I18n.t('trln_argon.sort_options.date_cataloged_desc')
+
+    config.add_sort_field 'date_cataloged asc, '\
+                          "#{TrlnArgon::Fields::DATE_CATALOGED} asc, "\
+                          "#{TrlnArgon::Fields::PUBLICATION_YEAR_SORT} asc",
+                          label: \
+                          I18n.t('trln_argon.sort_options.date_cataloged_asc')
+
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
