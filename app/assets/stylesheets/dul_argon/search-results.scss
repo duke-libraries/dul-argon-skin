@@ -81,6 +81,7 @@
   }
   & ul {
     margin-left: 0;
+    margin-bottom: 5px;
   }
 }
 
@@ -179,7 +180,8 @@ div.primary-url {
       display: -webkit-box;
       max-height: 3.6em;
       margin: 0 auto;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+      margin-top: 10px;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
@@ -187,6 +189,25 @@ div.primary-url {
       color: $primary-link-color;
     }
   }
+
+  .statement_of_responsibility_a {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    max-height: 2.7em;
+    -webkit-line-clamp: 2;
+    // max-height: 4em;
+    // -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+#documents .document:first-of-type h3.document-title-heading {
+  margin-top: 0;
 }
 
 @-moz-document url-prefix() {
