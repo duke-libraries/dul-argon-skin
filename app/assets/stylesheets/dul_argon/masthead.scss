@@ -97,6 +97,11 @@
         flex: 0 0 auto;
         width: auto;
       }
+
+      input#q {
+        background-color: #fff !important;
+      }
+
       .twitter-typeahead {
         min-width: auto;
         .tt-menu {
