@@ -20,7 +20,7 @@
     margin: 0;
     text-align: left;
     clear: both;
-    &:hover, &:focus, &:tt-cursor {
+    &:hover, &:focus, &.tt-cursor {
       background: #eee;
       cursor: pointer;
     }
