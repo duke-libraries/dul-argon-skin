@@ -57,7 +57,7 @@
 }
 
 .blacklight.thumbnail {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-left: 1em;
   img {
     margin: 0;
@@ -181,7 +181,7 @@ div.primary-url {
       max-height: 3.6em;
       margin: 0 auto;
       margin-bottom: 5px;
-      margin-top: 10px;
+      margin-top: 0;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
@@ -204,10 +204,6 @@ div.primary-url {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}
-
-#documents .document:first-of-type h3.document-title-heading {
-  margin-top: 0;
 }
 
 @-moz-document url-prefix() {
