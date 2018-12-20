@@ -139,8 +139,12 @@
     dd {
       padding: 0;
       margin: 0;
-      br {
-        line-height: 2.25em;
+      /* Make line-breaks in any of the note or description   */
+      /* fields taller to look more like separated paragraphs */
+      &[class*="note"], &[class*="description"] {
+        br {
+          line-height: 2.25em;
+        }
       }
       ul {
         padding-left: 0;
