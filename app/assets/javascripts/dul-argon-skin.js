@@ -98,6 +98,12 @@ $(document).ready(function() {
   });
 
 
+  // add border to non-empty previousNextDocument
+  if ($("#previousNextDocument div").length) {
+    $("#previousNextDocument").addClass('border');
+  }
+
+
   /* When the Request button is clicked for a TRLN result, show */
   /* a modal with links to choose your home library. Add the    */
   /* corresponding ILLiad request parameters to those links.    */

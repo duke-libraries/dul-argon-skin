@@ -15,6 +15,14 @@
   }
 }
 
+#previousNextDocument {
+  border-bottom: none;
+}
+
+#previousNextDocument.border {
+  border-bottom: 1px solid #ddd;
+}
+
 #documents {
   .document {
     border-bottom: none;
