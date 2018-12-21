@@ -26,7 +26,10 @@ describe SolrDocument do
       let(:solr_document) do
         described_class.new(
           id: 'DUKE012345678',
-          access_type_a: '["At the Library","Online"]'
+          access_type_a: '["At the Library","Online"]',
+          items_a: ['{"loc_b":"PERKN","loc_n":"PK7","cn_scheme":"LC",'\
+                    '"call_no":"DS113 .J57 2019","type":"BOOK",'\
+                    '"item_id":"D05305040H","status":"On Hold"}']
         )
       end
 
@@ -72,6 +75,25 @@ describe SolrDocument do
         expect(solr_document.duke_requestable?).to be false
       end
     end
+
+    context 'when the item belongs to Duke and includes an online location' do
+      let(:solr_document) do
+        described_class.new(
+          id: 'DUKE012345678',
+          items_a: ['{"loc_b":"LAW","loc_n":"LINRE","cn_scheme":" ",'\
+                    '"call_no":"http://www.digital-law.net/IJCLP/index.html",'\
+                    '"type":"ITNET","status":"Available"}']
+        )
+      end
+
+      before do
+        allow(solr_document).to receive(:record_owner).and_return('duke')
+      end
+
+      it 'is not requestable' do
+        expect(solr_document.duke_requestable?).to be false
+      end
+    end
   end
 
   describe 'trln_requestable?' do
@@ -79,7 +101,10 @@ describe SolrDocument do
       let(:solr_document) do
         described_class.new(
           id: 'UNC012345678',
-          access_type_a: '["At the Library","Online"]'
+          access_type_a: '["At the Library","Online"]',
+          items_a: ['{"item_id":"i2065349","loc_b":"trln","loc_n":"trln",'\
+                    '"status":"Available","cn_scheme":"LC",'\
+                    '"call_no":"PN1998.A2 L328","vol":"v.1"}']
         )
       end
 

@@ -12,5 +12,7 @@ DulArgonSkin.configure do |config|
   config.illiad_ford_base_url = ENV['ILLIAD_FORD_BASE_URL']
   config.illiad_med_base_url = ENV['ILLIAD_MED_BASE_URL']
   config.map_location_service_url = ENV['MAP_LOCATION_SERVICE_URL']
+  config.online_loc_b_codes = ENV['ONLINE_LOC_B_CODES'].split(', ')
+  config.online_loc_n_codes = ENV['ONLINE_LOC_N_CODES'].split(', ')
   config.request_base_url = ENV['REQUEST_BASE_URL']
 end

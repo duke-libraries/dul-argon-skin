@@ -78,6 +78,10 @@ module DulLinkHelper
     end
   end
 
+  def open_access_link_text(_url_hash)
+    I18n.t('trln_argon.links.open_access')
+  end
+
   def expanded_link_to_open_access(url_hash, options = {})
     link_to(url_hash[:href],
             class: "link-type-#{url_hash[:type]} link-open-access",

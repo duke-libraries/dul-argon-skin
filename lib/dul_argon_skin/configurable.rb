@@ -50,6 +50,16 @@ module DulArgonSkin
         ENV['MAP_LOCATION_SERVICE_URL'] ||= 'https://library.duke.edu/locguide/mapinfo'
       end
 
+      # Broad and narrow location codes that indicate online items.
+      # =========================================================
+      mattr_accessor :online_loc_b_codes do
+        ENV['ONLINE_LOC_B_CODES'] ||= 'ONLINE, DUKIR'
+      end
+
+      mattr_accessor :online_loc_n_codes do
+        ENV['ONLINE_LOC_N_CODES'] ||= 'FRDE, database, LINRE, PEI'
+      end
+
       # Request System base URL.
       mattr_accessor :request_base_url do
         ENV['REQUEST_BASE_URL'] ||= 'https://requests.library.duke.edu'

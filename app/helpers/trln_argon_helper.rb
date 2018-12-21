@@ -44,4 +44,29 @@ module TrlnArgonHelper
       'col-md-12'
     end
   end
+
+  def display_items?(options = {})
+    return unless options.fetch(:document, nil)
+    doc = options.fetch(:document, nil)
+    holding_keys = doc.holdings.keys
+    (holding_keys - DulArgonSkin.online_loc_b_codes.concat(['', nil])).any? &&
+      online_items?(doc)
+  end
+
+  def suppress_item?(options = {})
+    loc_b = options.fetch(:loc_b, '')
+    loc_n = options.fetch(:loc_n, '')
+    item_data = options.fetch(:item_data, {})
+
+    DulArgonSkin.online_loc_b_codes.include?(loc_b) ||
+      loc_b.blank? ||
+      item_data.fetch('items', []).empty? ||
+      DulArgonSkin.online_loc_n_codes.include?(loc_n)
+  end
+
+  def online_items?(doc)
+    ((doc.fetch(TrlnArgon::Fields::ITEMS, [])
+         .map { |i| JSON.parse(i) }
+         .map { |ji| ji['loc_n'] }) - DulArgonSkin.online_loc_n_codes).any?
+  end
 end
