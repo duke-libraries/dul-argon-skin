@@ -24,6 +24,10 @@ en:
     home:
       welcome: "Duke University Libraries Catalog"
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
+      new_additions:
+        duke_authors: "New From Duke Authors"
+        new_noteworthy: "New & Noteworthy"
+        dvds: "New DVDs"
     search:
       form:
         search:
