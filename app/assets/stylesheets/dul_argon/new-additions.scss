@@ -1,0 +1,129 @@
+/* Styles for New Additions from Catalog Feeds */
+/* ------------------------------------------- */
+
+ul.new-additions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    padding: 0;
+    flex: 125px;
+    display: inline-block;
+    margin-right: 12px;
+    margin-left: 0;
+    margin-bottom: 0.5em;
+    vertical-align: top;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+
+    /* This viewport range needs wider thumbs in order to force two rows of two thumbs. */
+    /* We don't want a row of 3 + row of 1. */
+    @media screen and (min-width:471px) and (max-width:607px) {
+      flex: 175px;
+    }
+    /* Remove the 5th thumb for all but the widest breakpoint (for cleaner two-row rendering) */
+    @media (max-width: $screen-lg) {
+      &:nth-of-type(1n+5) {
+        display: none;
+      }
+    }
+
+    /* Thumb placeholder spots that are confirmed not going to be able to be filled. */
+    &.placeholder-empty {
+       /* Hide empty placeholders but keep display by default for flex layout */
+      visibility: hidden !important;
+
+      /* In viewport widths that'd show 2x2 thumbs... we do need to remove the bottom */
+      /* two placeholders if they're both empty, so we don't get a big empty row */
+      @media (max-width: 607px), (min-width:768px) and (max-width:991px) {
+        & + .placeholder-empty { display: none; }
+      }
+    }
+
+  }
+  img {
+    max-width: 100%;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .new-additions-thumb {
+    margin-bottom: 0.5em;
+  }
+
+  .new-additions-title {
+    /* Truncate to three lines, no matter the width or character count. */
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    line-height: 1.3em;
+    max-height: 3.8em; /* Fallback for non-webkit = font-size*$line-height*$lines-to-show */
+    -webkit-line-clamp: 3;
+  }
+  .new-additions-author {
+    /* Truncate to two lines, no matter the width or character count. */
+    font-size: 14px;
+    line-height: 1.2em;
+    margin-top: 0.5em;
+    max-height: 2.4em; /* Fallback for non-webkit = font-size*$line-height*$lines-to-show */
+    -webkit-line-clamp: 2;
+  }
+
+  .new-additions-title, .new-additions-author {
+    /* Technique from: https://revelry.co/multi-line-ellipsis-using-pure-css/ */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: 0;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @-moz-document url-prefix() {
+      overflow: hidden;
+      position: relative;
+      &:before {
+        background: white;
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        float: right;
+        content: '\2026';
+        margin-left: -3rem;
+        width: 3rem;
+      }
+      &:after {
+        content: '';
+        background: white;
+        position: absolute;
+        height: 50px;
+        width: 100%;
+        z-index: 1;
+      }
+    }
+  }
+
+  /* Skeleton screen elements that get replaced: */
+
+  .new-additions-thumb-skeleton {
+    min-height: 225px;
+    background: #fafafa;
+    margin-bottom: 0.5em;
+  }
+
+  .new-additions-title-skeleton {
+    height: 1em;
+    background: #eee;
+    margin-bottom: 0.5em;
+  }
+
+  .new-additions-author-skeleton {
+    height: 1em;
+    background: #eee;
+  }
+}

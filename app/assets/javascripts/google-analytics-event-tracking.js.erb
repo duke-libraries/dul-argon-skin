@@ -485,6 +485,18 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
   #// HOMEPAGE
   #// ===========================
 
+  ".new-additions-heading" => {
+    :category => "'new additions'",
+    :action => "'heading click'",
+    :label => "link.data('type')",
+    },
+  ".new-additions li a" => {
+    :category => "'new additions'",
+    :action => "'item click'",
+    :label => "link.closest('.new-additions').data('type')",
+    :document_listener => true
+    },
+
   ".home-welcome-links a" => {
     :category => "'homepage'",
     :action => "'welcome help link'",

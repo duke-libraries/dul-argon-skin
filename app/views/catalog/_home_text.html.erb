@@ -3,6 +3,25 @@
   <p class="tagline"><%= t('blacklight.home.blurb') %></h4>
 </div>
 
+<%= render partial: 'home_new_additions', locals: {
+  type: 'duke_authors',
+  fetchresults: '10',
+  query: 'f%5Blocation_hierarchy_f%5D%5B%5D=duke%3Adukeperk%3Adukeperkdurs' } %>
+<hr/>
+
+<%= render partial: 'home_new_additions', locals: {
+  type: 'new_noteworthy',
+  fetchresults: '10',
+  query: 'f%5Blocation_hierarchy_f%5D%5B%5D=duke%3Adukeperk%3Adukeperknehy' } %>
+<hr/>
+
+<%= render partial: 'home_new_additions', locals: {
+  type: 'dvds',
+  fetchresults: '20',
+  query: 'f%5Bphysical_media_f%5D%5B%5D=DVD&amp;f%5Bresource_type_f%5D%5B%5D=Video' } %>
+
+<hr/>
+<h2>Getting Started</h2>
 <ul class="underlined-links home-welcome-links">
   <li><%= t("blacklight.help.search_tips_html") %></li>
   <li><%= link_to t('blacklight.help.ask_a_librarian'), TrlnArgon::Engine.configuration.contact_url, target: "_blank" %> <%= t('blacklight.help.for_answers') %></li>
@@ -10,8 +29,8 @@
 </ul>
 
 <hr/>
+<h2>Other Resources</h2>
 
-<h5 class="text-uppercase text-muted">Other Resources</h5>
 <ul class="list-inline home-other-resources">
   <li class="list-inline-item">
     <a href="https://library.duke.edu/find/articles" target="_blank">Articles</a>
