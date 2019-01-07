@@ -83,6 +83,8 @@
         width: 100%;
         padding-left: 1em;
         break-inside: avoid;
+        overflow: hidden;
+        overflow-wrap: break-word;
         &:before, &::before {
           content: '■';
           margin-left: -1.5em;
@@ -139,6 +141,9 @@
     dd {
       padding: 0;
       margin: 0;
+      & .blacklight-secondary_urls {
+        word-wrap: break-word;
+      }
       /* Make line-breaks in any of the note or description   */
       /* fields taller to look more like separated paragraphs */
       &[class*="note"], &[class*="description"] {
