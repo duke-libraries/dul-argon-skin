@@ -1,7 +1,7 @@
 <% if request.env['PATH_INFO'] == '/trln' %>
-  <h1><%= t('trln_argon.search.zero_results.trln_title_html', search_terms: truncate(params[:q], length: 60, escape: false)) %></h1>
+  <h1><%= t('trln_argon.search.zero_results.trln_title_html', search_terms: truncate(params[:q], length: 60, escape: true)) %></h1>
 <% else %>
-  <h1><%= t('trln_argon.search.zero_results.title_html', local_institution_name: institution_long_name, search_terms: truncate(params[:q], length: 60, escape: false)) %></h1>
+  <h1><%= t('trln_argon.search.zero_results.title_html', local_institution_name: institution_long_name, search_terms: truncate(params[:q], length: 60, escape: true)) %></h1>
 <% end %>
 
 <p class="lead"><%= t('trln_argon.search.zero_results.suggestion') %></p>
