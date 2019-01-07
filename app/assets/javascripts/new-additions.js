@@ -141,7 +141,7 @@ jQuery(document).ready(function ($) {
 
           // Check that the thumbnail is actually present / legitimate
           // Once this src is set, the image begins loading -- no turning back
-          var $thumb_img = $("<img />").attr('src', item.thumb).attr('class','new-additions-thumb');
+          var $thumb_img = $("<img />").attr('src', item.thumb).attr('class','new-additions-thumb').attr('alt', 'cover image');
 
           // When this image load attempt is complete (note: b/c asynchronous loading, the thumbs
           // may render in slightly different order w/each pageview)...
