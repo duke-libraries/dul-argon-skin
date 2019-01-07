@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
   }
 
   function build_thumb(obj) {
-    thumb_url = 'http://www.syndetics.com/index.aspx?isbn=';
+    thumb_url = 'https://syndetics.com/index.aspx?isbn=';
     if(obj.hasOwnProperty('isbn_number_a')) {
       thumb_url += obj.isbn_number_a[0];
     }
