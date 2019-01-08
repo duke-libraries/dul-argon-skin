@@ -44,7 +44,18 @@ module RequestItem
   end
 
   def physical_item?
-    fetch(TrlnArgon::Fields::ACCESS_TYPE, []).include?('At the Library')
+    fetch(TrlnArgon::Fields::ACCESS_TYPE, []).include?('At the Library') &&
+      physical_broad_codes? && physical_narrow_codes?
+  end
+
+  def physical_broad_codes?
+    (holdings.keys - ['', nil].concat(DulArgonSkin.online_loc_b_codes)).any?
+  end
+
+  def physical_narrow_codes?
+    loc_n_codes = fetch(TrlnArgon::Fields::ITEMS, []).map { |i| JSON.parse(i) }
+                                                     .map { |ji| ji['loc_n'] }
+    (loc_n_codes - DulArgonSkin.online_loc_n_codes).any?
   end
 
   # These values are consistent, no matter the item or the home library's

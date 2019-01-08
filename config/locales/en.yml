@@ -77,6 +77,9 @@ en:
             one: '1 result at UNC, NCSU, NCCU Libraries'
             other: '%{count} results at UNC, NCSU, NCCU Libraries'
         view_trln_results_html: 'View Results &raquo;'
+    show:
+      heading:
+        subjects: "Related subjects"
       help:
         title: "Still can't find it?"
         search_for_articles: 'Search for articles'
