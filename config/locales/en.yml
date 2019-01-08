@@ -85,5 +85,6 @@ en:
         search_for_articles: 'Search for articles'
         suggest_a_purchase: 'Suggest a Purchase'
         request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles and items unavailable at Duke through Interlibrary Requests"
+      report_missing: 'Report missing item'
     search_fields:
         shelfkey: 'Call Number (LC)'
