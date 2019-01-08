@@ -308,6 +308,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable (~> 2.5)
   better_errors (= 2.1.1)
   blacklight (~> 6.7)
   byebug
@@ -336,4 +337,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.4
+   1.17.3

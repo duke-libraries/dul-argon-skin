@@ -60,6 +60,12 @@ module DulArgonSkin
         ENV['ONLINE_LOC_N_CODES'] ||= 'FRDE, database, LINRE, PEI'
       end
 
+      # Report missing item URL template
+      mattr_accessor :report_missing_item_url do
+        ENV['REPORT_MISSING_ITEM_URL'] ||=
+          'https://duke.qualtrics.com/jfe/form/SV_71J91hwAk1B5YkR/{?query*}'
+      end
+
       # Request System base URL.
       mattr_accessor :request_base_url do
         ENV['REQUEST_BASE_URL'] ||= 'https://requests.library.duke.edu'
