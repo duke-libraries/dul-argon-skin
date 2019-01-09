@@ -3,7 +3,30 @@
   .feedback-link-wrapper,
   .map-info,
   .index-document-functions,
-  .staff-view-toggle-wrapper {
+  .staff-view-toggle-wrapper,
+  .sidebar-top-link,
+  .request-from-duke,
+  .doc-tools,
+  .sidebar-menu,
+  .report-missing-item,
+  .modal-header button,
+  .modal-footer {
+    display: none !important;
+  }
+
+  /* hide main container when modal is open */
+  body.modal-open div#main-container {
     display: none;
+  }
+
+  .modal-content {
+    margin-top: 50px;
+    border: none !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal-content img {
+    width: 100%;
   }
 }
