@@ -1,1 +1,14 @@
-<!-- Nothing here for now. Override of default Advanced Search Help partial -->
+<div class='panel panel-default'>
+  <div class="panel-heading"><h4><%= t('trln_argon.advanced_search.help.title') %></h4></div>
+  <div class="panel-body">
+    <ul class="advanced-help">
+      <li><%= t('trln_argon.advanced_search.help.match_all') %></li>
+      <li><%= t('trln_argon.advanced_search.help.match_any') %></li>
+      <li><%= t('trln_argon.advanced_search.help.quotes') %></li>
+      <li><%= t('trln_argon.advanced_search.help.case') %></li>
+      <li><%= link_to t('trln_argon.advanced_search.help.search_tips'),
+                        DulArgonSkin.search_tips_url,
+                        target: '_blank' %></li>
+   </ul>
+  </div>
+</div>

@@ -23,7 +23,7 @@
 <hr/>
 <h2>Getting Started</h2>
 <ul class="underlined-links home-welcome-links">
-  <li><%= t("blacklight.help.search_tips_html") %></li>
+  <li><%= t("blacklight.help.search_tips_html", search_tips_url: DulArgonSkin.search_tips_url) %></li>
   <li><%= link_to t('blacklight.help.ask_a_librarian'), TrlnArgon::Engine.configuration.contact_url, target: "_blank" %> <%= t('blacklight.help.for_answers') %></li>
   <li><%= t("blacklight.help.worldcat_link_html") %></li>
 </ul>

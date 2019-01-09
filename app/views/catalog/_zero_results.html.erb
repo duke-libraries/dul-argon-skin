@@ -25,12 +25,13 @@
       <div class="col-md-12 well">
     <% end %>
 
-      <h4><%= t('trln_argon.search.help.title') %></h4>
+      <h4><%= t('trln_argon.show.help.title') %></h4>
 
       <ul>
         <li><%= link_to(t('blacklight.help.ask_a_librarian'), TrlnArgon::Engine.configuration.contact_url) %></li>
+        <li><%= t("blacklight.help.search_tips_html", search_tips_url: DulArgonSkin.search_tips_url) %></li>
         <li><%= t("blacklight.help.worldcat_link_html") %></li>
-        <li><%= t('trln_argon.search.help.request_link_html') %></li>
+        <li><%= t('trln_argon.show.help.request_link_html') %></li>
         <li><a href="https://library.duke.edu/find/articles" target="_blank"><%= t('trln_argon.search.help.search_for_articles') %></a></li>
         <li><a href="https://library.duke.edu/apps/colldev/request/" target="_blank"><%= t('trln_argon.search.help.suggest_a_purchase') %></a></li>
       </ul>
