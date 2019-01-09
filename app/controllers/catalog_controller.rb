@@ -80,6 +80,11 @@ class CatalogController < ApplicationController
     config.home_facet_fields.delete(TrlnArgon::Fields::AVAILABLE_FACET)
     config.facet_fields.delete(TrlnArgon::Fields::AVAILABLE_FACET)
 
+    # Temporarily disable slow facets on home page until caching is
+    # enabled in TRLN Argon.
+    config.home_facet_fields.delete(TrlnArgon::Fields::CALL_NUMBER_FACET)
+    config.home_facet_fields.delete(TrlnArgon::Fields::LANGUAGE_FACET)
+
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     #
