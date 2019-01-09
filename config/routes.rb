@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   get '/search', to: redirect { |params, request| "/catalog/#{request.params[:id]}" }
 
+  get '/robots.:format', to: 'pages#robots'
+
   resource :map_location, only: [:show], as: 'map_location', path: '/map_location', controller: 'map_location'
 
   resource :styleguide, only: [:show], as: 'styleguide', path: '/styleguide', controller: 'styleguide'

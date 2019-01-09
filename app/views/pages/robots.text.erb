@@ -1,0 +1,11 @@
+<% if Rails.env.production? &&
+      TrlnArgon::Engine.configuration
+                       .root_url
+                       .include?('find.library.duke.edu') %>
+  User-Agent: *
+  Allow: /$
+  Disallow: /
+<% else %>
+  User-agent: *
+  Disallow: /
+<% end %>
