@@ -70,6 +70,11 @@ module DulArgonSkin
       mattr_accessor :request_base_url do
         ENV['REQUEST_BASE_URL'] ||= 'https://requests.library.duke.edu'
       end
+
+      # Search tips URL.
+      mattr_accessor :search_tips_url do
+        ENV['SEARCH_TIPS_URL'] ||= 'https://library.duke.edu/using/catalog-search-tips'
+      end
     end
     # rubocop:enable Metrics/BlockLength
     module ClassMethods

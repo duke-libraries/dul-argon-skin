@@ -16,4 +16,5 @@ DulArgonSkin.configure do |config|
   config.online_loc_n_codes = ENV['ONLINE_LOC_N_CODES'].split(', ')
   config.report_missing_item_url = ENV['REPORT_MISSING_ITEM_URL']
   config.request_base_url = ENV['REQUEST_BASE_URL']
+  config.search_tips_url = ENV['SEARCH_TIPS_URL']
 end

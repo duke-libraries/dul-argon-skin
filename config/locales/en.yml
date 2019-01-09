@@ -44,7 +44,7 @@ en:
       for_help_extended: "for help in searching this catalog"
       for_answers: "to get answers quickly"
       worldcat_link_html: "Use <a href='http://proxy.lib.duke.edu/login?url=http://firstsearch.oclc.org/fsip?dbname=worldcat&amp;screen=advanced' target='_blank'>WorldCat</a> to search holdings from libraries worldwide"
-      search_tips_html: "Try our <a href='https://library.duke.edu/using/catalog-search-tips' target='_blank'>search tips</a> for help in searching this catalog"
+      search_tips_html: "Try our <a href='%{search_tips_url}' target='_blank'>search tips</a> for help in searching this catalog"
   trln_argon:
     sort_options:
       date_cataloged_desc: "Date Cataloged (new to old)"
@@ -84,7 +84,15 @@ en:
         title: "Still can't find it?"
         search_for_articles: 'Search for articles'
         suggest_a_purchase: 'Suggest a Purchase'
-        request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles and items unavailable at Duke through Interlibrary Requests"
+        request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles, and items unavailable at Duke through Interlibrary Requests"
       report_missing: 'Report missing item'
     search_fields:
         shelfkey: 'Call Number (LC)'
+    advanced_search:
+      help:
+        title: 'Search tips'
+        match_all: 'Select "match all" to require all fields.'
+        match_any: 'Select "match any" to find at least one field.'
+        quotes: 'Use quotation marks to search as a phrase, such as "Stranger in a Strange Land."'
+        case: 'The Library Catalog is not case sensitive. Searches may be entered in any case. The only exception is that Boolean operators (AND, OR, NOT) should be capitalized.'
+        search_tips: "See more search tips."
