@@ -68,8 +68,6 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  var catalog_base_url = 'https://find.library.duke.edu';
-
   $("[id^=catalog-feed-items]").each(function(){
     var $this_widget = $(this);
     var widget_id = $this_widget.attr('id');
@@ -94,7 +92,7 @@ jQuery(document).ready(function ($) {
     }
 
     $.ajax({
-      url: catalog_base_url + '/catalog.json?sort=date_cataloged+desc%2C+publication_year_isort+desc&amp;'
+      url: '/catalog.json?sort=date_cataloged+desc%2C+publication_year_isort+desc&amp;'
         + 'per_page=' + fetchresults + '&amp;' + blacklight_query,
       type: "GET",
       dataType: 'json',
@@ -126,7 +124,7 @@ jQuery(document).ready(function ($) {
 
           item = {
             title:        obj.title_main || "[Untitled]",
-            link:         catalog_base_url + '/catalog/' + obj.local_id,
+            link:         '/catalog/' + obj.local_id,
             author:       find_author(obj),
             description:  find_description(obj),
             thumb:        build_thumb(obj),
