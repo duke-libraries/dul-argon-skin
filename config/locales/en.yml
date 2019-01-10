@@ -83,7 +83,7 @@ en:
         subjects: "Related subjects"
       help:
         title: "Still can't find it?"
-        search_for_articles: 'Search for articles'
+        search_for_articles: 'Search for Articles'
         suggest_a_purchase: 'Suggest a Purchase'
         request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles, and items unavailable at Duke through Interlibrary Requests"
       report_missing: 'Report missing item'
