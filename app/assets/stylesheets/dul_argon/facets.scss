@@ -71,6 +71,15 @@
       }
     }
 
+    li.h-node {
+      &.twiddle {
+        .selected, &.selected:hover {
+          color: $brand-success;
+        }
+      }
+    }
+
+
     @media screen and (min-width: $screen-sm) and (max-width: $screen-lg) {
       .twiddle > .facet_select, .twiddle-open > .facet_select {
         width: 102px; // 110px trln_argon
