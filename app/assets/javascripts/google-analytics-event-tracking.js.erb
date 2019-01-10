@@ -208,7 +208,13 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
 
   "#documents.documents-list .document .items-toggle a.expander" => {
     :category => "'search results'",
-    :action => "'show/hide more items'",
+    :action => "'show/hide more items'"
+    },
+
+  "#documents.documents-list .document a.staff-view-toggle" => {
+    :category => "'search results'",
+    :action => "'staff view link'",
+    :label => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')"
     },
 
   #// Keep action consistent with item page for this control
@@ -287,6 +293,13 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :category => "'advanced search form'",
     :action => "'advanced search options'",
     :label => "'sort results by...'"
+    },
+
+  "body.blacklight-advanced-index form.advanced select" => {
+    :event => "change",
+    :category => "'advanced search form'",
+    :action => "'advanced search options'",
+    :label => "$(this).find('option:selected').text()"
     },
 
   #// =====================
@@ -399,6 +412,11 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'sidebar nav menu'"
     },
 
+  "#show-sidebar .report-missing-item a" => {
+    :category => "'item sidebar'",
+    :action => "'report missing'"
+    },
+
   "#previousNextDocument a" => {
     :category => "'item page'",
     :action => "'item to results nav'"
@@ -443,7 +461,7 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'show/hide more items'",
     },
 
-  "#document a.barcode-toggle" => {
+  "#document a.staff-view-toggle" => {
     :category => "'item page'",
     :action => "'staff view link'",
     :label => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')",
@@ -455,9 +473,24 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'author link'",
     },
 
-  "#document #enhanced-data a" => {
+  "#document #summary a" => {
     :category => "'item page'",
-    :action => "'enhanced data link'",
+    :action => "'summary link'",
+    },
+
+  "#document #contents a" => {
+    :category => "'item page'",
+    :action => "'contents link'",
+    },
+
+  "#document #sample-chapter a" => {
+    :category => "'item page'",
+    :action => "'sample chapter link'",
+    },
+
+  "#document #included-works a" => {
+    :category => "'item page'",
+    :action => "'included works link'",
     },
 
   "#document #subjects a" => {
@@ -470,16 +503,10 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'other details link'",
     },
 
-  "#document #included-works a" => {
-    :category => "'item page'",
-    :action => "'included works link'",
-    },
-
   "#document #related-works a" => {
     :category => "'item page'",
     :action => "'related works link'",
     },
-
 
   #// ===========================
   #// HOMEPAGE
