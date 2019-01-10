@@ -49,6 +49,14 @@
     border-color: $brand-primary;
     color: $brand-primary;
   }
+  &.disabled:hover,
+  &.disabled:focus,
+  &.disabled.focus,
+  &[disabled]:hover,
+  &[disabled]:focus,
+  &[disabled].focus {
+    color: #fff;
+  }
 }
 
 .btn-primary-action {
