@@ -3,6 +3,7 @@ require 'dul_argon_skin'
 
 DulArgonSkin.configure do |config|
   # Configs unique to local skin, separate from TrlnArgon
+  config.about_url = ENV['ABOUT_URL']
   config.dul_home_url = ENV['DUL_HOME_URL']
   config.environment_alert = ENV['ENVIRONMENT_ALERT']
   config.google_analytics_debug = ENV['GOOGLE_ANALYTICS_DEBUG']
