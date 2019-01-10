@@ -75,6 +75,11 @@ module DulArgonSkin
       mattr_accessor :search_tips_url do
         ENV['SEARCH_TIPS_URL'] ||= 'https://library.duke.edu/using/catalog-search-tips'
       end
+
+      # About URL.
+      mattr_accessor :about_url do
+        ENV['ABOUT_URL'] ||= 'https://blogs.library.duke.edu/bitstreams/2019/01/07/new-duke-libraries-catalog-to-go-live-january-16/'
+      end
     end
     # rubocop:enable Metrics/BlockLength
     module ClassMethods
