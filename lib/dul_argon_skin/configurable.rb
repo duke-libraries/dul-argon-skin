@@ -57,7 +57,7 @@ module DulArgonSkin
       end
 
       mattr_accessor :online_loc_n_codes do
-        ENV['ONLINE_LOC_N_CODES'] ||= 'FRDE, database, LINRE, PEI'
+        ENV['ONLINE_LOC_N_CODES'] ||= 'FRDE, database, LINRE, PEI, PENTL, MELEC'
       end
 
       # Report missing item URL template
