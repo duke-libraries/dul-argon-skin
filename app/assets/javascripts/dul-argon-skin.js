@@ -163,15 +163,19 @@ $(document).ready(function() {
         $.each(availability_response, function(id, status) {
 
           //var myDiv = $("div").find(`[data-item-barcode='${id}']`);
+          var myParent = $( "#item-" + escape_id(id) );
           var mySpan = $( "#item-" + escape_id(id) + " dl dd span" );
 
-          // error handling for non-matching items
-          if (mySpan.text() == "") {
+          // error handling for non-matching items OR already updated items
+          if ( mySpan.text() == "" || myParent.hasClass('status-updated') ) {
             return true;
           } else {
 
             /* update status text */
-            if ((mySpan.text()).trim() !== (status.label).trim()) {
+            if ( mySpan.text().trim() !== status.label.trim() ) {
+
+              // add class to parent so as to identify this item as having been updated
+              myParent.addClass('status-updated');
 
               mySpan
                 // uses velocity.js for fade animation (much faster than jquery)
