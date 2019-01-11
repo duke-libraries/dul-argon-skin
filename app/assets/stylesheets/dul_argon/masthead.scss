@@ -98,10 +98,6 @@
         width: auto;
       }
 
-      input#q {
-        background-color: #fff !important;
-      }
-
       .twitter-typeahead {
         min-width: auto;
         .tt-menu {
@@ -120,6 +116,8 @@
         display: block;
         flex: 1 1 auto;
         font-size: 16px;
+        background-color: #fff !important;
+        z-index: 10; /* Must be higher than input.search_q */
       }
       .submit-search-text {
         display: none;
