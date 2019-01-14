@@ -7,9 +7,11 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include TrlnArgon::ArgonSearchBuilder
   include DulArgonSkin::ShelfkeySearchBuilder
+  include DulArgonSkin::EnglishSubjectsBoost
 
   self.default_processor_chain += %i[add_advanced_search_to_solr
-                                     add_shelfkey_query_to_solr]
+                                     add_shelfkey_query_to_solr
+                                     english_subjects_boost]
 
   ##
   # @example Adding a new step to the processor chain
