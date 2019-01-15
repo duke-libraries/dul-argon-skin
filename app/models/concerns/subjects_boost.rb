@@ -30,12 +30,21 @@ module SubjectsBoost
   def subjects_title_boost_query
     if blacklight_params.key?(:q) &&
        blacklight_params[:q].present?
-      "#{TrlnArgon::Fields::TITLE_MAIN_INDEXED}:(#{blacklight_params[:q]})^500"
+      standard_search_title_boost
     elsif blacklight_params.key?('subject') &&
           blacklight_params['subject'].present?
-      "#{TrlnArgon::Fields::TITLE_MAIN_INDEXED}:"\
-      "(#{blacklight_params['subject']})^500"
+      advanced_search_title_boost
     end
+  end
+
+  def standard_search_title_boost
+    "#{TrlnArgon::Fields::TITLE_MAIN_INDEXED}:"\
+    "(#{RSolr.solr_escape(blacklight_params[:q])})^500"
+  end
+
+  def advanced_search_title_boost
+    "#{TrlnArgon::Fields::TITLE_MAIN_INDEXED}:"\
+    "(#{RSolr.solr_escape(blacklight_params['subject'])})^500"
   end
 
   def includes_subject_search?
