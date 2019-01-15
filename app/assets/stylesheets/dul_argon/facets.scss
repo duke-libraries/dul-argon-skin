@@ -72,6 +72,7 @@
     }
 
     li.h-node {
+      min-height: 28px;
       &.twiddle {
         .selected, &.selected:hover {
           color: $brand-success;
