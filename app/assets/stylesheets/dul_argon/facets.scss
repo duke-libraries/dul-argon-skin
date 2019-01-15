@@ -80,6 +80,10 @@
       }
     }
 
+    ul {
+      clear: both;
+    }
+
 
     @media screen and (min-width: $screen-sm) and (max-width: $screen-lg) {
       .twiddle > .facet_select, .twiddle-open > .facet_select {
