@@ -44,5 +44,9 @@ Rails.application.routes.draw do
 
   resource :styleguide, only: [:show], as: 'styleguide', path: '/styleguide', controller: 'styleguide'
 
+
+  # IMPORTANT: This catch-all route should always be last.
+  match '/*path', to: 'application#not_found', via: :all
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
