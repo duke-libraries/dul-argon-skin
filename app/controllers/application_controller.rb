@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
   def default_url_options
     Rails.env.production? ? { protocol: :https } : {}
   end
+
+  def not_found
+    render file: 'public/404.html',
+           status: :not_found,
+           layout: false
+  end
 end
