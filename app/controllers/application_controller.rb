@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
+    response.content_type = Mime[:html]
     render file: 'public/404.html',
            status: :not_found,
            layout: false
