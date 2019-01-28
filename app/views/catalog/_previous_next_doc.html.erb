@@ -1,7 +1,8 @@
 <% #Using the Bootstrap Pagination class  -%>
 <% #DEPRECATED - using id="previousNextDocument" as a selector is deprecated and will be removed in Blacklight 6.0 %>
 <div id='previousNextDocument' class='pagination-search-widgets'>
-  <% unless search_session_contains_ajax_request?(current_search_session) %>
+  <% if !search_session_includes_ajax_request?(current_search_session) &&
+    search_session_includes_catalog_controller?(current_search_session) %>
     <% if @previous_document || @next_document %>
       <div class="page_links">
         <%= link_to_previous_document @previous_document %> |
@@ -14,7 +15,8 @@
   <% end %>
   <% if current_search_session %>
     <div class="pull-right search-widgets">
-      <% unless search_session_contains_ajax_request?(current_search_session) %>
+      <% if !search_session_includes_ajax_request?(current_search_session) &&
+        search_session_includes_catalog_controller?(current_search_session) %>
         <%= link_back_to_catalog class: 'btn' %>
       <% end %>
       <%=link_to t('blacklight.search.start_over'), start_over_path(current_search_session.try(:query_params) || {}), id: 'startOverLink', class: 'btn' %>
