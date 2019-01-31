@@ -40,11 +40,13 @@ class CatalogController < ApplicationController
       'facet.field' => [TrlnArgon::Fields::AVAILABLE_FACET.to_s,
                         TrlnArgon::Fields::ACCESS_TYPE_FACET.to_s,
                         TrlnArgon::Fields::RESOURCE_TYPE_FACET.to_s,
+                        TrlnArgon::Fields::PHYSICAL_MEDIA_FACET.to_s,
                         TrlnArgon::Fields::LANGUAGE_FACET.to_s,
                         TrlnArgon::Fields::LOCATION_HIERARCHY_FACET.to_s],
       'f.resource_type_f.facet.limit' => -1, # return all resource type values
       'f.language_f.facet.limit' => -1, # return all language facet values
       'f.location_hierarchy_f.facet.limit' => -1, # return all loc facet values
+      'f.physical_media_f.facet.limit' => -1, # return all phys med facet values
       'facet.limit' => -1, # return all facet values
       'facet.sort' => 'index', # sort by byte order of values
       'facet.query' => ''
@@ -84,6 +86,18 @@ class CatalogController < ApplicationController
     # enabled in TRLN Argon.
     config.home_facet_fields.delete(TrlnArgon::Fields::CALL_NUMBER_FACET)
     config.home_facet_fields.delete(TrlnArgon::Fields::LANGUAGE_FACET)
+
+    # Delete but save date cataloged facet so we can add it again
+    # in the last position.
+    date_cataloged = config.home_facet_fields.delete(
+      TrlnArgon::Fields::DATE_CATALOGED_FACET
+    )
+    config.add_home_facet_field TrlnArgon::Fields::PHYSICAL_MEDIA_FACET.to_s,
+                                label: TrlnArgon::Fields::
+                                       PHYSICAL_MEDIA_FACET.label,
+                                limit: true,
+                                collapse: false
+    config.add_home_facet_field date_cataloged
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
