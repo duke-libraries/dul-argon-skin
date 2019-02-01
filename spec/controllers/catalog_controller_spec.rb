@@ -16,6 +16,28 @@ describe CatalogController do
     end
   end
 
+  describe 'home facet fields' do
+    it 'sets the access type facet' do
+      expect(config.home_facet_fields).to have_key('access_type_f')
+    end
+
+    it 'sets the resource type facet' do
+      expect(config.home_facet_fields).to have_key('resource_type_f')
+    end
+
+    it 'sets the language facet' do
+      expect(config.home_facet_fields).to have_key('physical_media_f')
+    end
+
+    it 'sets the location hierarchy facet' do
+      expect(config.home_facet_fields).to have_key('location_hierarchy_f')
+    end
+
+    it 'sets the date cataloged facet' do
+      expect(config.home_facet_fields).to have_key('date_cataloged_dt')
+    end
+  end
+
   # rubocop:disable RSpec/ExampleLength
   describe 'advanced search configuration' do
     it 'sets the form solr parameters' do
@@ -23,10 +45,12 @@ describe CatalogController do
         eq('defType' => 'lucene',
            'f.language_f.facet.limit' => -1,
            'f.location_hierarchy_f.facet.limit' => -1,
+           'f.physical_media_f.facet.limit' => -1,
            'f.resource_type_f.facet.limit' => -1,
            'facet.field' => %w[available_f
                                access_type_f
                                resource_type_f
+                               physical_media_f
                                language_f
                                location_hierarchy_f],
            'facet.limit' => -1,
