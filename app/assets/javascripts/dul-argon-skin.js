@@ -130,6 +130,15 @@ $(document).ready(function() {
     }
   };
 
+  /* if this is a trln-context show page */
+  if ( $('body').hasClass('blacklight-trln-show') ) {
+    var document_id = $( "#document div:first-child" ).attr('id').replace(/\D/g,'');
+    /* only run call if there is a current status */
+    if ($('.status-label').length > 0) {
+      get_the_availability(document_id);
+    }
+  };
+
   /* if this is a results page */
   if ( $('body').hasClass('blacklight-catalog-index') ) {
     $('.document').each(function() {
@@ -185,26 +194,33 @@ $(document).ready(function() {
                     mySpan.text(status.label)
                   }
                 })
-                .velocity("fadeIn", { delay: 250, duration: 500 });
-            }
+                .velocity("fadeIn", { delay: 250,
+                                      duration: 500,
+                                      begin: function() {
 
-            /* update status class */
-            switch (status.available) {
-              case 'yes':
-                if ( (mySpan.attr('class')).trim() != 'item-available' ) {
-                  mySpan.attr('class', 'item-available');
-                }
-                break;
-              case 'no':
-                if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
-                  mySpan.attr('class', 'item-not-available');
-                }
-                break;
-              case 'other':
-                if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
-                  mySpan.attr('class', 'item-availability-misc');
-                }
-                break;
+                                        /* update status class */
+                                        switch (status.available) {
+                                          case 'yes':
+                                            if ( (mySpan.attr('class')).trim() != 'item-available' ) {
+                                              mySpan.attr('class', 'item-available');
+                                            }
+                                            break;
+                                          case 'no':
+                                            if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
+                                              mySpan.attr('class', 'item-not-available');
+                                            }
+                                            break;
+                                          case 'other':
+                                            if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
+                                              mySpan.attr('class', 'item-availability-misc');
+                                            }
+                                            break;
+                                        }
+
+                                      }
+
+                                    });
+
             }
 
           }
