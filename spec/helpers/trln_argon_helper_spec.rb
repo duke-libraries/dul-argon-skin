@@ -3,6 +3,44 @@
 require 'rails_helper'
 
 describe TrlnArgonHelper do
+  describe '#add_thumbnail' do
+    context 'when the MARC provided URL is NOT HTTPS' do
+      let(:doc) do
+        SolrDocument.new(
+          id: 'DUKE012345678',
+          url_a: ['"href":"http://images.contentreserve.com/Img200.jpg",'\
+                  '"type":"thumbnail","note":"Thumbnail"}']
+        )
+      end
+
+      it 'uses the Syndetics URL' do
+        expect(helper.add_thumbnail(doc)).to(
+          eq('<img class="coverImage" onerror="this.style.display = '\
+             '&#39;none&#39;;" alt="cover image" src="https://syndetics.com/index.php?'\
+             'client=trlnet&amp;isbn=%2FSC.GIF" />')
+        )
+      end
+    end
+
+    context 'when the MARC provided URL is HTTPS' do
+      let(:doc) do
+        SolrDocument.new(
+          id: 'DUKE012345678',
+          url_a: ['{"href":"https://images.contentreserve.com/Img200.jpg",'\
+                  '"type":"thumbnail","note":"Thumbnail"}']
+        )
+      end
+
+      it 'uses the MARC supplied URL' do
+        expect(helper.add_thumbnail(doc)).to(
+          eq('<img class="coverImage" onerror="this.style.display = '\
+             '&#39;none&#39;;" alt="cover image" '\
+             'src="https://images.contentreserve.com/Img200.jpg" />')
+        )
+      end
+    end
+  end
+
   describe '#link_to_fulltext_url' do
     before { TrlnArgon::Engine.configuration.local_institution_code = 'duke' }
 

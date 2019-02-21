@@ -22,6 +22,15 @@ module TrlnArgonHelper
     'show-sub-header'
   end
 
+  def add_thumbnail(document, size: :small)
+    return marc_thumbnail_tag(document) if document.thumbnail_urls.any? &&
+                                           document.thumbnail_urls
+                                                   .first
+                                                   .fetch(:href, '')
+                                                   .match(%r{https:\/\/})
+    syndetics_thumbnail_tag(document, size)
+  end
+
   include TrlnArgon::ViewHelpers::ItemsSectionHelper
 
   def call_number_wrapper_class(_options = {})
