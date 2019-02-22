@@ -23,7 +23,7 @@ deploy_dev:
   after_script: &afterdeployscript
     - $RAILS_DEPLOY_PATH/bin/after_deploy.sh
   only:
-    - master
+    - develop
   tags:
     - development
 
