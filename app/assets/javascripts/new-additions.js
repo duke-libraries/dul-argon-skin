@@ -85,9 +85,13 @@ jQuery(document).ready(function ($) {
 
     // Check whether all of the widget's thumbnail load attempts have completed; if so,
     // add a class to any remaining thumb placeholders to mark them as definitively empty.
-    function thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs) {
+    function thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs, good_thumbs) {
       if (checked_thumbs == possible_thumbs) {
         $this_widget.find("li.placeholder").addClass("placeholder-empty");
+        // If all checks are complete and there are still no good thumbs, revert to fallback
+        if (good_thumbs == 0) {
+          fallbackToLink($this_widget);
+        }
       }
     }
 
@@ -148,7 +152,7 @@ jQuery(document).ready(function ($) {
               if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth < 0) {
                 // This item's thumb is no good.
                 checked_thumbs++;
-                thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs);
+                thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs, good_thumbs);
               } else {
                 // It's a good thumb; use this item.
                 good_thumbs++;
@@ -164,13 +168,13 @@ jQuery(document).ready(function ($) {
                 $this_item.append($item_info_markup);
 
                 checked_thumbs++;
-                thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs);
+                thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs, good_thumbs);
               }
           })
           .on('error', function() {
             // This item's thumb is no good
             checked_thumbs++;
-            thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs);
+            thumbChecksComplete($this_widget, possible_thumbs, checked_thumbs, good_thumbs);
           });
 
         }); // end document iterator
