@@ -245,4 +245,70 @@ describe TrlnArgonHelper do
       end
     end
   end
+
+  describe 'physical_items?' do
+    context 'when record does not have any physical items' do
+      let(:document) do
+        SolrDocument.new(
+          YAML.safe_load(file_fixture('documents/DUKE006162724.yml').read)
+        )
+      end
+
+      it 'returns false' do
+        expect(physical_items?(document: document)).to be false
+      end
+    end
+
+    context 'when record has physical items' do
+      let(:document) do
+        SolrDocument.new(
+          YAML.safe_load(file_fixture('documents/DUKE004093564.yml').read)
+        )
+      end
+
+      it 'returns true' do
+        expect(physical_items?(document: document)).to be true
+      end
+    end
+  end
+
+  describe 'no_items?' do
+    context 'when holding entry has no items' do
+      let(:holdings) do
+        YAML.safe_load(
+          file_fixture('holdings/no_items_with_holdings_has_summary.yml').read
+        )
+      end
+      let(:loc_b) { holdings.keys.first }
+      let(:loc_n) { holdings[loc_b].keys.first }
+      let(:item_data) do
+        holdings[loc_b][loc_n]
+      end
+
+      it 'returns false' do
+        expect(no_items?(loc_b: loc_b, loc_n: loc_n, item_data: item_data)).to(
+          be true
+        )
+      end
+    end
+
+    context 'when holdings entry has items' do
+      let(:holdings) do
+        YAML.safe_load(
+          file_fixture('holdings/items_with_holdings_no_summary.yml').read
+        )
+      end
+      let(:loc_b) { holdings.keys.first }
+      let(:loc_n) { holdings[loc_b].keys.first }
+      let(:item_data) do
+        holdings[loc_b][loc_n]
+      end
+
+      it 'returns false' do
+        expect(no_items?(loc_b: loc_b, loc_n: loc_n, item_data: item_data)).to(
+          be false
+        )
+      end
+    end
+  end
 end
