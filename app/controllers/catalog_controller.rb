@@ -9,13 +9,18 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     # Switched index partial order so text can wrap around the thumbnail
-    # NOTE index_document_actions_default is a custom DUL partial
+    # NOTE: index_document_actions_default is a custom DUL partial
     config.index.partials =
       %i[thumbnail index_document_actions index_header index index_items]
 
     # Add Request button using Blacklight's extensible "tools" for
     # index view
     config.add_results_document_tool(:request_button, partial: 'request_button')
+
+    # Add RSS feed button using Blacklight's extensible "collection tools"
+    # for index view.
+    # NOTE: rss_button is a custom DUL partial
+    config.add_results_collection_tool(:rss_button, partial: 'rss_button')
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
