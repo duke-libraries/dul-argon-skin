@@ -5,6 +5,7 @@ module ShelfkeySearchBuilder
 
   def add_shelfkey_query_to_solr(solr_parameters)
     return unless shelfkey_query_present?
+
     solr_parameters[:uf] = 'shelfkey'
     solr_parameters[:defType] = 'lucene'
     solr_parameters[:q] = shelfkey_query

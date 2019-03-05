@@ -9,6 +9,7 @@ module SubjectsBoost
   # language subjects.
   def subjects_boost(solr_parameters)
     return unless includes_subject_search?
+
     solr_parameters[:bq] ||= []
     solr_parameters[:bq] << subjects_english_boost_query
     solr_parameters[:bq] << subjects_title_boost_query
