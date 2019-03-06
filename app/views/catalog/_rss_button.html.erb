@@ -1,5 +1,6 @@
-<%= link_to(url_for(params.merge(format: 'rss', \
-      sort: 'date_cataloged desc, publication_year_isort desc')), \
+<%= link_to(url_for(search_state.params.merge(format: 'rss', \
+      sort: "#{TrlnArgon::Fields::DATE_CATALOGED} desc, "\
+            "#{TrlnArgon::Fields::PUBLICATION_YEAR_SORT} desc")), \
       class: 'btn btn-default', id: 'rss_button', title: 'RSS feed') do %>
   <i class="fa fa-rss" aria-hidden="true"></i>
   <span class="sr-only">RSS</span>
