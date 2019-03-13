@@ -63,7 +63,7 @@ gem 'blacklight', '~> 6.7'
 gem 'lcsort', '~> 0.9'
 gem 'trln_argon',
     git: 'https://github.com/trln/trln_argon',
-    ref: 'b0195c2bb8ff97c0079584e981f1e29ee790e542'
+    ref: 'aac0f44f783b9c16bfd3800c75d1ad8c14a6ce22'
 
 group :development, :test do
   gem 'rails-controller-testing'
