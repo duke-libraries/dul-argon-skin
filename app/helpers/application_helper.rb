@@ -20,5 +20,21 @@ module ApplicationHelper
       %w[catalog trln].include?(current_search_session.query_params
                                                       .fetch(:controller, ''))
   end
+
+  # Hathitrust links can be displayed if the record:
+  # 1) Has an OCLC Number
+  # 2) Is NOT a Rubenstein record
+  # 3) Is NOT a Serial OR
+  #      it is a Gov Doc OR
+  #      it was published before 1924
+  def show_hathitrust_link_if_available?(document)
+    document.oclc_number.present? &&
+      !document.rubenstein_record? &&
+      (!document.fetch(TrlnArgon::Fields::RESOURCE_TYPE, [])
+                .include?('Journal, Magazine, or Periodical') ||
+      document.fetch(TrlnArgon::Fields::RESOURCE_TYPE, [])
+              .include?('Government publication') ||
+      document.fetch(TrlnArgon::Fields::PUBLICATION_YEAR).to_i < 1924)
+  end
   # rubocop:enable Style/SafeNavigation
 end

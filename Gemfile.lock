@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: aac0f44f783b9c16bfd3800c75d1ad8c14a6ce22
-  ref: aac0f44f783b9c16bfd3800c75d1ad8c14a6ce22
+  revision: 25d3da744bda352a9a490e64fd1546cfec213ac6
+  ref: 25d3da744bda352a9a490e64fd1546cfec213ac6
   specs:
     trln_argon (1.1.0.pre)
       addressable (~> 2.5)
