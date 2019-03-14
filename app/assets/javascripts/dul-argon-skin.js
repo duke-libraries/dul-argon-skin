@@ -129,10 +129,15 @@ $(document).ready(function() {
   /* corresponding ILLiad request parameters to those links.    */
 
   $(document).on("click", ".request-from-trln", function () {
-    var illiad_params = $(this).data('illiad-params');
+    var $req_button = $(this);
+    var illiad_params = $req_button.data('illiad-params');
     $( "#choose-your-illiad a" ).each(function(){
       new_href = ($(this).data('base-url') + '?' + illiad_params);
       $(this).attr( "href", new_href );
+      /* pass the doc ID on to the link for analytics */
+      $(this).data('document-id',
+        ($req_button.closest('[data-document-id]').data('document-id') ||
+          $('#document').data('document-id')));
     });
   });
 
