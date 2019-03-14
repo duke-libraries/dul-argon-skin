@@ -93,10 +93,29 @@ $(document).ready(function() {
   $("#documents ul.single-link a").tooltip({placement : 'right'});
   $("#documents button.link-type-fulltext").tooltip({placement : 'right'});
 
-  /* enable tooltips*/
+  /* enable tooltips */
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
+
+
+
+  /* check if a user is touching their device */
+  window.addEventListener('touchstart', function onFirstTouch() {
+
+    /* turn off tooltips */
+    $('[data-toggle="tooltip"]').tooltip('destroy');
+
+    /* turn off staff hover */
+    $("#content .items .staff-view-toggle-wrapper").css({ "display":"block" });
+
+    /* make location buttons larger */
+    $("#holdings .items .location-modal-toggle").addClass('touch-enabled');
+    $("#documents .items .location-modal-toggle").addClass('touch-enabled');
+
+
+    window.removeEventListener('touchstart', onFirstTouch, false);
+  }, false);
 
 
   // add border to non-empty previousNextDocument
