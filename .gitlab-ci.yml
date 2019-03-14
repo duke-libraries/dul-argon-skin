@@ -37,6 +37,7 @@ deploy_pre:
   after_script: *afterdeployscript
   only:
     - master
+    - hotfix-1.0.16
   tags:
     - staging
 
