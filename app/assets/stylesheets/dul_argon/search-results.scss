@@ -146,6 +146,29 @@
   font-size: 1.25em;
 }
 
+.location-modal-toggle.touch-enabled {
+  background-color: $link-hover-color;
+  border-radius: 5px;
+  padding: 0 8px 4px 3px;
+  margin-left: .2em;
+
+  &::after {
+    content: 'where to find it';
+    color: #fff;
+    font-size: .75em;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .fa {
+    color: #fff;
+    font-size: .8em;
+  }
+
+}
+
 .barcode-label {
   background: #e5e5e5;
   color: #444;
