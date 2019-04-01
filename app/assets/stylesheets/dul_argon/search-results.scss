@@ -407,3 +407,85 @@ div.primary-url {
 .contracted-ul {
   max-height: 96px;
 }
+
+
+
+/* bookmarks */
+
+@media (min-width: $screen-sm) {
+  body.blacklight-catalog-show .btn.request-from-duke {
+    margin-bottom: .5em;
+  }
+}
+
+body.blacklight-catalog-show {
+  form.bookmark_toggle {
+    float: right;
+    margin-top: 2px;
+  }
+}
+
+body.blacklight-catalog-index,
+body.blacklight-trln-index,
+body.blacklight-bookmarks-index {
+  div.toggle_bookmark  {
+    float: right;
+  }
+  .btn.request-from-duke {
+    margin-bottom: .5em;
+  }
+  #bookmarks_nav {
+    background-color: white;
+    border-color: #cccccc;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+  }
+}
+
+.show-tools .bookmark_toggle {
+    padding: 0;
+}
+
+form.bookmark_toggle .checkbox {
+  padding-top: 0;
+}
+
+div.toggle_bookmark {
+  width: 33px;
+  height: 30px;
+  .tooltip {
+    white-space: nowrap;
+  }
+}
+
+input[type=checkbox].toggle_bookmark {
+  display:none;
+}
+
+label.toggle_bookmark {
+  min-width: auto;
+  width: 33px;
+  height: 30px;
+  background-image: image-url('folder_unchecked.png');
+  &.checked {
+    background-image: image-url('folder_checked.png');
+  }
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-md) {
+  #show-sidebar-inner .doc-tools,
+  #show-sidebar-inner .btn {
+    width: 100%;
+  }
+
+  body.blacklight-catalog-show form.bookmark_toggle {
+    float: none;
+    padding-left: calc(50% - 16px);
+  } 
+}
+
+#bookmark-modal .modal-body {
+  overflow: visible;
+}

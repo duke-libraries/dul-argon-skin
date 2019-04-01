@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
@@ -15,7 +16,23 @@ class CatalogController < ApplicationController
 
     # Add Request button using Blacklight's extensible "tools" for
     # index view
+    # Note: delete bookmark then add back for proper ordering
+    config.index.document_actions.delete(:bookmark)
+
     config.add_results_document_tool(:request_button, partial: 'request_button')
+
+    config.add_results_document_tool(:bookmark,
+                                     partial: 'bookmark_control',
+                                     if: :render_bookmarks_control?)
+
+    # Remove Bookmark button from show view dropdown
+    config.show.document_actions.delete(:bookmark)
+
+    # Add Bookmarks button using Blacklight's extensible "collection tools"
+    # for index view.
+    # NOTE: bookmarks_button is a custom DUL partial
+    config.add_results_collection_tool(:bookmarks_button,
+                                       partial: 'bookmarks_button')
 
     # Add RSS feed button using Blacklight's extensible "collection tools"
     # for index view.
@@ -242,3 +259,4 @@ class CatalogController < ApplicationController
     # config.autocomplete_path = 'suggest'
   end
 end
+# rubocop:enable Metrics/ClassLength
