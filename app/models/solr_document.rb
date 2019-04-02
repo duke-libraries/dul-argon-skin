@@ -18,6 +18,7 @@ class SolrDocument
   include TrlnArgon::SolrDocument
   include TrlnArgon::ItemDeserializer
   include DulArgonSkin::RequestItem
+  include DulArgonSkin::SmsFieldMapping
 
   def rubenstein_record?
     holdings.key?('SCL')
