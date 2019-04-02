@@ -59,6 +59,11 @@ en:
       open_access_all: "View All Online Links"
     local_filter:
       searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
+    tools:
+      btn_label: 'Send Info To...'
+    sms:
+      label:
+        link_to_record: 'Link'
     map_location:
       button: 'Map/Info'
       icon_html: '<i class="fa fa-map-marker" aria-hidden="true" data-toggle="tooltip" data-container="body" data-placement="right" title="Where to find it"><span class="sr-only">map marker</span></i>'
