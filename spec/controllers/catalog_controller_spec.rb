@@ -14,7 +14,54 @@ describe CatalogController do
         expect(config.search_fields['shelfkey'].label).to eq('Call Number (LC)')
       end
     end
+
+    # rubocop:disable RSpec/ExampleLength
+    describe 'series_statement' do
+      it 'sets the series_statement field' do
+        expect(config.search_fields).to have_key('series_statement')
+      end
+
+      it 'has a label for the series field' do
+        expect(config.search_fields['series_statement'].label).to eq('Series')
+      end
+
+      it 'is excluded from simple select dropdown' do
+        expect(
+          config.search_fields['series_statement'].include_in_simple_select
+        ).to be false
+      end
+
+      it 'sets the correct Solr defType' do
+        expect(config.search_fields['series_statement'].def_type).to(
+          eq('edismax')
+        )
+      end
+
+      it 'sets the solr local parameters' do
+        expect(
+          config.search_fields['series_statement'].solr_local_parameters
+        ).to(
+          eq(qf:  'series_statement_indexed_t^20 '\
+                  'series_statement_indexed_cjk_v '\
+                  'series_statement_indexed_ara_v '\
+                  'series_statement_indexed_rus_v',
+             pf:  'series_statement_indexed_t^80 '\
+                  'series_statement_indexed_cjk_v^20 '\
+                  'series_statement_indexed_ara_v^20 '\
+                  'series_statement_indexed_rus_v^20',
+             pf3: 'series_statement_indexed_t^60 '\
+                  'series_statement_indexed_cjk_v^10 '\
+                  'series_statement_indexed_ara_v^10 '\
+                  'series_statement_indexed_rus_v^10',
+             pf2: 'series_statement_indexed_t^40 '\
+                  'series_statement_indexed_cjk_v^5 '\
+                  'series_statement_indexed_ara_v^5 '\
+                  'series_statement_indexed_rus_v^5')
+        )
+      end
+    end
   end
+  # rubocop:enable RSpec/ExampleLength
 
   describe 'home facet fields' do
     it 'sets the access type facet' do
