@@ -58,7 +58,7 @@ en:
       open_access: "View Online"
       open_access_all: "View All Online Links"
     local_filter:
-      searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
+      searching_trln: 'Duke, UNC, NC State, NCCU Libraries'
     tools:
       btn_label: 'Send Info To...'
     sms:
@@ -76,12 +76,12 @@ en:
     staff_view: "Staff View"
     search:
       zero_results:
-        trln_title_html: 'No results were found at Duke, UNC, NCSU, or NCCU Libraries for your search <em>%{search_terms}</em>'
+        trln_title_html: 'No results were found at Duke, UNC, NC State, or NCCU Libraries for your search <em>%{search_terms}</em>'
         title_html: 'No results were found at %{local_institution_name} for your search <em>%{search_terms}</em>'
         suggestion: 'Try checking your spelling, using different or more general terms, or removing filters.'
         expand_search:
-            one: '1 result at UNC, NCSU, NCCU Libraries'
-            other: '%{count} results at UNC, NCSU, NCCU Libraries'
+            one: '1 result at UNC, NC State, NCCU Libraries'
+            other: '%{count} results at UNC, NC State, NCCU Libraries'
         view_trln_results_html: 'View Results &raquo;'
     show:
       heading:
