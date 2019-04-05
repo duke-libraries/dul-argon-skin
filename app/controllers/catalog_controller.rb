@@ -177,19 +177,35 @@ class CatalogController < ApplicationController
       field.label = I18n.t('trln_argon.search_fields.series')
       field.def_type = 'edismax'
       field.solr_local_parameters = {
-        qf:  %w[series_statement_indexed_t^20
+        qf:  %w[series_work_indexed_t^20
+                series_work_indexed_ara_v
+                series_work_indexed_cjk_v
+                series_work_indexed_rus_v
+                series_statement_indexed_t^20
                 series_statement_indexed_cjk_v
                 series_statement_indexed_ara_v
                 series_statement_indexed_rus_v].join(' '),
-        pf:  %w[series_statement_indexed_t^80
+        pf:  %w[series_work_indexed_t^80
+                series_work_indexed_ara_v^20
+                series_work_indexed_cjk_v^20
+                series_work_indexed_rus_v^20
+                series_statement_indexed_t^80
                 series_statement_indexed_cjk_v^20
                 series_statement_indexed_ara_v^20
                 series_statement_indexed_rus_v^20].join(' '),
-        pf3: %w[series_statement_indexed_t^60
+        pf3: %w[series_work_indexed_t^60
+                series_work_indexed_ara_v^10
+                series_work_indexed_cjk_v^10
+                series_work_indexed_rus_v^10
+                series_statement_indexed_t^60
                 series_statement_indexed_cjk_v^10
                 series_statement_indexed_ara_v^10
                 series_statement_indexed_rus_v^10].join(' '),
-        pf2: %w[series_statement_indexed_t^40
+        pf2: %w[series_work_indexed_t^40
+                series_work_indexed_ara_v^5
+                series_work_indexed_cjk_v^5
+                series_work_indexed_rus_v^5
+                series_statement_indexed_t^40
                 series_statement_indexed_cjk_v^5
                 series_statement_indexed_ara_v^5
                 series_statement_indexed_rus_v^5].join(' ')

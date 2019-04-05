@@ -41,19 +41,35 @@ describe CatalogController do
         expect(
           config.search_fields['series_statement'].solr_local_parameters
         ).to(
-          eq(qf:  'series_statement_indexed_t^20 '\
+          eq(qf:  'series_work_indexed_t^20 '\
+                  'series_work_indexed_ara_v '\
+                  'series_work_indexed_cjk_v '\
+                  'series_work_indexed_rus_v '\
+                  'series_statement_indexed_t^20 '\
                   'series_statement_indexed_cjk_v '\
                   'series_statement_indexed_ara_v '\
                   'series_statement_indexed_rus_v',
-             pf:  'series_statement_indexed_t^80 '\
+             pf:  'series_work_indexed_t^80 '\
+                  'series_work_indexed_ara_v^20 '\
+                  'series_work_indexed_cjk_v^20 '\
+                  'series_work_indexed_rus_v^20 '\
+                  'series_statement_indexed_t^80 '\
                   'series_statement_indexed_cjk_v^20 '\
                   'series_statement_indexed_ara_v^20 '\
                   'series_statement_indexed_rus_v^20',
-             pf3: 'series_statement_indexed_t^60 '\
+             pf3: 'series_work_indexed_t^60 '\
+                  'series_work_indexed_ara_v^10 '\
+                  'series_work_indexed_cjk_v^10 '\
+                  'series_work_indexed_rus_v^10 '\
+                  'series_statement_indexed_t^60 '\
                   'series_statement_indexed_cjk_v^10 '\
                   'series_statement_indexed_ara_v^10 '\
                   'series_statement_indexed_rus_v^10',
-             pf2: 'series_statement_indexed_t^40 '\
+             pf2: 'series_work_indexed_t^40 '\
+                  'series_work_indexed_ara_v^5 '\
+                  'series_work_indexed_cjk_v^5 '\
+                  'series_work_indexed_rus_v^5 '\
+                  'series_statement_indexed_t^40 '\
                   'series_statement_indexed_cjk_v^5 '\
                   'series_statement_indexed_ara_v^5 '\
                   'series_statement_indexed_rus_v^5')
