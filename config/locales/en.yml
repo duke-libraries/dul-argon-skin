@@ -98,6 +98,7 @@ en:
       link_text: "Latest received"
     search_fields:
         shelfkey: 'Call Number (LC)'
+        series: 'Series'
     advanced_search:
       help:
         title: 'Search tips'
