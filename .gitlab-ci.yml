@@ -37,6 +37,7 @@ deploy_pre:
   after_script: *afterdeployscript
   only:
     - master
+    - /^release.*/
   tags:
     - staging
 

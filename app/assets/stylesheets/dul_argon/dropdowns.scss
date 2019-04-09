@@ -1,0 +1,10 @@
+.bootstrap-select {
+  // Active state
+  .dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: $gray;
+    }
+  }
+}
