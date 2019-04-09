@@ -103,7 +103,7 @@ en:
     latest_received:
       link_text: "Latest received"
     search_fields:
-        shelfkey: 'Call Number (LC)'
+        call_number: 'Call Number (LC)'
         series: 'Series'
     advanced_search:
       help:
