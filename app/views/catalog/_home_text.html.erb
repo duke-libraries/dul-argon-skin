@@ -5,18 +5,21 @@
 
 <%= render partial: 'home_new_additions', locals: {
   type: 'duke_authors',
+  scope: 'catalog',
   fetchresults: '10',
   query: 'f%5Blocation_hierarchy_f%5D%5B%5D=duke%3Adukeperk%3Adukeperkdurs' } %>
 <hr/>
 
 <%= render partial: 'home_new_additions', locals: {
   type: 'new_noteworthy',
+  scope: 'catalog',
   fetchresults: '10',
   query: 'f%5Blocation_hierarchy_f%5D%5B%5D=duke%3Adukeperk%3Adukeperknehy' } %>
 <hr/>
 
 <%= render partial: 'home_new_additions', locals: {
   type: 'dvds',
+  scope: 'catalog',
   fetchresults: '20',
   query: 'f%5Bphysical_media_f%5D%5B%5D=DVD&amp;f%5Bresource_type_f%5D%5B%5D=Video' } %>
 

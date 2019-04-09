@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-lg-5">
+    <%= link_to 'https://www.trln.org', id: 'trln-site-link' do %>
+      <%= image_tag("branding/trln_logo_full_300.png",
+        alt: "Triangle Research Libraries Network (TRLN)",
+        class: "img-responsive trln-banner-logo") %>
+    <% end %>
+  </div>
+  <div class="col-lg-7">
+    <div class="page-header">
+      <h1 class="main-title sr-only"><%= t('blacklight.home.welcome_trln') %></h1>
+      <p class="tagline"><%= auto_link(t('blacklight.home.blurb_trln')) %></h4>
+    </div>
+  </div>
+</div>
+
+<%= render partial: 'home_new_additions', locals: {
+  type: 'unc_books',
+  scope: 'trln',
+  fetchresults: '40',
+  query: 'f%5Bdate_cataloged_dt%5D%5B%5D=last_three_months' + \
+          '&f%5Blocation_hierarchy_f%5D%5B%5D=unc' + \
+          '&f%5Bresource_type_f%5D%5B%5D=Book' } %>
+<hr/>
+
+<%= render partial: 'home_new_additions', locals: {
+  type: 'ncsu_books',
+  scope: 'trln',
+  fetchresults: '20',
+  query: 'f%5Bdate_cataloged_dt%5D%5B%5D=last_three_months' + \
+          '&f%5Blocation_hierarchy_f%5D%5B%5D=ncsu' + \
+          '&f%5Bresource_type_f%5D%5B%5D=Book' } %>
+<hr/>
+
+<%# TODO: Once NCCU is live-updating records, add 'last_three_months' %>
+<%= render partial: 'home_new_additions', locals: {
+  type: 'nccu_books',
+  scope: 'trln',
+  fetchresults: '20',
+  query: 'f%5Blocation_hierarchy_f%5D%5B%5D=nccu' + \
+          '&f%5Bresource_type_f%5D%5B%5D=Book' } %>
+
+<hr/>
+<h2><%= t('blacklight.help.home_header') %></h2>
+<ul class="underlined-links home-welcome-links">
+  <li>
+    <%= t('blacklight.help.learn_more_html', about_url: DulArgonSkin.about_url) %>
+    <%= t('blacklight.help.feedback_html', \
+          feedback_url: TrlnArgon::Engine.configuration.feedback_url) \
+          if TrlnArgon::Engine.configuration.feedback_url.present? %>
+  </li>
+  <li><%= t('blacklight.help.search_tips_html', \
+          search_tips_url: DulArgonSkin.search_tips_url) %></li>
+  <li>
+    <%= link_to t('blacklight.help.ask_a_librarian'), \
+            TrlnArgon::Engine.configuration.contact_url, target: "_blank" %>
+            <%= t('blacklight.help.for_more_help') %>
+  </li>
+</ul>
+
+<hr/>
+
+<%# TO DO: Consider creating helper methods to enable hiding the TRLN submast link     %>
+<%# We'd need css classes to distinguish the TRLN homepage from e.g., a search result. %>
+<%# Possibly refactor google_analytics_helper.rb methods to also be used for this.     %>
+
+<% content_for :head do %>
+  <style type="text/css">
+    #trln-banner {
+      background: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+    .trln-home-link { display: none !important; }
+  </style>
+<% end %>
