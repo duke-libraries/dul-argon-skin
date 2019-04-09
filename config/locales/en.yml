@@ -58,7 +58,12 @@ en:
       open_access: "View Online"
       open_access_all: "View All Online Links"
     local_filter:
-      searching_trln: 'Duke, UNC, NCSU, NCCU Libraries'
+      searching_trln: 'Duke, UNC, NC State, NCCU Libraries'
+    tools:
+      btn_label: 'Send Info To...'
+    sms:
+      label:
+        link_to_record: 'Link'
     map_location:
       button: 'Map/Info'
       icon_html: '<i class="fa fa-map-marker" aria-hidden="true" data-toggle="tooltip" data-container="body" data-placement="right" title="Where to find it"><span class="sr-only">map marker</span></i>'
@@ -71,12 +76,12 @@ en:
     staff_view: "Staff View"
     search:
       zero_results:
-        trln_title_html: 'No results were found at Duke, UNC, NCSU, or NCCU Libraries for your search <em>%{search_terms}</em>'
+        trln_title_html: 'No results were found at Duke, UNC, NC State, or NCCU Libraries for your search <em>%{search_terms}</em>'
         title_html: 'No results were found at %{local_institution_name} for your search <em>%{search_terms}</em>'
         suggestion: 'Try checking your spelling, using different or more general terms, or removing filters.'
         expand_search:
-            one: '1 result at UNC, NCSU, NCCU Libraries'
-            other: '%{count} results at UNC, NCSU, NCCU Libraries'
+            one: '1 result at UNC, NC State, NCCU Libraries'
+            other: '%{count} results at UNC, NC State, NCCU Libraries'
         view_trln_results_html: 'View Results &raquo;'
     show:
       heading:
@@ -87,6 +92,10 @@ en:
         suggest_a_purchase: 'Suggest a Purchase'
         request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles, and items unavailable at Duke through Interlibrary Requests"
       report_missing: 'Report missing item'
+      a11y_text:
+          latest_received: "Opens in new window"
+    latest_received:
+      link_text: "Latest received"
     search_fields:
         shelfkey: 'Call Number (LC)'
     advanced_search:

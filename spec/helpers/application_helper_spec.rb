@@ -58,4 +58,66 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe 'show_hathitrust_link_if_available?' do
+    context 'when document is a book' do
+      let(:document) do
+        SolrDocument.new(
+          id: 'DUKE123456789',
+          oclc_number: '123456',
+          resource_type_a: ['Book']
+        )
+      end
+
+      it 'returns true' do
+        expect(helper.show_hathitrust_link_if_available?(document)).to be true
+      end
+    end
+
+    context 'when document is a serial with issues after 1923' do
+      let(:document) do
+        SolrDocument.new(
+          id: 'DUKE123456789',
+          oclc_number: '123456',
+          resource_type_a: ['Journal, Magazine, or Periodical'],
+          publication_year_sort: '1999'
+        )
+      end
+
+      it 'returns false' do
+        expect(helper.show_hathitrust_link_if_available?(document)).to be false
+      end
+    end
+
+    context 'when document is a serial and publication ended before 1924' do
+      let(:document) do
+        SolrDocument.new(
+          id: 'DUKE123456789',
+          oclc_number: '123456',
+          resource_type_a: ['Journal, Magazine, or Periodical'],
+          publication_year_sort: '1890'
+        )
+      end
+
+      it 'returns true' do
+        expect(helper.show_hathitrust_link_if_available?(document)).to be true
+      end
+    end
+
+    context 'when document is a serial and a government document' do
+      let(:document) do
+        SolrDocument.new(
+          id: 'DUKE123456789',
+          oclc_number: '123456',
+          resource_type_a: ['Journal, Magazine, or Periodical',
+                            'Government publication'],
+          publication_year_sort: '1999'
+        )
+      end
+
+      it 'returns true' do
+        expect(helper.show_hathitrust_link_if_available?(document)).to be true
+      end
+    end
+  end
 end

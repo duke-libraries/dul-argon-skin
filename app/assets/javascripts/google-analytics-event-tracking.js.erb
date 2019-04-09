@@ -191,49 +191,58 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
   "#documents.documents-list .document .index_title a" => {
     :category => "'search results'",
     :action => "'search result title'",
-    :label => "$(this).attr('href')"
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
   "#documents.documents-list .document .primary-url a" => {
     :category => "'search results'",
-    :action => "'view online'",
-    :label => "$(this).data('original-title') || $(this).text()"
+    :action => "'view online | ' + ($(this).data('original-title') || $(this).text())",
+    :label => "$(this).closest('[data-document-id]').data('document-id')",
+    :document_listener => true
     },
 
   "#documents.documents-list .document .map-info a" => {
     :category => "'search results'",
     :action => "'map/info link'",
-    :label => "$(this).parent().prev('.call-number').text()"
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
   "#documents.documents-list .document .items-toggle a.expander" => {
     :category => "'search results'",
-    :action => "'show/hide more items'"
+    :action => "'show more items' + (($(this).attr('aria-expanded') == 'false') ? ' [expand]' : ' [collapse]')",
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
+    },
+
+  "#documents.documents-list .document .items-wrapper .expandable-content-controls .show-control a" => {
+    :category => "'search results'",
+    :action => "'expand holdings' + ($(this).hasClass('btn-show') ? ' [expand]' : ' [collapse]')",
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
   "#documents.documents-list .document a.staff-view-toggle" => {
     :category => "'search results'",
-    :action => "'staff view link'",
-    :label => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')"
+    :action => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')",
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
   #// Keep action consistent with item page for this control
   "#documents.documents-list .document .index-document-functions a.request-from-duke" => {
     :category => "'search results'",
-    :action => "'item tools'",
-    :label => "'Request (Duke)'"
+    :action => "'Request (Duke)'",
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
   "#documents.documents-list .document .index-document-functions a.request-from-trln" => {
     :category => "'search results'",
-    :action => "'item tools'",
-    :label => "'Request (TRLN)'"
+    :action => "'Request (TRLN)'",
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
   #// Modal can appear on search results or item view
   "#trln-request-modal a" => {
     :category => "'TRLN request'",
-    :action => "'choose home library'"
+    :action => "'choose home library: ' + defaultLabel($(this))",
+    :label => "$(this).data('document-id')"
     },
 
   #// Results Display Options
@@ -241,9 +250,15 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :category => "'search results'",
     :action => "'sort by'"
     },
+
   "#sortAndPerPage #per_page-dropdown a, #sortAndPerPage #per_page-dropdown button" => {
     :category => "'search results'",
     :action => "'per page'"
+    },
+
+  "#sortAndPerPage #rss_button" => {
+    :category => "'search results'",
+    :action => "'RSS button'"
     },
 
   "#sortAndPerPage .page_links a" => {
@@ -375,46 +390,50 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
 
   "#show-sidebar a.sidebar-top-link" => {
     :category => "'item sidebar'",
-    :action => "'back to top'",
-    :label => "'back to top (link)'"
+    :action => "'sidebar nav | back to top (link)'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar a.sidebar-thumb-link" => {
     :category => "'item sidebar'",
-    :action => "'back to top'",
-    :label => "'back to top (thumb)'"
+    :action => "'sidebar nav | back to top (link)'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar a.request-from-duke" => {
     :category => "'item sidebar'",
-    :action => "'item tools'",
-    :label => "'Request (Duke)'"
+    :action => "'Request (Duke)'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar a.request-from-trln" => {
     :category => "'item sidebar'",
-    :action => "'item tools'",
-    :label => "'Request (TRLN)'"
+    :action => "'Request (TRLN)'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar .doc-tools a" => {
     :category => "'item sidebar'",
-    :action => "'item tools'"
+    :action => "'item tools | ' + defaultLabel($(this))",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar .doc-tools button" => {
     :category => "'item sidebar'",
-    :action => "'item tools'"
+    :action => "'item tools | ' + defaultLabel($(this))",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar .sidebar-menu a" => {
     :category => "'item sidebar'",
-    :action => "'sidebar nav menu'"
+    :action => "'sidebar nav | ' + defaultLabel($(this))",
+    :label => "$('#document').data('document-id')"
     },
 
   "#show-sidebar .report-missing-item a" => {
     :category => "'item sidebar'",
-    :action => "'report missing'"
+    :action => "'report missing'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#previousNextDocument a" => {
@@ -424,88 +443,106 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
 
   ".show-tools a.request-from-trln" => {
     :category => "'item page'",
-    :action => "'item tools'",
-    :label => "'Request (TRLN)'"
+    :action => "'Request (TRLN)'",
+    :label => "$('#document').data('document-id')"
     },
 
   ".show-tools a.request-from-duke" => {
     :category => "'item page'",
-    :action => "'item tools'",
-    :label => "'Request (Duke)'"
+    :action => "'Request (Duke)'",
+    :label => "$('#document').data('document-id')"
     },
 
   ".show-tools .doc-tools a" => {
     :category => "'item page'",
-    :action => "'item tools'"
+    :action => "'item tools | ' + defaultLabel($(this))",
+    :label => "$('#document').data('document-id')"
     },
 
   ".show-tools .doc-tools button" => {
     :category => "'item page'",
-    :action => "'item tools'"
+    :action => "'item tools | ' + defaultLabel($(this))",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document .map-info a" => {
     :category => "'item page'",
     :action => "'map/info link'",
-    :label => "$(this).parent().prev('.call-number').text()"
+    :label => "$('#document').data('document-id')"
     },
 
   "#document .primary-url a" => {
     :category => "'item page'",
-    :action => "'view online'",
-    :label => "$(this).data('original-title') || $(this).text()"
+    :action => "'view online | ' + ($(this).data('original-title') || $(this).text())",
+    :label => "$('#document').data('document-id')",
+    :document_listener => true
     },
 
   "#document .items-toggle a.expander" => {
     :category => "'item page'",
-    :action => "'show/hide more items'",
+    :action => "'show more items' + (($(this).attr('aria-expanded') == 'false') ? ' [expand]' : ' [collapse]')",
+    :label => "$('#document').data('document-id')"
+    },
+
+  "#document .items-wrapper .expandable-content-controls .show-control a" => {
+    :category => "'item page'",
+    :action => "'expand holdings' + ($(this).hasClass('btn-show') ? ' [expand]' : ' [collapse]')",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document a.staff-view-toggle" => {
     :category => "'item page'",
-    :action => "'staff view link'",
-    :label => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')",
+    :action => "'staff view' + (link.is('.shown') ? ' [show]' : ' [hide]')",
+    :label => "$('#document').data('document-id')"
     },
 
   #// Metadata
   "#document #authors a" => {
     :category => "'item page'",
     :action => "'author link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #summary a" => {
     :category => "'item page'",
     :action => "'summary link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #contents a" => {
     :category => "'item page'",
     :action => "'contents link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #sample-chapter a" => {
     :category => "'item page'",
     :action => "'sample chapter link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #included-works a" => {
     :category => "'item page'",
     :action => "'included works link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #subjects a" => {
     :category => "'item page'",
     :action => "'subject link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #other-details a" => {
     :category => "'item page'",
     :action => "'other details link'",
+    :label => "$('#document').data('document-id')"
     },
 
   "#document #related-works a" => {
     :category => "'item page'",
     :action => "'related works link'",
+    :label => "$('#document').data('document-id')"
     },
 
   #// ===========================

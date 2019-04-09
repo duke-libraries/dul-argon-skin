@@ -63,6 +63,7 @@ $(document).ready(function() {
 
   /* DUL masthead primary navigation menu toggle */
   $('a#full-menu-toggle').on('click',function(e) {
+    e.preventDefault();
     $(this).toggleClass('menu-active');
     $('#dul-masthead-region-megamenu').slideToggle();
   });
@@ -92,10 +93,29 @@ $(document).ready(function() {
   $("#documents ul.single-link a").tooltip({placement : 'right'});
   $("#documents button.link-type-fulltext").tooltip({placement : 'right'});
 
-  /* enable tooltips*/
+  /* enable tooltips */
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
+
+
+
+  /* check if a user is touching their device */
+  window.addEventListener('touchstart', function onFirstTouch() {
+
+    /* turn off tooltips */
+    $('[data-toggle="tooltip"]').tooltip('destroy');
+
+    /* turn off staff hover */
+    $("#content .items .staff-view-toggle-wrapper").css({ "display":"block" });
+
+    /* make location buttons larger */
+    $("#holdings .items .location-modal-toggle").addClass('touch-enabled');
+    $("#documents .items .location-modal-toggle").addClass('touch-enabled');
+
+
+    window.removeEventListener('touchstart', onFirstTouch, false);
+  }, false);
 
 
   // add border to non-empty previousNextDocument
@@ -109,10 +129,15 @@ $(document).ready(function() {
   /* corresponding ILLiad request parameters to those links.    */
 
   $(document).on("click", ".request-from-trln", function () {
-    var illiad_params = $(this).data('illiad-params');
+    var $req_button = $(this);
+    var illiad_params = $req_button.data('illiad-params');
     $( "#choose-your-illiad a" ).each(function(){
       new_href = ($(this).data('base-url') + '?' + illiad_params);
       $(this).attr( "href", new_href );
+      /* pass the doc ID on to the link for analytics */
+      $(this).data('document-id',
+        ($req_button.closest('[data-document-id]').data('document-id') ||
+          $('#document').data('document-id')));
     });
   });
 
@@ -123,6 +148,15 @@ $(document).ready(function() {
 
   /* if this is a show page */
   if ( $('body').hasClass('blacklight-catalog-show') ) {
+    var document_id = $( "#document div:first-child" ).attr('id').replace(/\D/g,'');
+    /* only run call if there is a current status */
+    if ($('.status-label').length > 0) {
+      get_the_availability(document_id);
+    }
+  };
+
+  /* if this is a trln-context show page */
+  if ( $('body').hasClass('blacklight-trln-show') ) {
     var document_id = $( "#document div:first-child" ).attr('id').replace(/\D/g,'');
     /* only run call if there is a current status */
     if ($('.status-label').length > 0) {
@@ -185,26 +219,33 @@ $(document).ready(function() {
                     mySpan.text(status.label)
                   }
                 })
-                .velocity("fadeIn", { delay: 250, duration: 500 });
-            }
+                .velocity("fadeIn", { delay: 250,
+                                      duration: 500,
+                                      begin: function() {
 
-            /* update status class */
-            switch (status.available) {
-              case 'yes':
-                if ( (mySpan.attr('class')).trim() != 'item-available' ) {
-                  mySpan.attr('class', 'item-available');
-                }
-                break;
-              case 'no':
-                if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
-                  mySpan.attr('class', 'item-not-available');
-                }
-                break;
-              case 'other':
-                if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
-                  mySpan.attr('class', 'item-availability-misc');
-                }
-                break;
+                                        /* update status class */
+                                        switch (status.available) {
+                                          case 'yes':
+                                            if ( (mySpan.attr('class')).trim() != 'item-available' ) {
+                                              mySpan.attr('class', 'item-available');
+                                            }
+                                            break;
+                                          case 'no':
+                                            if ( (mySpan.attr('class')).trim() != 'item-not-available' ) {
+                                              mySpan.attr('class', 'item-not-available');
+                                            }
+                                            break;
+                                          case 'other':
+                                            if ( (mySpan.attr('class')).trim() != 'item-availability-misc' ) {
+                                              mySpan.attr('class', 'item-availability-misc');
+                                            }
+                                            break;
+                                        }
+
+                                      }
+
+                                    });
+
             }
 
           }

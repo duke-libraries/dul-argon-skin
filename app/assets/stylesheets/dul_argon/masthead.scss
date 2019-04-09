@@ -98,6 +98,18 @@
         width: auto;
       }
 
+      .bootstrap-select {
+
+        .filter-option-inner-inner {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: calc(100% - 1.25em);
+        }
+
+      }
+
       .twitter-typeahead {
         min-width: auto;
         .tt-menu {

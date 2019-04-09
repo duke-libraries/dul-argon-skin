@@ -5,7 +5,7 @@
 <% if show_doc_actions? %>
 <div class="btn-group doc-tools">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Send Info To... <span class="caret"></span>
+    <%= t('trln_argon.tools.btn_label') %> <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     <%= render_show_doc_actions @document do |config, inner| %>

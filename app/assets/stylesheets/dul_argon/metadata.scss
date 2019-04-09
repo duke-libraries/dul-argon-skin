@@ -98,3 +98,14 @@
   }
 
 }
+
+/* Holdings expand/collapse */
+
+.holdings-wrapper.contracted {
+  max-height: 80px;
+}
+
+.holdings-wrapper.contracted:after {
+  background: linear-gradient(to right, rgba(243, 243, 243, 0), tint($primary-link-color, 90%) 50%);
+}
+

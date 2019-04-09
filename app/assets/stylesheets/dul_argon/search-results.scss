@@ -23,6 +23,29 @@
   border-bottom: 1px solid #ddd;
 }
 
+.blacklight-catalog-index, .blacklight-trln-index {
+  /* Note: this needs a bugfix in trln_argon for TRLN view      */
+  /* See stylesheets/trln_argon/trln_argon_shared.scss#L514-L520 */
+  #sortAndPerPage .search-widgets .btn-default {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    &#rss_button {
+       height: 32px;
+       line-height: 1em !important;
+       font-size: 20px !important;
+       padding: 4px 8px !important;
+       color: #ccc !important;
+       &:hover {
+         background: #e27800;
+         border-color: #e27800;
+         color: white !important;
+       }
+     }
+  }
+}
+
 #documents {
   .document {
     border-bottom: none;
@@ -121,6 +144,30 @@
 .location-modal-toggle .fa {
   padding: 0 3px 0 3px;
   font-size: 1.25em;
+}
+
+.location-modal-toggle.touch-enabled {
+  background-color: $link-hover-color;
+  border-radius: 5px;
+  padding: 0 8px 4px 3px;
+  margin-left: .2em;
+  white-space: nowrap;
+
+  &::after {
+    content: 'where to find it';
+    color: #fff;
+    font-size: .75em;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .fa {
+    color: #fff;
+    font-size: .8em;
+  }
+
 }
 
 .barcode-label {

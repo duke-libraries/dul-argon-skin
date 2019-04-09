@@ -3,6 +3,44 @@
 require 'rails_helper'
 
 describe TrlnArgonHelper do
+  describe '#add_thumbnail' do
+    context 'when the MARC provided URL is NOT HTTPS' do
+      let(:doc) do
+        SolrDocument.new(
+          id: 'DUKE012345678',
+          url_a: ['"href":"http://images.contentreserve.com/Img200.jpg",'\
+                  '"type":"thumbnail","note":"Thumbnail"}']
+        )
+      end
+
+      it 'uses the Syndetics URL' do
+        expect(helper.add_thumbnail(doc)).to(
+          eq('<img class="coverImage" onerror="this.style.display = '\
+             '&#39;none&#39;;" alt="cover image" src="https://syndetics.com/index.php?'\
+             'client=trlnet&amp;isbn=%2FSC.GIF" />')
+        )
+      end
+    end
+
+    context 'when the MARC provided URL is HTTPS' do
+      let(:doc) do
+        SolrDocument.new(
+          id: 'DUKE012345678',
+          url_a: ['{"href":"https://images.contentreserve.com/Img200.jpg",'\
+                  '"type":"thumbnail","note":"Thumbnail"}']
+        )
+      end
+
+      it 'uses the MARC supplied URL' do
+        expect(helper.add_thumbnail(doc)).to(
+          eq('<img class="coverImage" onerror="this.style.display = '\
+             '&#39;none&#39;;" alt="cover image" '\
+             'src="https://images.contentreserve.com/Img200.jpg" />')
+        )
+      end
+    end
+  end
+
   describe '#link_to_fulltext_url' do
     before { TrlnArgon::Engine.configuration.local_institution_code = 'duke' }
 
@@ -204,6 +242,72 @@ describe TrlnArgonHelper do
 
       it 'returns false' do
         expect(helper.suppress_item?(options)).to be false
+      end
+    end
+  end
+
+  describe 'physical_items?' do
+    context 'when record does not have any physical items' do
+      let(:document) do
+        SolrDocument.new(
+          YAML.safe_load(file_fixture('documents/DUKE006162724.yml').read)
+        )
+      end
+
+      it 'returns false' do
+        expect(physical_items?(document: document)).to be false
+      end
+    end
+
+    context 'when record has physical items' do
+      let(:document) do
+        SolrDocument.new(
+          YAML.safe_load(file_fixture('documents/DUKE004093564.yml').read)
+        )
+      end
+
+      it 'returns true' do
+        expect(physical_items?(document: document)).to be true
+      end
+    end
+  end
+
+  describe 'no_items?' do
+    context 'when holding entry has no items' do
+      let(:holdings) do
+        YAML.safe_load(
+          file_fixture('holdings/no_items_with_holdings_has_summary.yml').read
+        )
+      end
+      let(:loc_b) { holdings.keys.first }
+      let(:loc_n) { holdings[loc_b].keys.first }
+      let(:item_data) do
+        holdings[loc_b][loc_n]
+      end
+
+      it 'returns false' do
+        expect(no_items?(loc_b: loc_b, loc_n: loc_n, item_data: item_data)).to(
+          be true
+        )
+      end
+    end
+
+    context 'when holdings entry has items' do
+      let(:holdings) do
+        YAML.safe_load(
+          file_fixture('holdings/items_with_holdings_no_summary.yml').read
+        )
+      end
+      let(:loc_b) { holdings.keys.first }
+      let(:loc_n) { holdings[loc_b].keys.first }
+      let(:item_data) do
+        holdings[loc_b][loc_n]
+      end
+
+      it 'returns false' do
+        expect(no_items?(loc_b: loc_b, loc_n: loc_n, item_data: item_data)).to(
+          be false
+        )
       end
     end
   end

@@ -1,5 +1,8 @@
-<%# NOTE: Overrides trln_argon partial %>
 
-<div class="staff-view-toggle-wrapper">
-  <a href="#" class="staff-view-toggle"><%= t('trln_argon.staff_view') %></a>
-</div>
+<%# NOTE: Overrides trln_argon partial %>
+<% if physical_items?(document: document) %>
+  <div class="staff-view-toggle-wrapper">
+    <a href="#" class="staff-view-toggle"><%= t('trln_argon.staff_view') %></a>
+  </div>
+<% end %>
+
