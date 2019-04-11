@@ -34,7 +34,7 @@ module ApplicationHelper
                 .include?('Journal, Magazine, or Periodical') ||
       document.fetch(TrlnArgon::Fields::RESOURCE_TYPE, [])
               .include?('Government publication') ||
-      document.fetch(TrlnArgon::Fields::PUBLICATION_YEAR).to_i < 1924)
+      document.fetch(TrlnArgon::Fields::PUBLICATION_YEAR, '9999').to_i < 1924)
   end
   # rubocop:enable Style/SafeNavigation
 end
