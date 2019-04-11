@@ -119,5 +119,19 @@ describe ApplicationHelper do
         expect(helper.show_hathitrust_link_if_available?(document)).to be true
       end
     end
+
+    context 'when document is a serial and does not include a pub date' do
+      let(:document) do
+        SolrDocument.new(
+          id: 'DUKE123456789',
+          oclc_number: '123456',
+          resource_type_a: ['Journal, Magazine, or Periodical']
+        )
+      end
+
+      it 'returns false' do
+        expect(helper.show_hathitrust_link_if_available?(document)).to be false
+      end
+    end
   end
 end
