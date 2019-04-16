@@ -144,7 +144,11 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'shared DUL menu'",
     :document_listener => true
     },
-
+  "#trln-banner .trln-home-link" => {
+    :category => "'masthead'",
+    :action => "'TRLN submast'",
+    :label => "'TRLN portal link'"
+    },
 
   #// Footer
   "footer a" => {
@@ -569,6 +573,15 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
   ".home-other-resources a" => {
     :category => "'homepage'",
     :action => "'other resource link'",
+    },
+
+  ".page-header .tagline a" => {
+    :category => "'homepage'",
+    :action => "'tagline link'"
+    },
+  "a#trln-site-link" => {
+    :category => "'homepage'",
+    :action => "'TRLN logo website link'"
     },
 
     #// ===========================

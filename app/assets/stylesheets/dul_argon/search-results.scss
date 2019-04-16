@@ -1,11 +1,25 @@
+#toggle-trln-btn-top.btn-primary {
+  &.active,:active {
+    background-color: $trln-pink;
+    border-color: shade($trln-pink, 25%);
+  }
+}
+
+#toggle-local-btn-top.btn-primary {
+  &.active,:active {
+    background-color: $primary-color;
+    border-color: shade($primary-color, 25%);
+  }
+}
+
 .constraints-container {
   background: #eee;
   border: none;
   box-shadow: none;
   border-radius: 0 0 0 8px;
   margin-top: -1px;
-  margin-right: -35px;
-  padding-right: 35px;
+  margin-right: -31px;
+  padding-right: 31px;
   @media (max-width: $screen-sm) {
     margin-right: 0;
     padding-right: 15px;

@@ -75,6 +75,10 @@ jQuery(document).ready(function ($) {
     var fetchresults = parseInt($this_widget.data('fetchresults')) || 20;
     var showitems = parseInt($this_widget.data('showitems'));
     var showcount = $this_widget.data('showcount');
+    var scope = $this_widget.data('scope');
+
+    // If search action is / we still need /catalog.json for our AJAX GET
+    var scope_qualifier = scope.endsWith('/') ? 'catalog' : '';
 
     // Fallback behavior in case there's a problem loading the data or if the
     // query returns no matching items...
@@ -96,7 +100,8 @@ jQuery(document).ready(function ($) {
     }
 
     $.ajax({
-      url: '/catalog.json?sort=date_cataloged+desc%2C+publication_year_isort+desc&amp;'
+      url: scope + scope_qualifier +
+        '.json?sort=date_cataloged+desc%2C+publication_year_isort+desc&amp;'
         + 'per_page=' + fetchresults + '&amp;' + blacklight_query,
       type: "GET",
       dataType: 'json',
@@ -128,7 +133,7 @@ jQuery(document).ready(function ($) {
 
           item = {
             title:        obj.title_main || "[Untitled]",
-            link:         '/catalog/' + obj.local_id,
+            link:         [(scope + scope_qualifier), obj.id].join('/'),
             author:       find_author(obj),
             description:  find_description(obj),
             thumb:        build_thumb(obj),
