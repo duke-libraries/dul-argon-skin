@@ -16,7 +16,6 @@
 
 <%= render partial: 'home_new_additions', locals: {
   type: 'unc_books',
-  scope: 'trln',
   fetchresults: '40',
   query: 'f%5Bdate_cataloged_dt%5D%5B%5D=last_three_months' + \
           '&f%5Blocation_hierarchy_f%5D%5B%5D=unc' + \
@@ -25,7 +24,6 @@
 
 <%= render partial: 'home_new_additions', locals: {
   type: 'ncsu_books',
-  scope: 'trln',
   fetchresults: '20',
   query: 'f%5Bdate_cataloged_dt%5D%5B%5D=last_three_months' + \
           '&f%5Blocation_hierarchy_f%5D%5B%5D=ncsu' + \
@@ -35,7 +33,6 @@
 <%# TODO: Once NCCU is live-updating records, add 'last_three_months' %>
 <%= render partial: 'home_new_additions', locals: {
   type: 'nccu_books',
-  scope: 'trln',
   fetchresults: '20',
   query: 'f%5Blocation_hierarchy_f%5D%5B%5D=nccu' + \
           '&f%5Bresource_type_f%5D%5B%5D=Book' } %>

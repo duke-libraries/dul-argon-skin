@@ -77,6 +77,9 @@ jQuery(document).ready(function ($) {
     var showcount = $this_widget.data('showcount');
     var scope = $this_widget.data('scope');
 
+    // If search action is / we still need /catalog.json for our AJAX GET
+    var scope_qualifier = scope.endsWith('/') ? 'catalog' : '';
+
     // Fallback behavior in case there's a problem loading the data or if the
     // query returns no matching items...
     function fallbackToLink($this_widget) {
@@ -97,7 +100,8 @@ jQuery(document).ready(function ($) {
     }
 
     $.ajax({
-      url: '/' + scope + '.json?sort=date_cataloged+desc%2C+publication_year_isort+desc&amp;'
+      url: scope + scope_qualifier +
+        '.json?sort=date_cataloged+desc%2C+publication_year_isort+desc&amp;'
         + 'per_page=' + fetchresults + '&amp;' + blacklight_query,
       type: "GET",
       dataType: 'json',
@@ -129,7 +133,7 @@ jQuery(document).ready(function ($) {
 
           item = {
             title:        obj.title_main || "[Untitled]",
-            link:         '/' + scope + '/' + obj.id,
+            link:         [(scope + scope_qualifier), obj.id].join('/'),
             author:       find_author(obj),
             description:  find_description(obj),
             thumb:        build_thumb(obj),
