@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: 8a5ec847d3d4d0491c3d79bad85bbbd16d84e048
+  revision: 07263de2a054db711ee12c86e03a2f93e0a7606d
   specs:
-    trln_argon (1.1.1)
+    trln_argon (1.1.3)
       addressable (~> 2.5)
       blacklight (~> 6.16)
       blacklight-hierarchy (~> 1.1.0)
