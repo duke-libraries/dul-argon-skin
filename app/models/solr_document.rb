@@ -23,28 +23,4 @@ class SolrDocument
   def rubenstein_record?
     holdings.key?('SCL')
   end
-
-  private
-
-  # fetches enhanced data (SyndeticsData object) and yields it to a block,
-  # if it's available.
-  # NOTE: Quick patch of Argon to prevent slow page loads due to Syndetics.
-  # rubocop:disable MethodLength
-  def enhanced_data(client = 'trlnet')
-    params = get_params(client, 'XML.XML')
-    return nil unless params
-    begin
-      response = Faraday::Connection.new.get(build_syndetics_query(params)) do |request|
-        request.options.timeout = 3
-        request.options.open_timeout = 2
-      end
-      data = TrlnArgon::SyndeticsData.new(Nokogiri::XML(response.body))
-    rescue StandardError => e
-      Rails.logger.warn('unable to fetch syndetics data for '\
-                        "#{fetch('id', 'unknown document')} "\
-                        "-- #{params}: #{e}")
-    end
-    yield data if block_given? && !data.nil?
-    data
-  end
 end
