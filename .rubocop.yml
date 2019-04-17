@@ -12,6 +12,7 @@ AllCops:
     - 'db/**/**'
     - 'bin/**'
     - 'vendor/**/**'
+    - 'app/models/solr_document.rb'
 
 
 Documentation:
