@@ -134,4 +134,30 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe 'strip_duke_id_prefix' do
+    context 'when record has a DUKE prefix in its Local ID' do
+      let(:document) do
+        SolrDocument.new(
+          YAML.safe_load(file_fixture('documents/DUKE006162724.yml').read)
+        )
+      end
+
+      it 'returns the ID with DUKE stripped out' do
+        expect(strip_duke_id_prefix(document: document)).to(eq('006162724'))
+      end
+    end
+
+    context 'when record has no DUKE prefix in its Local ID' do
+      let(:document) do
+        SolrDocument.new(
+          YAML.safe_load(file_fixture('documents/UNCb1852218.yml').read)
+        )
+      end
+
+      it 'returns the Local ID unchanged' do
+        expect(strip_duke_id_prefix(document: document)).to(eq('b1852218'))
+      end
+    end
+  end
 end

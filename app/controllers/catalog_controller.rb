@@ -214,6 +214,10 @@ class CatalogController < ApplicationController
 
     config.add_search_field(isbn_issn)
 
+    config.add_show_field TrlnArgon::Fields::LOCAL_ID.to_s,
+                          label: 'System ID',
+                          helper_method: 'strip_duke_id_prefix'
+
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
