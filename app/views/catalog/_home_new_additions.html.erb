@@ -1,11 +1,14 @@
 <h2>
-  <a href="/?<%= query %>&amp;sort=date_cataloged+desc%2C+publication_year_isort+desc" class="new-additions-heading" data-type="<%= type %>">
-    <%= t("blacklight.home.new_additions.#{type}") %>
+  <a href="<%= search_action_url %>?<%= query %>&amp;sort=date_cataloged+desc%2C+publication_year_isort+desc"
+    class="new-additions-heading" data-type="<%= type %>">
+      <%= t("blacklight.home.new_additions.#{type}") %>
   </a>
 </h2>
 
-<ul id="catalog-feed-items-<%= type %>" class="new-additions" data-query="<%= query %>" data-fetchresults="<%= fetchresults %>" data-type="<%= type %>">
-  <% 5.times do %>
-    <%= render partial: 'home_new_item_placeholder' %>
-  <% end %>
+<ul id="catalog-feed-items-<%= type %>" class="new-additions"
+  data-query="<%= query %>" data-fetchresults="<%= fetchresults %>"
+  data-type="<%= type %>" data-scope="<%= search_action_url %>">
+    <% 5.times do %>
+      <%= render partial: 'home_new_item_placeholder' %>
+    <% end %>
 </ul>

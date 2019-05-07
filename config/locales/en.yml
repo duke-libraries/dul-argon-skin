@@ -23,11 +23,17 @@ en:
   blacklight:
     home:
       welcome: "Duke University Libraries Catalog"
+      welcome_trln: "Triangle Research Libraries Network (TRLN)"
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
+      blurb_trln: "Search across the collections of <a href='https://www.trln.org'>TRLN</a>'s member institutions: Duke University, NC Central University, NC State University, and UNC Chapel Hill"
+      trln_submast_html: "Duke <span class='submast-separator'>·</span> UNC <span class='submast-separator'>·</span> NC State <span class='submast-separator'>·</span> NCCU Libraries"
       new_additions:
         duke_authors: "New From Duke Authors"
         new_noteworthy: "New & Noteworthy"
         dvds: "New DVDs"
+        unc_books: "New Books at UNC Chapel Hill Libraries"
+        ncsu_books: "New Books at NC State Libraries"
+        nccu_books: "New Books at NC Central Libraries"
     search:
       form:
         search:
@@ -98,6 +104,7 @@ en:
       link_text: "Latest received"
     search_fields:
         shelfkey: 'Call Number (LC)'
+        series: 'Series'
     advanced_search:
       help:
         title: 'Search tips'

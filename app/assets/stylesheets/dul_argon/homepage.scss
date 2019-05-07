@@ -1,6 +1,6 @@
-/* ======================================= */
-/* Styles specific to DUL Catalog homepage */
-/* ======================================= */
+/* ============================================== */
+/* Styles specific to DUL Catalog & TRLN homepage */
+/* ============================================== */
 
 h1.main-title {
   font-size: 40px;
@@ -9,6 +9,10 @@ h1.main-title {
 .tagline {
   font-size: 22px;
   color: $gray-light;
+}
+
+.trln-banner-logo {
+  margin-top: 19px;
 }
 
 .home-other-resources {

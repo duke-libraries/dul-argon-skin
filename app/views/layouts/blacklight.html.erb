@@ -35,9 +35,9 @@
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/ajax_modal' %>
+  <%= render partial: 'submast' %>
 
   <div id="main-container" class="<%= container_classes %>">
-    <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
     <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
 

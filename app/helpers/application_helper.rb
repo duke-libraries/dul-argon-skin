@@ -37,4 +37,10 @@ module ApplicationHelper
       document.fetch(TrlnArgon::Fields::PUBLICATION_YEAR, '9999').to_i < 1924)
   end
   # rubocop:enable Style/SafeNavigation
+
+  def strip_duke_id_prefix(options = {})
+    doc = options.fetch(:document, nil)
+    return unless doc
+    doc.fetch(TrlnArgon::Fields::LOCAL_ID, '').sub('DUKE', '')
+  end
 end

@@ -1,15 +1,16 @@
 GIT
   remote: https://github.com/trln/trln_argon
-  revision: b70d2a99c53f035b7139b6b618e270376602be1d
+  revision: 172566a38096397b920e6d26f5b2a2814382ea2a
   specs:
-    trln_argon (1.1.4)
+    trln_argon (1.2.0)
       addressable (~> 2.5)
       blacklight (~> 6.16)
       blacklight-hierarchy (~> 1.1.0)
       blacklight_advanced_search (~> 6.2)
       blacklight_range_limit (~> 6.3)
       bootstrap-select-rails (~> 1.12)
-      chosen-rails (~> 1.8)
+      chosen-rails (~> 1.8.7)
+      coffee-rails (~> 4.2)
       font-awesome-rails (~> 4.7)
       git (~> 1.3.0)
       library_stdnums (~> 1.6)
@@ -295,7 +296,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.7.6)
     unicode-display_width (1.4.0)
     velocityjs-rails (2.0.0)
     web-console (3.7.0)

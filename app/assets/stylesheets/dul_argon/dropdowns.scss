@@ -7,4 +7,10 @@
       background-color: $gray;
     }
   }
+
+  @media (max-width: $screen-sm) {
+    .bs-caret {
+      padding-right: 10px;
+    }
+  }
 }
