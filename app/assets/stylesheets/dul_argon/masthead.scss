@@ -295,11 +295,12 @@
   #dul-masthead-dul-megamenu {
     height: auto;
     /* Hide all the parts of the shared mast that we won't use */
+    .dul-masthead-region-logo,
     .dul-masthead-region-scoped-search,
     .dul-masthead-region-myaccount,
     #dul-masthead-logo,
     .dul-masthead-mobile-menu,
-    label[for="dul-masthead-nav-trigger"],
+    #dul-masthead-nav-trigger-btn,
     .hide-link-text,
     li.dul-masthead-megamenu_button {
       display: none !important;
