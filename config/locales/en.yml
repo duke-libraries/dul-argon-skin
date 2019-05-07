@@ -25,7 +25,7 @@ en:
       welcome: "Duke University Libraries Catalog"
       welcome_trln: "Triangle Research Libraries Network (TRLN)"
       blurb: "Find books, ebooks, journals, movies and music, government documents, and more"
-      blurb_trln: "Search across the collections of <a href='https://www.trln.org'>TRLN</a>'s member institutions: <a href='https://library.duke.edu'>Duke University</a>, <a href='http://web.nccu.edu/shepardlibrary/'>NC Central University</a>, <a href='https://www.lib.ncsu.edu/'>NC State University</a>, and <a href='https://library.unc.edu/'>UNC Chapel Hill</a>"
+      blurb_trln: "Search across the collections of <a href='https://www.trln.org'>TRLN</a>'s member institutions: Duke University, NC Central University, NC State University, and UNC Chapel Hill"
       trln_submast_html: "Duke <span class='submast-separator'>·</span> UNC <span class='submast-separator'>·</span> NC State <span class='submast-separator'>·</span> NCCU Libraries"
       new_additions:
         duke_authors: "New From Duke Authors"
