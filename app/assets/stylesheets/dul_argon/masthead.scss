@@ -238,6 +238,24 @@
     &:not(.collapsed) {
      color: white;
     }
+    &:focus {
+      /* See https://ghinda.net/article/mimic-native-focus-css/ */
+      outline-style: solid;
+      outline-width: 3px;
+      outline-offset: 2px;
+      outline-color: Highlight;
+      /* Chrome & Safari */
+      @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+        outline-color: -webkit-focus-ring-color;
+        outline-width: 5px;
+        outline-style: auto;
+      }
+      /* Firefox */
+      @-moz-document url-prefix() {
+        outline-width: 3px;
+      }
+    }
+
   }
 
   /* Patch the void between 768px & 813px where the shared DUL mast expects */
@@ -267,7 +285,7 @@
     }
     a {
       color: white;
-      &:hover {
+      &:hover, &:focus {
         background: $brand-success;
       }
     }
