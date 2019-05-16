@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  /* Strip ids from document tools links, e.g., <a id="emailLink">. */
+  /* DUL renders those multiple times per page (esp. for mobile).   */
+  /* It's invalid HTML & is flagged as an accessibility violation.  */
+  $('.doc-tools a').attr('id','');
+
   /* Ensure the sticky item show sidebar (using BS affix.js) doesn't */
   /* bleed into the footer when at the bottom of the content section */
 
