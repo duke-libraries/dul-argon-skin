@@ -1,4 +1,11 @@
-<div id="ajax-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="schmodal menu" aria-hidden="true">
+<%# Copy of Blacklight 6 partial, adjusted locally to address   %>
+<%# accessibility problem preventing focus on links/buttons     %>
+<%# in the modal. The aria-hidden attribute doesn't toggle off  %>
+<%# in Bootstrap 3 when the modal is activated so links/buttons %>
+<%# can't get focus. This is fixed in Bootstrap 4 (thus also in %>
+<%# Blacklight 7).                                              %>
+
+<div id="ajax-modal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     </div>
