@@ -1,10 +1,10 @@
 <%# Overrides TRLN Argon template, which overrides BL template %>
 
-<div id="content" class="<%= show_class %>">
+<div id="content" class="<%= show_class %>" role="main">
   <%= render_document_main_content_partial %>
 </div>
 
 <%# Uses show-sidebar instead of sidebar so as not to impact facets in index view %>
-<div id="show-sidebar" class="col-lg-3 col-md-3 col-sm-3">
+<div id="show-sidebar" class="col-lg-3 col-md-3 col-sm-3" role="complementary">
    <%= render_document_sidebar_partial %>
 </div>
