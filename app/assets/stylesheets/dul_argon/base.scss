@@ -30,6 +30,12 @@ a:hover {
   text-decoration-color: $link-hover-color;
 }
 
+.dropdown-toggle:focus {
+  /* for a11y: override bootstrap outline: 0 */
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
 .navbar-default .navbar-nav > li > a {
   color: $gray;
 }

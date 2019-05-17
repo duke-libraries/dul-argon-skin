@@ -389,7 +389,7 @@
     background: white;
     padding: 0.8em 0;
     border-top: 4px solid $trln-pink;
-    box-shadow: 0px 1px 5px 2px #ccc;
+    box-shadow: 0px 1px 5px 2px rgba(50,50,50,0.2);
     .container {
       padding-left: 0;
       @media (max-width: $screen-sm) {
