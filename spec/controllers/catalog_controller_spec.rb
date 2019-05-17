@@ -4,6 +4,14 @@ require 'rails_helper'
 describe CatalogController do
   let(:config) { subject.blacklight_config }
 
+  describe 'default solr params' do
+    it 'sets the defaults solr params' do
+      expect(config.default_solr_params).to(
+        eq(lowercaseOperators: 'false', rows: 10)
+      )
+    end
+  end
+
   describe 'search fields' do
     describe 'shelfkey' do
       it 'sets the shelfkey field' do

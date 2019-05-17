@@ -34,7 +34,8 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests.
     #  See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-      rows: 10
+      rows: 10,
+      lowercaseOperators: 'false' # https://issues.apache.org/jira/browse/SOLR-4646
     }
 
     config.advanced_search[:form_solr_parameters] = {
