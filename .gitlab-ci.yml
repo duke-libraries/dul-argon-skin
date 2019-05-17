@@ -38,6 +38,7 @@ deploy_pre:
   only:
     - master
     - /^release.*/
+    - /^hotfix.*/
   tags:
     - staging
 
