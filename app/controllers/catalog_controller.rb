@@ -163,8 +163,8 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('shelfkey') do |field|
-      field.label = I18n.t('trln_argon.search_fields.shelfkey')
+    config.add_search_field('call_number') do |field|
+      field.label = I18n.t('trln_argon.search_fields.call_number')
       field.advanced_parse = false
       field.include_in_advanced_search = false
     end

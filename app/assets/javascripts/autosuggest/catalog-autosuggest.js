@@ -18,7 +18,7 @@
 //      <option value="author">Author</option>
 //      <option value="subject">Subject</option>
 //      <option value="isbn_issn">ISBN/ISSN/barcode</option>
-//      <option value="shelfkey">Call Number (LC)</option></select>
+//      <option value="call_number">Call Number</option></select>
 //      <input type="text" data-autosuggest-enabled="true" data-autosuggest-path="https://find.library.duke.edu/suggest" name="q" style="width:600px;" autocomplete="off">
 //      <input type="submit" value="Submit"></input>
 //    </form>

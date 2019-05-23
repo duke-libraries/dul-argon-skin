@@ -7,7 +7,19 @@
 #   label:
 #     en: Director
 
+LC_CALL_NOS_NORMED:
+  solr_field: :lc_call_nos_normed_a
+  label:
+    en: LCC Normed
 TITLE_MAIN_INDEXED:
   solr_field: :title_main_indexed_t
   label:
       en: Title Main Indexed
+SHELFKEY:
+  solr_field: shelfkey
+  label:
+      en: Shelfkey
+SHELF_NUMBERS:
+    solr_field: shelf_numbers_tp
+    label:
+      en: Shelf Number
