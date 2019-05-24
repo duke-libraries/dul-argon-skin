@@ -61,7 +61,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'addressable', '~> 2.5'
 gem 'blacklight', '~> 6.7'
 gem 'lcsort', '~> 0.9'
-gem 'trln_argon', git: 'https://github.com/trln/trln_argon'
+gem 'trln_argon', git: 'https://github.com/trln/trln_argon', branch: 'develop'
 
 group :development, :test do
   gem 'rails-controller-testing'
@@ -71,8 +71,8 @@ group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
 end
 
-# gem 'devise'
-# gem 'devise-guests', '~> 0.6'
+gem 'devise'
+gem 'devise-guests', '~> 0.6'
 
 gem 'better_errors', '2.1.1'
 

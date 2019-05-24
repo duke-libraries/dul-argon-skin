@@ -265,6 +265,14 @@ $(document).ready(function() {
 
   };
 
+
+
+  /* Fix duplicate bookmark IDs on show pages */
+  var theBookmarkPath = ".blacklight-catalog-show #show-sidebar-inner div.toggle_bookmark ";
+  var theBookmarkID = $(theBookmarkPath + 'label').attr('for') + '_2';
+  $(theBookmarkPath + 'label').attr('for', theBookmarkID);
+  $(theBookmarkPath + 'label .toggle_bookmark').attr('id', theBookmarkID);
+
 });
 
 

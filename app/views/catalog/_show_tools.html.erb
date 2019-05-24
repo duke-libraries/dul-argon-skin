@@ -2,6 +2,7 @@
 <%# render the rest of these links as a dropdown menu instead of a button set. %>
 
 <%= render :partial => 'request_button', locals: { document: @document } %>
+
 <% if show_doc_actions? %>
 <div class="btn-group doc-tools">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,3 +17,5 @@
   </ul>
 </div>
 <% end %>
+
+<%= render :partial => 'bookmark_control', locals: { document: @document } %>
