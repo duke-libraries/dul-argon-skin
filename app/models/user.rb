@@ -6,6 +6,7 @@ class User < ApplicationRecord
   end
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
+  include TrlnArgon::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
