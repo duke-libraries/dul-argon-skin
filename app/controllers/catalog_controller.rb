@@ -39,6 +39,10 @@ class CatalogController < ApplicationController
     # NOTE: rss_button is a custom DUL partial
     config.add_results_collection_tool(:rss_button, partial: 'rss_button')
 
+    add_show_tools_partial(:report_missing, partial: 'report_missing_item')
+    add_show_tools_partial(:request_digitization,
+                           partial: 'request_digitization')
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #

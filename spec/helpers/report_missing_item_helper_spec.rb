@@ -25,7 +25,9 @@ describe ReportMissingItemHelper do
         'href="https://duke.qualtrics.com/jfe/form/SV_71J91hwAk1B5YkR/'\
         '?BTITLE=The%20bond%20%3A%20a%20novel&amp;'\
         'AUTHOR=Kirk%2C%20Robin&amp;Q_JFE=qdg">'\
-        'Report missing item</a>'
+        '<i class="glyphicon glyphicon-exclamation-sign" '\
+        'aria-hidden="true"></i> '\
+        'Missing Item Report</a>'
       end
 
       it 'generates link to report a missing item' do
