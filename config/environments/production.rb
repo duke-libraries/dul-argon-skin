@@ -94,4 +94,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  TrlnArgon::Engine.config.sms_mappings = {
+    'Virgin' => 'vmobl.com',
+    'AT&T' => 'txt.att.net',
+    'Verizon' => 'vzwpix.com',
+    'Nextel' => 'messaging.nextel.com',
+    'Sprint' => 'messaging.sprintpcs.com',
+    'T Mobile' => 'tmomail.net',
+    'Alltel' => 'message.alltel.com',
+    'Cricket' => 'mms.mycricket.com',
+    'Google Fi' => 'msg.fi.google.com'
+  }
+
 end

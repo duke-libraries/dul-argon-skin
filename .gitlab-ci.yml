@@ -24,6 +24,7 @@ deploy_dev:
     - $RAILS_DEPLOY_PATH/bin/after_deploy.sh
   only:
     - develop
+    - playing-with-texting
   tags:
     - development
 
