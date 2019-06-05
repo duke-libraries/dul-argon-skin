@@ -13,58 +13,97 @@
 </nav>
 
 <h2 id="colors">Colors</h2>
-<p>
-  Colors must be used responsibly so that text is accessible, complying with
-  <a href="https://www.w3.org/TR/WCAG21/">WCAG2.1 Level AA</a> guidelines. Text
-  must have a contrast ratio of at least 4.5:1 compared to its background (3:1
-  for <a href="https://www.w3.org/TR/WCAG21/#dfn-large-scale">large-scale</a>
-  text).
-</p>
-
-<h3>Legend</h3>
-
-<div>
-  <strong>Black Contrast Ratio &mdash; </strong>
-  <span class="contrast-score contrast-score-black contrast-score-pass">
-    4.5:1 pass
-  </span>
-  <span class="contrast-score contrast-score-black contrast-score-warn">
-    3:1 large-only
-  </span>
-  <span class="contrast-score contrast-score-black contrast-score-fail">
-    &lt; 3:1 fail
-  </span>
-</div>
-
-<div>
-  <strong>White Contrast Ratio &mdash; </strong>
-  <span class="contrast-score contrast-score-white contrast-score-pass">4.5:1 pass</span>
-  <span class="contrast-score contrast-score-white contrast-score-warn">3:1 large-only</span>
-  <span class="contrast-score contrast-score-white contrast-score-fail">&lt; 3:1 fail</span>
-</div>
-
-<p class="text-muted">
-  <small>
-    Check contrasts with other colors using <a href="https://webaim.org/resources/contrastchecker/">WebAIM</a>.
-  </small>
-</p>
-
-<h3 id="colors-general">TRLN: General Colors</h3>
 <div class="row">
-  <% %w[primary-color secondary-color tertiary-color].each do |color| %>
+  <div class="col-sm-6">
+    <p>
+      Colors must be used responsibly so that text is accessible, complying with
+      <a href="https://www.w3.org/TR/WCAG21/">WCAG2.1 Level AA</a> guidelines. Text
+      must have a contrast ratio of at least 4.5:1 compared to its background (3:1
+      for <a href="https://www.w3.org/TR/WCAG21/#dfn-large-scale">large-scale</a>
+      text).
+    </p>
+  </div>
+  <div class="col-sm-6">
+    <div>
+      <strong>Black Contrast Ratio &mdash; </strong>
+      <span class="contrast-score contrast-score-black contrast-score-pass">
+        4.5:1 pass
+      </span>
+      <span class="contrast-score contrast-score-black contrast-score-warn">
+        3:1 large-only
+      </span>
+      <span class="contrast-score contrast-score-black contrast-score-fail">
+        &lt; 3:1 fail
+      </span>
+    </div>
+
+    <div>
+      <strong>White Contrast Ratio &mdash; </strong>
+      <span class="contrast-score contrast-score-white contrast-score-pass">4.5:1 pass</span>
+      <span class="contrast-score contrast-score-white contrast-score-warn">3:1 large-only</span>
+      <span class="contrast-score contrast-score-white contrast-score-fail">&lt; 3:1 fail</span>
+    </div>
+    <p class="text-muted">
+      <small>
+        Check contrasts with other colors using <a href="https://webaim.org/resources/contrastchecker/">WebAIM</a>.
+      </small>
+    </p>
+
+  </div>
+</div>
+
+
+<h3 id="colors-general">Duke Brand Guide Colors</h3>
+<p>
+  Wherever possible, we should use these colors from the <a href="https://brand.duke.edu/colors/#brand-colors">
+  Duke Brand Guide</a>. Consult the guide's <a href="https://brand.duke.edu/color-accessibility-grid/">
+  Color Accessibility grid</a> to ensure proper usage.
+</p>
+<div class="row">
+  <% %w[duke-navy-blue duke-royal-blue copper persimmon dandelion piedmont].each do |color| %>
       <%= render 'color-swatch', colorname: color %>
   <% end %>
 </div>
 
-<h3 id="colors-availability">TRLN: Item Availability</h3>
 <div class="row">
-  <% %w[available-color not-available-color alt-available-color\
-    misc-available-color].each do |color| %>
+  <% %w[eno magnolia prussian-blue shale-blue ironweed hatteras].each do |color| %>
+      <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<div class="row">
+  <% %w[whisper-gray ginger-beer dogwood shackleford cast-iron graphite].each do |color| %>
+      <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<div class="row">
+  <% %w[granite limestone].each do |color| %>
+      <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+
+<h3 id="colors-general">TRLN Shared App Colors</h3>
+<p>
+  Color variables either used in <code>trln_argon</code> shared app or in TRLN-related UI elements in <code>dul-argon-skin</code>. Consult the <a href="https://www.trln.org/about/trln-branding/">TRLN Branding Guide</a>.
+</p>
+<div class="row">
+  <% %w[primary-color secondary-color tertiary-color available-color\
+        not-available-color alt-available-color].each do |color| %>
+      <%= render 'color-swatch', colorname: color %>
+  <% end %>
+</div>
+<div class="row">
+  <% %w[misc-available-color trln-purple trln-magenta trln-orange trln-teal].each do |color| %>
       <%= render 'color-swatch', colorname: color %>
   <% end %>
 </div>
 
 <h3 id="colors-general">Grays</h3>
+<p>
+  Note that <code>#767676</code> or <code>$gray-light</code> is the lightest possible
+  shade of gray that is accessible for text on a white background (and vice versa).
+</p>
 <div class="row">
   <% %w[gray-darker gray-dark gray gray-light gray-light-more gray-lighter].each do |color| %>
     <%= render 'color-swatch', colorname: color %>
@@ -78,8 +117,7 @@
 
 
 <h3 id="colors-dul">
-  DUL Website Colors <small>(many from the <a href="https://styleguide.duke.edu/color-palette/">
-    Duke Style Guide</a>)</small>
+  DUL Website Colors <small>(many derived from a previous Duke style guide)</small>
 </h3>
 
 <div class="row">
@@ -89,7 +127,7 @@
   <% end %>
 </div>
 
-<h3 id="colors-bootstrap">Bootstrap Default Colors</h3>
+<h3 id="colors-bootstrap">Bootstrap Default Color Names</h3>
 <p>
   As much as possible, these should be mapped to colors from the
   DUL color palette.
@@ -100,6 +138,42 @@
       <%= render "color-swatch", colorname: color %>
   <% end %>
 </div>
+
+<h3 id="color-variants">Color Variants</h3>
+
+<p>
+  You may need to darken or lighten a color, especially to get it to
+  contrast enough with its background. In these cases, use our
+  <a href="https://github.com/duke-libraries/dul-argon-skin/blob/master/app/assets/stylesheets/dul_argon/custom-functions.scss">custom
+  Sass functions</a> for <code>tint</code> and <code>shade</code>.
+</p>
+
+
+<h4>
+  Tint (adds white)<br/>
+  <code>background-color: tint($dul-masthead-blue, 10%);</code>
+</h4>
+
+<div class="row">
+  <% %w[0 10 20 30 40 50 60 70 80 90 100].each do |pct| %>
+      <%= render "variant-swatch", colorname: "dul-masthead-blue",
+        variant_type: "tint", pct: pct %>
+  <% end %>
+</div>
+
+<h4>
+  Shade (adds black)<br/>
+  <code>background-color: shade($dul-masthead-blue, 10%);</code>
+</h4>
+
+<div class="row">
+  <% %w[0 10 20 30 40 50 60 70 80 90 100].each do |pct| %>
+      <%= render "variant-swatch", colorname: "dul-masthead-blue",
+        variant_type: "shade", pct: pct %>
+  <% end %>
+</div>
+
+<hr/>
 
 <h2 id="links">Links</h3>
 
@@ -115,7 +189,13 @@
   <li><a href="#">Link Two</a></li>
   <li><a href="#">Link Three</a></li>
 </ul>
-<p>Here is an <a href="#">inline link</a> among other text.</p>
+<p>Here is an <a href="#">inline link</a> among other text. If the link
+appears within an element with class <code>underlined-links</code> it
+<span class="underlined-links"><a href="#">looks like this</a></span>. This is recommended
+to distinguish inline links from surrounding text when the contrast between them is lower
+than 3:1.</p>
+
+<hr/>
 
 <h2 id="buttons">Buttons</h2>
 
@@ -156,9 +236,7 @@
 <h3>DUL Catalog Buttons</h3>
 <p>
   Add an <code>-action</code> suffix to make a button a
-  clearer call to action among other buttons. We probably
-  don't need all of these, e.g., if <code>.btn-primary</code>
-  is used can we assume it is a call to action?
+  clearer call to action among other buttons.
 </p>
 <div class="row">
   <div class="col-sm-2">
@@ -212,6 +290,8 @@
   </div>
 </div>
 
+<hr/>
+
 <h2 id="labels">Labels</h2>
 
 <span class="label label-default">Default</span>
@@ -221,14 +301,14 @@
 <span class="label label-warning">Warning</span>
 <span class="label label-danger">Danger</span>
 
+<hr/>
+
 <h2 id="typography">Typography</h2>
 <p>
   This is the default body copy text style in use throughout the Duke University Libraries
-  catalog UI. When a link is present, it <a href="#">looks like this</a>, however if the link
-  appears within an element with class <code>underlined-links</code> it
-  <span class="underlined-links"><a href="#">looks like this</a></span>. This is recommended
-  to distinguish inline links from surrounding text when the contrast between them is lower
-  than 3:1.
+  catalog UI. Here is a longer block of paragraph text to demonstrate how lines of text
+  are spaced vertically. This text is encoded in <code>&lt;p&gt;</code> tags to indicate
+  it is a paragraph.
 </p>
 <p>Here are some characteristics of the text, presented in a list:</p>
 

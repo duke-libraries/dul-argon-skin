@@ -56,7 +56,7 @@ $(document).ready(function(){
     var black_contrast = Math.round( black_contrast_float * 10 ) / 10;
 
     /* Put the hex color in the box */
-    $(this).find('.color-block').text(rgb2hex(rgb));
+    $(this).find('.color-block.show-hex').text(rgb2hex(rgb));
 
     /* Add black and white contrast ratio */
     $(this).find('.contrast-score-black').text(black_contrast);
