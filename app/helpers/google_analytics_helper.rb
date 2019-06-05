@@ -30,6 +30,8 @@ module GoogleAnalyticsHelper
       'Item Page'
     elsif error_404_page?
       '404 Page'
+    elsif bookmarks_page?
+      'Bookmarks Page'
     else
       'Other Page'
     end
@@ -68,6 +70,10 @@ module GoogleAnalyticsHelper
   def error_404_page?
     controller.controller_name == 'errors' \
       && controller.action_name == 'not_found'
+  end
+
+  def bookmarks_page?
+    controller.controller_name == 'bookmarks'
   end
 
   def catalog_or_trln_controller?

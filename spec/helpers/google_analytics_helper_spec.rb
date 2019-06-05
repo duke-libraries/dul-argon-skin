@@ -100,6 +100,16 @@ describe GoogleAnalyticsHelper do
       end
     end
 
+    context 'with a bookmarks page' do
+      before do
+        allow(helper).to receive(:bookmarks_page?).and_return(true)
+      end
+
+      it 'is considered a Bookmarks Page' do
+        expect(helper.ga_page_type).to eq('Bookmarks Page')
+      end
+    end
+
     context 'with a page that does not match any of the defined types' do
       before do
         allow(helper).to receive(:search_results_page_zero_results?)\
@@ -110,6 +120,7 @@ describe GoogleAnalyticsHelper do
         allow(helper).to receive(:home_page?).and_return(false)
         allow(helper).to receive(:item_show_page?).and_return(false)
         allow(helper).to receive(:error_404_page?).and_return(false)
+        allow(helper).to receive(:bookmarks_page?).and_return(false)
       end
 
       it 'is considered an Other Page' do
