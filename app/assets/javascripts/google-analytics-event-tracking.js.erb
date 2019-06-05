@@ -242,6 +242,13 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :label => "$(this).closest('[data-document-id]').data('document-id')"
     },
 
+  #// Keep action consistent with item page for this control
+  "#documents.documents-list .document .index-document-functions label.toggle_bookmark" => {
+    :category => "'search results'",
+    :action => "'bookmark | '  + ($(this).hasClass('checked') ? 'remove' : 'add')",
+    :label => "$(this).closest('[data-document-id]').data('document-id')"
+    },
+
   #// Modal can appear on search results or item view
   "#trln-request-modal a" => {
     :category => "'TRLN request'",
@@ -270,9 +277,25 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :action => "'pagination top'"
     },
 
+  "#sortAndPerPage #bookmarks_nav" => {
+    :category => "'search results'",
+    :action => "'bookmarks'"
+    },
+
+  "#sortAndPerPage .clear-bookmarks" => {
+    :category => "'search results'",
+    :action => "'bookmarks | clear'"
+    },
+
   "body.blacklight-catalog-index .pagination ul.pagination a, body.blacklight-trln-index .pagination ul.pagination a" => {
     :category => "'search results'",
     :action => "'pagination bottom'"
+    },
+
+  #// Bookmarks page
+  ".bookmarksTools a" => {
+    :category => "'search results'",
+    :action => "'bookmarks | send'"
     },
 
   #// No Results Found pages
@@ -434,15 +457,20 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :label => "$('#document').data('document-id')"
     },
 
-  "#show-sidebar .report-missing-item a" => {
+  "#show-sidebar label.toggle_bookmark" => {
     :category => "'item sidebar'",
-    :action => "'report missing'",
+    :action => "'bookmark | '  + ($(this).hasClass('checked') ? 'remove' : 'add')",
     :label => "$('#document').data('document-id')"
     },
 
-  "#previousNextDocument a" => {
+  "#previousNextDocument a:not(#bookmarks_nav)" => {
     :category => "'item page'",
     :action => "'item to results nav'"
+    },
+
+  "#previousNextDocument a#bookmarks_nav" => {
+    :category => "'item page'",
+    :action => "'bookmarks'"
     },
 
   ".show-tools a.request-from-trln" => {
@@ -466,6 +494,12 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
   ".show-tools .doc-tools button" => {
     :category => "'item page'",
     :action => "'item tools | ' + defaultLabel($(this))",
+    :label => "$('#document').data('document-id')"
+    },
+
+  ".show-tools label.toggle_bookmark" => {
+    :category => "'item page'",
+    :action => "'bookmark | '  + ($(this).hasClass('checked') ? 'remove' : 'add')",
     :label => "$('#document').data('document-id')"
     },
 
