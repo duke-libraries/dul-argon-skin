@@ -1,4 +1,29 @@
 /* ================================= */
+/* Duke Branding Guide colors        */
+/* https://brand.duke.edu/colors/    */
+/* ================================= */
+$duke-navy-blue: #012169;
+$duke-royal-blue: #00539b;
+$copper: #c84e00;
+$persimmon: #e89923;
+$dandelion: #ffd960;
+$piedmont: #a1b70d;
+$eno: #339898;
+$magnolia: #1d6363;
+$prussian-blue: #005587;
+$shale-blue: #0577b1;
+$ironweed: #993399;
+$hatteras: #e2e6ed;
+$whisper-gray: #f3f2f1;
+$ginger-beer: #fcf7e5;
+$dogwood: #988675;
+$shackleford: #dad0c6;
+$cast-iron: #262626;
+$graphite: #666666;
+$granite: #b5b5b5;
+$limestone: #e5e5e5;
+
+/* ================================= */
 /* DUL website colors (dulcet theme) */
 /* ================================= */
 $dul-masthead-blue: #053482;
@@ -7,13 +32,21 @@ $dul-dulcet-green: #a1b70d;
 $dul-dulcet-orange: #f09905;
 $dul-dulcet-red: #cc3300;
 
+/* ========================================== */
+/* TRLN colors from branding guide:           */
+/* https://www.trln.org/about/trln-branding/  */
+/* ========================================== */
+$trln-purple: #490e6f;
+$trln-magenta: #c21dac;
+$trln-orange: #ff6d22;
+$trln-teal: #1e9d8b;
+
 /* ======================== */
 /* Unique to DUL Argon Skin */
 /* ======================== */
-$gray-light-more: #cccccc; /* We need better gray names */
-$gray-lightest: #fafafa;
 $dul-argon-green: #00830e;
-$trln-pink: #c21dac;
+$gray-light-more: #cccccc;
+$gray-lightest: #fafafa;
 
 /* ============================= */
 /* TRLN Argon Variables Override */

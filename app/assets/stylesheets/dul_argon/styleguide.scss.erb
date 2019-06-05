@@ -5,13 +5,19 @@
 <%# Specify all color names in an array, for use as both a class %>
 <%# (.primary-color) and a Sass variable ($primary-color) %>
 
-<% colors = %w[primary-color secondary-color tertiary-color dul-masthead-blue\
-   dul-dulcet-lightblue dul-dulcet-green dul-dulcet-orange dul-dulcet-red\
+<% colors = %w[duke-navy-blue duke-royal-blue copper persimmon dandelion\
+   piedmont eno magnolia prussian-blue shale-blue ironweed hatteras\
+   whisper-gray ginger-beer dogwood shackleford cast-iron graphite\
+   granite limestone\
+   primary-color secondary-color tertiary-color available-color\
+   not-available-color alt-available-color misc-available-color\
+   trln-purple trln-magenta trln-orange trln-teal\
+   dul-masthead-blue dul-dulcet-lightblue dul-dulcet-green dul-dulcet-orange dul-dulcet-red\
    gray-darker gray-dark gray gray-light gray-light-more gray-lighter\
    facet-grey gray-lightest\
    brand-primary brand-success brand-danger brand-warning brand-info\
    primary-link-color secondary-link-color link-hover-color\
-   available-color not-available-color alt-available-color misc-available-color] %>
+   ] %>
 
 .color-swatch {
   text-align: center;
@@ -33,6 +39,19 @@
   <%#   &.dul-dulcet-green .color-block {   %>
   <%#     background: $dul-dulcet-green;    %>
   <%#   }                                   %>
+
+  <%# Tint & Shade Examples %>
+  <% mix_pcts = %w[0 10 20 30 40 50 60 70 80 90 100] %>
+
+  <% mix_pcts.each do |pct| %>
+    &.dul-masthead-blue.tint-<%= pct %> .color-block {
+      background-color: tint($dul-masthead-blue, <%= pct %>%);
+    }
+    &.dul-masthead-blue.shade-<%= pct %> .color-block {
+      background-color: shade($dul-masthead-blue, <%= pct %>%);
+    }
+  <% end %>
+
 
 }
 
