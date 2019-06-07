@@ -238,6 +238,24 @@
     &:not(.collapsed) {
      color: white;
     }
+    &:focus {
+      /* See https://ghinda.net/article/mimic-native-focus-css/ */
+      outline-style: solid;
+      outline-width: 3px;
+      outline-offset: 2px;
+      outline-color: Highlight;
+      /* Chrome & Safari */
+      @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+        outline-color: -webkit-focus-ring-color;
+        outline-width: 5px;
+        outline-style: auto;
+      }
+      /* Firefox */
+      @-moz-document url-prefix() {
+        outline-width: 3px;
+      }
+    }
+
   }
 
   /* Patch the void between 768px & 813px where the shared DUL mast expects */
@@ -267,7 +285,7 @@
     }
     a {
       color: white;
-      &:hover {
+      &:hover, &:focus {
         background: $brand-success;
       }
     }
@@ -295,11 +313,12 @@
   #dul-masthead-dul-megamenu {
     height: auto;
     /* Hide all the parts of the shared mast that we won't use */
+    .dul-masthead-region-logo,
     .dul-masthead-region-scoped-search,
     .dul-masthead-region-myaccount,
     #dul-masthead-logo,
     .dul-masthead-mobile-menu,
-    label[for="dul-masthead-nav-trigger"],
+    #dul-masthead-nav-trigger-btn,
     .hide-link-text,
     li.dul-masthead-megamenu_button {
       display: none !important;
@@ -370,7 +389,7 @@
     background: white;
     padding: 0.8em 0;
     border-top: 4px solid $trln-pink;
-    box-shadow: 0px 1px 5px 2px #ccc;
+    box-shadow: 0px 1px 5px 2px rgba(50,50,50,0.2);
     .container {
       padding-left: 0;
       @media (max-width: $screen-sm) {

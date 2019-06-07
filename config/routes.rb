@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  # devise_for :users
+  devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :trln_solr_documents, only: [:show], path: '/trln', controller: 'trln' do

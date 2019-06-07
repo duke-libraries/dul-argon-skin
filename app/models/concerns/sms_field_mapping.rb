@@ -11,12 +11,7 @@ module SmsFieldMapping
                truncate(self[TrlnArgon::Fields::TITLE_MAIN].to_s, length: 50)
              end,
       location: proc { holdings_to_text },
-      link_to_record: proc { sms_field_mapping_link }
+      link_to_record: proc { link_to_record }
     }
-  end
-
-  def sms_field_mapping_link
-    TrlnArgon::Engine.configuration.root_url.chomp('/') +
-      Rails.application.routes.url_helpers.solr_document_path(self)
   end
 end

@@ -119,13 +119,13 @@
 <option value="author">Author</option>
 <option value="subject">Subject</option>
 <option value="isbn_issn">ISBN/ISSN/barcode</option>
-<option value="shelfkey">Call Number (LC)</option></select>
+<option value="call_number">Call Number</option></select>
 
             <label for="q" class="sr-only">search for</label>
             <input type="text" name="q" id="q" placeholder="Find books, music, movies &amp; more" class="search_q q form-control" data-autocomplete-enabled="true" data-autocomplete-path="/suggest">
 
             <div class="input-group-btn">
-              <button type="submit" class="btn btn-success-action search-btn" id="search">
+              <button type="submit" class="btn btn-success-action search-btn" id="search" aria-label="Search">
                 <span class="submit-search-text">Search</span>
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
@@ -252,7 +252,7 @@
 
 
 
-    <footer id="footer" role="footer">
+    <footer id="footer" role="contentinfo">
       <div class="container">
         <div class="row">
           <div class="col-md-1">
@@ -261,13 +261,13 @@
             </a>
           </div>
           <div class="col-md-2">
-            <h4><a href="https://library.duke.edu/about/contact">Contact Us</a></h4>
+            <h2><a href="https://library.duke.edu/about/contact">Contact Us</a></h2>
             <div>
               <small>411 Chapel Drive<br>Durham, NC 27708<br>(919) 660-5870<br>Perkins Library Service Desk</small>
             </div>
           </div>
           <div class="col-md-4">
-            <h4><a href="https://library.duke.edu/services">Services for...</a></h4>
+            <h2><a href="https://library.duke.edu/services">Services for...</a></h2>
               <div class="row">
                 <div class="col-md-6">
                   <ul class="list-unstyled">
@@ -289,7 +289,7 @@
           </div>
           <div class="col-md-3">
 
-            <h4 class="social-media-icons">
+            <h2 class="social-media-icons">
 
               <a href="https://twitter.com/DukeLibraries" title="Twitter"
                 class="fa fa-twitter-square"><span class="sr-only">Twitter</span></a>
@@ -309,7 +309,7 @@
               <a href="https://blogs.library.duke.edu/" title="Blogs"
                 class="fa fa-rss-square"><span class="sr-only">Blogs</span></a>
 
-            </h4>
+            </h2>
 
             <div class="newsletter-signup">
               <a href="https://library.duke.edu/about/sign-our-newsletter">Sign Up for Our Newsletter</a>

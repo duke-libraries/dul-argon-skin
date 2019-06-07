@@ -52,6 +52,39 @@ en:
       for_more_help: "if you need more help"
       worldcat_link_html: "Use <a href='http://proxy.lib.duke.edu/login?url=http://firstsearch.oclc.org/fsip?dbname=worldcat&amp;screen=advanced' target='_blank'>WorldCat</a> to search holdings from libraries worldwide"
       search_tips_html: "<a href='%{search_tips_url}' target='_blank'>Try our search tips</a> for help in searching this catalog"
+    header_links:
+      bookmarks: 'Folder'
+
+    bookmarks:
+      title: 'Folder'
+      page_title: 'Folder - %{application_name}'
+      no_bookmarks: 'Your folder is empty'
+      add:
+        button: 'Add to folder'
+        success:
+          one: 'Successfully added to folder.'
+          other: 'Successfully added to folder.'
+        failure:  'Sorry, there was a problem adding to folder.'
+      remove:
+        button: 'Remove from folder'
+        success: 'Successfully removed from folder.'
+        failure: 'Sorry, there was a problem removing from folder.'
+        action_confirm: 'Remove from folder?'
+      clear:
+        action_title: 'Clear folder'
+        action_confirm: 'Clear your folder?'
+        success: 'Cleared folder.'
+        failure: 'Sorry, there was a problem clearing your folder.'
+      need_login: 'Please log in to manage and view your folder.'
+      list_title: 'Items in Your Folder'
+      delete: 'Remove'
+
+    search:
+      bookmarks:
+        present: "in folder"
+        absent: "add to folder"
+        inprogress: "saving..."
+
   trln_argon:
     sort_options:
       date_cataloged_desc: "Date Cataloged (new to old)"
@@ -103,7 +136,7 @@ en:
     latest_received:
       link_text: "Latest received"
     search_fields:
-        shelfkey: 'Call Number (LC)'
+        call_number: 'Call Number (LC)'
         series: 'Series'
     advanced_search:
       help:

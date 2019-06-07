@@ -20,8 +20,7 @@
     </div>
 
     <!-- Mobile menu button for narrowest breakpoint -->
-    <button type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#mobile-only-menu" title="Menu">
-      <span class="sr-only">Toggle navigation</span>
+    <button type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#mobile-only-menu" title="Menu" aria-label="Toggle navigation">
       <span class="fa fa-bars"></span>
     </button>
 
@@ -34,7 +33,7 @@
       <% params_to_block = blacklight_config.search_fields
                                             .keys
                                             .map(&:to_sym)
-                                            .concat(%i[q search_field qt page utf8 op]) %>
+                                            .concat(%i[q search_field qt page utf8 op doc_ids]) %>
       <%= render_hash_as_hidden_fields(search_state.params_for_search.except(*params_to_block)) %>
 
         <div class="form-group mast-search">
@@ -52,7 +51,7 @@
             <%= text_field_tag :q, params[:q], placeholder: t('blacklight.search.form.search.placeholder'), class: "search_q q form-control", id: "q", autofocus: should_autofocus_on_search_box?, data: { autocomplete_enabled: autocomplete_enabled?, autocomplete_path: blacklight.suggest_index_path }  %>
 
             <div class="input-group-btn">
-              <button type="submit" class="btn btn-success-action search-btn" id="search">
+              <button type="submit" class="btn btn-success-action search-btn" id="search" aria-label="<%= t('blacklight.search.form.submit') %>">
                 <span class="submit-search-text"><%= t('blacklight.search.form.submit') %></span>
                 <span class="glyphicon glyphicon-search"></span>
               </button>
@@ -101,8 +100,7 @@
         </ul>
 
         <%# Mobile menu button to accommodate shared DUL mast breakpoint %>
-        <button type="button" class="mobile-menu-right-toggle navbar-toggle btn collapsed" data-toggle="collapse" data-target="#mobile-only-menu" title="Menu">
-          <span class="sr-only">Toggle navigation</span>
+        <button type="button" class="mobile-menu-right-toggle navbar-toggle btn collapsed" data-toggle="collapse" data-target="#mobile-only-menu" title="Menu" aria-label="Toggle navigation">
           <span class="fa fa-bars"></span>
         </button>
 
