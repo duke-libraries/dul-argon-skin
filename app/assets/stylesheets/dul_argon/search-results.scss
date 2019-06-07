@@ -418,7 +418,8 @@ div.primary-url {
   }
 }
 
-body.blacklight-catalog-show {
+body.blacklight-catalog-show,
+body.blacklight-trln-show {
   form.bookmark_toggle {
     float: right;
     margin-top: 2px;
@@ -431,7 +432,8 @@ body.blacklight-bookmarks-index {
   div.toggle_bookmark  {
     float: right;
   }
-  .btn.request-from-duke {
+  .btn.request-from-duke,
+  .btn.request-from-trln {
     margin-bottom: .5em;
   }
   #bookmarks_nav {
