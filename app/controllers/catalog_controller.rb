@@ -262,5 +262,41 @@ class CatalogController < ApplicationController
     # config.autocomplete_enabled = false
     # config.autocomplete_path = 'suggest'
   end
+
+  # get search results from the solr index
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def index
+    if (params.keys - %w[controller action]).empty?
+      cache_key = "#{params.fetch('controller', '')}/"\
+                  "#{params.fetch('action', '')}"\
+                  'facet_query'
+    end
+
+    (@response, @document_list) =
+      if cache_key
+        Rails.cache.fetch(cache_key.to_s, expires_in: 12.hours) do
+          search_results(params)
+        end
+      else
+        search_results(params)
+      end
+
+    respond_to do |format|
+      format.html { store_preferred_view }
+      format.rss  { render layout: false }
+      format.atom { render layout: false }
+      format.json do
+        @presenter = Blacklight::JsonPresenter.new(@response,
+                                                   @document_list,
+                                                   facets_from_request,
+                                                   blacklight_config)
+      end
+      additional_response_formats(format)
+      document_export_formats(format)
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 end
 # rubocop:enable Metrics/ClassLength
