@@ -240,6 +240,9 @@ class CatalogController < ApplicationController
                           label: 'System ID',
                           helper_method: 'strip_duke_id_prefix'
 
+    config.show_fields[TrlnArgon::Fields::NOTE_LOCAL]
+          .helper_method = :add_bookplate_span
+
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
