@@ -157,3 +157,12 @@
     }
   }
 }
+
+.dul-bookplate {
+  border: 2px solid $dandelion;
+  background-color: tint($dandelion, 60%);
+  margin: 5px;
+  padding: 10px;
+  display: block;
+  font-weight: bold;
+}
