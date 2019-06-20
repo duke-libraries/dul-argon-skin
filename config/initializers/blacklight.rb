@@ -2,7 +2,7 @@
 
 TrlnArgon::Engine.config.sms_mappings = {
   'Virgin' => 'vmobl.com',
-  'AT&T' => 'txt.att.net',
+  'AT&T' => 'mms.att.net',
   'Verizon' => 'vzwpix.com',
   'Nextel' => 'messaging.nextel.com',
   'Sprint' => 'messaging.sprintpcs.com',
