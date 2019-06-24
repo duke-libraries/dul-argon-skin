@@ -319,3 +319,31 @@ Blacklight.onLoad(function() {
     });
 
 });
+
+
+Blacklight.onLoad(function() {
+
+  // update result section title
+
+  	//$(window).load(function(){
+
+      if ($("body").hasClass("blacklight-catalog-index") || $("body").hasClass("blacklight-trln-index")) {
+
+        $("*[id*=doctitleheader]").each(function() {
+
+          // get item title
+          var $theTitle = $("a", this).text();
+
+          // get existing label
+          var $theLabel = $(this).parent( "div" ).parent( "section").attr("aria-label");
+        
+          // append parent label
+          $(this).parent( "div" ).parent( "section").attr("aria-label", $theLabel + ' -- ' + $theTitle);
+          
+        });
+        
+      }
+      
+  	//});
+
+});
