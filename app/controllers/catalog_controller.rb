@@ -28,12 +28,6 @@ class CatalogController < ApplicationController
     # Remove Bookmark button from show view dropdown
     config.show.document_actions.delete(:bookmark)
 
-    # Add Bookmarks button using Blacklight's extensible "collection tools"
-    # for index view.
-    # NOTE: bookmarks_button is a custom DUL partial
-    config.add_results_collection_tool(:bookmarks_button,
-                                       partial: 'bookmarks_button')
-
     # Add RSS feed button using Blacklight's extensible "collection tools"
     # for index view.
     # NOTE: rss_button is a custom DUL partial

@@ -1,5 +1,5 @@
-<%= link_to bookmarks_path, id:'bookmarks_nav', class: 'btn', title: t('blacklight.bookmarks.title') do %>
+<%= link_to bookmarks_path, id:'bookmarks_nav', style:'display:none;', title: t('blacklight.bookmarks.title') do %>
   <i class="fa fa-folder" aria-hidden="true"></i>
-  (<span data-role='bookmark-counter'><%= current_or_guest_user.bookmarks.count %></span>)
+  (<span data-role='bookmark-counter'><%= current_or_guest_user.bookmarks.count %></span>) <span class="sr-only"><%= t('blacklight.bookmarks.items') %></span>
   <span class="sr-only"><%= t('blacklight.bookmarks.title') %></span>
 <% end %>

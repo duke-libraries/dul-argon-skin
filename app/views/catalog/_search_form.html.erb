@@ -68,7 +68,11 @@
               <!-- <label for='search_within'>Search within results</label> -->
             </div>
             <div class='input-group'>
+              
               <%= link_to t('blacklight_advanced_search.form.title'), advanced_search_url, class: 'advanced_search'%>
+              
+              <%= render 'bookmarks_button' %>
+            
             </div>
           </div>
         </div>
