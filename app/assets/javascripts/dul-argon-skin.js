@@ -282,40 +282,59 @@ $(document).ready(function() {
 });
 
 
-/* Add classes to the search results titles depending on whether they have */
-/* thumbnails, request buttons, both, or neither. Fade the request button */
-/* in once its final position is known, to prevent it from hopping after it */
-/* is initially rendered. */
-
 Blacklight.onLoad(function() {
 
-  	$(window).load(function(){
+  /* Update titles for sections in search results */
 
-      $('.document').each(function() {
+  if ($("body").hasClass("blacklight-catalog-index") || $("body").hasClass("blacklight-trln-index")) {
 
-        var hasRequest = $(this).has("div.index-document-functions").length;
-        var hasWidth = $(this).children("div").find('img').get(0).naturalWidth;
+    $("*[id*=doctitleheader]").each(function() {
 
-        if (hasRequest && hasWidth > 2) {
-          $(this).children(".documentHeader").addClass("has-request-and-thumbnail");
-          $(this).children(".index-document-functions").css('opacity','1');
-        }
+      // get item title
+      var $theTitle = $("a", this).text();
 
-        if (hasRequest && hasWidth < 2) {
-          $(this).children(".documentHeader").addClass("has-request");
-          $(this).children(".index-document-functions").css('opacity','1');
-        }
+      // get existing label
+      var $theLabel = $(this).parent( "div" ).parent( "section").attr("aria-label");
+    
+      // append parent label
+      $(this).parent( "div" ).parent( "section").attr("aria-label", $theLabel + ' -- ' + $theTitle);
+      
+    });
+    
+  }
 
-        if (!hasRequest && hasWidth > 2) {
-          $(this).children(".documentHeader").addClass("has-thumbnail");
-        }
+  /* Add classes to the search results titles depending on whether they have */
+  /* thumbnails, request buttons, both, or neither. Fade the request button */
+  /* in once its final position is known, to prevent it from hopping after it */
+  /* is initially rendered. */
 
-        if (!hasRequest && hasWidth < 2) {
-          $(this).children(".documentHeader").addClass("no-request-nor-thumbnail");
-        }
+  $(window).load(function(){
 
-      });
+    $('.document').each(function() {
+
+      var hasRequest = $(this).has("div.index-document-functions").length;
+      var hasWidth = $(this).children("div").find('img').get(0).naturalWidth;
+
+      if (hasRequest && hasWidth > 2) {
+        $(this).children(".documentHeader").addClass("has-request-and-thumbnail");
+        $(this).children(".index-document-functions").css('opacity','1');
+      }
+
+      if (hasRequest && hasWidth < 2) {
+        $(this).children(".documentHeader").addClass("has-request");
+        $(this).children(".index-document-functions").css('opacity','1');
+      }
+
+      if (!hasRequest && hasWidth > 2) {
+        $(this).children(".documentHeader").addClass("has-thumbnail");
+      }
+
+      if (!hasRequest && hasWidth < 2) {
+        $(this).children(".documentHeader").addClass("no-request-nor-thumbnail");
+      }
 
     });
+
+  });
 
 });
