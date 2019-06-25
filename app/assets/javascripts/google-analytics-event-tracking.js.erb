@@ -129,9 +129,15 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :label => "'keyword search field click'"
     },
 
-  "#search-navbar form.search-query-form .search-extra-controls a" => {
+  "#search-navbar form.search-query-form .search-extra-controls a:not(#bookmarks_nav)" => {
     :category => "'search box'",
     :action => "'extra controls'"
+    },
+
+  "#search-navbar form.search-query-form .search-extra-controls #bookmarks_nav" => {
+    :category => "'search box'",
+    :action => "'extra controls'",
+    :label => "'view bookmarks'"
     },
 
   "#search-navbar #primary-menu a" => {
@@ -275,11 +281,6 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
   "#sortAndPerPage .page_links a" => {
     :category => "'search results'",
     :action => "'pagination top'"
-    },
-
-  "#sortAndPerPage #bookmarks_nav" => {
-    :category => "'search results'",
-    :action => "'bookmarks'"
     },
 
   "#sortAndPerPage .clear-bookmarks" => {
@@ -463,14 +464,9 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     :label => "$('#document').data('document-id')"
     },
 
-  "#previousNextDocument a:not(#bookmarks_nav)" => {
+  "#previousNextDocument a" => {
     :category => "'item page'",
     :action => "'item to results nav'"
-    },
-
-  "#previousNextDocument a#bookmarks_nav" => {
-    :category => "'item page'",
-    :action => "'bookmarks'"
     },
 
   ".show-tools a.request-from-trln" => {
