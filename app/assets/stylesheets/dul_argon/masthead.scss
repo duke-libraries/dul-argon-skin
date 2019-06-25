@@ -156,6 +156,17 @@
     }
   }
 
+  #bookmarks_nav {
+    margin-left: 1.25em;
+    color: #ddd;
+    font-size: 14px;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
   /* ============== */
   /* MASTHEAD LINKS */
   /* ============== */

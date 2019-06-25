@@ -1,3 +1,6 @@
+/* ++ Overrides default Blacklight file -- /app/assets/javascripts/blacklight/bookmark_toggle.js ++ */
+/* ++ Includes DUL-version of checkbpx_submit.js (checkbox_submit_dul) ++ */
+
 //= require blacklight/core
 //= require blacklight/checkbox_submit_dul
 
@@ -9,7 +12,13 @@
          css_class: "toggle_bookmark",
          success: function(checked, response) {
            if (response.bookmarks) {
-             $('[data-role=bookmark-counter]').text(response.bookmarks.count);
+              if (response.bookmarks.count == 0) {
+                $('[data-role=bookmark-counter]').text(response.bookmarks.count);
+                $('#bookmarks_nav').hide();
+              } else {
+                $('[data-role=bookmark-counter]').text(response.bookmarks.count);
+                $('#bookmarks_nav').show();
+              }
            }
          }
       });
@@ -18,6 +27,9 @@
 
 Blacklight.onLoad(function() {
   Blacklight.do_bookmark_toggle_behavior();  
+  if ( $('#bookmarks_nav span').first().text() != 0 ) {
+    $('#bookmarks_nav').show();
+  }
 });
   
 

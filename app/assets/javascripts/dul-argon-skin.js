@@ -286,7 +286,7 @@ Blacklight.onLoad(function() {
 
   /* Update titles for sections in search results */
 
-  if ($("body").hasClass("blacklight-catalog-index") || $("body").hasClass("blacklight-trln-index")) {
+  if ( $("body").hasClass("blacklight-catalog-index") || $("body").hasClass("blacklight-trln-index") ||  $("body").hasClass("blacklight-bookmarks-index")) {
 
     $("*[id*=doctitleheader]").each(function() {
 
