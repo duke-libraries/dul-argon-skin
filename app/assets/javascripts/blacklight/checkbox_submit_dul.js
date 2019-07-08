@@ -1,33 +1,5 @@
-/* A JQuery plugin (should this be implemented as a widget instead? not sure)
-   that will convert a "toggle" form, with single submit button to add/remove
-   something, like used for Bookmarks, into an AJAXy checkbox instead. 
-   
-   Apply to a form. Does require certain assumption about the form:
-    1) The same form 'action' href must be used for both ADD and REMOVE
-       actions, with the different being the hidden input name="_method"
-       being set to "put" or "delete" -- that's the Rails method to pretend
-       to be doing a certain HTTP verb. So same URL, PUT to add, DELETE
-       to remove. This plugin assumes that. 
-       
-       Plus, the form this is applied to should provide a data-doc-id 
-       attribute (HTML5-style doc-*) that contains the id/primary key
-       of the object in question -- used by plugin for a unique value for
-       DOM id's. 
+/* ++ Replaces default Blacklight file -- /app/assets/javascripts/blacklight/checkbox_submit.js ++ */
 
-  Uses HTML for a checkbox compatible with Bootstrap 3. 
-       
-   Pass in options for your class name and labels:
-   $("form.something").bl_checkbox_submit({    
-        checked_label: "Selected",
-        unchecked_label: "Select",
-        progress_label: "Saving...",
-        //css_class is added to elements added, plus used for id base
-        css_class: "toggle_my_kinda_form",
-        success: function(after_success_check_state) {
-          #optional callback
-        }
-   });
-*/
 (function($) {    
     $.fn.bl_checkbox_submit = function(arg_opts) {              
       
@@ -67,7 +39,8 @@
 
         var checkbox_div = $("<div class='checkbox' />")
           .addClass(options.css_class)
-          .append(label);
+          .append(label)
+          .append("<a class='sr-only' href='#bookmarks_nav' tabindex='-1'>Jump to folder</a>");
           
         function update_state_for(state) {
             checkbox.prop("checked", state);
@@ -90,6 +63,8 @@
                     .tooltip('fixTitle');
             }
           }
+
+        
         
         form.append(checkbox_div);
         update_state_for(checked);

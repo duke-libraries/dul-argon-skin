@@ -127,6 +127,8 @@
     }
 
     & > div {
+      -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
       break-inside: avoid;
       margin-bottom: 1.2em;
     }
@@ -156,4 +158,16 @@
       }
     }
   }
+}
+
+.dul-bookplate {
+  border: 2px solid $dandelion;
+  background-color: tint($dandelion, 60%);
+  margin: 5px;
+  padding: 10px;
+  display: block;
+  font-weight: bold;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }

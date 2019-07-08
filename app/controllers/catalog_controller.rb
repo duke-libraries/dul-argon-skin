@@ -28,16 +28,14 @@ class CatalogController < ApplicationController
     # Remove Bookmark button from show view dropdown
     config.show.document_actions.delete(:bookmark)
 
-    # Add Bookmarks button using Blacklight's extensible "collection tools"
-    # for index view.
-    # NOTE: bookmarks_button is a custom DUL partial
-    config.add_results_collection_tool(:bookmarks_button,
-                                       partial: 'bookmarks_button')
-
     # Add RSS feed button using Blacklight's extensible "collection tools"
     # for index view.
     # NOTE: rss_button is a custom DUL partial
     config.add_results_collection_tool(:rss_button, partial: 'rss_button')
+
+    add_show_tools_partial(:report_missing, partial: 'report_missing_item')
+    add_show_tools_partial(:request_digitization,
+                           partial: 'request_digitization')
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -236,6 +234,9 @@ class CatalogController < ApplicationController
                           label: 'System ID',
                           helper_method: 'strip_duke_id_prefix'
 
+    config.show_fields[TrlnArgon::Fields::NOTE_LOCAL]
+          .helper_method = :add_bookplate_span
+
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
@@ -258,5 +259,41 @@ class CatalogController < ApplicationController
     # config.autocomplete_enabled = false
     # config.autocomplete_path = 'suggest'
   end
+
+  # get search results from the solr index
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  def index
+    if (params.keys - %w[controller action]).empty?
+      cache_key = "#{params.fetch('controller', '')}/"\
+                  "#{params.fetch('action', '')}"\
+                  'facet_query'
+    end
+
+    (@response, @document_list) =
+      if cache_key
+        Rails.cache.fetch(cache_key.to_s, expires_in: 12.hours) do
+          search_results(params)
+        end
+      else
+        search_results(params)
+      end
+
+    respond_to do |format|
+      format.html { store_preferred_view }
+      format.rss  { render layout: false }
+      format.atom { render layout: false }
+      format.json do
+        @presenter = Blacklight::JsonPresenter.new(@response,
+                                                   @document_list,
+                                                   facets_from_request,
+                                                   blacklight_config)
+      end
+      additional_response_formats(format)
+      document_export_formats(format)
+    end
+  end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 end
 # rubocop:enable Metrics/ClassLength

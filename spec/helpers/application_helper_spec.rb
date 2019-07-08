@@ -160,4 +160,19 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe 'add_bookplate_span' do
+    let(:value) do
+      { value: ['Acquired as part of the Leona Bowman Carpenter Collection',
+                'Gift of the Leona Bowman Carpenter collection'] }
+    end
+
+    it 'wraps the bookplate note in a span' do
+      expect(add_bookplate_span(value)).to(
+        eq('Acquired as part of the Leona Bowman Carpenter Collection<br/>'\
+           '<span class="dul-bookplate">'\
+           'Gift of the Leona Bowman Carpenter collection</span>')
+      )
+    end
+  end
 end

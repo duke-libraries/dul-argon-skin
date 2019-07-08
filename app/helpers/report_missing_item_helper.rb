@@ -5,7 +5,9 @@ module ReportMissingItemHelper
     document = options.fetch(:document, nil)
     return unless show_report_missing_item_link?(document)
 
-    link_to I18n.t('trln_argon.show.report_missing'),
+    link_to '<i class="glyphicon glyphicon-exclamation-sign" '\
+            'aria-hidden="true"></i> '\
+            "#{I18n.t('trln_argon.show.report_missing')}".html_safe,
             report_missing_item_url(document),
             target: '_blank'
   end

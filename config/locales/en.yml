@@ -56,7 +56,8 @@ en:
       bookmarks: 'Folder'
 
     bookmarks:
-      title: 'Folder'
+      title: 'View items in your folder'
+      items: 'items'
       page_title: 'Folder - %{application_name}'
       no_bookmarks: 'Your folder is empty'
       add:
@@ -130,7 +131,8 @@ en:
         search_for_articles: 'Search for Articles'
         suggest_a_purchase: 'Suggest a Purchase'
         request_link_html: "<a href='https://library.duke.edu/using/interlibrary-requests' target='_blank'>Request</a> books, articles, and items unavailable at Duke through Interlibrary Requests"
-      report_missing: 'Report missing item'
+      report_missing: 'Missing Item Report'
+      request_digitization: 'Digitization Request'
       a11y_text:
           latest_received: "Opens in new window"
     latest_received:

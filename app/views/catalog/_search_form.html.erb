@@ -68,7 +68,11 @@
               <!-- <label for='search_within'>Search within results</label> -->
             </div>
             <div class='input-group'>
+              
               <%= link_to t('blacklight_advanced_search.form.title'), advanced_search_url, class: 'advanced_search'%>
+              
+              <%= render 'bookmarks_button' %>
+            
             </div>
           </div>
         </div>
@@ -79,7 +83,7 @@
 
   <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3">
 
-      <div id="primary-menu" role="navigation">
+      <div id="primary-menu" role="navigation" aria-label="Primary Menu">
 
         <ul class="nav navbar-nav">
           <li>

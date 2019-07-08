@@ -71,6 +71,21 @@ module DulArgonSkin
         ENV['REQUEST_BASE_URL'] ||= 'https://requests.library.duke.edu'
       end
 
+      # Digitization request configurations
+      # =========================================================
+      mattr_accessor :request_digitization_url do
+        ENV['REQUEST_DIGITIZATION_URL'] ||=
+          'https://duke.qualtrics.com/jfe/form/SV_9MOS64T5GlJ5bY9{?query*}'
+      end
+
+      mattr_accessor :req_digi_loc_b_codes do
+        ENV['REQ_DIGI_LOC_B_CODES'] ||= 'PERKN, LILLY, MARIN, MUSIC, DOCS'
+      end
+
+      mattr_accessor :req_digi_loc_n_codes do
+        ENV['REQ_DIGI_LOC_N_CODES'] ||= 'PSB, PSL, PSK, PSM'
+      end
+
       # Search tips URL.
       mattr_accessor :search_tips_url do
         ENV['SEARCH_TIPS_URL'] ||= 'https://library.duke.edu/using/catalog-search-tips'

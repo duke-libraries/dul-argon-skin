@@ -43,4 +43,27 @@ module ApplicationHelper
     return unless doc
     doc.fetch(TrlnArgon::Fields::LOCAL_ID, '').sub('DUKE', '')
   end
+
+  def add_bookplate_span(options = {})
+    options.fetch(:value, []).map do |v|
+      if v.match(bookplate_regex)
+        content_tag(:span, v, class: 'dul-bookplate')
+      else
+        v
+      end
+    end.join('<br/>').html_safe
+  end
+
+  private
+
+  def bookplate_regex
+    /^(in\smemory\sof\s|
+       gift\sof\s|
+       in\shonor\sof\s|
+       the\sconservation\sof\s|
+       in\sremembrance\sof\s|
+       in\srecognition\sof\s|
+       dul\sexceptional\sstaff\smember\s|
+       duke\suniversity\slibraries\shonors\s)/xi
+  end
 end

@@ -4,7 +4,7 @@
 <%# See views/catalog/_index_document_actions_default.html.erb  %>
 
 <div class="documentHeader row">
-  <h3 class="index_title document-title-heading col-md-12">
+  <h3 class="index_title document-title-heading col-md-12" id="<%= document.id %>-<%= document_counter %>-doctitleheader">
     <% if counter = document_counter_with_offset(document_counter) %>
       <span class="document-counter">
         <%= t('blacklight.search.documents.counter', counter: counter) %>
