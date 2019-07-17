@@ -92,6 +92,7 @@ en:
     links:
       finding_aid: "Collection Guide"
       hathitrust: "View Online"
+      internet_archive: "View Online"
       online_access: "View Online"
       online_access_restricted: "View Online (%{institution} Only)"
       online_access_all: "View All Online Links"
