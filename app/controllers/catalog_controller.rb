@@ -108,6 +108,9 @@ class CatalogController < ApplicationController
     config.home_facet_fields.delete(TrlnArgon::Fields::CALL_NUMBER_FACET)
     config.home_facet_fields.delete(TrlnArgon::Fields::LANGUAGE_FACET)
 
+    # Turn off call number facet due to aggressive bot crawling.
+    config.facet_fields.delete(TrlnArgon::Fields::CALL_NUMBER_FACET)
+
     # Delete but save date cataloged facet so we can add it again
     # in the last position.
     date_cataloged = config.home_facet_fields.delete(
