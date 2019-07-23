@@ -162,26 +162,47 @@ module TrlnArgonHelper
     end
   end
 
-  def open_access_link_text(_url_hash)
-    I18n.t('trln_argon.links.open_access')
+  def link_to_open_access(url_hash, options = {})
+    return if url_hash[:href].blank?
+
+    link_icon = '<i class="fa fa-external-link" aria-hidden="true"></i>'
+    if options[:link_type] == 'multiple'
+      open_access_without_tooltip(url_hash, link_icon)
+    else
+      open_access_with_tooltip(url_hash, link_icon)
+    end
   end
 
-  def expanded_link_to_open_access(url_hash, options = {})
+  def open_access_with_tooltip(url_hash, link_icon)
+    link_to(url_hash[:href],
+            class: "link-type-#{url_hash[:type]} link-open-access",
+            target: '_blank', title: open_access_link_text(url_hash),
+            data: { toggle: 'tooltip' }) do
+              link_icon.html_safe + t('trln_argon.links.online_access')
+            end
+  end
+
+  def open_access_without_tooltip(url_hash, link_icon)
     link_to(url_hash[:href],
             class: "link-type-#{url_hash[:type]} link-open-access",
             target: '_blank') do
-      '<i class="fa fa-external-link" aria-hidden="true"></i>'.html_safe +
-        expanded_open_access_link_text(url_hash, options)
+              link_icon.html_safe + open_access_link_text(url_hash)
+            end
+  end
+
+  def open_access_link_text(url_hash)
+    if url_hash[:note].present? && url_hash[:text].present?
+      "#{url_hash[:text]} — #{url_hash[:note]}"
+    elsif url_hash[:note].present?
+      url_hash[:note]
+    elsif url_hash[:text].present?
+      url_hash[:text]
+    else
+      I18n.t('trln_argon.links.open_access')
     end
   end
 
-  def expanded_open_access_link_text(url_hash, options = {})
-    openaccess_text = I18n.t('trln_argon.links.open_access')
-    if options[:link_type] == 'multiple'
-      return url_hash[:text] if url_hash[:text].present?
-
-      return openaccess_text
-    end
-    return openaccess_text if options[:link_type] != 'multiple'
+  def expanded_link_to_open_access(url_hash, options = {})
+    link_to_open_access(url_hash, options)
   end
 end

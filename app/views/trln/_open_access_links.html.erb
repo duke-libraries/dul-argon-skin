@@ -3,20 +3,20 @@
   <% if document.all_open_access_urls_by_inst.fetch(inst, []).to_a.count > 1 %>
 
     <div class="col-md-7 primary-url">
-      <div class="modal-button-wrapper" data-toggle="modal" data-target="#modal_<%= document.id %>_<%= inst %>">
+      <div class="modal-button-wrapper" data-toggle="modal" data-target="#modal_<%= document.id %>_<%= inst %>_oa">
         <button type="button" class="link-type-fulltext" data-toggle="tooltip" data-original-title="<%= t('trln_argon.links.open_access_all') %>">
-          <i class="fa fa-external-link" aria-hidden="true"></i> <%= expanded_fulltext_link_text(inst) %>
+          <i class="fa fa-external-link" aria-hidden="true"></i> <%= t('trln_argon.links.open_access') %>
         </button>
       </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modal_<%= document.id %>_<%= inst %>" tabindex="-1" role="dialog" aria-labelledby="modal_<%= document.id %>_<%= inst %>_label">
+    <div class="modal fade" id="modal_<%= document.id %>_<%= inst %>_oa" tabindex="-1" role="dialog" aria-labelledby="modal_<%= document.id %>_<%= inst %>_oa_label">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modal_<%= document.id %>_<%= inst %>_label"><%= t('trln_argon.links.open_access_all') %></h4>
+            <h4 class="modal-title" id="modal_<%= document.id %>_<%= inst %>_oa_label"><%= t('trln_argon.links.open_access_all') %></h4>
           </div>
           <div class="modal-body">
 
