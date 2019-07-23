@@ -267,6 +267,10 @@ class CatalogController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def index
+    if params.fetch('f', {}).keys.include?('lcc_callnum_classification_f')
+      raise ActionController::RoutingError.new('Forbidden')
+    end
+
     if (params.keys - %w[controller action]).empty?
       cache_key = "#{params.fetch('controller', '')}/"\
                   "#{params.fetch('action', '')}"\
