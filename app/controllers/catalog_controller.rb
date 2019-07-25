@@ -266,12 +266,7 @@ class CatalogController < ApplicationController
   # get search results from the solr index
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Style/RaiseArgs
   def index
-    if params.fetch('f', {}).key?('lcc_callnum_classification_f')
-      raise ActionController::RoutingError.new('Forbidden')
-    end
-
     if (params.keys - %w[controller action]).empty?
       cache_key = "#{params.fetch('controller', '')}/"\
                   "#{params.fetch('action', '')}"\
@@ -303,6 +298,5 @@ class CatalogController < ApplicationController
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Style/RaiseArgs
 end
 # rubocop:enable Metrics/ClassLength
