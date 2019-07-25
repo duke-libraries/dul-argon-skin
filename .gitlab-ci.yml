@@ -1,38 +1,71 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  RAKE_COMMAND: sudo -u $RAILS_USER -n -i $RAILS_ROOT/bin/rake -f $RAILS_ROOT/Rakefile
+
+build_job:
+  stage: build
+  before_script:
+    - ruby -v
+    - gem install bundler -v '2.0.1' -N
+    - sudo -u $RAILS_USER -n -i gem install bundler -v '2.0.1' -N
+    - bundle version
+  script:
+    - cp $RAILS_DEPLOY_PATH/etc/*.yml config/
+    - bundle install --path=vendor/bundle --binstubs=bin --no-cache --clean
+    - bundle binstubs bundler --force
+    - bundle exec rake assets:precompile
+  artifacts:
+    paths:
+      - .bundle/
+      - bin/
+      - config/*.yml
+      - public/assets/
+      - vendor/bundle/
+  cache:
+    key: gems
+    paths:
+      - vendor/bundle/ruby
+  tags:
+    - antsy
+
 test_job:
   stage: test
   before_script:
-    - whoami
-    - pwd
-    - env
+    - source $RAILS_DEPLOY_PATH/etc/export-test.env
+    - bin/rake db:reset
   script:
-    - $RAILS_DEPLOY_PATH/bin/test.sh
+    - bin/rake spec
   tags:
     - development
+    - antsy
 
 deploy_dev:
   environment:
     name: development
     url: https://find-dev.library.duke.edu
   stage: deploy
-  before_script: &beforedeployscript
-    - whoami
-    - pwd
-    - env
   script: &deployscript
-    - $RAILS_DEPLOY_PATH/bin/deploy.sh $CI_PROJECT_DIR
+    - rsync -rl --delete --exclude-from=EXCLUDE ./ $RAILS_ROOT/
+    - '$RAKE_COMMAND db:setup 2>/dev/null || true'
+    - $RAKE_COMMAND db:migrate tmp:cache:clear
   after_script: &afterdeployscript
-    - $RAILS_DEPLOY_PATH/bin/after_deploy.sh
+    - sudo /usr/bin/systemctl restart $RAILS_SERVICE_UNIT
   only:
     - develop
+    - antsy
   tags:
     - development
+    - antsy
 
 deploy_pre:
   environment:
     name: pre-production
     url: https://find-test.library.duke.edu
   stage: deploy
-  before_script: *beforedeployscript
   script: *deployscript
   after_script: *afterdeployscript
   only:
@@ -47,7 +80,6 @@ deploy_prod:
     name: production
     url: https://find.library.duke.edu
   stage: deploy
-  before_script: *beforedeployscript
   script: *deployscript
   after_script: *afterdeployscript
   only:
