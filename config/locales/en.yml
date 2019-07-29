@@ -92,11 +92,12 @@ en:
     links:
       finding_aid: "Collection Guide"
       hathitrust: "View Online"
+      internet_archive: "View Online"
       online_access: "View Online"
       online_access_restricted: "View Online (%{institution} Only)"
       online_access_all: "View All Online Links"
       open_access: "View Online"
-      open_access_all: "View All Online Links"
+      open_access_all: "View All Open Access Links"
     local_filter:
       searching_trln: 'Duke, UNC, NC State, NCCU Libraries'
     tools:

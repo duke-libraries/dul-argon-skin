@@ -139,8 +139,10 @@ describe TrlnArgonHelper do
           restricted: 'false' }
       end
 
-      it 'uses the default instead of the supplied link text' do
-        expect(helper.open_access_link_text(url_hash)).to(eq('View Online'))
+      it 'uses the supplied link text' do
+        expect(helper.open_access_link_text(url_hash)).to(
+          eq('Some open access thing')
+        )
       end
     end
 
