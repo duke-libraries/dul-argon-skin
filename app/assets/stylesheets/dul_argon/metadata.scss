@@ -59,14 +59,23 @@
       }
     }
 
-    /* Staff view link only on hover */
+    /* Staff view (barcode) link */
     .staff-view-toggle-wrapper {
-      display: none;
       font-size: 12px;
     }
-    &:hover .staff-view-toggle-wrapper {
+
+    .staff-view-index {
+      display: none;
+    }
+
+    &:hover .staff-view-index {
       display: block;
     }
+
+    .staff-view-show {
+      display: block;
+    }
+
   }
 
   .location-header {

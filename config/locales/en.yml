@@ -114,7 +114,8 @@ en:
       error: 'There was a problem finding the location of this item.'
     barcode:
       label: 'Barcode'
-    staff_view: "Staff View"
+    show_staff_view: 'show barcodes'
+    hide_staff_view: 'hide barcodes'
     search:
       zero_results:
         trln_title_html: 'No results were found at Duke, UNC, NC State, or NCCU Libraries for your search <em>%{search_terms}</em>'
