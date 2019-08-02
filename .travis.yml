@@ -1,7 +1,19 @@
 language: ruby
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+env:
+  - RAILS_ENV=test
 rvm:
-  - 2.4.4
-before_install: gem install bundler -v 1.16.2
+  - 2.5
+before_install:
+  - gem install bundler -v 2.0.1
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:setup
 script:
-    - bundle exec rubocop
-    - bundle exec rspec
+  - bundle exec rubocop
+  - bundle exec rspec

@@ -1,0 +1,3 @@
+test:
+  adapter: postgresql
+  url: postgresql://postgres:@127.0.0.1/argon_test
