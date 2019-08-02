@@ -87,8 +87,15 @@ $(document).ready(function() {
   /* Toggle staff view: show barcodes, etc. */
   $(".staff-view-toggle").on("click",function(e) {
     e.preventDefault();
+    var show_text = $(this).data('show-text');
+    var hide_text = $(this).data('hide-text');
     $(this).toggleClass('shown');
     $(this).closest('.items').find('.barcode-wrapper').fadeToggle();
+    if ($(this).text() == show_text) {
+      $(this).text(hide_text);
+    } else {
+      $(this).text(show_text);
+    }
   });
 
 
