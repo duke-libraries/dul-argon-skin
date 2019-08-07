@@ -4,6 +4,13 @@ Rails.application.configure do
 
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.before_configuration do
+    env_file = File.join(Rails .root, 'config', 'local_env.yml')
+    if File.exists?(env_file)
+      YAML.load_file(env_file).each { |key, value| ENV[key.to_s] = value }
+    end
+  end
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
