@@ -6,7 +6,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include TrlnArgon::ArgonSearchBuilder
-  include DulArgonSkin::CallNumberSearchBuilder
+  include ArgonCallNumberSearch::SearchBuilderBehavior
 
   self.default_processor_chain += %i[add_advanced_search_to_solr
                                      add_call_number_query_to_solr]

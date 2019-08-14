@@ -8,6 +8,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'addressable', '~> 2.5'
+gem 'argon_call_number_search',
+    git: 'https://github.com/trln/argon_call_number_search'
 gem 'better_errors', '2.1.1'
 gem 'blacklight', '~> 6.7'
 gem 'coffee-rails', '~> 4.2'
