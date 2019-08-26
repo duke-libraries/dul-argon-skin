@@ -19,23 +19,19 @@ describe RequestDigitizationHelper do
                     '"item_id":"D03714484V","status":"Available"}']
         )
       end
-      let(:options) do
-        { document: document }
-      end
       let(:response) do
-        '<a target="_blank" '\
-        'href="https://duke.qualtrics.com/jfe/form/SV_9MOS64T5GlJ5bY9'\
-        '?Title=The%20book%3B%20the%20story%20of%20'\
-        'printing%20%26%20bookmaking&amp;'\
-        'Author=&amp;Published=1943&amp;'\
-        'SystemID=000136160">'\
-        '<i class="glyphicon glyphicon-duplicate" '\
-        'aria-hidden="true"></i> '\
-        'Digitization Request</a>'
+        'https://duke.qualtrics.com/jfe/form/SV_9MOS64T5GlJ5bY9?' \
+        'Title=The%20book%3B%20the%20story%20of%20printing' \
+        '%20%26%20bookmaking&' \
+        'Author=&Published=1943&SystemID=000136160'
       end
 
-      it 'generates link to request digitization' do
-        expect(helper.link_to_request_digitization(options)).to(
+      it 'passes the eligibility check' do
+        expect(helper.show_request_digitization_link?(document)).to be true
+      end
+
+      it 'generates a link to the digitization form' do
+        expect(helper.request_digitization_url(document)).to(
           eq(response)
         )
       end
@@ -56,22 +52,18 @@ describe RequestDigitizationHelper do
                     '"item_id":"D05278727","status":"Available"}']
         )
       end
-      let(:options) do
-        { document: document }
-      end
       let(:response) do
-        '<a target="_blank" '\
-        'href="https://duke.qualtrics.com/jfe/form/SV_9MOS64T5GlJ5bY9'\
-        '?Title=Jurgen%3B%20a%20comedy%20of%20justice&amp;'\
-        'Author=&amp;Published=1922&amp;'\
-        'SystemID=008746259">'\
-        '<i class="glyphicon glyphicon-duplicate" '\
-        'aria-hidden="true"></i> '\
-        'Digitization Request</a>'
+        'https://duke.qualtrics.com/jfe/form/SV_9MOS64T5GlJ5bY9?' \
+        'Title=Jurgen%3B%20a%20comedy%20of%20justice&' \
+        'Author=&Published=1922&SystemID=008746259'
       end
 
-      it 'generates link to request digitization' do
-        expect(helper.link_to_request_digitization(options)).to(
+      it 'passes the eligibility check' do
+        expect(helper.show_request_digitization_link?(document)).to be true
+      end
+
+      it 'generates a link to the digitization form' do
+        expect(helper.request_digitization_url(document)).to(
           eq(response)
         )
       end
@@ -92,12 +84,9 @@ describe RequestDigitizationHelper do
                     '"item_id":"D01631528Q","status":"Available"}']
         )
       end
-      let(:options) do
-        { document: document }
-      end
 
-      it 'does not generate a link' do
-        expect(helper.link_to_request_digitization(options)).to be_nil
+      it 'does not pass the eligibility check' do
+        expect(helper.show_request_digitization_link?(document)).to be false
       end
     end
 
@@ -116,12 +105,9 @@ describe RequestDigitizationHelper do
                     '"item_id":"HANK-1675-00001","status":"Available"}']
         )
       end
-      let(:options) do
-        { document: document }
-      end
 
-      it 'does not generate a link' do
-        expect(helper.link_to_request_digitization(options)).to be_nil
+      it 'does not pass the eligibility check' do
+        expect(helper.show_request_digitization_link?(document)).to be false
       end
     end
 
@@ -133,19 +119,16 @@ describe RequestDigitizationHelper do
           title_main: '100 meat-saving recipes',
           owner_a: ['duke'],
           publication_year_sort: '1943',
-          resource_type_a: ['Journal, Magazine, or Periodical'],
+          resource_type_a: ['Book'],
           access_type_a: ['At the Library'],
           items_a: ['{"loc_b":"SCL","loc_n":"PRSBQ","cn_scheme":"LC",'\
                     '"call_no":"TX715 .R62 1943",'\
                     '"item_id":"D03022111A","status":"Available"}']
         )
       end
-      let(:options) do
-        { document: document }
-      end
 
-      it 'does not generate a link' do
-        expect(helper.link_to_request_digitization(options)).to be_nil
+      it 'does not pass the eligibility check' do
+        expect(helper.show_request_digitization_link?(document)).to be false
       end
     end
   end

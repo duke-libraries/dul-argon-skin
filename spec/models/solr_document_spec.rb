@@ -240,4 +240,88 @@ describe SolrDocument do
       # rubocop:enable RSpec/ExampleLength
     end
   end
+
+  describe 'syndetics_or_marc_summary' do
+    let(:solr_document) do
+      described_class.new(
+        id: 'DUKE003485622'
+      )
+    end
+
+    context 'when it is not a Rubenstein record' do
+      before do
+        allow(solr_document).to receive(:rubenstein_record?).and_return(false)
+        allow(solr_document).to receive(:syndetics_summary).and_return(
+          'Syndetics Summary'
+        )
+        allow(solr_document).to receive(:marc_summary).and_return(
+          'MARC Summary'
+        )
+      end
+
+      it 'returns the Syndetics Summary.' do
+        expect(solr_document.syndetics_or_marc_summary).to eq(
+          'Syndetics Summary'
+        )
+      end
+    end
+
+    context 'when it is a Rubenstein record' do
+      before do
+        allow(solr_document).to receive(:rubenstein_record?).and_return(true)
+        allow(solr_document).to receive(:syndetics_summary).and_return(
+          'Syndetics Summary'
+        )
+        allow(solr_document).to receive(:marc_summary).and_return(
+          'MARC Summary'
+        )
+      end
+
+      it 'returns the Syndetics Summary.' do
+        expect(solr_document.syndetics_or_marc_summary).to eq(
+          'MARC Summary'
+        )
+      end
+    end
+  end
+
+  describe 'syndetics_or_marc_toc' do
+    let(:solr_document) do
+      described_class.new(
+        id: 'DUKE003485622'
+      )
+    end
+
+    context 'when it is not a Rubenstein record' do
+      before do
+        allow(solr_document).to receive(:rubenstein_record?).and_return(false)
+        allow(solr_document).to receive(:syndetics_toc).and_return(
+          'Syndetics TOC'
+        )
+        allow(solr_document).to receive(:marc_toc).and_return('MARC TOC')
+      end
+
+      it 'returns the Syndetics TOC.' do
+        expect(solr_document.syndetics_or_marc_toc).to eq(
+          'Syndetics TOC'
+        )
+      end
+    end
+
+    context 'when it is a Rubenstein record' do
+      before do
+        allow(solr_document).to receive(:rubenstein_record?).and_return(true)
+        allow(solr_document).to receive(:syndetics_toc).and_return(
+          'Syndetics TOC'
+        )
+        allow(solr_document).to receive(:marc_toc).and_return('MARC TOC')
+      end
+
+      it 'returns the Syndetics TOC.' do
+        expect(solr_document.syndetics_or_marc_toc).to eq(
+          'MARC TOC'
+        )
+      end
+    end
+  end
 end
