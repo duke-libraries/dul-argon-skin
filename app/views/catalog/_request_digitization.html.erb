@@ -1,3 +1,5 @@
-<li class="report-digitization">
-  <%= link_to_request_digitization(document: document) %>
-</li>
+<% if show_request_digitization_link?(document) %>
+  <%= link_to I18n.t('trln_argon.show.request_digitization'), request_digitization_url(document),
+    class: "btn btn-default report-digitization", target: "_blank" %>
+<% end %>
+

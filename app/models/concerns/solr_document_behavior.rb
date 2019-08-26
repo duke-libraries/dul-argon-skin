@@ -20,9 +20,6 @@ module SolrDocumentBehavior
     send(:include, TrlnArgon::ItemDeserializer)
     send(:include, RequestItem)
     send(:include, SmsFieldMapping)
-  end
-
-  def rubenstein_record?
-    holdings.key?('SCL')
+    send(:include, Syndetics)
   end
 end

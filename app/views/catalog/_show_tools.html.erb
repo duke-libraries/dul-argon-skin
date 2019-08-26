@@ -1,7 +1,9 @@
 <%# NOTE: overrides TRLN Argon partial in order to add request button, then %>
 <%# render the rest of these links as a dropdown menu instead of a button set. %>
 
-<%= render :partial => 'request_button', locals: { document: @document } %>
+<%= render partial: 'request_button', locals: { document: @document } %>
+
+<%= render partial: 'request_digitization', locals: { document: @document } %>
 
 <% if show_doc_actions? %>
 <div class="btn-group doc-tools">
@@ -18,4 +20,4 @@
 </div>
 <% end %>
 
-<%= render :partial => 'bookmark_control', locals: { document: @document } %>
+<%= render partial: 'bookmark_control', locals: { document: @document } %>
