@@ -22,4 +22,8 @@ module SolrDocumentBehavior
     send(:include, SmsFieldMapping)
     send(:include, Syndetics)
   end
+
+  def rubenstein_record?
+    holdings.key?('SCL')
+  end
 end
