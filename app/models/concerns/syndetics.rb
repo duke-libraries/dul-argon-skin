@@ -27,10 +27,10 @@ module Syndetics
   private
 
   def syndetics_summary
-    syndetics_data && syndetics_data&.summary
+    syndetics_data.summary if syndetics_data && syndetics_data.summary.present?
   end
 
   def syndetics_toc
-    syndetics_data && syndetics_data&.toc
+    syndetics_data.toc if syndetics_data && syndetics_data.toc.present?
   end
 end
