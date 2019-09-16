@@ -32,6 +32,7 @@
     <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %>">
+  <div id="google-analytics-configs" data-ga-tracking-id="<%= DulArgonSkin.google_analytics_tracking_id %>" data-ga-debug="<%= DulArgonSkin.google_analytics_debug %>"></div>
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/ajax_modal' %>
