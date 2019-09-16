@@ -730,13 +730,14 @@ var eventTracking = (function () {
   }
 
   function sendEventData(ga_event) {
-
-    <% if DulArgonSkin.google_analytics_tracking_id.present? %>
+    var tracking_id = $('#google-analytics-configs').data('ga-tracking-id');
+    var debug_on = $('#google-analytics-configs').data('ga-debug').toString();
+    if (tracking_id.length > 0) {
       sendDataToGoogleAnalytics(ga_event);
-    <% end %>
-    <% if DulArgonSkin.google_analytics_debug == 'true' %>
+    }
+    if (debug_on == 'true') {
       console.log('GA Event Track', [ga_event.category, ga_event.action, ga_event.label]);
-    <% end %>
+    }
   }
 
   function sendDataToGoogleAnalytics(ga_event) {
