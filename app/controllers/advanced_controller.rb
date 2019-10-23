@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AdvancedController < CatalogController
+  # rubocop:disable Metrics/AbcSize
   def index
     return if request.method == :post
 
@@ -9,10 +10,17 @@ class AdvancedController < CatalogController
                   "#{params.fetch('action', '')}"\
                   'advanced_solr_query'
     end
-    @response = Rails.cache.fetch(cache_key.to_s, expires_in: 12.hours) do
-      get_advanced_search_facets
-    end
+
+    @response =
+      if cache_key
+        Rails.cache.fetch(cache_key.to_s, expires_in: 12.hours) do
+          get_advanced_search_facets
+        end
+      else
+        get_advanced_search_facets
+      end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
