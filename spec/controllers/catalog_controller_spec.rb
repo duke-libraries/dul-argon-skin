@@ -12,6 +12,34 @@ describe CatalogController do
     end
   end
 
+  describe 'show_fields' do
+    describe 'local_id' do
+      it 'sets the local_id field to display' do
+        expect(config.show_fields).to have_key('local_id')
+      end
+
+      it 'has a label for local_id' do
+        expect(config.show_fields['local_id'].label).to eq('System ID')
+      end
+    end
+
+    describe 'donor' do
+      it 'sets the donor field to display' do
+        expect(config.show_fields).to have_key('donor_a')
+      end
+
+      it 'has a label for donor' do
+        expect(config.show_fields['donor_a'].label).to eq('Bookplate')
+      end
+
+      it 'applies the donor span helper method' do
+        expect(config.show_fields['donor_a'].helper_method).to(
+          eq(:add_donor_span)
+        )
+      end
+    end
+  end
+
   describe 'search fields' do
     describe 'call_number' do
       it 'sets the call_number field' do
@@ -20,13 +48,55 @@ describe CatalogController do
 
       it 'has a label for the call_number field' do
         expect(config.search_fields['call_number'].label).to(
-          eq('Call Number (LC)')
+          eq('Call Number')
         )
       end
     end
 
-    # rubocop:disable RSpec/ExampleLength
+    describe 'origin_place' do
+      let(:solr_params_exp) do
+        YAML.safe_load(
+          file_fixture('solr_parameters/origin_place_exp.yml').read, [Symbol]
+        )
+      end
+
+      it 'sets the origin_place field' do
+        expect(config.search_fields).to have_key('origin_place')
+      end
+
+      it 'has a label for the series field' do
+        expect(config.search_fields['origin_place'].label).to(
+          eq('Place of Publication')
+        )
+      end
+
+      it 'is excluded from simple select dropdown' do
+        expect(
+          config.search_fields['origin_place'].include_in_simple_select
+        ).to be false
+      end
+
+      it 'sets the correct Solr defType' do
+        expect(config.search_fields['origin_place'].def_type).to(
+          eq('edismax')
+        )
+      end
+
+      it 'sets the solr local parameters' do
+        expect(
+          config.search_fields['origin_place'].solr_local_parameters
+        ).to eq(solr_params_exp)
+      end
+    end
+
     describe 'series_statement' do
+      let(:solr_params_exp) do
+        YAML.safe_load(
+          file_fixture('solr_parameters/series_statement_exp.yml').read,
+          [Symbol]
+        )
+      end
+
       it 'sets the series_statement field' do
         expect(config.search_fields).to have_key('series_statement')
       end
@@ -50,44 +120,10 @@ describe CatalogController do
       it 'sets the solr local parameters' do
         expect(
           config.search_fields['series_statement'].solr_local_parameters
-        ).to(
-          eq(qf:  'series_work_indexed_t^20 '\
-                  'series_work_indexed_ara_v '\
-                  'series_work_indexed_cjk_v '\
-                  'series_work_indexed_rus_v '\
-                  'series_statement_indexed_t^20 '\
-                  'series_statement_indexed_cjk_v '\
-                  'series_statement_indexed_ara_v '\
-                  'series_statement_indexed_rus_v',
-             pf:  'series_work_indexed_t^80 '\
-                  'series_work_indexed_ara_v^20 '\
-                  'series_work_indexed_cjk_v^20 '\
-                  'series_work_indexed_rus_v^20 '\
-                  'series_statement_indexed_t^80 '\
-                  'series_statement_indexed_cjk_v^20 '\
-                  'series_statement_indexed_ara_v^20 '\
-                  'series_statement_indexed_rus_v^20',
-             pf3: 'series_work_indexed_t^60 '\
-                  'series_work_indexed_ara_v^10 '\
-                  'series_work_indexed_cjk_v^10 '\
-                  'series_work_indexed_rus_v^10 '\
-                  'series_statement_indexed_t^60 '\
-                  'series_statement_indexed_cjk_v^10 '\
-                  'series_statement_indexed_ara_v^10 '\
-                  'series_statement_indexed_rus_v^10',
-             pf2: 'series_work_indexed_t^40 '\
-                  'series_work_indexed_ara_v^5 '\
-                  'series_work_indexed_cjk_v^5 '\
-                  'series_work_indexed_rus_v^5 '\
-                  'series_statement_indexed_t^40 '\
-                  'series_statement_indexed_cjk_v^5 '\
-                  'series_statement_indexed_ara_v^5 '\
-                  'series_statement_indexed_rus_v^5')
-        )
+        ).to eq(solr_params_exp)
       end
     end
   end
-  # rubocop:enable RSpec/ExampleLength
 
   describe 'home facet fields' do
     it 'sets the access type facet' do

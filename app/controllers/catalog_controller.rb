@@ -186,6 +186,30 @@ class CatalogController < ApplicationController
     # so we can add it again in the last position.
     isbn_issn = config.search_fields.delete('isbn_issn')
 
+    config.add_search_field('origin_place') do |field|
+      field.include_in_simple_select = false
+      field.label = I18n.t('trln_argon.search_fields.origin_place')
+      field.def_type = 'edismax'
+      field.solr_local_parameters = {
+        qf:  %w[origin_place_search_t^20
+                origin_place_search_ara_v
+                origin_place_search_cjk_v
+                origin_place_search_rus_v].join(' '),
+        pf:  %w[origin_place_search_t^80
+                origin_place_search_ara_v^20
+                origin_place_search_cjk_v^20
+                origin_place_search_rus_v^20].join(' '),
+        pf3: %w[origin_place_search_t^60
+                origin_place_search_ara_v^10
+                origin_place_search_cjk_v^10
+                origin_place_search_rus_v^10].join(' '),
+        pf2: %w[origin_place_search_t^40
+                origin_place_search_ara_v^5
+                origin_place_search_cjk_v^5
+                origin_place_search_rus_v^5].join(' ')
+      }
+    end
+
     config.add_search_field('series_statement') do |field|
       field.include_in_simple_select = false
       field.label = I18n.t('trln_argon.search_fields.series')
@@ -229,8 +253,11 @@ class CatalogController < ApplicationController
     config.add_search_field(isbn_issn)
 
     config.add_show_field TrlnArgon::Fields::LOCAL_ID.to_s,
-                          label: 'System ID',
-                          helper_method: 'strip_duke_id_prefix'
+                          label: TrlnArgon::Fields::LOCAL_ID.label,
+                          helper_method: :strip_duke_id_prefix
+    config.add_show_field TrlnArgon::Fields::DONOR.to_s,
+                          label: TrlnArgon::Fields::DONOR.label,
+                          helper_method: :add_donor_span
 
     config.show_fields[TrlnArgon::Fields::NOTE_LOCAL]
           .helper_method = :add_bookplate_span
