@@ -4,9 +4,11 @@ class AdvancedController < CatalogController
   def index
     return if request.method == :post
 
-    cache_key = "#{params.fetch('controller', '')}/"\
-                "#{params.fetch('action', '')}"\
-                'advanced_solr_query'
+    if (params.keys - %w[controller action]).empty?
+      cache_key = "#{params.fetch('controller', '')}/"\
+                  "#{params.fetch('action', '')}"\
+                  'advanced_solr_query'
+    end
     @response = Rails.cache.fetch(cache_key.to_s, expires_in: 12.hours) do
       get_advanced_search_facets
     end
