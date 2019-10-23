@@ -7,10 +7,18 @@
 #   label:
 #     en: Director
 
+DONOR:
+  solr_field: :donor_a
+  label:
+    en: Bookplate
 LC_CALL_NOS_NORMED:
   solr_field: :lc_call_nos_normed_a
   label:
     en: LCC Normed
+LOCAL_ID:
+  solr_field: :local_id
+  label:
+    en: System ID
 TITLE_MAIN_INDEXED:
   solr_field: :title_main_indexed_t
   label:
@@ -20,6 +28,8 @@ SHELFKEY:
   label:
       en: Shelfkey
 SHELF_NUMBERS:
-    solr_field: shelf_numbers_tp
-    label:
-      en: Shelf Number
+  solr_field: shelf_numbers_tp
+  label:
+    en: Shelf Number
+
+

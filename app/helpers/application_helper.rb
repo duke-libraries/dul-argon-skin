@@ -54,6 +54,12 @@ module ApplicationHelper
     end.join('<br/>').html_safe
   end
 
+  def add_donor_span(options = {})
+    options.fetch(:value, []).map do |v|
+      content_tag(:span, v, class: 'dul-bookplate')
+    end.join('<br/>').html_safe
+  end
+
   private
 
   def bookplate_regex
