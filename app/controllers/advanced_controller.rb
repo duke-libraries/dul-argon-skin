@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AdvancedController < CatalogController
+  # rubocop:disable Metrics/AbcSize
   def index
     return if request.method == :post
 
@@ -13,6 +14,7 @@ class AdvancedController < CatalogController
       get_advanced_search_facets
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
