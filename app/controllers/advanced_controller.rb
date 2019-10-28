@@ -2,6 +2,7 @@
 
 class AdvancedController < CatalogController
   # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def index
     return if request.method == :post
 
@@ -21,6 +22,7 @@ class AdvancedController < CatalogController
       end
   end
   # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   private
 

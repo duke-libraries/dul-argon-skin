@@ -13,6 +13,7 @@ describe RequestDigitizationHelper do
           owner_a: ['duke'],
           publication_year_sort: '1943',
           resource_type_a: ['Book'],
+          physical_media_a: ['Print'],
           access_type_a: ['At the Library'],
           items_a: ['{"loc_b":"PERKN","loc_n":"PK","cn_scheme":"LC",'\
                     '"call_no":"Z4 .M15 1943","type":"BOOK",'\
@@ -46,6 +47,7 @@ describe RequestDigitizationHelper do
           owner_a: ['duke'],
           publication_year_sort: '1922',
           resource_type_a: ['Book'],
+          physical_media_a: ['Print'],
           access_type_a: ['At the Library', 'Online'],
           items_a: ['{"loc_b":"PERKN","loc_n":"PK","cn_scheme":"LC",'\
                     '"call_no":"PZ3.C107 Ju3 1922","type":"BOOK",'\
@@ -78,6 +80,7 @@ describe RequestDigitizationHelper do
           owner_a: ['duke'],
           publication_year_sort: '1973',
           resource_type_a: ['Book'],
+          physical_media_a: ['Print'],
           access_type_a: ['At the Library'],
           items_a: ['{"loc_b":"PERKN","loc_n":"PK","cn_scheme":"LC",'\
                     '"call_no":"PS3554.E437 D48 2001","type":"BOOK",'\
@@ -99,6 +102,7 @@ describe RequestDigitizationHelper do
           owner_a: ['duke'],
           publication_year_sort: '1943',
           resource_type_a: ['Journal, Magazine, or Periodical'],
+          physical_media_a: ['Print'],
           access_type_a: ['At the Library'],
           items_a: ['{"loc_b":"PERKN","loc_n":"PK","cn_scheme":"LC",'\
                     '"call_no":"D808 .A365",'\
@@ -120,10 +124,33 @@ describe RequestDigitizationHelper do
           owner_a: ['duke'],
           publication_year_sort: '1943',
           resource_type_a: ['Book'],
+          physical_media_a: ['Print'],
           access_type_a: ['At the Library'],
           items_a: ['{"loc_b":"SCL","loc_n":"PRSBQ","cn_scheme":"LC",'\
                     '"call_no":"TX715 .R62 1943",'\
                     '"item_id":"D03022111A","status":"Available"}']
+        )
+      end
+
+      it 'does not pass the eligibility check' do
+        expect(helper.show_request_digitization_link?(document)).to be false
+      end
+    end
+
+    context 'when it has a physical media format of Microform' do
+      let(:document) do
+        SolrDocument.new(
+          id: 'DUKE008746259',
+          local_id: 'DUKE008746259',
+          title_main: 'Jurgen; a comedy of justice',
+          owner_a: ['duke'],
+          publication_year_sort: '1922',
+          resource_type_a: ['Book'],
+          physical_media_a: ['Print', 'Microform > Microfiche'],
+          access_type_a: ['At the Library', 'Online'],
+          items_a: ['{"loc_b":"PERKN","loc_n":"PK","cn_scheme":"LC",'\
+                    '"call_no":"PZ3.C107 Ju3 1922","type":"BOOK",'\
+                    '"item_id":"D05278727","status":"Available"}']
         )
       end
 

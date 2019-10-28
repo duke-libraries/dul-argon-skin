@@ -175,4 +175,18 @@ describe ApplicationHelper do
       )
     end
   end
+
+  describe 'add_donor_span' do
+    let(:value) do
+      { value: ['Acquired as part of the Leona Bowman Carpenter Collection'] }
+    end
+
+    it 'wraps the donor note in a span' do
+      expect(add_donor_span(value)).to(
+        eq('<span class="dul-bookplate">'\
+           'Acquired as part of the Leona Bowman Carpenter Collection'\
+           '</span>')
+      )
+    end
+  end
 end

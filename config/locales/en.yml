@@ -141,8 +141,9 @@ en:
     latest_received:
       link_text: "Latest received"
     search_fields:
-        call_number: 'Call Number (LC)'
+        call_number: 'Call Number'
         series: 'Series'
+        origin_place: 'Place of Publication'
     advanced_search:
       help:
         title: 'Search tips'

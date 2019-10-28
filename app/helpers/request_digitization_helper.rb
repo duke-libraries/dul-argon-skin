@@ -2,6 +2,7 @@
 
 module RequestDigitizationHelper
   # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def show_request_digitization_link?(document)
     DulArgonSkin.request_digitization_url.present? &&
       document.present? &&
@@ -9,9 +10,11 @@ module RequestDigitizationHelper
       display_items?(document: document) &&
       meets_publication_year_requirement?(document) &&
       meets_resource_type_requirement?(document) &&
-      meets_location_requirement?(document)
+      meets_location_requirement?(document) &&
+      meets_physical_media_requirement?(document)
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def request_digitization_url(document)
     request_digitization_url_template.expand(
@@ -38,13 +41,19 @@ module RequestDigitizationHelper
     loc_b_codes = document.holdings.keys
     loc_n_codes = document.holdings.map { |_, v| v.keys }.flatten
 
-    (DulArgonSkin.req_digi_loc_b_codes.split(', ') & loc_b_codes).any? ||
-      (DulArgonSkin.req_digi_loc_n_codes.split(', ') & loc_n_codes).any?
+    (DulArgonSkin.req_digi_loc_b_codes & loc_b_codes).any? ||
+      (DulArgonSkin.req_digi_loc_n_codes & loc_n_codes).any?
   end
 
   def meets_publication_year_requirement?(document)
     pub_year = document.fetch(TrlnArgon::Fields::PUBLICATION_YEAR, '0')
     pub_year.to_i < Time.now.year - 75
+  end
+
+  def meets_physical_media_requirement?(document)
+    physical_media_types = document.fetch(TrlnArgon::Fields::PHYSICAL_MEDIA, [])
+    physical_media_types.include?('Print') &&
+      physical_media_types.select { |m| m.match?(/Microform/) }.none?
   end
 
   def meets_resource_type_requirement?(document)
