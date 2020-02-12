@@ -56,7 +56,7 @@ en:
       bookmarks: 'Folder'
 
     bookmarks:
-      title: 'View items in your folder'
+      title: 'Saved Items'
       items: 'items'
       page_title: 'Folder - %{application_name}'
       no_bookmarks: 'Your folder is empty'
@@ -128,6 +128,7 @@ en:
     show:
       heading:
         subjects: "Related subjects"
+        related_works: "Find related items"
       help:
         title: "Still can't find it?"
         search_for_articles: 'Search for Articles'
