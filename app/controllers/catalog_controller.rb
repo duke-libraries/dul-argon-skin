@@ -203,10 +203,10 @@ class CatalogController < ApplicationController
       field.label = I18n.t('trln_argon.search_fields.series')
       field.def_type = 'edismax'
       field.solr_local_parameters = {
-        qf:  '$origin_place_qf',
-        pf:  '$origin_place_pf',
-        pf3: '$origin_place_pf3',
-        pf2: '$origin_place_pf2'
+        qf:  '$series_qf',
+        pf:  '$series_pf',
+        pf3: '$series_pf3',
+        pf2: '$series_pf2'
       }
     end
 

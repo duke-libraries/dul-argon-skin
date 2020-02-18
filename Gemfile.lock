@@ -190,7 +190,7 @@ GEM
     parallel (1.12.1)
     parser (2.5.3.0)
       ast (~> 2.4.0)
-    parslet (1.8.2)
+    parslet (2.0.0)
     pg (1.1.4)
     powerpack (0.1.2)
     public_suffix (3.0.3)
