@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
 class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
@@ -245,4 +244,3 @@ class CatalogController < ApplicationController
     # config.autocomplete_path = 'suggest'
   end
 end
-# rubocop:enable Metrics/ClassLength
