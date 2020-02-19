@@ -72,6 +72,7 @@ deploy_pre:
     - master
     - /^release.*/
     - /^hotfix.*/
+    - feb-2020-updates
   tags:
     - staging
 
