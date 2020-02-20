@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
 class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
@@ -191,22 +190,10 @@ class CatalogController < ApplicationController
       field.label = I18n.t('trln_argon.search_fields.origin_place')
       field.def_type = 'edismax'
       field.solr_local_parameters = {
-        qf:  %w[origin_place_search_t^20
-                origin_place_search_ara_v
-                origin_place_search_cjk_v
-                origin_place_search_rus_v].join(' '),
-        pf:  %w[origin_place_search_t^80
-                origin_place_search_ara_v^20
-                origin_place_search_cjk_v^20
-                origin_place_search_rus_v^20].join(' '),
-        pf3: %w[origin_place_search_t^60
-                origin_place_search_ara_v^10
-                origin_place_search_cjk_v^10
-                origin_place_search_rus_v^10].join(' '),
-        pf2: %w[origin_place_search_t^40
-                origin_place_search_ara_v^5
-                origin_place_search_cjk_v^5
-                origin_place_search_rus_v^5].join(' ')
+        qf:  '$origin_place_qf',
+        pf:  '$origin_place_pf',
+        pf3: '$origin_place_pf3',
+        pf2: '$origin_place_pf2'
       }
     end
 
@@ -215,38 +202,10 @@ class CatalogController < ApplicationController
       field.label = I18n.t('trln_argon.search_fields.series')
       field.def_type = 'edismax'
       field.solr_local_parameters = {
-        qf:  %w[series_work_indexed_t^20
-                series_work_indexed_ara_v
-                series_work_indexed_cjk_v
-                series_work_indexed_rus_v
-                series_statement_indexed_t^20
-                series_statement_indexed_cjk_v
-                series_statement_indexed_ara_v
-                series_statement_indexed_rus_v].join(' '),
-        pf:  %w[series_work_indexed_t^80
-                series_work_indexed_ara_v^20
-                series_work_indexed_cjk_v^20
-                series_work_indexed_rus_v^20
-                series_statement_indexed_t^80
-                series_statement_indexed_cjk_v^20
-                series_statement_indexed_ara_v^20
-                series_statement_indexed_rus_v^20].join(' '),
-        pf3: %w[series_work_indexed_t^60
-                series_work_indexed_ara_v^10
-                series_work_indexed_cjk_v^10
-                series_work_indexed_rus_v^10
-                series_statement_indexed_t^60
-                series_statement_indexed_cjk_v^10
-                series_statement_indexed_ara_v^10
-                series_statement_indexed_rus_v^10].join(' '),
-        pf2: %w[series_work_indexed_t^40
-                series_work_indexed_ara_v^5
-                series_work_indexed_cjk_v^5
-                series_work_indexed_rus_v^5
-                series_statement_indexed_t^40
-                series_statement_indexed_cjk_v^5
-                series_statement_indexed_ara_v^5
-                series_statement_indexed_rus_v^5].join(' ')
+        qf:  '$series_qf',
+        pf:  '$series_pf',
+        pf3: '$series_pf3',
+        pf2: '$series_pf2'
       }
     end
 
@@ -285,4 +244,3 @@ class CatalogController < ApplicationController
     # config.autocomplete_path = 'suggest'
   end
 end
-# rubocop:enable Metrics/ClassLength

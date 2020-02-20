@@ -1,9 +1,5 @@
 ---
-:qf: origin_place_search_t^20 origin_place_search_ara_v origin_place_search_cjk_v
-  origin_place_search_rus_v
-:pf: origin_place_search_t^80 origin_place_search_ara_v^20 origin_place_search_cjk_v^20
-  origin_place_search_rus_v^20
-:pf3: origin_place_search_t^60 origin_place_search_ara_v^10 origin_place_search_cjk_v^10
-  origin_place_search_rus_v^10
-:pf2: origin_place_search_t^40 origin_place_search_ara_v^5 origin_place_search_cjk_v^5
-  origin_place_search_rus_v^5
+:pf: "$origin_place_pf"
+:pf2: "$origin_place_pf2"
+:pf3: "$origin_place_pf3"
+:qf: "$origin_place_qf"

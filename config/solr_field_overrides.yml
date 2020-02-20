@@ -19,6 +19,10 @@ LOCAL_ID:
   solr_field: :local_id
   label:
     en: System ID
+THIS_WORK:
+  solr_field: :this_work_a
+  label:
+    en: This Item
 TITLE_MAIN_INDEXED:
   solr_field: :title_main_indexed_t
   label:
