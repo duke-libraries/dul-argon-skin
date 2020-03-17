@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module RequestDigitizationHelper
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/PerceivedComplexity
-  def show_request_digitization_link?(document)
+  def show_request_digitization_link?(_document)
     # Temporarily disable request digitization link.
     false
     # DulArgonSkin.request_digitization_url.present? &&
@@ -15,8 +13,6 @@ module RequestDigitizationHelper
     #   meets_location_requirement?(document) &&
     #   meets_physical_media_requirement?(document)
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/PerceivedComplexity
 
   def request_digitization_url(document)
     request_digitization_url_template.expand(
