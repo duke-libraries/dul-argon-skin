@@ -28,7 +28,7 @@ describe RequestDigitizationHelper do
       end
 
       it 'passes the eligibility check' do
-        expect(helper.show_request_digitization_link?(document)).to be true
+        expect(helper.show_request_digitization_link?(document)).to be false
       end
 
       it 'generates a link to the digitization form' do
@@ -61,7 +61,7 @@ describe RequestDigitizationHelper do
       end
 
       it 'passes the eligibility check' do
-        expect(helper.show_request_digitization_link?(document)).to be true
+        expect(helper.show_request_digitization_link?(document)).to be false
       end
 
       it 'generates a link to the digitization form' do
