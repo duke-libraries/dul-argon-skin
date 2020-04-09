@@ -70,6 +70,7 @@ deploy_pre:
   after_script: *afterdeployscript
   only:
     - master
+    - mapinfo-testing
     - /^release.*/
     - /^hotfix.*/
   tags:

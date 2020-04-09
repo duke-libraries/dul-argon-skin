@@ -47,7 +47,7 @@ module DulArgonSkin
       end
 
       mattr_accessor :map_location_service_url do
-        ENV['MAP_LOCATION_SERVICE_URL'] || 'https://library.duke.edu/locguide/mapinfo'
+        ENV['MAP_LOCATION_SERVICE_URL'] || 'https://locguide-pre.lib.duke.edu/mapinfo'
       end
 
       # Broad and narrow location codes that indicate online items.
