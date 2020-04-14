@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   resource :styleguide, only: [:show], as: 'styleguide', path: '/styleguide', controller: 'styleguide'
 
+  get 'etas/:oclc_numbers', to: 'hathitrust#show_etas', as: 'etas'
 
   # IMPORTANT: This catch-all route should always be last.
   match '/*path', to: 'application#not_found', via: :all

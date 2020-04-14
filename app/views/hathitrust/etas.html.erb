@@ -1,0 +1,14 @@
+<% unless etas_argon_url_hash.fetch(:href, nil).blank? && document.record_owner == 'duke' %>
+  <div class="<%= primary_link_class %>">
+    <ul>
+      <li><%= link_to_fulltext_url(etas_argon_url_hash) %></li>
+    </ul>
+<div class="etas-note-wrapper">
+    <dl class="dl-horizontal">
+      <dt><span class="url-note-label label label-info">Note</span></dt>
+      <dd><span class="url-note">Available by special arrangement in response to the COVID-19 outbreak. Simultaneous access is limited.</span></dd>
+    </dl>
+  </div>
+  </div>
+  <div class="<%= items_spacer_class %>"></div>
+<% end %>
