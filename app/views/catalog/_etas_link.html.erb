@@ -1,0 +1,7 @@
+<!-- TODO: Also check overlap file? -->
+<% overlap_oclc_number = HathitrustOverlap.where(bib_id: document.id, access: 'deny').first&.oclc_number %>
+<% if overlap_oclc_number.present? %>
+  <div class="etas-link oclc<%= overlap_oclc_number %>"
+       data-oclc-number="<%= overlap_oclc_number %>">
+  </div>
+<% end %>

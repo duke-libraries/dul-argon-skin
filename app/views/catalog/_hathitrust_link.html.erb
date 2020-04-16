@@ -1,8 +1,16 @@
 <!-- NOTE: Override of partial from TrlnArgon gem to turn off -->
 <!--       HathiTrust links for Rubenstein records. -->
 
-<% if show_hathitrust_link_if_available?(document) %>
-  <div class="hathi-trust-link oclc<%= document.oclc_number %>"
-       data-oclc-number="<%= document.oclc_number %>">
+<%# if show_hathitrust_link_if_available?(document) %>
+<!--   <div class="hathi-trust-link oclc<%# document.oclc_number %>"
+       data-oclc-number="<%# document.oclc_number %>">
+  </div> -->
+<%# end %>
+
+<!-- NOTE: Temporarily use the overlap file to fetch OA HT links. -->
+<% overlap_oclc_number = HathitrustOverlap.where(bib_id: document.id, access: 'allow').first&.oclc_number %>
+<% if overlap_oclc_number.present? %>
+  <div class="hathi-trust-link oclc<%= overlap_oclc_number %>"
+       data-oclc-number="<%= overlap_oclc_number %>">
   </div>
 <% end %>
