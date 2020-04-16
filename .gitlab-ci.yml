@@ -57,7 +57,6 @@ deploy_dev:
   only:
     - develop
     - antsy
-    - /^hotfix.*/
   tags:
     - development
     - antsy
@@ -72,6 +71,7 @@ deploy_pre:
   only:
     - master
     - /^release.*/
+    - /^hotfix.*/
   tags:
     - staging
 

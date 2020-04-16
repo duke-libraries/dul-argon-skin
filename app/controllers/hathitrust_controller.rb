@@ -27,8 +27,6 @@ class HathitrustController < ApplicationController
   def etas_argon_url_hash(full_text_url)
     { href: "#{full_text_url}?signon=swle:urn:mace:incommon:duke.edu",
       type: 'fulltext',
-      note: 'Available by special arrangement in ' \
-            'response to the COVID-19 outbreak.',
       text: I18n.t('trln_argon.links.hathitrust') }
   end
 
