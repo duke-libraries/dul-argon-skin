@@ -1,0 +1,8 @@
+<% unless etas_argon_url_hash.fetch(:href, nil).blank? && document.record_owner == 'duke' %>
+  <div class="<%= primary_link_class %>">
+    <ul>
+      <li><%= link_to_fulltext_url(etas_argon_url_hash) %></li>
+    </ul>
+  </div>
+  <div class="<%= items_spacer_class %>"></div>
+<% end %>
