@@ -1,12 +1,12 @@
-<% unless etas_argon_url_hash.fetch(:href, nil).blank? %>
+<% unless hathitrust_argon_url_hash.fetch(:href, nil).blank? %>
   <div class="<%= primary_link_class %>">
     <ul>
-      <li><%= link_to_fulltext_url(etas_argon_url_hash) %></li>
+      <li><%= link_to_open_access(hathitrust_argon_url_hash) %></li>
     </ul>
     <div class="etas-note-wrapper">
       <dl class="dl-horizontal">
         <dt><span class="url-note-label label label-info">Note</span></dt>
-        <dd><span class="url-note">View a version of this item available temporarily from HathiTrust.</span></dd>
+        <dd><span class="url-note">View a version of this item from HathiTrust.</span></dd>
       </dl>
     </div>
   </div>
