@@ -29,11 +29,17 @@ class MapLocationController < ApplicationController
   def map_request(collection_code, sublibrary, callno)
     request = Net::HTTP::Post.new(map_uri)
     request['X-Requested-With'] = 'XMLHttpRequest'
-    request.set_form_data(
+    # request.set_form_data(
+    #   'collection_code' => collection_code,
+    #   'sublibrary' => sublibrary,
+    #   'callno' => callno
+    # )
+    request.body = {
       'collection_code' => collection_code,
       'sublibrary' => sublibrary,
       'callno' => callno
-    )
+    }.to_json
+    request['Content-Type'] = 'application/json'
     request
   end
 
