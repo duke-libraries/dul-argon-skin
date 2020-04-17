@@ -57,6 +57,7 @@ deploy_dev:
   only:
     - develop
     - antsy
+    - testing-map-location-controller
   tags:
     - development
     - antsy
