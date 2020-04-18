@@ -16,7 +16,9 @@ class MapLocationController < ApplicationController
 
   def dul_location_service(collection_code, sublibrary, callno)
     response = map_response(collection_code, sublibrary, callno)
-    response['content-type'] == 'application/json' ? response.body : false
+    ## response content-type is coming back as 'text/xml; charset=UTF-8', so removing this check
+    #response['content-type'] == 'application/json' ? response.body : false
+    response.body
   rescue Net::ReadTimeout => e
     Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
     false
@@ -39,7 +41,7 @@ class MapLocationController < ApplicationController
       'sublibrary' => sublibrary,
       'callno' => callno
     }.to_json
-    request['Content-Type'] = 'application/json'
+    request['content-type'] = 'application/json'
     request
   end
 
