@@ -21,6 +21,16 @@ module SolrDocumentBehavior
     send(:include, RequestItem)
     send(:include, SmsFieldMapping)
     send(:include, Syndetics)
+
+    def urls
+      @urls ||= deserialized_urls.each do |url|
+        url[:href] = fix_old_proxy(url[:href])
+      end
+    end
+
+    def fix_old_proxy(url)
+      url.gsub('//proxy.lib.duke.edu/', '//login.proxy.lib.duke.edu/')
+    end
   end
 
   def rubenstein_record?
