@@ -1,18 +1,20 @@
 # frozen_string_literal: true
 
 module RequestDigitizationHelper
-  def show_request_digitization_link?(_document)
-    # Temporarily disable request digitization link.
-    false
-    # DulArgonSkin.request_digitization_url.present? &&
-    #   document.present? &&
-    #   document.record_owner == 'duke' &&
-    #   display_items?(document: document) &&
-    #   meets_publication_year_requirement?(document) &&
-    #   meets_resource_type_requirement?(document) &&
-    #   meets_location_requirement?(document) &&
-    #   meets_physical_media_requirement?(document)
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  def show_request_digitization_link?(document)
+    DulArgonSkin.request_digitization_url.present? &&
+      document.present? &&
+      document.record_owner == 'duke' &&
+      display_items?(document: document) &&
+      meets_publication_year_requirement?(document) &&
+      meets_resource_type_requirement?(document) &&
+      meets_location_requirement?(document) &&
+      meets_physical_media_requirement?(document)
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def request_digitization_url(document)
     request_digitization_url_template.expand(
