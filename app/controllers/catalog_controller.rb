@@ -185,6 +185,10 @@ class CatalogController < ApplicationController
     # so we can add it again in the last position.
     isbn_issn = config.search_fields.delete('isbn_issn')
 
+    # Delete but save series_statement search_field config
+    # so we can add it again after publisher.
+    series_statement = config.search_fields.delete('series_statement')
+
     config.add_search_field('origin_place') do |field|
       field.include_in_simple_select = false
       field.label = I18n.t('trln_argon.search_fields.origin_place')
@@ -197,17 +201,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('series_statement') do |field|
-      field.include_in_simple_select = false
-      field.label = I18n.t('trln_argon.search_fields.series')
-      field.def_type = 'edismax'
-      field.solr_local_parameters = {
-        qf:  '$series_qf',
-        pf:  '$series_pf',
-        pf3: '$series_pf3',
-        pf2: '$series_pf2'
-      }
-    end
+    config.add_search_field(series_statement)
 
     config.add_search_field(isbn_issn)
 
