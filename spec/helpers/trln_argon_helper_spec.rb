@@ -9,7 +9,8 @@ describe TrlnArgonHelper do
         SolrDocument.new(
           id: 'DUKE012345678',
           url_a: ['"href":"http://images.contentreserve.com/Img200.jpg",'\
-                  '"type":"thumbnail","note":"Thumbnail"}']
+                  '"type":"thumbnail","note":"Thumbnail"}'],
+          isbn_number_a: ['1234567']
         )
       end
 
@@ -17,7 +18,7 @@ describe TrlnArgonHelper do
         expect(helper.add_thumbnail(doc)).to(
           eq('<img class="coverImage" onerror="this.style.display = '\
              '&#39;none&#39;;" alt="cover image" src="https://syndetics.com/index.php?'\
-             'client=trlnet&amp;isbn=%2FSC.GIF" />')
+             'client=trlnet&amp;isbn=1234567%2FSC.GIF" />')
         )
       end
     end
