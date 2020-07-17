@@ -88,41 +88,6 @@ describe CatalogController do
         ).to eq(solr_params_exp)
       end
     end
-
-    describe 'series_statement' do
-      let(:solr_params_exp) do
-        YAML.safe_load(
-          file_fixture('solr_parameters/series_statement_exp.yml').read,
-          [Symbol]
-        )
-      end
-
-      it 'sets the series_statement field' do
-        expect(config.search_fields).to have_key('series_statement')
-      end
-
-      it 'has a label for the series field' do
-        expect(config.search_fields['series_statement'].label).to eq('Series')
-      end
-
-      it 'is excluded from simple select dropdown' do
-        expect(
-          config.search_fields['series_statement'].include_in_simple_select
-        ).to be false
-      end
-
-      it 'sets the correct Solr defType' do
-        expect(config.search_fields['series_statement'].def_type).to(
-          eq('edismax')
-        )
-      end
-
-      it 'sets the solr local parameters' do
-        expect(
-          config.search_fields['series_statement'].solr_local_parameters
-        ).to eq(solr_params_exp)
-      end
-    end
   end
 
   describe 'home facet fields' do
